@@ -1,0 +1,174 @@
+{
+  "org": "@wpmedia/",
+  "useLocal": false,
+  "useLocalEngineSDK": false,
+  "useLocalCSSFramework": false,
+  "localeList": [
+    "en"
+  ],
+  "blocks": [
+    "@wpmedia/global-phrases-block",
+    "@wpmedia/alert-bar-block",
+    "@wpmedia/article-body-block",
+    "@wpmedia/alert-bar-content-source-block",
+    "@wpmedia/article-tag-block",
+    "@wpmedia/author-bio-block",
+    "@wpmedia/byline-block",
+    "@wpmedia/card-list-block",
+    "@wpmedia/date-block",
+    "@wpmedia/default-output-block",
+    "@wpmedia/double-chain-block",
+    "@wpmedia/extra-large-manual-promo-block",
+    "@wpmedia/extra-large-promo-block",
+    "@wpmedia/footer-block",
+    "@wpmedia/full-author-bio-block",
+    "@wpmedia/gallery-block",
+    "@wpmedia/header-block",
+    "@wpmedia/header-nav-chain-block",
+    "@wpmedia/headline-block",
+    "@wpmedia/htmlbox-block",
+    "@wpmedia/large-manual-promo-block",
+    "@wpmedia/large-promo-block",
+    "@wpmedia/lead-art-block",
+    "@wpmedia/links-bar-block",
+    "@wpmedia/masthead-block",
+    "@wpmedia/medium-manual-promo-block",
+    "@wpmedia/medium-promo-block",
+    "@wpmedia/numbered-list-block",
+    "@wpmedia/overline-block",
+    "@wpmedia/quad-chain-block",
+    "@wpmedia/results-list-block",
+    "@wpmedia/right-rail-block",
+    "@wpmedia/right-rail-advanced-block",
+    "@wpmedia/search-results-list-block",
+    "@wpmedia/section-title-block",
+    "@wpmedia/share-bar-block",
+    "@wpmedia/shared-styles",
+    "@wpmedia/simple-list-block",
+    "@wpmedia/single-chain-block",
+    "@wpmedia/small-manual-promo-block",
+    "@wpmedia/small-promo-block",
+    "@wpmedia/subheadline-block",
+    "@wpmedia/tag-title-block",
+    "@wpmedia/text-output-block",
+    "@wpmedia/textfile-block",
+    "@wpmedia/top-table-list-block",
+    "@wpmedia/triple-chain-block",
+    "@wpmedia/video-player-block",
+    "@wpmedia/content-api-source-block",
+    "@wpmedia/collections-content-source-block",
+    "@wpmedia/author-content-source-block",
+    "@wpmedia/search-content-source-block",
+    "@wpmedia/site-hierarchy-content-block",
+    "@wpmedia/story-feed-author-content-source-block",
+    "@wpmedia/story-feed-query-content-source-block",
+    "@wpmedia/story-feed-sections-content-source-block",
+    "@wpmedia/story-feed-tag-content-source-block",
+    "@wpmedia/tags-content-source-block",
+    "@wpmedia/unpublished-content-source-block",
+    "@wpmedia/resizer-image-block",
+    "@wpmedia/resizer-image-content-source-block",
+    "@wpmedia/placeholder-image-block",
+    "@wpmedia/event-tester-block"
+  ],
+  "engineSDK": "@wpmedia/engine-theme-sdk",
+  "cssFramework": "@wpmedia/news-theme-css",
+  "cssImport": "@wpmedia/news-theme-css/scss/_index.scss",
+  "sassImport": [
+    "@wpmedia/news-theme-css/scss/_variables.scss",
+    "@wpmedia/news-theme-css/scss/_functions.scss",
+    "@wpmedia/news-theme-css/scss/_colors.scss",
+    "@wpmedia/news-theme-css/scss/_breakpoints.scss",
+    "@wpmedia/news-theme-css/scss/_mixins.scss"
+  ],
+  "sassVariableOverrides": [
+    "$primary-font-family: $theme-primary-font-family;",
+    "$secondary-font-family: $theme-primary-font-family;",
+    "$primary-color: $theme-primary-color;"
+  ],
+  "values": {
+    "default": {
+      "siteProperties": {
+        "websiteDomain": "https://www.arcintelligencer.com",
+        "websiteName": "The Arc Intelligencer",
+        "primaryLogo": "resources/arc-logo.svg",
+        "primaryLogoAlt": "The Arc Intelligencer logo",
+        "fallbackImage": "https://via.placeholder.com/150?text=Placeholder+Image",
+        "facebookPage": "https://www.facebook.com/arcintelligencer",
+        "twitterUsername": "arcintelligencer",
+        "rssUrl": "http://feeds.arcintelligencer.com/rss/homepage",
+        "copyrightText": "arcintelligencer.com © 1996-2020 The Arc Intelligencer",
+        "breakpoints": {
+          "small": 0,
+          "medium": 768,
+          "large": 992
+        },
+        "imageWidths": [
+          84,
+          105,
+          158,
+          274,
+          377,
+          400,
+          600,
+          768,
+          800,
+          1024,
+          1440,
+          1600
+        ],
+        "aspectRatios": [
+          "3:2",
+          "4:3",
+          "1:0",
+          "16:9",
+          "1:1"
+        ],
+        "dangerouslyInjectJS": [],
+        "dateLocalization": {
+          "language": "en",
+          "timeZone": "America/New_York",
+          "dateTimeFormat": "%B %d, %Y at %l:%M %P %Z",
+          "dateFormat": "%B %d, %Y"
+        },
+        "locale": "en",
+        "resizerURL": "https://arcintelligencer-prod.cdn.arcpublishing.com/resizer"
+      },
+      "styleProperties": {
+        "primary-font-family": "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+        "secondary-font-family": "Georgia, Times, Times New Roman, serif",
+        "primary-color": "#6bc1ae"
+      }
+    },
+    "sites": {
+      "arc-demo-1": {
+        "siteProperties": {
+          "websiteDomain": "https://www.arcdemo1.com",
+          "websiteName": "Arc Demo 1",
+          "primaryLogoAlt": "Arc Demo 1 logo",
+          "facebookPage": "https://www.facebook.com/arcdemo1fb",
+          "twitterUsername": "arcdemo1twitter",
+          "rssUrl": "https://feeds.arcdemo1.com/rss/"
+        },
+        "styleProperties": {
+          "primary-font-family": "Cambria, Georgia, Times, ‘Times New Roman’, serif",
+          "secondary-font-family": "Futura, ‘Century Gothic’, sans-serif",
+          "primary-color": "#f87966"
+        }
+      },
+      "arc-demo-2": {
+        "siteProperties": {
+          "websiteDomain": "https://www.arcdemo2.com",
+          "websiteName": "Arc Demo 2",
+          "primaryLogoAlt": "Arc Demo 2 logo",
+          "facebookPage": "https://www.facebook.com/arcdemo2fb",
+          "twitterUsername": "arcdemo2twitter",
+          "rssUrl": "https://feeds.arcdemo2.com/rss/"
+        },
+        "styleProperties": {
+          "primary-color": "#46a1dc"
+        }
+      }
+    }
+  }
+}
