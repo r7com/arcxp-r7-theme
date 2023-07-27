@@ -1,7 +1,7 @@
 [
     {
-        "_id": "demo",
-        "display_name": "Demo",
+        "_id": "Record Tv",
+        "display_name": "recordtv",
         "is_default_website": true
     }
 ]
