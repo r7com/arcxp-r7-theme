@@ -6,7 +6,10 @@
   "scripts": {
     "fusion": "fusion",
     "start": "fusion start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"**/*.js\" --fix",
+    "prepare": "husky install",
+    "commit": "cz"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,27 @@
   },
   "homepage": "https://github.com/arc-partners/NewR7-Themes-PageBuilder-Fusion-Features-Mirror#readme",
   "devDependencies": {
-    "@arc-fusion/cli": "^2.1.0"
+    "@arc-fusion/cli": "^2.1.0",
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.8.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.33.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^2.6.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

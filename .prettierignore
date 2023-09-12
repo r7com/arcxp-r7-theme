@@ -1,0 +1,6 @@
+__mocks__
+coverage
+dist
+node_modules
+package-lock.json
+.eslintrc.js
