@@ -17,6 +17,9 @@ function StarterOutputType({
     <html lang={locale}>
       <head>
         <title>Fusion Article</title>
+        {globalContent?.additional_properties?.canonical_url && (
+          <link rel="canonical" href={globalContent.additional_properties.canonical_url} />
+        )}
         {globalContent?.label?.noindex?.text === 'Yes' && <meta name="robots" content="noindex" />}
         <MetaTags />
         <Libs />
