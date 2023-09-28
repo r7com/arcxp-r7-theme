@@ -3,6 +3,7 @@ import '@r7/ui-footer-delivery/style.css'
 import { SitemapFooter } from '@r7/ui-footer-delivery'
 import PropTypes from 'prop-types'
 import { useContent } from 'fusion:content'
+import { Column } from './Column'
 
 const SitemapFooterBlock = props => {
   const { config } = props.customFields
@@ -14,35 +15,7 @@ const SitemapFooterBlock = props => {
   return (
     <SitemapFooter.Root>
       <SitemapFooter.Container>
-        {columns.length &&
-          columns.map(column => {
-            return (
-              <SitemapFooter.MenuList key={column._id}>
-                {column?.children.map(section => {
-                  return (
-                    <SitemapFooter.MenuItem key={section._id}>
-                      <SitemapFooter.MenuTitle>{section.name}</SitemapFooter.MenuTitle>
-                      <SitemapFooter.Submenu>
-                        {section?.children.map(link => {
-                          return (
-                            <SitemapFooter.SubmenuItem key={link._id}>
-                              <SitemapFooter.MenuLik
-                                openInNewTab={true}
-                                title={link.display_name}
-                                url={link.url}
-                              >
-                                {link.display_name}
-                              </SitemapFooter.MenuLik>
-                            </SitemapFooter.SubmenuItem>
-                          )
-                        })}
-                      </SitemapFooter.Submenu>
-                    </SitemapFooter.MenuItem>
-                  )
-                })}
-              </SitemapFooter.MenuList>
-            )
-          })}
+        {columns?.length && columns.map(column => <Column key={column._id} column={column} />)}
       </SitemapFooter.Container>
     </SitemapFooter.Root>
   )
