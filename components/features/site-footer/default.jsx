@@ -6,17 +6,15 @@ import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
 
 const Footer = props => {
-  const { customFields } = props
+  const { config, navigationLabelsList, navigationLinksList } = props.customFields
   const { arcSite } = useFusionContext()
-  let content = {}
+
   const { primaryLogo, primaryLogoAlt, primaryColor, websiteName, copyrightText } =
     getProperties(arcSite)
-  if (customFields.sectionId) {
-    content = useContent({
-      source: 'site-service-hierarchy',
-      query: { sectionId: customFields.sectionId },
-    })
-  }
+  const content = useContent({
+    source: config?.contentService,
+    query: config?.contentConfigValues,
+  })
 
   return (
     <div style={{ backgroundColor: primaryColor }} className="footer-wrapper">
@@ -28,13 +26,13 @@ const Footer = props => {
         <div className="footer__copyright">{copyrightText}</div>
       </div>
       <ul className="footer__nav">
-        {customFields?.navigationLabelsList?.length &&
-          customFields?.navigationLinksList?.length &&
-          customFields.navigationLabelsList.map((label, index) => {
-            if (customFields.navigationLinksList[index]) {
+        {navigationLabelsList?.length &&
+          navigationLinksList?.length &&
+          navigationLabelsList.map((label, index) => {
+            if (navigationLinksList[index]) {
               return (
                 <li className="footer__nav-link" key={label}>
-                  <a href={customFields.navigationLinksList[index]}>{label}</a>
+                  <a href={navigationLinksList[index]}>{label}</a>
                 </li>
               )
             }
@@ -46,9 +44,9 @@ const Footer = props => {
 
 Footer.propTypes = {
   customFields: PropTypes.shape({
-    sectionId: PropTypes.string.tag({
+    config: PropTypes.contentConfig().tag({
       group: 'Configure Content',
-      label: 'Section ID',
+      label: 'Content Source',
     }),
     navigationLabelsList: PropTypes.list.tag({
       group: 'Navigation Links',
