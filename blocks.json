@@ -74,34 +74,12 @@
   ],
   "values": {
     "sites": {
-      "noticias": {
-        "siteProperties": {
-          "websiteName": "Noticias R7",
-          "websiteDomain": "https://noticias.r7.com"
-        }
-      },
-      "entretenimento": {
-        "siteProperties": {
-          "websiteName": "R7 Entretenimento",
-          "websiteDomain": "https://entretenimento.r7.com"
-        }
-      },
-      "esportes": {
-        "siteProperties": {
-          "websiteName": "R7 Esporte",
-          "websiteDomain": "https://esportes.r7.com"
-        }
-      },
-      "r7": {
-        "siteProperties": {
-          "websiteName": "R7",
-          "websiteDomain": "https://www.r7.com"
-        }
-      },
       "recordtv": {
         "siteProperties": {
           "websiteName": "Record TV",
-          "websiteDomain": "https://recordtv.r7.com"
+          "websiteDomain": "https://recordtv.r7.com",
+          "primaryLogoAlt": "Website logo",
+          "primaryColor": "#4766ac"
         }
       },
       "new-r7": {
@@ -109,13 +87,43 @@
           "textDirection": "ltr",
           "textFlow": "horizontal-tb"
         }
+      },
+      "r7": {
+        "siteProperties": {
+          "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695642365281.png",
+          "primaryColor": "#218EE1"
+        }
+      },
+      "entretenimento": {
+        "siteProperties": {
+          "websiteName": "R7 Entretenimento",
+          "websiteDomain": "https://entretenimento.r7.com",
+          "primaryColor": "#F78714"
+        }
+      },
+      "esportes": {
+        "siteProperties": {
+          "websiteName": "R7 Esporte",
+          "websiteDomain": "https://esportes.r7.com",
+          "primaryColor": "#0E8148"
+        }
+      },
+      "noticias": {
+        "siteProperties": {
+          "websiteName": "Noticias R7",
+          "websiteDomain": "https://noticias.r7.com",
+          "primaryColor": "#556373"
+        }
       }
     },
     "default": {
       "siteProperties": {
         "websiteName": "R7",
         "websiteDomain": "https://www.r7.com",
+        "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695891496962.png",
+        "primaryLogoAlt": "Logo",
         "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
+        "copyrightText": "All rights reserved - 2009-2023 - R\u00E1dio e Televis\u00E3o Record SA",
         "resizerURL": "/resizer",
         "locale": "en",
         "dateLocalization": {
@@ -124,7 +132,9 @@
           "dateTimeFormat": "",
           "dateFormat": ""
         },
-        "nativoIntegration": "false"
+        "nativoIntegration": "false",
+        "textDirection": "ltr",
+        "textFlow": "horizontal-tb"
       }
     }
   }

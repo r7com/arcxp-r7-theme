@@ -9,7 +9,8 @@ const Footer = props => {
   const { customFields } = props
   const { arcSite } = useFusionContext()
   let content = {}
-  const { primaryLogo, websiteName, copyrightText } = getProperties(arcSite)
+  const { primaryLogo, primaryLogoAlt, primaryColor, websiteName, copyrightText } =
+    getProperties(arcSite)
   if (customFields.sectionId) {
     content = useContent({
       source: 'site-service-hierarchy',
@@ -18,17 +19,17 @@ const Footer = props => {
   }
 
   return (
-    <div style={{ backgroundColor: '' }} className="footer-wrapper">
+    <div style={{ backgroundColor: primaryColor }} className="footer-wrapper">
       <div className="footer">
         <div className="footer__site">
-          <img className="footer__site-logo" src={primaryLogo} alt="" />
+          <img className="footer__site-logo" src={primaryLogo} alt={primaryLogoAlt} />
           <p className="footer__site-name">{content?.name ?? websiteName}</p>
         </div>
         <div className="footer__copyright">{copyrightText}</div>
       </div>
       <ul className="footer__nav">
-        {customFields.navigationLabelsList.length &&
-          customFields.navigationLinksList.length &&
+        {customFields?.navigationLabelsList?.length &&
+          customFields?.navigationLinksList?.length &&
           customFields.navigationLabelsList.map((label, index) => {
             if (customFields.navigationLinksList[index]) {
               return (
@@ -48,10 +49,6 @@ Footer.propTypes = {
     sectionId: PropTypes.string.tag({
       group: 'Configure Content',
       label: 'Section ID',
-    }),
-    navigationConfig: PropTypes.contentConfig('site-service-hierarchy').tag({
-      group: 'Configure Content',
-      label: 'Navigation',
     }),
     navigationLabelsList: PropTypes.list.tag({
       group: 'Navigation Links',
