@@ -1,21 +1,7 @@
 {
   "org": "@wpmedia/",
   "theme": "news",
-  "engineSDK": "@wpmedia/engine-theme-sdk",
-  "cssFramework": "@wpmedia/news-theme-css",
-  "cssImport": "@wpmedia/news-theme-css/scss/_index.scss",
-  "sassImport": [
-    "@wpmedia/news-theme-css/scss/_variables.scss",
-    "@wpmedia/news-theme-css/scss/_functions.scss",
-    "@wpmedia/news-theme-css/scss/_colors.scss",
-    "@wpmedia/news-theme-css/scss/_breakpoints.scss",
-    "@wpmedia/news-theme-css/scss/_mixins.scss"
-  ],
-  "sassVariableOverrides": [
-    "$primary-font-family: $theme-primary-font-family;",
-    "$secondary-font-family: $theme-secondary-font-family;",
-    "$primary-color: $theme-primary-color;"
-  ],
+  "themeComponents": "@wpmedia/arc-themes-components",
   "localeList": [
     "en",
     "sv",
@@ -27,7 +13,7 @@
     "ko",
     "pt"
   ],
-  "themesReleaseVersion": "arc-themes-release-version-1.29",
+  "themesReleaseVersion": "arc-themes-release-version-2.0.3",
   "blocks": [
     "@wpmedia/ad-taboola-block",
     "@wpmedia/ads-block",
@@ -44,7 +30,6 @@
     "@wpmedia/date-block",
     "@wpmedia/default-output-block",
     "@wpmedia/double-chain-block",
-    "@wpmedia/event-tester-block",
     "@wpmedia/extra-large-manual-promo-block",
     "@wpmedia/extra-large-promo-block",
     "@wpmedia/footer-block",
@@ -83,27 +68,57 @@
     "@wpmedia/story-feed-sections-content-source-block",
     "@wpmedia/story-feed-tag-content-source-block",
     "@wpmedia/subheadline-block",
-    "@wpmedia/subscriptions-block",
     "@wpmedia/tag-title-block",
     "@wpmedia/tags-content-source-block",
     "@wpmedia/top-table-list-block",
     "@wpmedia/triple-chain-block",
     "@wpmedia/unpublished-content-source-block",
     "@wpmedia/video-player-block",
+    "@wpmedia/alias-tokens",
+    "@wpmedia/breakpoint-tokens",
     "@wpmedia/global-phrases-block",
-    "@wpmedia/placeholder-image-block",
-    "@wpmedia/resizer-image-block",
-    "@wpmedia/resizer-image-content-source-block",
-    "@wpmedia/shared-styles"
+    "@wpmedia/global-tokens",
+    "@wpmedia/signing-service-content-source-block"
   ],
   "values": {
+    "sites": {
+      "noticias": {
+        "siteProperties": {
+          "websiteName": "Noticias R7",
+          "websiteDomain": "https://noticias.r7.com"
+        }
+      },
+      "entretenimento": {
+        "siteProperties": {
+          "websiteName": "R7 Entretenimento",
+          "websiteDomain": "https://entretenimento.r7.com"
+        }
+      },
+      "recordtv": {
+        "siteProperties": {
+          "websiteName": "Record TV",
+          "websiteDomain": "https://recordtv.r7.com"
+        }
+      },
+      "r7": {
+        "siteProperties": {
+          "websiteName": "R7",
+          "websiteDomain": "https://www.r7.com"
+        }
+      },
+      "esportes": {
+        "siteProperties": {
+          "websiteName": "R7 Esporte",
+          "websiteDomain": "https://esportes.r7.com"
+        }
+      }
+    },
     "default": {
       "siteProperties": {
-        "websiteName": "Record Tv",
-        "websiteDomain": "https://www.recordtv.com",
+        "websiteName": "R7",
+        "websiteDomain": "https://www.r7.com",
         "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
-        "resizerURL": "https://newr7-recordtv-sandbox.web.arc-cdn.net/resizer",
-        "navColor": "light",
+        "resizerURL": "/resizer",
         "locale": "en",
         "dateLocalization": {
           "language": "en_US",
@@ -111,52 +126,7 @@
           "dateTimeFormat": "",
           "dateFormat": ""
         },
-        "nativoIntegration": "false",
-        "navBarBackground": "primary-color",
-        "breakpoints": {
-          "small": 0,
-          "medium": 768,
-          "large": 992
-        },
-        "imageWidths": [
-          84,
-          105,
-          158,
-          274,
-          377,
-          400,
-          600,
-          768,
-          800,
-          1024,
-          1440,
-          1600
-        ],
-        "aspectRatios": [
-          "3:2",
-          "4:3",
-          "1:0",
-          "16:9",
-          "1:1"
-        ],
-        "api": {
-          "identity": {
-            "origin": ""
-          },
-          "retail": {
-            "endpoint": "",
-            "origin": "",
-            "script": ""
-          }
-        },
-        "fontUrl": [
-          "https://fonts.googleapis.com/css?family=Abel"
-        ]
-      },
-      "styleProperties": {
-        "primary-font-family": "'Abel', Sans-Serif",
-        "secondary-font-family": "'Abel', Sans-Serif",
-        "primary-color": "#fff"
+        "nativoIntegration": "false"
       }
     }
   }

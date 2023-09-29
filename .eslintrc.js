@@ -3,7 +3,7 @@ module.exports = {
   plugins: ["jsx-a11y", "prettier"],
   parserOptions: {
     sourceType: "module",
-    ecmaVersion: 2015
+    ecmaVersion: "latest"
   },
   "env": {
     "node": true
@@ -27,4 +27,7 @@ module.exports = {
       }
     },
   ],
+  rules: {
+    'react/prop-types': 'off',
+  },
 }
