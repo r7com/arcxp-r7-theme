@@ -2,17 +2,7 @@
   "org": "@wpmedia/",
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
-  "localeList": [
-    "en",
-    "sv",
-    "no",
-    "fr",
-    "de",
-    "es",
-    "ja",
-    "ko",
-    "pt"
-  ],
+  "localeList": ["en", "sv", "no", "fr", "de", "es", "ja", "ko", "pt"],
   "themesReleaseVersion": "arc-themes-release-version-2.0.3",
   "blocks": [
     "@wpmedia/ad-taboola-block",
@@ -28,7 +18,7 @@
     "@wpmedia/collections-content-source-block",
     "@wpmedia/content-api-source-block",
     "@wpmedia/date-block",
-    "@wpmedia/default-output-block",
+    "@wpmedia/divider-block",
     "@wpmedia/double-chain-block",
     "@wpmedia/extra-large-manual-promo-block",
     "@wpmedia/extra-large-promo-block",
@@ -60,6 +50,7 @@
     "@wpmedia/share-bar-block",
     "@wpmedia/simple-list-block",
     "@wpmedia/single-chain-block",
+    "@wpmedia/single-column-layout-block",
     "@wpmedia/site-hierarchy-content-block",
     "@wpmedia/small-manual-promo-block",
     "@wpmedia/small-promo-block",
@@ -94,10 +85,10 @@
           "websiteDomain": "https://entretenimento.r7.com"
         }
       },
-      "recordtv": {
+      "esportes": {
         "siteProperties": {
-          "websiteName": "Record TV",
-          "websiteDomain": "https://recordtv.r7.com"
+          "websiteName": "R7 Esporte",
+          "websiteDomain": "https://esportes.r7.com"
         }
       },
       "r7": {
@@ -106,10 +97,16 @@
           "websiteDomain": "https://www.r7.com"
         }
       },
-      "esportes": {
+      "recordtv": {
         "siteProperties": {
-          "websiteName": "R7 Esporte",
-          "websiteDomain": "https://esportes.r7.com"
+          "websiteName": "Record TV",
+          "websiteDomain": "https://recordtv.r7.com"
+        }
+      },
+      "new-r7": {
+        "siteProperties": {
+          "textDirection": "ltr",
+          "textFlow": "horizontal-tb"
         }
       }
     },
