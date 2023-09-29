@@ -7,3 +7,4 @@ package-lock.json
 babel.config.js
 environment/*
 deployer.js
+arc-themes.js
