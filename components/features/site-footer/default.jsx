@@ -1,44 +1,36 @@
-import './styles.scss'
+import '@r7/ui-footer-delivery/style.css'
+import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
+import LinksList from './LinksList'
 
 const Footer = props => {
   const { config, navigationLabelsList, navigationLinksList } = props.customFields
   const { arcSite } = useFusionContext()
 
-  const { primaryLogo, primaryLogoAlt, primaryColor, websiteName, copyrightText } =
-    getProperties(arcSite)
+  const { websiteName, primaryColor } = getProperties(arcSite)
   const content = useContent({
     source: config?.contentService,
     query: config?.contentConfigValues,
   })
+  const currentYear = new Date().getFullYear()
 
   return (
-    <div style={{ backgroundColor: primaryColor }} className="footer-wrapper">
-      <div className="footer">
-        <div className="footer__site">
-          <img className="footer__site-logo" src={primaryLogo} alt={primaryLogoAlt} />
-          <p className="footer__site-name">{content?.name ?? websiteName}</p>
-        </div>
-        <div className="footer__copyright">{copyrightText}</div>
-      </div>
-      <ul className="footer__nav">
-        {navigationLabelsList?.length &&
-          navigationLinksList?.length &&
-          navigationLabelsList.map((label, index) => {
-            if (navigationLinksList[index]) {
-              return (
-                <li className="footer__nav-link" key={label}>
-                  <a href={navigationLinksList[index]}>{label}</a>
-                </li>
-              )
-            }
-          })}
-      </ul>
-    </div>
+    <Institutional.Root bgColor={primaryColor}>
+      <Institutional.Content>
+        <Institutional.Wrapper>
+          <Institutional.Logo />
+          <Institutional.Editorial editorialName={content?.name ?? websiteName} />
+        </Institutional.Wrapper>
+        <Institutional.Copyright>
+          Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
+        </Institutional.Copyright>
+      </Institutional.Content>
+      <LinksList labels={navigationLabelsList} links={navigationLinksList} />
+    </Institutional.Root>
   )
 }
 
