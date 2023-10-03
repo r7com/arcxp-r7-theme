@@ -8,10 +8,11 @@ export const Section = ({ section }) => {
     <SitemapFooter.MenuItem>
       <SitemapFooter.MenuTitle>{section.name}</SitemapFooter.MenuTitle>
       <SitemapFooter.Submenu>
-        {section?.children.length &&
-          section?.children.map(sectionItem => (
-            <SectionItem key={sectionItem._id} sectionItem={sectionItem} />
-          ))}
+        {section?.children.length
+          ? section?.children.map(sectionItem => (
+              <SectionItem key={sectionItem._id} sectionItem={sectionItem} />
+            ))
+          : ''}
       </SitemapFooter.Submenu>
     </SitemapFooter.MenuItem>
   )

@@ -6,8 +6,9 @@ import { Section } from '../Section'
 export const Column = ({ column }) => {
   return (
     <SitemapFooter.MenuList>
-      {column?.children.length &&
-        column?.children.map(section => <Section key={section._id} section={section} />)}
+      {column?.children.length
+        ? column?.children.map(section => <Section key={section._id} section={section} />)
+        : ''}
     </SitemapFooter.MenuList>
   )
 }

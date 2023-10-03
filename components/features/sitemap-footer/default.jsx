@@ -15,7 +15,7 @@ const SitemapFooterBlock = props => {
   return (
     <SitemapFooter.Root>
       <SitemapFooter.Container>
-        {columns?.length && columns.map(column => <Column key={column._id} column={column} />)}
+        {columns?.length ? columns.map(column => <Column key={column._id} column={column} />) : ''}
       </SitemapFooter.Container>
     </SitemapFooter.Root>
   )

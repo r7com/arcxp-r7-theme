@@ -1,0 +1,4 @@
+registry=https://registry.npmjs.org/
+
+@r7:registry=https://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugFIaGBbBiKJpA/HLQXb55GZAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDEwWYE+mErt6xae1dgIBEIBD8djxWi6axHn31CkH+cf56OHMENuJbjZ/ROtztSgRHurcboKcy5FudH+LuFr4rMo1rkrkeR+AdQ4beFvdKDRKs8U8nw=}
