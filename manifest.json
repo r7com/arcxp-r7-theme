@@ -1,0 +1,28 @@
+{
+  "name": "Custom Manifest",
+  "description": "Adding primary color to each website",
+  "categories": [
+    {
+      "id": "extbrand",
+      "title": "Extended Brand Settings",
+      "subcategories": [
+        {
+          "id": "primaryColor",
+          "title": "Primary Color",
+          "description": "Enter in primary color for website"
+        }
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": "primaryColor",
+      "fieldType": "color",
+      "fieldTitle": "Primary color of the website",
+      "fieldDescription": "Primary color of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "primaryColor",
+      "fieldTarget": "site"
+    }
+  ]
+}
