@@ -8,13 +8,13 @@ export const Section = ({ section }) => {
     <SitemapFooter.MenuItem>
       <SitemapFooter.MenuTitle>
         {section?.navigation?.menu_url ? (
-          <SitemapFooter.MenuLik
+          <SitemapFooter.MenuLink
             openInNewTab={true}
             title={section.navigation.nav_title}
             url={section.navigation.menu_url}
           >
             {section.navigation.nav_title}
-          </SitemapFooter.MenuLik>
+          </SitemapFooter.MenuLink>
         ) : (
           section?.navigation?.nav_title
         )}

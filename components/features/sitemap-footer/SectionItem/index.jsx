@@ -5,13 +5,13 @@ import { SitemapFooter } from '@r7/ui-footer-delivery'
 export const SectionItem = ({ sectionItem }) => {
   return (
     <SitemapFooter.SubmenuItem>
-      <SitemapFooter.MenuLik
+      <SitemapFooter.MenuLink
         openInNewTab={true}
         title={sectionItem.display_name}
         url={sectionItem.url}
       >
         {sectionItem.display_name}
-      </SitemapFooter.MenuLik>
+      </SitemapFooter.MenuLink>
     </SitemapFooter.SubmenuItem>
   )
 }
