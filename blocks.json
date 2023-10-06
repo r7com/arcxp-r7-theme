@@ -18,7 +18,6 @@
     "@wpmedia/collections-content-source-block",
     "@wpmedia/content-api-source-block",
     "@wpmedia/date-block",
-    "@wpmedia/default-output-block",
     "@wpmedia/divider-block",
     "@wpmedia/double-chain-block",
     "@wpmedia/extra-large-manual-promo-block",
