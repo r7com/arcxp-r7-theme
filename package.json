@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
+    "@code-store-platform/story-feed-sections-subtypes": "^1.0.2",
     "@r7/ui-footer-delivery": "1.0.0"
   }
 }
