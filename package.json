@@ -48,6 +48,6 @@
     }
   },
   "dependencies": {
-    "@r7/ui-header-delivery": "^0.2.0"
+    "@r7/ui-header-delivery": "^1.0.0"
   }
 }
