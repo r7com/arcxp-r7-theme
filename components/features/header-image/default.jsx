@@ -1,50 +1,38 @@
 import './default.scss'
 import React from 'react'
-import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { getHeaderImage } from './util/getHeaderImage'
+import { getColor } from './util/getColor'
 
-const HeaderImage = props => {
+const HeaderImage = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { websiteDomain, primaryColor, headerImage } = getProperties(arcSite)
-  const { color, usePrimary } = props.customFields
-  const imageUrl = getHeaderImage(globalContent) || headerImage
+  const sectionHeaderImage = getHeaderImage(globalContent) || headerImage
+  let sectionPrimaryColor = getColor(globalContent) || primaryColor
 
-  let bgColor = usePrimary ? primaryColor : color
-
-  if (bgColor) {
-    bgColor = bgColor.replace('#', '')
+  if (sectionPrimaryColor) {
+    sectionPrimaryColor = sectionPrimaryColor.replace('#', '')
   }
+
   const BLOCK_CLASS_NAME = 'b-header-image'
   const BLOCK_STYLE = {
-    backgroundImage: `url(${imageUrl})${
-      bgColor
-        ? `, linear-gradient(to right, #${bgColor} 0%,#${bgColor} 50%,#${bgColor} 50%,#${bgColor} 100%)`
+    backgroundImage: `url(${sectionHeaderImage})${
+      sectionPrimaryColor
+        ? `, linear-gradient(to right, #${sectionPrimaryColor} 0%,#${sectionPrimaryColor} 50%,#${sectionPrimaryColor} 50%,#${sectionPrimaryColor} 100%)`
         : ''
     }`,
-    backgroundSize: bgColor ? 'contain' : 'cover',
+    backgroundSize: sectionPrimaryColor ? 'contain' : 'cover',
   }
   return (
     <>
-      {imageUrl && (
+      {sectionHeaderImage && (
         <a href={websiteDomain}>
           <div className={BLOCK_CLASS_NAME} style={BLOCK_STYLE}></div>
         </a>
       )}
     </>
   )
-}
-
-HeaderImage.propTypes = {
-  customFields: PropTypes.shape({
-    color: PropTypes.string.tag({
-      label: 'Hex color code for bg color',
-    }),
-    usePrimary: PropTypes.boolean.tag({
-      label: 'Use primary color for bg color',
-    }),
-  }),
 }
 
 HeaderImage.label = 'Header Image - R7 Block'
