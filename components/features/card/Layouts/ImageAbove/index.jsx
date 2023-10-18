@@ -1,6 +1,5 @@
 import React from 'react'
 import { Card } from '@r7/ui-card'
-import '@r7/ui-card/style.css'
 import { Hat } from '../../Hat'
 
 export function ImageAbove({
@@ -16,7 +15,7 @@ export function ImageAbove({
   showImageShadow,
 }) {
   return (
-    <>
+    <Card>
       <Card.Image className="mb-xxxs" format={imageFormat} shadow={showImageShadow}>
         <img src={imageSrc} alt={imageDescription} className="w-full h-full object-cover" />
         {labelType && <Card.Label type={labelType} />}
@@ -30,6 +29,6 @@ export function ImageAbove({
         />
         <Card.Title>{cardTitle}</Card.Title>
       </div>
-    </>
+    </Card>
   )
 }

@@ -4,7 +4,7 @@ import { AlertWithoutImage } from './AlertWithoutImage'
 import { WithImage } from './WithImage'
 import { WithoutImage } from './WithoutImage'
 
-export function Hat({ type = 'without-image', hatTitle, hatImage, hatImageDescription }) {
+export function Hat({ type = 'without-image', hatTitle, hatImage, hatImageDescription, color }) {
   return {
     'alert-with-image': (
       <AlertWithImage
@@ -19,8 +19,9 @@ export function Hat({ type = 'without-image', hatTitle, hatImage, hatImageDescri
         hatImage={hatImage}
         hatImageDescription={hatImageDescription}
         hatTitle={hatTitle}
+        color={color}
       />
     ),
-    'without-image': <WithoutImage hatTitle={hatTitle} />,
+    'without-image': <WithoutImage color={color} hatTitle={hatTitle} />,
   }[type]
 }

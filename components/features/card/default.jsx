@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Card } from '@r7/ui-card'
 import '@r7/ui-card/style.css'
 import { Title } from './Layouts/Title'
 import { ImageAbove } from './Layouts/ImageAbove'
@@ -15,27 +14,27 @@ const NewsCard = props => {
   const hatTitle = 'chapéu'
   const imageSrc =
     '//img.r7.com/images/pantano-australia-rosa-brilhante-04102023182425856?resize=536x326&crop=691x420 80 0&dimensions=536x326'
-  const imageDescription = 'descrição imagem'
+  const imageDescription = 'descrição imagem principal'
+
+  const newsProps = {
+    cardTitle,
+    labelType,
+    hatType,
+    imageFormat,
+    imageSrc,
+    imageDescription,
+    showImageShadow,
+    hatImage,
+    hatImageDescription,
+    hatTitle,
+  }
   const layout = {
-    Título: <Title cardTitle={cardTitle} />,
-    'Imagem acima': (
-      <ImageAbove
-        cardTitle={cardTitle}
-        labelType={labelType}
-        hatType={hatType}
-        imageFormat={imageFormat}
-        imageSrc={imageSrc}
-        imageDescription={imageDescription}
-        showImageShadow={showImageShadow}
-        hatImage={hatImage}
-        hatImageDescription={hatImageDescription}
-        hatTitle={hatTitle}
-      />
-    ),
-    'Título sobre a imagem': <TitleOverImage />,
+    title: <Title cardTitle={cardTitle} />,
+    imageAbove: <ImageAbove {...newsProps} />,
+    titleOverImage: <TitleOverImage {...newsProps} />,
   }[cardType]
 
-  return <>{display && <Card>{layout}</Card>}</>
+  return <>{display && layout}</>
 }
 
 NewsCard.label = 'Notícia – R7 Block'
@@ -44,11 +43,11 @@ NewsCard.icon = 'paragraph-image-left'
 NewsCard.propTypes = {
   customFields: PropTypes.shape({
     cardType: PropTypes.oneOf([
-      'Título',
+      'title',
+      'imageAbove',
+      'titleOverImage',
       'Imagem à direita',
       'Imagem à esquerda',
-      'Imagem acima',
-      'Título sobre a imagem',
     ]),
     cardTitle: PropTypes.string,
     imageFormat: PropTypes.oneOf(['square', 'landscape', 'portrait']),
