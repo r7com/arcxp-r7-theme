@@ -5,6 +5,7 @@ import { Title } from './Layouts/Title'
 import { ImageAbove } from './Layouts/ImageAbove'
 import { TitleOverImage } from './Layouts/TitleOverImage'
 import { useFusionContext } from 'fusion:context'
+import { TitleToTheSides } from './Layouts/TitleToTheSides'
 
 const NewsCard = props => {
   const { isAdmin } = useFusionContext()
@@ -32,6 +33,7 @@ const NewsCard = props => {
     title: <Title cardTitle={cardTitle} />,
     imageAbove: <ImageAbove {...newsProps} />,
     titleOverImage: <TitleOverImage {...newsProps} />,
+    titleToTheSides: <TitleToTheSides {...newsProps} />, // tentar diferenciar a esquerda e a direita via custom field
   }[cardType]
 
   return (
@@ -48,13 +50,7 @@ NewsCard.icon = 'paragraph-image-left'
 
 NewsCard.propTypes = {
   customFields: PropTypes.shape({
-    cardType: PropTypes.oneOf([
-      'title',
-      'imageAbove',
-      'titleOverImage',
-      'Imagem à direita',
-      'Imagem à esquerda',
-    ]),
+    cardType: PropTypes.oneOf(['title', 'imageAbove', 'titleOverImage', 'titleToTheSides']),
     cardTitle: PropTypes.string,
     imageFormat: PropTypes.oneOf(['square', 'landscape', 'portrait']),
     labelType: PropTypes.oneOf([
