@@ -10,6 +10,11 @@
           "id": "primaryColor",
           "title": "Primary Color",
           "description": "Enter in primary color for website"
+        },
+        {
+          "id": "headerImage",
+          "title": "Header Image",
+          "description": "Upload header image for website"
         }
       ]
     }
@@ -22,6 +27,15 @@
       "fieldDescription": "Primary color of the website",
       "fieldCategory": "extbrand",
       "fieldSubcategory": "primaryColor",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "headerImage",
+      "fieldType": "image",
+      "fieldTitle": "Header image of the website",
+      "fieldDescription": "Header image of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "headerImage",
       "fieldTarget": "site"
     }
   ]

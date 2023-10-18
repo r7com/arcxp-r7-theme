@@ -3,11 +3,13 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
+import { getHeaderImage } from './util/getHeaderImage'
 
 const HeaderImage = props => {
-  const { arcSite } = useFusionContext()
-  const { websiteDomain, primaryColor } = getProperties(arcSite)
-  const { imageUrl, color, usePrimary } = props.customFields
+  const { arcSite, globalContent } = useFusionContext()
+  const { websiteDomain, primaryColor, headerImage } = getProperties(arcSite)
+  const { color, usePrimary } = props.customFields
+  const imageUrl = getHeaderImage(globalContent) || headerImage
 
   let bgColor = usePrimary ? primaryColor : color
 
@@ -36,9 +38,6 @@ const HeaderImage = props => {
 
 HeaderImage.propTypes = {
   customFields: PropTypes.shape({
-    imageUrl: PropTypes.string.tag({
-      label: 'URL of the bg image',
-    }),
     color: PropTypes.string.tag({
       label: 'Hex color code for bg color',
     }),
