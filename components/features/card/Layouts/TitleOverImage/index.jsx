@@ -12,7 +12,6 @@ export function TitleOverImage({
   imageDescription,
   labelType,
   hatType,
-  showImageShadow,
 }) {
   return (
     <Card
@@ -21,7 +20,7 @@ export function TitleOverImage({
       newsUrl="https://www.google.com"
       openInBlank
     >
-      <Card.Image format={imageFormat} shadow={showImageShadow}>
+      <Card.Image format={imageFormat} shadow>
         <img src={imageSrc} alt={imageDescription} className="w-full h-full object-cover" />
         {labelType && <Card.Label type={labelType} />}
       </Card.Image>

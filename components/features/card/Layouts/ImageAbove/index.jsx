@@ -12,11 +12,10 @@ export function ImageAbove({
   imageDescription,
   labelType,
   hatType,
-  showImageShadow,
 }) {
   return (
     <Card>
-      <Card.Image className="mb-xxxs" format={imageFormat} shadow={showImageShadow}>
+      <Card.Image className="mb-xxxs" format={imageFormat}>
         <img src={imageSrc} alt={imageDescription} className="w-full h-full object-cover" />
         {labelType && <Card.Label type={labelType} />}
       </Card.Image>

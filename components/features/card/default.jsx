@@ -4,10 +4,11 @@ import '@r7/ui-card/style.css'
 import { Title } from './Layouts/Title'
 import { ImageAbove } from './Layouts/ImageAbove'
 import { TitleOverImage } from './Layouts/TitleOverImage'
+import { useFusionContext } from 'fusion:context'
 
 const NewsCard = props => {
-  const { cardType, display, cardTitle, labelType, hatType, imageFormat, showImageShadow } =
-    props.customFields
+  const { isAdmin } = useFusionContext()
+  const { cardType, display, cardTitle, labelType, hatType, imageFormat } = props.customFields
   const hatImage =
     '//img.r7.com/images/pantano-australia-rosa-brilhante-04102023182425856?resize=536x326&crop=691x420 80 0&dimensions=536x326'
   const hatImageDescription = 'descrição chapéu'
@@ -23,7 +24,6 @@ const NewsCard = props => {
     imageFormat,
     imageSrc,
     imageDescription,
-    showImageShadow,
     hatImage,
     hatImageDescription,
     hatTitle,
@@ -34,7 +34,13 @@ const NewsCard = props => {
     titleOverImage: <TitleOverImage {...newsProps} />,
   }[cardType]
 
-  return <>{display && layout}</>
+  return (
+    <>
+      {display
+        ? layout
+        : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
+    </>
+  )
 }
 
 NewsCard.label = 'Notícia – R7 Block'
@@ -51,7 +57,6 @@ NewsCard.propTypes = {
     ]),
     cardTitle: PropTypes.string,
     imageFormat: PropTypes.oneOf(['square', 'landscape', 'portrait']),
-    showImageShadow: PropTypes.boolean,
     labelType: PropTypes.oneOf([
       'live',
       'blog',
