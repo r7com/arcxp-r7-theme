@@ -22,7 +22,7 @@ const HeaderImage = () => {
         ? `, linear-gradient(to right, #${sectionPrimaryColor} 0%,#${sectionPrimaryColor} 50%,#${sectionPrimaryColor} 50%,#${sectionPrimaryColor} 100%)`
         : ''
     }`,
-    backgroundSize: sectionPrimaryColor ? 'contain' : 'cover',
+    backgroundSize: sectionPrimaryColor ? 'auto 100%' : 'cover',
   }
   return (
     <>
