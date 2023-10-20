@@ -36,7 +36,23 @@
       "fieldDescription": "Header image of the website",
       "fieldCategory": "extbrand",
       "fieldSubcategory": "headerImage",
-      "fieldTarget": "site"
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "headerImage",
+          "fieldType": "file",
+          "fieldTitle": "Header Image",
+          "fieldTarget": "site",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "headerImageAlt",
+          "fieldType": "text",
+          "fieldTitle": "Header image alt text",
+          "fieldDescription": "Enter header image alt text.",
+          "fieldTarget": "site"
+        }
+      ]
     }
   ]
 }
