@@ -9,7 +9,18 @@ import { TitleToTheSides } from './Layouts/TitleToTheSides'
 
 const NewsCard = props => {
   const { isAdmin } = useFusionContext()
-  const { cardType, display, cardTitle, labelType, hatType, imageFormat } = props.customFields
+  const {
+    cardType,
+    display,
+    cardTitle,
+    labelType,
+    hatType,
+    imageFormat,
+    sponsoredByUrl,
+    sponsoredByImage,
+    sponsoredByImageDesc,
+    sponsoredByTitle,
+  } = props.customFields
   const hatImage =
     '//img.r7.com/images/pantano-australia-rosa-brilhante-04102023182425856?resize=536x326&crop=691x420 80 0&dimensions=536x326'
   const hatImageDescription = 'descrição chapéu'
@@ -28,9 +39,13 @@ const NewsCard = props => {
     hatImage,
     hatImageDescription,
     hatTitle,
+    sponsoredByUrl,
+    sponsoredByImage,
+    sponsoredByImageDesc,
+    sponsoredByTitle,
   }
   const layout = {
-    title: <Title cardTitle={cardTitle} />,
+    title: <Title {...newsProps} />,
     imageAbove: <ImageAbove {...newsProps} />,
     titleOverImage: <TitleOverImage {...newsProps} />,
     titleToTheSides: <TitleToTheSides {...newsProps} />, // tentar diferenciar a esquerda e a direita via custom field
@@ -94,18 +109,34 @@ NewsCard.propTypes = {
         aclr: 'ACRL',
       },
     }),
+    sponsoredByUrl: PropTypes.string.tag({
+      label: 'Link de destino',
+      group: 'Configurações do "Oferecido por"',
+    }),
+    sponsoredByImage: PropTypes.string.tag({
+      label: 'Imagem',
+      group: 'Configurações do "Oferecido por"',
+    }),
+    sponsoredByImageDesc: PropTypes.string.tag({
+      label: 'Descrição da imagem',
+      group: 'Configurações do "Oferecido por"',
+    }),
+    sponsoredByTitle: PropTypes.string.tag({
+      label: 'Título do link',
+      group: 'Configurações do "Oferecido por"',
+    }),
     // revisar nomenclaturas
     hatType: PropTypes.oneOf([
       'alert-with-image',
-      'alert-without-image',
+      'breaking-news',
       'with-image',
       'without-image',
     ]).tag({
       label: 'Tipo de chapéu',
       labels: {
         'alert-with-image': 'Breaking news com imagem',
-        'alert-without-image': 'Breaking news',
-        'with-image': 'Com imagem',
+        'breaking-news': 'Breaking news',
+        'with-image': 'Padrão com imagem',
         'without-image': 'Padrão',
       },
       defaultValue: 'without-image',

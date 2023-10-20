@@ -12,6 +12,10 @@ export function TitleOverImage({
   imageDescription,
   labelType,
   hatType,
+  sponsoredByUrl,
+  sponsoredByImage,
+  sponsoredByImageDesc,
+  sponsoredByTitle,
 }) {
   return (
     <Card
@@ -22,7 +26,15 @@ export function TitleOverImage({
     >
       <Card.Image format={imageFormat} shadow>
         <img src={imageSrc} alt={imageDescription} className="w-full h-full object-cover" />
-        {labelType && <Card.Label type={labelType} />}
+        {labelType && (
+          <Card.Label
+            type={labelType}
+            sponsoredByUrl={sponsoredByUrl}
+            sponsoredByImage={sponsoredByImage}
+            sponsoredByImageDesc={sponsoredByImageDesc}
+            sponsoredByTitle={sponsoredByTitle}
+          />
+        )}
       </Card.Image>
       <div className="absolute bottom-0 p-xxxs">
         <Hat
