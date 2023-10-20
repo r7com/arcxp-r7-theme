@@ -48,6 +48,8 @@
     }
   },
   "dependencies": {
+    "@code-store-platform/sign-image-in-ans-object": "^1.0.0",
+    "@code-store-platform/signing-service": "^1.0.0",
     "@r7/ui-footer-delivery": "1.0.0"
   }
 }
