@@ -6,9 +6,9 @@ import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
 import { Header } from '@r7/ui-header-delivery'
 import { SvgIcon } from '@r7/ui-base-components'
-import { SidebarMenu } from './sidebar-menu'
-import { HeaderMenu } from './header-menu'
-import { HeaderSocials } from './header-socials'
+import { SidebarMenu } from './components/sidebar-menu'
+import { HeaderMenu } from './components/header-menu'
+import { HeaderSocials } from './components/header-socials'
 
 const HeaderNavigationMenu = props => {
   const { headerConfig, sidebarConfig } = props.customFields
