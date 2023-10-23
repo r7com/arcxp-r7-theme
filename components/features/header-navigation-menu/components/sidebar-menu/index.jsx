@@ -7,6 +7,7 @@ export const SidebarMenu = ({ menuList }) => {
     <>
       <Sidebar.Toggle>MENU</Sidebar.Toggle>
       <Sidebar>
+        <Sidebar.Search />
         {menuList &&
           menuList.map(menuItem => <SidebarMenuSection key={menuItem._id} menuItem={menuItem} />)}
       </Sidebar>
