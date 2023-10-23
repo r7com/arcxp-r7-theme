@@ -5,14 +5,16 @@ import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
 import { Header } from '@r7/ui-header-delivery'
+import { SvgIcon } from '@r7/ui-base-components'
 import { SidebarMenu } from './sidebar-menu'
 import { HeaderMenu } from './header-menu'
+import { HeaderSocials } from './header-socials'
 
 const HeaderNavigationMenu = props => {
   const { headerConfig, sidebarConfig } = props.customFields
   const { arcSite } = useFusionContext()
 
-  const { primaryColor } = getProperties(arcSite)
+  const { primaryColor, websiteDomain } = getProperties(arcSite)
   const headerContent = useContent({
     source: headerConfig?.contentService,
     query: headerConfig?.contentConfigValues,
@@ -25,9 +27,18 @@ const HeaderNavigationMenu = props => {
   const sidebarMenuList = sidebarContent?.children[0]?.children
 
   return (
-    <Header bgColor={primaryColor}>
-      <SidebarMenu menuList={sidebarMenuList} />
-      <HeaderMenu menuList={headerMenuList} />
+    <Header>
+      <Header.MainSection bgColor={primaryColor}>
+        <Header.Logo
+          link={websiteDomain}
+          image={<SvgIcon iconName="logo-R7" color="primary" width={40} height={40} />}
+        />
+        <SidebarMenu menuList={sidebarMenuList} />
+        <HeaderMenu menuList={headerMenuList} />
+        <HeaderSocials />
+        <Header.SearchToggle />
+        <Header.Search />
+      </Header.MainSection>
     </Header>
   )
 }

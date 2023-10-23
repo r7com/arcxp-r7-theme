@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
-    "@r7/ui-header-delivery": "^1.0.0"
+    "@r7/ui-base-components": "^0.0.2-alpha.5",
+    "@r7/ui-header-delivery": "2.0.0"
   }
 }
