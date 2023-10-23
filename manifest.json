@@ -3,6 +3,17 @@
   "description": "Adding primary color to each website",
   "categories": [
     {
+      "id": "extsocials",
+      "title": "Extended Social Settings",
+      "subcategories": [
+        {
+          "id": "instagramPage",
+          "title": "Instagram Page",
+          "description": "Enter in URL for instagram page of the website"
+        }
+      ]
+    },
+    {
       "id": "extbrand",
       "title": "Extended Brand Settings",
       "subcategories": [
@@ -20,6 +31,15 @@
     }
   ],
   "fields": [
+    {
+      "fieldId": "instagramPage",
+      "fieldType": "text",
+      "fieldTitle": "Instagram page URL",
+      "fieldDescription": "URL of instagram page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "instagramPage",
+      "fieldTarget": "site"
+    },
     {
       "fieldId": "primaryColor",
       "fieldType": "color",
@@ -49,7 +69,7 @@
           "fieldId": "headerImageAlt",
           "fieldType": "text",
           "fieldTitle": "Header image alt text",
-          "fieldDescription": "Enter header image alt text.",
+          "fieldDescription": "Enter header image alt text",
           "fieldTarget": "site"
         }
       ]
