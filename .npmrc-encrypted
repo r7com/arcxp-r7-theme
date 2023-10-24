@@ -1,4 +1,14 @@
 registry=https://registry.npmjs.org/
 
 @r7:registry=https://registry.npmjs.org/
-//registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHI7EE30cui18l6lknx5KKiAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDL+F0smjM2moB/NdRwIBEIBDm4478OhiTPMTKyMDF2zFaRCThH8X5fwLvj2/WjhKD1Lp2MFKLwIn/W8aEjfte3eUk43NaYlD/cOF9jhGR2ee51Kk0g==}
+//registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugFFSqOlNANx3ubhLFHzaFbtAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOTfuCQZ6RPXlbAukgIBEIBDFGr7yRusQ/jiaNwJwIUNQhNtz7FLnvk1ocEcyar4JHam9i7E5VjWKBwRiHBP0jEMRve7G07p+brLcakxc1nMYDqjfw==}
+
+registry=https://npm.pkg.github.com/
+
+@code-store-platform:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugEBIuVr7GrVL9e/r0lDZ/PvAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMz+EoGFTNX8FVWjaQIBEIBDA5fGHhDdxw6Edgyf1qJYwrne7FFBmnGMq6q2lNX98G/lQaoaNwku2s0T5qTcC9tFiqHkqShQ/0BzHxwYXiKaJu6I5g==}
+
+registry=https://npm.pkg.github.com/
+
+@wpmedia:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugEBIuVr7GrVL9e/r0lDZ/PvAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMz+EoGFTNX8FVWjaQIBEIBDA5fGHhDdxw6Edgyf1qJYwrne7FFBmnGMq6q2lNX98G/lQaoaNwku2s0T5qTcC9tFiqHkqShQ/0BzHxwYXiKaJu6I5g==}

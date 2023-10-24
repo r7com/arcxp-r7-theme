@@ -33,7 +33,6 @@ const fetch = ({ _id, 'arc-site': website, website_url: websiteUrl }, { cachedCa
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${ARC_ACCESS_TOKEN}`,
-      'X-R7-APIKEY': 'fb8e85c99b703daf9d1865b0436decc4',
     },
     method: 'GET',
   })
@@ -47,23 +46,19 @@ const fetch = ({ _id, 'arc-site': website, website_url: websiteUrl }, { cachedCa
         })
         return axios
           .get({
-            url: `${CONTENT_BASE}/content/v4/content-prost?${searchParams.toString()}`,
+            url: `http://prost-delivery.ir7.com.br/api/resource/published_version?${searchParams.toString()}`,
             headers: {
-              'content-type': 'application/json',
-              Authorization: `Bearer ${ARC_ACCESS_TOKEN}`,
+              'Content-Type': 'application/json',
               'X-R7-APIKEY': 'fb8e85c99b703daf9d1865b0436decc4',
             },
           })
-          .then(signImagesInANSObject(cachedCall, signingService.fetch, RESIZER_TOKEN_VERSION))
           .then(({ data }) => {
-            console.log('nested', data)
-            return {
-              statusCode: 200,
-              payload: data.alternative_urls,
-            }
+            console.log('nested', data.media)
+            return data
           })
           .catch(err => {
-            console.log('nested err', err)
+            console.log('Nested Error', err)
+            return err
           })
       }
     })
@@ -72,4 +67,5 @@ const fetch = ({ _id, 'arc-site': website, website_url: websiteUrl }, { cachedCa
 export default {
   fetch,
   params,
+  ttl: 120,
 }

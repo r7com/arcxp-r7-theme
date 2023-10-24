@@ -1,7 +1,17 @@
 [
-    {
-        "_id": "recordtv",
-        "display_name": "Record TV",
-        "is_default_website": true
-    }
+  {
+    "_id": "recordtv",
+    "display_name": "Record TV",
+    "is_default_website": false
+  },
+  {
+    "_id": "r7",
+    "display_name": "R7",
+    "is_default_website": true
+  },
+  {
+    "_id": "noticias",
+    "display_name": "Noticias",
+    "is_default_website": false
+  }
 ]
