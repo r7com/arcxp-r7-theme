@@ -83,7 +83,6 @@ function applyChanges() {
       textList: textList,
     },
   }
-  console.log(ansCustomEmbed)
   sendMessage('data', ansCustomEmbed)
 }
 
