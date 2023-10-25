@@ -76,7 +76,7 @@ function applyChanges() {
   })
 
   const ansCustomEmbed = {
-    id: textList.length,
+    id: Date.now().toString(),
     url: '/',
     config: {
       textTitle: title.textContent,
