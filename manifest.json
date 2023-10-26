@@ -3,6 +3,17 @@
   "description": "Adding primary color to each website",
   "categories": [
     {
+      "id": "extsocials",
+      "title": "Extended Social Settings",
+      "subcategories": [
+        {
+          "id": "instagramPage",
+          "title": "Instagram Page",
+          "description": "Enter in URL for instagram page of the website"
+        }
+      ]
+    },
+    {
       "id": "extbrand",
       "title": "Extended Brand Settings",
       "subcategories": [
@@ -10,11 +21,25 @@
           "id": "primaryColor",
           "title": "Primary Color",
           "description": "Enter in primary color for website"
+        },
+        {
+          "id": "headerImage",
+          "title": "Header Image",
+          "description": "Upload header image for website"
         }
       ]
     }
   ],
   "fields": [
+    {
+      "fieldId": "instagramPage",
+      "fieldType": "text",
+      "fieldTitle": "Instagram page URL",
+      "fieldDescription": "URL of instagram page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "instagramPage",
+      "fieldTarget": "site"
+    },
     {
       "fieldId": "primaryColor",
       "fieldType": "color",
@@ -23,6 +48,31 @@
       "fieldCategory": "extbrand",
       "fieldSubcategory": "primaryColor",
       "fieldTarget": "site"
+    },
+    {
+      "fieldId": "headerImage",
+      "fieldType": "image",
+      "fieldTitle": "Header image of the website",
+      "fieldDescription": "Header image of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "headerImage",
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "headerImage",
+          "fieldType": "file",
+          "fieldTitle": "Header Image",
+          "fieldTarget": "site",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "headerImageAlt",
+          "fieldType": "text",
+          "fieldTitle": "Header image alt text",
+          "fieldDescription": "Enter header image alt text",
+          "fieldTarget": "site"
+        }
+      ]
     }
   ]
 }
