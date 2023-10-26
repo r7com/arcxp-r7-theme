@@ -1,5 +1,6 @@
 {
   "org": "@wpmedia/",
+  "buildSiteStyles": true,
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
   "localeList": ["en", "sv", "no", "fr", "de", "es", "ja", "ko", "pt"],
@@ -123,7 +124,7 @@
         "copyrightText": "All rights reserved - 2009-2023 - Rádio e Televisão Record SA",
         "facebookPage": "https://www.facebook.com/portalr7",
         "twitterUsername": "https://twitter.com/portalr7",
-        "resizerURL": "/resizer",
+        "resizerURL": "/resizer/v2/",
         "locale": "en",
         "dateLocalization": {
           "language": "en_US",
