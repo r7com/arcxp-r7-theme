@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useContent, useEditableContent } from 'fusion:content'
 import '@r7/ui-card/style.css'
 import { Title } from './Layouts/Title'
 import { ImageAbove } from './Layouts/ImageAbove'
@@ -12,7 +13,6 @@ const NewsCard = props => {
   const {
     cardType,
     display,
-    cardTitle,
     labelType,
     hatType,
     imageFormat,
@@ -21,13 +21,47 @@ const NewsCard = props => {
     sponsoredByImageDesc,
     sponsoredByTitle,
   } = props.customFields
-  const hatImage =
-    '//img.r7.com/images/pantano-australia-rosa-brilhante-04102023182425856?resize=536x326&crop=691x420 80 0&dimensions=536x326'
+  const { searchableField } = useEditableContent()
+
+  const content =
+    useContent({
+      source: props.customFields?.itemContentConfig?.contentService ?? null,
+      query: {
+        ...props.customFields?.itemContentConfig?.contentConfigValues,
+      },
+    }) || null
+
+  const defaultImage = 'https://img.r7.com/images/r7-30072019142631584?crop_position=c'
+
+  function imageToUse(content) {
+    if (content?.promo_items?.lead_art) {
+      return {
+        url: content.promo_items.lead_art.url,
+        description: content?.promo_items?.lead_art?.alt_text,
+      }
+    }
+    if (findFirstImage(content.content_elements)) {
+      const image = findFirstImage(content.content_elements)
+      return { url: image.url, description: image.alt_Text }
+    }
+    return {
+      url: 'https://img.r7.com/images/r7-30072019142631584?crop_position=c',
+      description: 'descrição imagem principal',
+    }
+  }
+  function findFirstImage(contentElements) {
+    return contentElements.find(contentElement => contentElement?.type === 'image')
+  }
+
+  const hatTitle =
+    content?.taxonomy?.primary_section?._website ||
+    content?.taxonomy?.primary_section?.referent.website ||
+    ''
+  const cardTitle = content?.headlines?.basic || ''
+  const imageSrc = imageToUse(content).url
+  const hatImage = defaultImage
   const hatImageDescription = 'descrição chapéu'
-  const hatTitle = 'chapéu'
-  const imageSrc =
-    '//img.r7.com/images/pantano-australia-rosa-brilhante-04102023182425856?resize=536x326&crop=691x420 80 0&dimensions=536x326'
-  const imageDescription = 'descrição imagem principal'
+  const imageDescription = imageToUse(content).description
 
   const newsProps = {
     cardTitle,
@@ -48,14 +82,21 @@ const NewsCard = props => {
     title: <Title {...newsProps} />,
     imageAbove: <ImageAbove {...newsProps} />,
     titleOverImage: <TitleOverImage {...newsProps} />,
-    titleToTheSides: <TitleToTheSides {...newsProps} />, // tentar diferenciar a esquerda e a direita via custom field
+    titleToTheLeft: <TitleToTheSides {...newsProps} inverted />,
+    titleToTheRight: <TitleToTheSides {...newsProps} />,
   }[cardType]
 
+  console.log('aa', content)
   return (
     <>
-      {display
-        ? layout
-        : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
+      <div style={{ position: 'relative' }}>
+        {display
+          ? layout
+          : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
+        <div
+          {...searchableField('itemContentConfig', 'story', { contentSource: 'story-search' })}
+        ></div>
+      </div>
     </>
   )
 }
@@ -65,18 +106,26 @@ NewsCard.icon = 'paragraph-image-left'
 
 NewsCard.propTypes = {
   customFields: PropTypes.shape({
-    cardType: PropTypes.oneOf(['title', 'imageAbove', 'titleOverImage', 'titleToTheSides']).tag({
+    itemContentConfig: PropTypes.contentConfig('ans-item').tag({
+      group: 'Configurar conteúdo',
+      label: 'Infomações do conteúdo exibido',
+    }),
+    cardType: PropTypes.oneOf([
+      'title',
+      'imageAbove',
+      'titleOverImage',
+      'titleToTheLeft',
+      'titleToTheRight',
+    ]).tag({
       label: 'Formato da notícia',
       defaultValue: 'title',
       labels: {
         title: 'Título',
         imageAbove: 'Imagem acima',
         titleOverImage: 'Título sobre a imagem',
-        titleToTheSides: 'Título na lateral',
+        titleToTheLeft: 'Título na esquerda',
+        titleToTheRight: 'Título na direita',
       },
-    }),
-    cardTitle: PropTypes.string.tag({
-      label: 'Título da notícia',
     }),
     imageFormat: PropTypes.oneOf(['square', 'landscape', 'portrait']).tag({
       label: 'Formato da imagem',

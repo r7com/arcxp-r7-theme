@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card } from '@r7/ui-card'
 import { Hat } from '../../Hat'
+import './title-to-the-sides.scss'
 
 export function TitleToTheSides({
   cardTitle,
@@ -16,15 +17,16 @@ export function TitleToTheSides({
   sponsoredByImage,
   sponsoredByImageDesc,
   sponsoredByTitle,
+  inverted,
 }) {
   return (
     <Card
-      className="flex"
+      className={`flex title-to-the-sides ${inverted ? 'inverse' : ''}`}
       newsTitle="The McRib is back (again): How a McNugget shortage led to its rise"
       newsUrl="https://www.google.com"
       openInBlank
     >
-      <Card.Image className="mr-xxxs" format={imageFormat}>
+      <Card.Image format={imageFormat}>
         <img src={imageSrc} alt={imageDescription} className="w-full h-full object-cover" />
         {labelType && (
           <Card.Label
