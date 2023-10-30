@@ -73,45 +73,43 @@
   ],
   "values": {
     "sites": {
-      "recordtv": {
+      "new-r7": { "siteProperties": { "textDirection": "ltr", "textFlow": "horizontal-tb" } },
+      "noticias": {
         "siteProperties": {
-          "websiteName": "Record TV",
-          "websiteDomain": "https://recordtv.r7.com",
-          "primaryLogoAlt": "Website logo",
-          "primaryColor": "#4766ac"
-        }
-      },
-      "new-r7": {
-        "siteProperties": {
-          "textDirection": "ltr",
-          "textFlow": "horizontal-tb"
-        }
-      },
-      "r7": {
-        "siteProperties": {
-          "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695642365281.png",
-          "primaryColor": "#218EE1"
+          "websiteName": "Noticias R7",
+          "websiteDomain": "https://noticias.r7.com",
+          "primaryColor": "#556373",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
+          "headerImageAlt": "Header image"
         }
       },
       "entretenimento": {
         "siteProperties": {
           "websiteName": "R7 Entretenimento",
           "websiteDomain": "https://entretenimento.r7.com",
-          "primaryColor": "#F78714"
+          "primaryColor": "#F78714",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697806773401.jpg",
+          "headerImageAlt": "Header image"
         }
       },
+      "r7": { "siteProperties": { "primaryColor": "#218EE1" } },
       "esportes": {
         "siteProperties": {
           "websiteName": "R7 Esporte",
           "websiteDomain": "https://esportes.r7.com",
-          "primaryColor": "#0E8148"
+          "primaryColor": "#0E8148",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808247535.jpg",
+          "headerImageAlt": "Header image"
         }
       },
-      "noticias": {
+      "recordtv": {
         "siteProperties": {
-          "websiteName": "Noticias R7",
-          "websiteDomain": "https://noticias.r7.com",
-          "primaryColor": "#556373"
+          "websiteName": "Record TV",
+          "websiteDomain": "https://recordtv.r7.com",
+          "primaryLogoAlt": "Website logo",
+          "primaryColor": "#4766ac",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808310345.png",
+          "headerImageAlt": "Header image"
         }
       }
     },
@@ -122,7 +120,9 @@
         "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695891496962.png",
         "primaryLogoAlt": "Logo",
         "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
-        "copyrightText": "All rights reserved - 2009-2023 - R\u00E1dio e Televis\u00E3o Record SA",
+        "copyrightText": "All rights reserved - 2009-2023 - Rádio e Televisão Record SA",
+        "facebookPage": "https://www.facebook.com/portalr7",
+        "twitterUsername": "https://twitter.com/portalr7",
         "resizerURL": "/resizer",
         "locale": "en",
         "dateLocalization": {
@@ -133,7 +133,10 @@
         },
         "nativoIntegration": "false",
         "textDirection": "ltr",
-        "textFlow": "horizontal-tb"
+        "textFlow": "horizontal-tb",
+        "api": { "identity": { "origin": "" } },
+        "instagramPage": "https://instagram.com/portalr7",
+        "primaryColor": "#fff"
       }
     }
   }

@@ -2,5 +2,14 @@
   "resizerKey": "%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHfYWy6razhdZFY1x3rDXUdAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMbjpklnEu15VWypENAgEQgDtLOrAG5GtO2GoCt9hcwjWtzu9vjptl7mScgdTuMgoCVoy0zRJpHC+/p6UCmhCeb7f88YGvNe6yfBlMng==}",
   "videoOrg": "sandbox",
   "playerRoot": "//newr7.video-player.arcpublishing.com",
-  "BLOCK_DIST_TAG": "stable"
-} 
+  "BLOCK_DIST_TAG": "stable",
+  "RESIZER_TOKEN_VERSION": 1,
+  "SIGNING_SERVICE_DEFAULT_APP": "resizer",
+  "siteStyles": {
+    "r7": "r7",
+    "recordtv": "recordtv",
+    "entretenimento": "entretenimento",
+    "esportes": "esportes",
+    "noticias": "noticias"
+  }
+}
