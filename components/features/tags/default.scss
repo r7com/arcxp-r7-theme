@@ -1,0 +1,32 @@
+.b-article-tags {
+  &-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &-divider {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 1px;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &-list {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 10px;
+  }
+
+  &-item {
+    border-radius: 19px;
+    padding: 8px;
+    color: #ffffff;
+  }
+}

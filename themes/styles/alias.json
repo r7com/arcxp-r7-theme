@@ -1,7 +1,7 @@
 {
   "default": {
-    "font-family-primary": "Inter",
-    "font-family-secondary": "Lora",
+    "font-family-primary": "Open Sans",
+    "font-family-secondary": "Playfair Display",
     "color-primary": "var(--global-blue-6)",
     "color-primary-hover": "var(--global-neutral-7)",
     "text-color": "var(--global-neutral-8)",

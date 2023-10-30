@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { MetaData, Stack, usePhrases } from '@wpmedia/arc-themes-components'
+import { MetaData, Stack } from '@wpmedia/arc-themes-components'
 
 import blocks from '~/blocks.json'
 
@@ -155,8 +155,6 @@ const SampleOutputType = ({
     ]),
   ].join(';')
 
-  const phrases = usePhrases()
-
   return (
     <html lang={locale} dir={textDirection}>
       <head>
@@ -246,9 +244,6 @@ const SampleOutputType = ({
       <body>
         {comscoreNoScript(comscoreID)}
         {googleTagManagerNoScript(gtmID)}
-        <a className="skip-main" href="#main">
-          {phrases.t('default-output-block.skip-main')}
-        </a>
         <Stack id="fusion-app" className="b-application">
           {children}
         </Stack>

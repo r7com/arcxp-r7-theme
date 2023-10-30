@@ -1,15 +1,30 @@
 import './default.scss'
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
+import { useContent } from 'fusion:content'
 import getProperties from 'fusion:properties'
 import { getSiteTopperProp } from './util/getSiteTopperProp'
 
 const HeaderImage = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { websiteDomain, primaryColor, headerImage } = getProperties(arcSite)
-  const sectionHeaderImage = getSiteTopperProp('section_header_image', globalContent) || headerImage
-  let sectionPrimaryColor =
-    getSiteTopperProp('section_primary_color', globalContent) || primaryColor
+  let sectionHeaderImage
+  let sectionPrimaryColor
+
+  if (globalContent?.node_type === 'section') {
+    sectionHeaderImage = getSiteTopperProp('section_header_image', globalContent) || headerImage
+    sectionPrimaryColor = getSiteTopperProp('section_primary_color', globalContent) || primaryColor
+  } else {
+    const section = useContent({
+      source: 'site-service-hierarchy',
+      query: {
+        hierarchy: '',
+        sectionId: globalContent.websites?.[arcSite].website_section.referent.id,
+      },
+    })
+    sectionHeaderImage = getSiteTopperProp('section_header_image', section) || headerImage
+    sectionPrimaryColor = getSiteTopperProp('section_primary_color', section) || primaryColor
+  }
 
   if (sectionPrimaryColor) {
     sectionPrimaryColor = sectionPrimaryColor.replace('#', '')

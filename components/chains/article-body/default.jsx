@@ -16,13 +16,15 @@ import {
   isServerSide,
   LazyLoad,
   Link,
-  MediaItem,
   Paragraph,
   usePhrases,
+  MediaItem,
   Video,
 } from '@wpmedia/arc-themes-components'
 
 import getResizeParamsFromANSImage from './shared/get-resize-params-from-ans-image'
+
+import { Text } from '@r7/ui-base-components'
 
 import Header from './_children/heading'
 import HTML from './_children/html'
@@ -30,6 +32,7 @@ import List from './_children/list'
 import Oembed from './_children/oembed'
 import Quote from './_children/quote'
 import Table from './_children/table'
+import CustomEmbed from './_children/custom-embed'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
@@ -54,7 +57,9 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <Paragraph key={`${type}_${index}_${key}`} dangerouslySetInnerHTML={{ __html: content }} />
+        <Text key={`${type}_${index}_${key}`} as="div" fontSize="xs" fontWeight="normal">
+          <p dangerouslySetInnerHTML={{ __html: content }}></p>
+        </Text>
       ) : null
     }
     case 'copyright': {
@@ -75,7 +80,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
       const {
         additional_properties: { link = '' } = {},
         // alignment not always present
-        alignment = '',
+        alignment = 'left',
         alt_text: altText,
         caption,
         credits,
@@ -106,7 +111,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
                   item,
                   arcSite,
                   allowedFloatValue ? 400 : 800,
-                  [274, 400, 768, 1024, 1440].map(w => (allowedFloatValue ? w / 2 : w)),
+                  [390, 460, 660, 780, 1800].map(w => (allowedFloatValue ? w / 2 : w)),
                 )}
                 alt={altText}
               />
@@ -190,7 +195,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
     }
 
     case 'custom_embed': {
-      return null
+      return item.embed ? <CustomEmbed key={item.embed.id} item={item} /> : null
     }
 
     case 'table': {
