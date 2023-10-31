@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { MetaData, Stack, usePhrases } from '@wpmedia/arc-themes-components'
+import { Stack, usePhrases } from '@wpmedia/arc-themes-components'
+import { MetaValueFunctionFabric } from '../../util/MetaValueFunctionFabric/MetaValueFunctionFabric'
 
 import blocks from '~/blocks.json'
+import MetaData from '../../util/CustomMetaData'
+import { useSiteSectionProp } from '../../util/getSiteTopperProp'
+import { OgImageInterrupter } from '../../util/MetaValueFunctionFabric/interrupters/OgImageInterrupter'
+import { OgImageAltInterrupter } from '../../util/MetaValueFunctionFabric/interrupters/OgImageAltInterrupter'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -157,6 +162,18 @@ const SampleOutputType = ({
 
   const phrases = usePhrases()
 
+  let sectionId = globalContent?.node_type === 'section' ? globalContent['_id'] : undefined
+
+  const sectionHeaderImage = useSiteSectionProp('site_topper.section_header_image', sectionId)
+  const sectionHeaderImageAlt = useSiteSectionProp('name', sectionId)
+
+  const customMetaValues = !sectionId
+    ? metaValue
+    : new MetaValueFunctionFabric(metaValue, [
+        new OgImageInterrupter(sectionHeaderImage),
+        new OgImageAltInterrupter(sectionHeaderImageAlt),
+      ]).create()
+
   return (
     <html lang={locale} dir={textDirection}>
       <head>
@@ -187,7 +204,7 @@ const SampleOutputType = ({
           outputCanonicalLink
           MetaTag={MetaTag}
           MetaTags={MetaTags}
-          metaValue={metaValue}
+          metaValue={customMetaValues}
           requestUri={requestUri}
           resizerURL={resizerURL}
           twitterUsername={twitterUsername}
