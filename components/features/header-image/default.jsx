@@ -2,7 +2,7 @@ import './default.scss'
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
-import { useSiteSectionProp } from '../../../util/getSiteTopperProp'
+import { useSiteSectionProp } from '../../../util/useSiteTopperProp'
 
 const HeaderImage = () => {
   const { arcSite, globalContent } = useFusionContext()

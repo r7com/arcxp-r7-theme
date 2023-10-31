@@ -2,13 +2,8 @@ import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
 import { Stack, usePhrases } from '@wpmedia/arc-themes-components'
-import { MetaValueFunctionFabric } from '../../util/MetaValueFunctionFabric/MetaValueFunctionFabric'
-
 import blocks from '~/blocks.json'
-import MetaData from '../../util/CustomMetaData'
-import { useSiteSectionProp } from '../../util/getSiteTopperProp'
-import { OgImageInterrupter } from '../../util/MetaValueFunctionFabric/interrupters/OgImageInterrupter'
-import { OgImageAltInterrupter } from '../../util/MetaValueFunctionFabric/interrupters/OgImageAltInterrupter'
+import MetaData from '../../util/metaData/CustomMetaData'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -72,9 +67,7 @@ const optimalFontLoading = (fontUrl, index = '') => (
 const fontUrlLink = fontUrl => {
   // If fontURL is an array, then iterate over the array and build out the links
   if (fontUrl && Array.isArray(fontUrl) && fontUrl.length > 0) {
-    const fontLinks = [...new Set(fontUrl)].map((url, index) => optimalFontLoading(url, index))
-
-    return fontLinks
+    return [...new Set(fontUrl)].map((url, index) => optimalFontLoading(url, index))
   }
   // Legacy support where fontUrl is a string
   return fontUrl ? optimalFontLoading(fontUrl) : ''
@@ -162,18 +155,6 @@ const SampleOutputType = ({
 
   const phrases = usePhrases()
 
-  let sectionId = globalContent?.node_type === 'section' ? globalContent['_id'] : undefined
-
-  const sectionHeaderImage = useSiteSectionProp('site_topper.section_header_image', sectionId)
-  const sectionHeaderImageAlt = useSiteSectionProp('name', sectionId)
-
-  const customMetaValues = !sectionId
-    ? metaValue
-    : new MetaValueFunctionFabric(metaValue, [
-        new OgImageInterrupter(sectionHeaderImage),
-        new OgImageAltInterrupter(sectionHeaderImageAlt),
-      ]).create()
-
   return (
     <html lang={locale} dir={textDirection}>
       <head>
@@ -204,7 +185,7 @@ const SampleOutputType = ({
           outputCanonicalLink
           MetaTag={MetaTag}
           MetaTags={MetaTags}
-          metaValue={customMetaValues}
+          metaValue={metaValue}
           requestUri={requestUri}
           resizerURL={resizerURL}
           twitterUsername={twitterUsername}
