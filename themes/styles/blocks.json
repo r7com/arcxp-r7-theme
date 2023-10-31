@@ -38,5 +38,24 @@
         }
       }
     }
+  },
+  "right-rail-advanced__main": {
+    "styles": {
+      "default": {
+        "max-width": "1100px"
+      }
+    }
+  },
+  "right-rail-advanced-main-interior-item": {
+    "styles": {
+      "default": {
+        "max-width": "800px",
+        "border-right": "none"
+      },
+      "desktop": {
+        "max-width": "800px",
+        "border-right": "none"
+      }
+    }
   }
 }

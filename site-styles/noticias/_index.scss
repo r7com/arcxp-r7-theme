@@ -1929,6 +1929,9 @@
 				"right-rail-advanced": (
 					"gap": var(--global-spacing-6)
 				),
+				"right-rail-advanced__main": (
+					"max-width": 1100px
+				),
 				"right-rail-advanced-footer": (
 					"margin": var(--global-spacing-10) 0 var(--global-spacing-8) 0
 				),
@@ -1945,8 +1948,9 @@
 					"margin": auto
 				),
 				"right-rail-advanced-main-interior-item": (
+					"max-width": 800px,
+					"border-right": none,
 					"padding": initial,
-					"border-right": initial,
 					"gap": var(--global-spacing-5),
 					"display": contents
 				),
@@ -3375,7 +3379,8 @@
 					)
 				),
 				"right-rail-advanced-main-interior-item": (
-					"border-right": 1px solid #dadada,
+					"max-width": 800px,
+					"border-right": none,
 					"padding": 0 var(--global-spacing-6) 0 0,
 					"display": flex
 				),
