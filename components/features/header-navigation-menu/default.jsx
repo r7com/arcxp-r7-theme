@@ -23,8 +23,8 @@ const HeaderNavigationMenu = props => {
     source: sidebarConfig?.contentService,
     query: sidebarConfig?.contentConfigValues,
   })
-  const headerMenuList = headerContent?.children[0]?.children
-  const sidebarMenuList = sidebarContent?.children[0]?.children
+  const headerMenuList = headerContent?.children
+  const sidebarMenuList = sidebarContent?.children
 
   return (
     <Header>

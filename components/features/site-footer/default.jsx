@@ -8,14 +8,22 @@ import { useContent } from 'fusion:content'
 import LinksList from './LinksList'
 
 const Footer = props => {
-  const { config, navigationLabelsList, navigationLinksList } = props.customFields
-  const { arcSite } = useFusionContext()
+  const { navigationLabelsList, navigationLinksList } = props.customFields
+  const { arcSite, globalContent } = useFusionContext()
 
   const { websiteName, primaryColor } = getProperties(arcSite)
-  const content = useContent({
-    source: config?.contentService,
-    query: config?.contentConfigValues,
-  })
+
+  const sectionContent =
+    globalContent?.node_type === 'section'
+      ? globalContent
+      : useContent({
+          source: 'site-service-hierarchy',
+          query: {
+            hierarchy: '',
+            sectionId: globalContent.websites?.[arcSite].website_section._id,
+          },
+        })
+
   const currentYear = new Date().getFullYear()
 
   return (
@@ -23,7 +31,7 @@ const Footer = props => {
       <Institutional.Content>
         <Institutional.Wrapper>
           <Institutional.Logo />
-          <Institutional.Editorial editorialName={content?.name ?? websiteName} />
+          <Institutional.Editorial editorialName={sectionContent?.name ?? websiteName} />
         </Institutional.Wrapper>
         <Institutional.Copyright>
           Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
@@ -36,10 +44,6 @@ const Footer = props => {
 
 Footer.propTypes = {
   customFields: PropTypes.shape({
-    config: PropTypes.contentConfig().tag({
-      group: 'Configure Content',
-      label: 'Content Source',
-    }),
     navigationLabelsList: PropTypes.list.tag({
       group: 'Navigation Links',
       label: 'Navigation Labels',

@@ -8,23 +8,21 @@ import { getSiteTopperProp } from './util/getSiteTopperProp'
 const HeaderImage = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { websiteDomain, primaryColor, headerImage } = getProperties(arcSite)
-  let sectionHeaderImage
-  let sectionPrimaryColor
 
-  if (globalContent?.node_type === 'section') {
-    sectionHeaderImage = getSiteTopperProp('section_header_image', globalContent) || headerImage
-    sectionPrimaryColor = getSiteTopperProp('section_primary_color', globalContent) || primaryColor
-  } else {
-    const section = useContent({
-      source: 'site-service-hierarchy',
-      query: {
-        hierarchy: '',
-        sectionId: globalContent.websites?.[arcSite].website_section.referent.id,
-      },
-    })
-    sectionHeaderImage = getSiteTopperProp('section_header_image', section) || headerImage
-    sectionPrimaryColor = getSiteTopperProp('section_primary_color', section) || primaryColor
-  }
+  const sectionContent =
+    globalContent?.node_type === 'section'
+      ? globalContent
+      : useContent({
+          source: 'site-service-hierarchy',
+          query: {
+            hierarchy: '',
+            sectionId: globalContent.websites?.[arcSite].website_section._id,
+          },
+        })
+  const sectionHeaderImage =
+    getSiteTopperProp('section_header_image', sectionContent) || headerImage
+  let sectionPrimaryColor =
+    getSiteTopperProp('section_primary_color', sectionContent) || primaryColor
 
   if (sectionPrimaryColor) {
     sectionPrimaryColor = sectionPrimaryColor.replace('#', '')

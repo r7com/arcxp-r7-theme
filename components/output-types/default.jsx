@@ -160,8 +160,8 @@ const SampleOutputType = ({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {globalContent?.label?.noindex?.text === 'Yes' && <meta name="robots" content="noindex" />}
-        {globalContent?.additional_properties?.canonical_url && (
-          <link rel="canonical" href={globalContent.additional_properties.canonical_url} />
+        {globalContent?.additional_properties?.url && (
+          <link rel="canonical" href={globalContent.additional_properties.url} />
         )}
         <link
           rel="icon"
