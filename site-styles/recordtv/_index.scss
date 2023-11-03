@@ -1,7 +1,8 @@
 @use "@wpmedia/arc-themes-components/scss" with (
 	$breakpoints: (
 		"default": "min-width: 0",
-		"desktop": "min-width: 48rem"
+		"desktop": "min-width: 48rem",
+		"medium": "min-width: 72rem"
 	),
 	$global: (
 		"light-gray": #cecece,

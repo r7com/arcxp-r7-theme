@@ -31,7 +31,15 @@ const HeaderNavigationMenu = props => {
       <Header.MainSection bgColor={primaryColor}>
         <Header.Logo
           link={websiteDomain}
-          image={<SvgIcon iconName="logo-R7" color="primary" width={40} height={40} />}
+          image={
+            <SvgIcon
+              iconName="logo-R7"
+              title="Logo-R7"
+              className="fill-neutral-high-400"
+              width={40}
+              height={40}
+            />
+          }
         />
         <SidebarMenu menuList={sidebarMenuList} />
         <HeaderMenu menuList={headerMenuList} />
