@@ -9,7 +9,7 @@ export const ArticleTags = () => {
   const { primaryColor } = getProperties(arcSite)
   const BLOCK_CLASS_NAME = 'b-article-tags'
 
-  if (globalContent.taxonomy.tags.length) {
+  if (globalContent.taxonomy?.tags?.length) {
     return (
       <div className={`${BLOCK_CLASS_NAME}-container`}>
         <span
