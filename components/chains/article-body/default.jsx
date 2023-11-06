@@ -80,7 +80,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
       const {
         additional_properties: { link = '' } = {},
         // alignment not always present
-        alignment = 'left',
+        alignment = '',
         alt_text: altText,
         caption,
         credits,
@@ -493,7 +493,7 @@ ArticleBodyChain.propTypes = {
   }),
 }
 
-ArticleBodyChain.label = 'Article Body – Arc Block'
+ArticleBodyChain.label = 'Article Body – R7 Block'
 
 ArticleBodyChain.icon = 'arc-article'
 

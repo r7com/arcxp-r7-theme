@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContent } from 'fusion:content'
-import { getImageFromANS, Stack, Image, Link } from '@wpmedia/arc-themes-components'
+import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
 import { Text } from '@r7/ui-base-components'
 
@@ -18,7 +18,7 @@ export const SimpleListContent = ({
       query: { ...{ ...contentConfigValues, size: size }, feature: 'simple-list' },
     }) || {}
   return (
-    <Stack className={`${className}__items`}>
+    <ul className={`${className}__items`}>
       {contentElements.map(element => {
         const {
           headlines: { basic: headlineText = '' } = {},
@@ -47,12 +47,7 @@ export const SimpleListContent = ({
               src: targetFallbackImage,
             }
         return (
-          <Stack
-            as="article"
-            className={`${className}__item`}
-            direction="horizontal"
-            key={`simple-list-${element._id}`}
-          >
+          <li className={`${className}__item`} key={`simple-list-${element._id}`}>
             <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
               <Image {...imageParams} />
             </Link>
@@ -68,9 +63,9 @@ export const SimpleListContent = ({
                 {subheadlineText}
               </Text>
             </div>
-          </Stack>
+          </li>
         )
       })}
-    </Stack>
+    </ul>
   )
 }

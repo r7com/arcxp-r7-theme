@@ -23,7 +23,7 @@ export const ArticleTags = () => {
               className={`${BLOCK_CLASS_NAME}-item`}
               style={{ backgroundColor: primaryColor }}
             >
-              <Text as="span" fontSize="xxxs" color="">
+              <Text as="span" fontSize="little" color="">
                 {tag.text}
               </Text>
             </li>
