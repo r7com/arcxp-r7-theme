@@ -205,7 +205,8 @@ const SampleOutputType = ({
             }
             body { 
               writing-mode: ${textFlow}; 
-          }`}
+            }
+          `}
         </style>
         <script
           async
