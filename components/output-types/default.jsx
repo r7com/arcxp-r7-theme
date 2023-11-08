@@ -108,6 +108,7 @@ const SampleOutputType = ({
     locale,
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
+    primaryColor,
   } = getProperties(arcSite)
 
   const chartbeatInline = `
@@ -197,7 +198,15 @@ const SampleOutputType = ({
         {fontUrlLink(fontUrl)}
         <CssLinks />
         <Libs />
-        <style>{`body { writing-mode: ${textFlow}; }`}</style>
+        <style>
+          {`
+            :root {
+              --editorial-color: ${primaryColor};
+            }
+            body { 
+              writing-mode: ${textFlow}; 
+          }`}
+        </style>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
