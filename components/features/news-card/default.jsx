@@ -46,7 +46,7 @@ const NewsCard = props => {
     }
     return {
       url: 'https://img.r7.com/images/r7-30072019142631584?crop_position=c',
-      description: 'descrição imagem principal',
+      description: 'Logo do portal R7',
     }
   }
   function findFirstImage(contentElements) {
@@ -54,7 +54,7 @@ const NewsCard = props => {
   }
 
   const hatTitle =
-    content?.taxonomy?.primary_section?._website ||
+    content?.taxonomy?.primary_section?.name ||
     content?.taxonomy?.primary_section?.referent.website ||
     ''
   const cardTitle = content?.headlines?.basic || ''
@@ -106,7 +106,7 @@ NewsCard.icon = 'paragraph-image-left'
 
 NewsCard.propTypes = {
   customFields: PropTypes.shape({
-    itemContentConfig: PropTypes.contentConfig('ans-item').tag({
+    itemContentConfig: PropTypes.contentConfig(['ans-item', 'feeds', 'ans-document']).tag({
       group: 'Configurar conteúdo',
       label: 'Infomações do conteúdo exibido',
     }),
