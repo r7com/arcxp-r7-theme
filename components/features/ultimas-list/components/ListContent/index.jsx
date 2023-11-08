@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
@@ -11,12 +11,16 @@ export const SimpleListContent = ({
   contentService,
   contentConfigValues,
   targetFallbackImage,
+  setLoading,
 }) => {
   const { content_elements: contentElements = [] } =
     useContent({
       source: contentService,
       query: { ...{ ...contentConfigValues, size: size }, feature: 'simple-list' },
     }) || {}
+  useEffect(() => {
+    setLoading(false)
+  }, [contentElements])
   return (
     <ul className={`${className}__items`}>
       {contentElements.map(element => {
