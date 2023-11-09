@@ -13,7 +13,7 @@ export const SimpleList = props => {
     targetFallbackImage,
     websiteDomain,
   } = props
-  const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.size)
+  const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
   const [loading, setLoading] = useState(false)
   const clickHandler = () => {
     setSize(prev => prev + customFields.loadMoreSize)
@@ -43,7 +43,10 @@ export const SimpleList = props => {
 
         {loading ? (
           <div className={`${className}__loader-container`}>
-            <div className={`${className}__loader`}></div>
+            <div
+              className={`${className}__loader`}
+              style={{ backgroundColor: primaryColor, color: primaryColor }}
+            />
           </div>
         ) : (
           <div className={`${className}__btn-container`}>

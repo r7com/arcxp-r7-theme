@@ -16,7 +16,7 @@ export const SimpleListContent = ({
   const { content_elements: contentElements = [] } =
     useContent({
       source: contentService,
-      query: { ...{ ...contentConfigValues, size: size }, feature: 'simple-list' },
+      query: { ...{ ...contentConfigValues, feedSize: size } },
     }) || {}
   useEffect(() => {
     setLoading(false)
@@ -50,6 +50,7 @@ export const SimpleListContent = ({
           : {
               src: targetFallbackImage,
             }
+        console.log(element)
         return (
           <li className={`${className}__item`} key={`simple-list-${element._id}`}>
             <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
@@ -57,7 +58,9 @@ export const SimpleListContent = ({
             </Link>
             <div className={`${className}__item-content`}>
               <Text as="span" fontSize="little" style={{ textTransform: 'uppercase' }}>
-                <Link href={url}>{credits.by[0] ? `${credits.by[0]?.name} / ` : ''}</Link>
+                <Link href={url}>
+                  {credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}
+                </Link>
                 {formatDate(publish_date)}
               </Text>
               <Text as="h3" fontSize="md" fontWeight="semibold">
