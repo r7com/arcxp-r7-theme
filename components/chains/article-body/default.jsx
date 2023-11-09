@@ -3,15 +3,12 @@ import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 
 import {
-  Button,
-  Carousel,
   Conditional,
   Divider,
   formatCredits,
   getAspectRatio,
   Heading,
   HeadingSection,
-  Icon,
   Image,
   isServerSide,
   LazyLoad,
@@ -30,9 +27,11 @@ import Header from './_children/heading'
 import HTML from './_children/html'
 import List from './_children/list'
 import Oembed from './_children/oembed'
-import Quote from './_children/quote'
 import Table from './_children/table'
 import CustomEmbed from './_children/custom-embed'
+import Quote from './_children/quote'
+import LinkList from './_children/link-list'
+import { Gallery } from './_children/gallery'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
@@ -43,9 +42,9 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
     hideImageTitle = false,
     hideImageCaption = false,
     hideImageCredits = false,
-    hideGalleryTitle = false,
-    hideGalleryCaption = false,
-    hideGalleryCredits = false,
+    // hideGalleryTitle = false,
+    // hideGalleryCaption = false,
+    // hideGalleryCredits = false,
     hideVideoTitle = false,
     hideVideoCaption = false,
     hideVideoCredits = false,
@@ -165,6 +164,12 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
       ) : null
     }
 
+    case 'link_list': {
+      return (
+        <LinkList key={`${type}_${index}_${key}`} classPrefix={BLOCK_CLASS_NAME} element={item} />
+      )
+    }
+
     case 'correction': {
       // can either be clarification or correction
       const { correction_type: labelType } = item
@@ -195,7 +200,9 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
     }
 
     case 'custom_embed': {
-      return item.embed ? <CustomEmbed key={item.embed.id} item={item} /> : null
+      return item.embed ? (
+        <CustomEmbed key={item.embed.id} classPrefix={BLOCK_CLASS_NAME} element={item} />
+      ) : null
     }
 
     case 'table': {
@@ -205,23 +212,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
     }
 
     case 'quote':
-      switch (item.subtype) {
-        case 'pullquote':
-          return (
-            <Quote
-              key={`${type}_${index}_${key}`}
-              element={item}
-              classPrefix={BLOCK_CLASS_NAME}
-              type="pullquote"
-            />
-          )
-
-        case 'blockquote':
-        default:
-          return (
-            <Quote key={`${type}_${index}_${key}`} element={item} classPrefix={BLOCK_CLASS_NAME} />
-          )
-      }
+      return <Quote key={`${type}_${index}_${key}`} element={item} classPrefix={BLOCK_CLASS_NAME} />
 
     case 'video':
       // Calculate the aspect ratio for the item. If the item doesn't have any promo items, then 16:9 is used as a fallback
@@ -249,91 +240,14 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
         </MediaItem>
       )
     case 'gallery': {
-      const total = item.content_elements.length
-      return (
-        <section key={`${type}_${index}_${key}`}>
-          <Carousel
-            id={key}
-            className={`${BLOCK_CLASS_NAME}__gallery`}
-            label={item?.description?.basic || 'Gallery'}
-            slidesToShow={1}
-            additionalNextButton={
-              <Carousel.Button type="button">
-                <Icon name="ChevronRight" />
-              </Carousel.Button>
-            }
-            fullScreenMinimizeButton={
-              <Button
-                variant="secondary-reverse"
-                type="button"
-                className={`${BLOCK_CLASS_NAME}__carousel__close-button`}
-              >
-                <Icon name="Close" />
-              </Button>
-            }
-            additionalPreviousButton={
-              <Carousel.Button type="button">
-                <Icon name="ChevronLeft" />
-              </Carousel.Button>
-            }
-            autoplayPhraseLabels={{
-              start: phrases.t('global.gallery-autoplay-label-start'),
-              stop: phrases.t('global.gallery-autoplay-label-stop'),
-            }}
-            enableAutoplay
-            enableFullScreen
-            fullScreenShowButton={
-              <Carousel.Button type="button">
-                <Icon name="Fullscreen" />
-                {phrases.t('global.gallery-expand-button')}
-              </Carousel.Button>
-            }
-            showLabel
-            startAutoplayIcon={<Icon name="Play" />}
-            startAutoplayText={phrases.t('global.gallery-autoplay-button')}
-            stopAutoplayIcon={<Icon name="Pause" />}
-            stopAutoplayText={phrases.t('global.gallery-pause-autoplay-button')}
-            nextButton={
-              <Carousel.Button
-                id={key}
-                label="Next Slide"
-                className={`${BLOCK_CLASS_NAME}__gallery__track-button`}
-              >
-                <Icon name="ChevronRight" />
-              </Carousel.Button>
-            }
-            previousButton={
-              <Carousel.Button
-                id={key}
-                label="Previous Slide"
-                className={`${BLOCK_CLASS_NAME}__gallery__track-button`}
-              >
-                <Icon name="ChevronLeft" />
-              </Carousel.Button>
-            }
-          >
-            {item.content_elements.map((i, itemIndex) => (
-              <Carousel.Item
-                label={phrases.t('global.gallery-page-count-text', { itemIndex, total })}
-                key={`gallery-item-${i.url}`}
-              >
-                <MediaItem
-                  caption={!hideGalleryCaption ? i.caption : null}
-                  credit={!hideGalleryCredits ? formatCredits(i.credits) : null}
-                  title={!hideGalleryTitle ? i.subtitle : null}
-                >
-                  <div className={`${BLOCK_CLASS_NAME}__image-wrapper`}>
-                    <Image
-                      {...getResizeParamsFromANSImage(i, arcSite, 800, [400, 600, 800, 1600])}
-                      alt={i.alt_text}
-                    />
-                  </div>
-                </MediaItem>
-              </Carousel.Item>
-            ))}
-          </Carousel>
-        </section>
-      )
+      return item.content_elements.length ? (
+        <Gallery
+          key={`${type}_${index}_${key}`}
+          element={item}
+          arcSite={arcSite}
+          classPrefix={BLOCK_CLASS_NAME}
+        />
+      ) : null
     }
     default:
       return null

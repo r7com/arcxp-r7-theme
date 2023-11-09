@@ -5,11 +5,11 @@ import getProperties from 'fusion:properties'
 
 import { Text } from '@r7/ui-base-components'
 
-const CustomEmbed = ({ item }) => {
+const CustomEmbed = ({ element, classPrefix }) => {
   const { arcSite } = useFusionContext()
   const { primaryColor } = getProperties(arcSite)
-  const { embed, subtype } = item
-  const COMPONENT_CLASS_NAME = 'c-custom-embed'
+  const { embed, subtype } = element
+  const COMPONENT_CLASS_NAME = `${classPrefix}-custom-embed`
   switch (subtype) {
     case 'brief_news':
       return embed.config ? (
@@ -19,14 +19,14 @@ const CustomEmbed = ({ item }) => {
         >
           <Text fontSize="sm" fontWeight="semibold" as="div">
             <h3
-              className={`${COMPONENT_CLASS_NAME}-brief-news__container__title`}
+              className={`${COMPONENT_CLASS_NAME}-brief-news__title`}
               style={{ color: primaryColor }}
             >
               {embed.config.textTitle}
             </h3>
           </Text>
 
-          <ul className={`${COMPONENT_CLASS_NAME}-brief-news__container__list`}>
+          <ul className={`${COMPONENT_CLASS_NAME}-brief-news__list`}>
             {embed.config.textList.map((listItem, index) => (
               <li key={`${embed.id}${index}`}>
                 <Text fontSize="xxs" as="span">

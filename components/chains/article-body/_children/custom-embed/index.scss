@@ -1,13 +1,14 @@
-.c-custom-embed {
-  &-brief-news__container {
-    width: 100%;
-    padding: 16px;
-    border-radius: 5px;
-    border-top: 0.5px solid;
-    border-right: 0.5px solid;
-    border-bottom: 0.5px solid;
-    background-color: #f8f8f8;
-
+.b-article-body-custom-embed {
+  &-brief-news {
+    &__container {
+      width: 100%;
+      padding: 16px;
+      border-radius: 5px;
+      border-top: 0.5px solid;
+      border-right: 0.5px solid;
+      border-bottom: 0.5px solid;
+      background-color: #f8f8f8;
+    }
     &__title {
       line-height: 1.6;
       margin-bottom: 16px;
