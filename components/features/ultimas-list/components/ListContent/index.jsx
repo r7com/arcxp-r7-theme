@@ -50,7 +50,6 @@ export const SimpleListContent = ({
           : {
               src: targetFallbackImage,
             }
-        console.log(element)
         return (
           <li className={`${className}__item`} key={`simple-list-${element._id}`}>
             <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
