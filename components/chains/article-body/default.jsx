@@ -109,7 +109,8 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
                 {...getResizeParamsFromANSImage(
                   item,
                   arcSite,
-                  allowedFloatValue ? 400 : 800,
+                  // allowedFloatValue ? 400 : 800,
+                  item.width,
                   [390, 460, 660, 780, 1800].map(w => (allowedFloatValue ? w / 2 : w)),
                 )}
                 alt={altText}
@@ -245,7 +246,7 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
           key={`${type}_${index}_${key}`}
           element={item}
           arcSite={arcSite}
-          classPrefix={BLOCK_CLASS_NAME}
+          classPrefix={`${BLOCK_CLASS_NAME}-gallery`}
         />
       ) : null
     }

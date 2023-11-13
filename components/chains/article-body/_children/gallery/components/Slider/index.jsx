@@ -9,10 +9,12 @@ export const GallerySlider = ({ children, thumbsSwiper, slideChangeHandler, clas
       thumbs={{ swiper: thumbsSwiper }}
       className={className}
       effect="fade"
-      breakpoints={{}}
       slidesPerView={1}
+      breakpoints={{
+        320: { allowTouchMove: true },
+        769: { allowTouchMove: false },
+      }}
       navigation
-      allowTouchMove={false}
       loop={true}
       onSlideChange={e => {
         slideChangeHandler(e.realIndex)

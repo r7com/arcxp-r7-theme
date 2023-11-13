@@ -48,43 +48,49 @@
         color: #fff;
       }
 
+      &-expand {
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #dddde1;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        svg {
+          fill: #000;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
       @media screen and (max-width: 48rem) {
         opacity: 1;
-        height: 40px;
-        margin-top: 10px;
+        height: 50px;
       }
 
       @media screen and (max-width: 32rem) {
         top: calc(100% + 65px);
+        margin-top: 10px;
 
         p {
           font-size: 14px;
           color: #333333;
         }
+
+        &-expand {
+          width: 40px;
+          height: 40px;
+
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
       }
-    }
-
-    &::after {
-      display: block;
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      background-color: #000;
-      opacity: 0;
-      transition: all 0.2s ease-in-out;
-
-      @media screen and (max-width: 48rem) {
-        opacity: 0.2;
-      }
-    }
-
-    &-wrapper:hover &::after {
-      opacity: 0.2;
-      transition: all 0.2s ease-in-out;
     }
 
     &-wrapper:hover &-toolbar {
@@ -106,12 +112,24 @@
       height: 200px;
     }
 
+    &:hover img {
+      transition: all 0.2s ease-in-out;
+      filter: brightness(0.7);
+    }
+
     img {
+      pointer-events: none;
       height: 100%;
       border-radius: 4px;
       object-fit: cover;
       width: 100%;
       object-position: center;
+      filter: brightness(1);
+      transition: all 0.2s ease-in-out;
+
+      @media screen and (max-width: 48rem) {
+        filter: brightness(0.7);
+      }
     }
   }
   &__thumbs {
@@ -132,34 +150,14 @@
         object-fit: cover;
         width: 100%;
         object-position: center;
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1;
-        background-color: #000;
-        opacity: 0.72;
         transition: all 0.2s ease-in-out;
+        filter: brightness(0.45);
       }
 
-      &:hover {
-        &::after {
-          opacity: 0;
-          transition: all 0.2s ease-in-out;
-        }
-      }
-
-      &.swiper-slide-thumb-active {
-        &::after {
-          opacity: 0;
-          transition: all 0.2s ease-in-out;
-        }
+      &:hover img,
+      &.swiper-slide-thumb-active img {
+        filter: brightness(1);
+        transition: all 0.2s ease-in-out;
       }
     }
   }

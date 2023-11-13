@@ -8,12 +8,14 @@ import { GalleryThumbs } from './components/Thumbs'
 import { GalleryCaption } from './components/Caption'
 import { GalleryToolbar } from './components/Toolbar'
 import { GallerySlider } from './components/Slider'
+import { GalleryFullscreen } from './components/GalleryFullscreen'
 
 export const Gallery = ({ element, arcSite, classPrefix }) => {
   const { content_elements } = element
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
-  const BLOCK_CLASS_NAME = `${classPrefix}-gallery`
+  const [fullscreen, setFullscreen] = useState(false)
+  const BLOCK_CLASS_NAME = classPrefix
   return (
     <div className={`${BLOCK_CLASS_NAME}__container`}>
       <div className={`${BLOCK_CLASS_NAME}__slider-wrapper`}>
@@ -34,6 +36,7 @@ export const Gallery = ({ element, arcSite, classPrefix }) => {
           })}
         </GallerySlider>
         <GalleryToolbar
+          setFullscreen={setFullscreen}
           className={`${BLOCK_CLASS_NAME}__slider-toolbar`}
           currentSlide={activeSlideIndex + 1}
           slidesAmount={content_elements.length}
@@ -63,6 +66,7 @@ export const Gallery = ({ element, arcSite, classPrefix }) => {
             : ''
         }
       />
+      <GalleryFullscreen className={`${BLOCK_CLASS_NAME}__overlay`} isOpen={fullscreen} />
     </div>
   )
 }
