@@ -23,11 +23,11 @@ const NewsList = props => {
 
   console.log('asd', content)
   const layout = {
-    titleWithBullets: <TitleWithBullets contentElements={content?.content_elements} />,
-    double: <TwoImages contentElements={content} />,
-    triple: <ThreeImages contentElements={content} />,
-    quadruple: <FourImages contentElements={content} />,
-    octuple: <EightImages contentElements={content} />,
+    titleWithBullets: <TitleWithBullets content={content?.content_elements} />,
+    double: <TwoImages content={content?.content_elements} />,
+    triple: <ThreeImages content={content?.content_elements} />,
+    quadruple: <FourImages content={content?.content_elements} />,
+    octuple: <EightImages content={content?.content_elements} />,
   }[blockLayout]
 
   return (
