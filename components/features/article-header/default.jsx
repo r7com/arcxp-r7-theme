@@ -1,7 +1,7 @@
 import React from 'react'
 import '@r7/ui-article-delivery/style.css'
 import { useFusionContext } from 'fusion:context'
-import { Signature } from '@r7/ui-article-delivery'
+import { Signature, SocialShare } from '@r7/ui-article-delivery'
 import getProperties from 'fusion:properties'
 
 function ArticleHeader() {
@@ -52,8 +52,16 @@ function ArticleHeader() {
           />
         </Signature.Content>
       </Signature>
-      {/* social share */}
-      <a href={encodedUrl}>Url Redes sociais</a>
+      <SocialShare>
+        <SocialShare.List>
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="twitter" />
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="facebook" />
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="linkedin" />
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="whatsapp" />
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="googleNews" />
+          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="share" />
+        </SocialShare.List>
+      </SocialShare>
     </header>
   )
 }
