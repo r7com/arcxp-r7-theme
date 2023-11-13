@@ -32,11 +32,9 @@ const NewsList = props => {
 
   return (
     <>
-      <div>
-        {display
-          ? layout
-          : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
-      </div>
+      {display
+        ? layout
+        : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
     </>
   )
 }

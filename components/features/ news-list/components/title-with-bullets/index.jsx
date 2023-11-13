@@ -10,7 +10,7 @@ export const TitleWithBullets = ({ content }) => {
       <div className="title-with-bullets__highlight">
         <Card
           className="title-with-bullets__highlight-title"
-          newsUrl={content[0].canonical_url}
+          newsUrl={content[0]?.canonical_url}
           newsUrlTitle={content[0]?.headlines?.basic}
         >
           <Card.HatWrapper>
@@ -22,10 +22,10 @@ export const TitleWithBullets = ({ content }) => {
         </Card>
       </div>
       <div className="title-with-bullets__wrapper">
-        <Bullet url={content[1].canonical_url} size="large">
+        <Bullet url={content[1]?.canonical_url} size="large">
           {content[1]?.headlines?.basic}
         </Bullet>
-        <Bullet url={content[2].canonical_url} size="large">
+        <Bullet url={content[2]?.canonical_url} size="large">
           {content[2]?.headlines?.basic}
         </Bullet>
       </div>
