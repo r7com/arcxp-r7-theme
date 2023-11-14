@@ -41,7 +41,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "prettier": "^2.6.2",
-    "@r7/ui-article-delivery": "file:../../r7_workspace/front-monorepo/dist/libs/ui-article-delivery"
+    "@r7/ui-article-delivery": "file:../../workspace/front-monorepo/dist/libs/ui-article-delivery"
   },
   "config": {
     "commitizen": {
