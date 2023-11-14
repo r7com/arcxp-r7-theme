@@ -10,7 +10,11 @@ export const News = ({ content }) => {
   }
 
   return (
-    <Card className="flex-col">
+    <Card
+      className="flex-col"
+      newsUrl={content?.canonical_url}
+      newsUrlTitle={content?.headlines?.basic}
+    >
       <Card.Image className="mb-xxxs" format="landscape">
         <img alt={imageToUse.alt_text} src={imageToUse.url} className="w-full" />
       </Card.Image>

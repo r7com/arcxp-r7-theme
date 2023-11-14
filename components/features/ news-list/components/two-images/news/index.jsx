@@ -10,7 +10,11 @@ export const News = ({ content }) => {
   }
 
   return (
-    <Card className="relative">
+    <Card
+      className="relative"
+      newsUrl={content?.canonical_url}
+      newsUrlTitle={content?.headlines?.basic}
+    >
       <Card.Image className="w-full" format="landscape" shadow>
         <img alt={imageToUse.alt_text} className="w-full" src={imageToUse.url} />
       </Card.Image>
