@@ -18,7 +18,7 @@ export const News = ({ content }) => {
         <Card.HatWrapper>
           <Card.HatTitle>{content?.taxonomy?.primary_section?.name}</Card.HatTitle>
         </Card.HatWrapper>
-        <Card.Title>{content?.headlines?.basic}</Card.Title>
+        <Card.Title fontStyle="heading-level-3">{content?.headlines?.basic}</Card.Title>
       </div>
     </Card>
   )
