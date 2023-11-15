@@ -1,3 +1,4 @@
+import './default.scss'
 import '@r7/ui-footer-delivery/style.css'
 import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
@@ -12,7 +13,7 @@ const Footer = props => {
   const { arcSite, globalContent } = useFusionContext()
 
   const { websiteName, primaryColor } = getProperties(arcSite)
-
+  const BLOCK_CLASS_NAME = 'b-site-footer'
   const sectionContent =
     globalContent?.node_type === 'section'
       ? globalContent
@@ -27,18 +28,25 @@ const Footer = props => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <Institutional.Root bgColor={primaryColor}>
-      <Institutional.Content>
-        <Institutional.Wrapper>
-          <Institutional.Logo />
-          <Institutional.Editorial editorialName={sectionContent?.name ?? websiteName} />
-        </Institutional.Wrapper>
-        <Institutional.Copyright>
-          Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
-        </Institutional.Copyright>
-      </Institutional.Content>
-      <LinksList labels={navigationLabelsList} links={navigationLinksList} />
-    </Institutional.Root>
+    <div
+      className={BLOCK_CLASS_NAME}
+      style={{
+        backgroundColor: primaryColor,
+      }}
+    >
+      <div className={`${BLOCK_CLASS_NAME}__wrapper`}>
+        <Institutional.Content>
+          <Institutional.Wrapper>
+            <Institutional.Logo />
+            <Institutional.Editorial editorialName={sectionContent?.name ?? websiteName} />
+          </Institutional.Wrapper>
+          <Institutional.Copyright>
+            Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
+          </Institutional.Copyright>
+        </Institutional.Content>
+        <LinksList labels={navigationLabelsList} links={navigationLinksList} />
+      </div>
+    </div>
   )
 }
 
