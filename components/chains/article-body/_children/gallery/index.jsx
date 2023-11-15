@@ -1,40 +1,31 @@
+/* eslint-disable no-undef*/
 import './index.scss'
 import React, { useState } from 'react'
-import { SwiperSlide } from 'swiper/react'
-import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../shared/get-resize-params-from-ans-image'
-
 import { GalleryThumbs } from './components/Thumbs'
 import { GalleryCaption } from './components/Caption'
 import { GalleryToolbar } from './components/Toolbar'
 import { GallerySlider } from './components/Slider'
-import { GalleryFullscreen } from './components/GalleryFullscreen'
+import { GalleryFullscreen } from './components/Fullscreen'
 
-export const Gallery = ({ element, arcSite, classPrefix }) => {
+export const Gallery = ({ element, classPrefix }) => {
   const { content_elements } = element
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [fullscreen, setFullscreen] = useState(false)
   const BLOCK_CLASS_NAME = classPrefix
+
+  fullscreen
+    ? (document.querySelector('body').style.overflowY = 'hidden')
+    : (document.querySelector('body').style.overflowY = 'autos')
   return (
     <div className={`${BLOCK_CLASS_NAME}__container`}>
       <div className={`${BLOCK_CLASS_NAME}__slider-wrapper`}>
         <GallerySlider
-          className={`${BLOCK_CLASS_NAME}__slider`}
+          className={BLOCK_CLASS_NAME}
           slideChangeHandler={setActiveSlideIndex}
           thumbsSwiper={thumbsSwiper}
-        >
-          {content_elements.map(item => {
-            return (
-              <SwiperSlide key={item._id} className={`${BLOCK_CLASS_NAME}__slide`}>
-                <Image
-                  {...getResizeParamsFromANSImage(item, arcSite, 800, [400, 600, 800, 1600])}
-                  alt={item.alt_text}
-                />
-              </SwiperSlide>
-            )
-          })}
-        </GallerySlider>
+          elements={content_elements}
+        />
         <GalleryToolbar
           setFullscreen={setFullscreen}
           className={`${BLOCK_CLASS_NAME}__slider-toolbar`}
@@ -44,19 +35,9 @@ export const Gallery = ({ element, arcSite, classPrefix }) => {
       </div>
       <GalleryThumbs
         setThumbsSwiper={setThumbsSwiper}
-        className={`${BLOCK_CLASS_NAME}__thumbs-container`}
-      >
-        {content_elements.map(item => {
-          return (
-            <SwiperSlide key={item._id} className={`${BLOCK_CLASS_NAME}__thumbs-slide`}>
-              <Image
-                {...getResizeParamsFromANSImage(item, arcSite, 800, [400, 600, 800, 1600])}
-                alt={item.alt_text}
-              />
-            </SwiperSlide>
-          )
-        })}
-      </GalleryThumbs>
+        className={`${BLOCK_CLASS_NAME}__thumbs`}
+        elements={content_elements}
+      />
       <GalleryCaption
         className={`${BLOCK_CLASS_NAME}__caption`}
         caption={content_elements[activeSlideIndex]?.caption}
@@ -66,7 +47,12 @@ export const Gallery = ({ element, arcSite, classPrefix }) => {
             : ''
         }
       />
-      <GalleryFullscreen className={`${BLOCK_CLASS_NAME}__overlay`} isOpen={fullscreen} />
+      <GalleryFullscreen
+        setFullscreen={setFullscreen}
+        className={`${BLOCK_CLASS_NAME}__overlay`}
+        isOpen={fullscreen}
+        elements={content_elements}
+      />
     </div>
   )
 }

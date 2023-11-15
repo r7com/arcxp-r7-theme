@@ -245,7 +245,6 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
         <Gallery
           key={`${type}_${index}_${key}`}
           element={item}
-          arcSite={arcSite}
           classPrefix={`${BLOCK_CLASS_NAME}-gallery`}
         />
       ) : null

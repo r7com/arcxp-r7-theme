@@ -1,24 +1,34 @@
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
-import { Thumbs } from 'swiper'
+import { Navigation, Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import getResizeParamsFromANSImage from '../../../../shared/get-resize-params-from-ans-image'
 import { Image } from '@wpmedia/arc-themes-components'
+import getResizeParamsFromANSImage from '../../../../../shared/get-resize-params-from-ans-image'
 
-export const GalleryThumbs = ({ elements, setThumbsSwiper, className }) => {
+export const FullscreenSlider = ({
+  swiperRef,
+  setActiveSlideIndex,
+  className,
+  view,
+  views,
+  elements,
+}) => {
   const { arcSite } = useFusionContext()
   return (
     <Swiper
-      spaceBetween={5}
-      slidesPerView={5}
+      ref={swiperRef}
+      modules={[Thumbs, Navigation]}
+      className={`${className}-slider ${view === views.gallery ? 'active' : ''}`}
+      slidesPerView={1}
       breakpoints={{
-        320: { slidesPerView: 4 },
-        769: { slidesPerView: 5 },
+        320: { allowTouchMove: true },
+        769: { allowTouchMove: false },
       }}
-      className={`${className}-slider`}
-      modules={[Thumbs]}
-      watchSlidesProgress
-      onSwiper={setThumbsSwiper}
+      onSlideChange={e => {
+        setActiveSlideIndex(e.realIndex)
+      }}
+      navigation
+      loop={true}
     >
       {elements.map(item => {
         return (
