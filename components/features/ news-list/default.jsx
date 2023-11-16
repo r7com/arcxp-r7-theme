@@ -33,7 +33,9 @@ const NewsList = props => {
   return (
     <>
       {display
-        ? layout
+        ? content
+          ? layout
+          : isAdmin && <p>É necessário definir uma fonte de conteúdo para este bloco.</p>
         : isAdmin && <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>}
     </>
   )
@@ -46,7 +48,7 @@ NewsList.propTypes = {
       label: 'Fonte de conteúdo',
     }),
     display: PropTypes.boolean.tag({
-      label: 'Exibir notícia',
+      label: 'Exibir bloco',
     }),
     blockLayout: PropTypes.oneOf([
       'titleWithBullets',

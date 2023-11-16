@@ -7,9 +7,7 @@ export const FourImages = ({ content }) => {
   const data = content?.slice(0, maxNews)
   return (
     <div className="four-images">
-      {data.map(item => (
-        <News key={item._id} content={item} />
-      ))}
+      {data && data.map(item => <News key={item._id} content={item} />)}
     </div>
   )
 }
