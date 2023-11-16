@@ -19,7 +19,7 @@ const SectionFootBlock = props => {
 SectionFootBlock.label = 'Section Foot - R7 Block'
 SectionFootBlock.icon = 'arc-headline'
 
-SectionFootBlock.PropTypes = {
+SectionFootBlock.propTypes = {
   customFields: PropTypes.shape({
     text: PropTypes.string.tag({
       label: 'Texto',
