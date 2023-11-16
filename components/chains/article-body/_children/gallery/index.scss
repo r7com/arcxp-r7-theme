@@ -105,16 +105,16 @@
     }
   }
 
+  &__slider-wrapper:hover &__slide img {
+    filter: brightness(0.7);
+    transition: all 0.2s ease-in-out;
+  }
+
   &__slide {
     height: 420px;
 
     @media screen and (max-width: 32rem) {
       height: 200px;
-    }
-
-    &:hover img {
-      transition: all 0.2s ease-in-out;
-      filter: brightness(0.7);
     }
 
     img {
