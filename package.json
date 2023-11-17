@@ -40,8 +40,7 @@
     "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^2.6.2",
-    "@r7/ui-section-foot": "file:../front-monorepo/dist/libs/ui-section-foot"
+    "prettier": "^2.6.2"
   },
   "config": {
     "commitizen": {
@@ -53,6 +52,7 @@
     "@code-store-platform/story-feed-subtypes": "^1.1.1",
     "@r7/ui-base-components": "^0.0.2-alpha.5",
     "@r7/ui-footer-delivery": "1.0.0",
-    "@r7/ui-header-delivery": "^2.1.1"
+    "@r7/ui-header-delivery": "^2.1.1",
+    "@r7/ui-section-foot": "^0.1.0"
   }
 }
