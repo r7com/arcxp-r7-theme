@@ -3,15 +3,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   background: #111;
-  justify-content: center;
-  align-items: center;
   z-index: 1000;
 
   &.active {
-    display: flex;
+    display: block;
   }
 
   &-wrapper {
@@ -134,7 +132,7 @@
 
     &-container {
       padding: 16px 0;
-      height: 100%;
+      height: calc(100% - 58px);
       width: 100%;
       position: relative;
       overflow-y: overlay;

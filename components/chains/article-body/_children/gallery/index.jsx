@@ -14,9 +14,7 @@ export const Gallery = ({ element, classPrefix }) => {
   const [fullscreen, setFullscreen] = useState(false)
   const BLOCK_CLASS_NAME = classPrefix
 
-  fullscreen
-    ? (document.querySelector('body').style.overflowY = 'hidden')
-    : (document.querySelector('body').style.overflowY = 'autos')
+  fullscreen ? (document.body.style.overflowY = 'hidden') : (document.body.style.overflowY = 'auto')
   return (
     <div className={`${BLOCK_CLASS_NAME}__container`}>
       <div className={`${BLOCK_CLASS_NAME}__slider-wrapper`}>

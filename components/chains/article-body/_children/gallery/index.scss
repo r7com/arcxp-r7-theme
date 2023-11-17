@@ -112,6 +112,9 @@
 
   &__slide {
     height: 420px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
 
     @media screen and (max-width: 32rem) {
       height: 200px;
@@ -121,8 +124,6 @@
       pointer-events: none;
       height: 100%;
       border-radius: 4px;
-      object-fit: cover;
-      width: 100%;
       object-position: center;
       filter: brightness(1);
       transition: all 0.2s ease-in-out;
