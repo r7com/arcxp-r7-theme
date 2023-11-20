@@ -28,7 +28,7 @@ export const GallerySlider = ({ elements, thumbsSwiper, slideChangeHandler, clas
         return (
           <SwiperSlide key={item._id} className={`${className}__slide`}>
             <Image
-              {...getResizeParamsFromANSImage(item, arcSite, 800, [400, 600, 800, 1600])}
+              {...getResizeParamsFromANSImage(item, arcSite, item.width, [400, 600, 800, 1600])}
               alt={item.alt_text}
             />
           </SwiperSlide>

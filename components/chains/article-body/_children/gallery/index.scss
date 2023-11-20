@@ -1,4 +1,9 @@
 @import './swiper.scss';
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
 
 .b-article-body-gallery {
   &__container {
