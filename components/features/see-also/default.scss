@@ -1,0 +1,44 @@
+.b-see-also {
+  &__container {
+    width: 100%;
+    padding: 16px;
+    border-radius: 5px;
+    border-top: 0.5px solid;
+    border-right: 0.5px solid;
+    border-bottom: 0.5px solid;
+    background-color: #f8f8f8;
+  }
+  &__title {
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  &__item {
+    flex: 1;
+    list-style: none;
+
+    &-image {
+      height: 126px;
+      border-radius: 5px;
+      margin-bottom: 16px;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+
+    &-section-name {
+      text-transform: uppercase;
+    }
+  }
+}
