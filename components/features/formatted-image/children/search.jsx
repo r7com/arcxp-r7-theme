@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import '../index.scss'
 import React, { useState, useEffect, useRef } from 'react'
+import { useContent } from 'fusion:content'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
 import { imageFormats } from '../constants'
 
@@ -8,6 +9,12 @@ const Search = () => {
   const [imageId, setImageId] = useState(null)
   const [format, setFormat] = useState('full')
   const iframeRef = useRef(null)
+
+  const imageAnsData = useContent({
+    source: 'photo-api',
+    query: { _id: imageId },
+  })
+
   useEffect(() => {
     ComposerHandler.sendMessage('ready', {
       height: document.documentElement.scrollHeight,
@@ -25,6 +32,7 @@ const Search = () => {
   }, [])
 
   async function handleIframeClick(e) {
+    setImageId('7DSFXIB2Q5IYTGSPZOJIUM7QVY')
     Array.from(this.querySelectorAll('.image-tile')).map(item => {
       if (item.classList.contains('selected')) {
         item.classList.replace('selected', 'not-selected')
@@ -62,10 +70,11 @@ const Search = () => {
     const ansCustomEmbed = {
       ...ansStarter,
       config: {
+        imageAnsData: imageAnsData,
         imageFormat: format,
-        imageId: imageId,
       },
     }
+    console.log('Data', ansCustomEmbed)
     ComposerHandler.sendMessage('data', ansCustomEmbed)
   }
 
@@ -82,7 +91,7 @@ const Search = () => {
           title="Photo center iframe"
           width="500"
           height="500"
-          src="https://sandbox.newr7.arcpublishing.com/photo/v2/"
+          src="http://localhost/pagebuilder/pages"
         ></iframe>
       </div>
       <div className="custom-embed-container__toolbar">
@@ -99,7 +108,7 @@ const Search = () => {
         <div className="custom-embed-container__toolbar-btns">
           <input onClick={cancel} className="btn" type="button" id="cancel-btn" value="Cancel" />
           <input
-            disabled={!imageId}
+            disabled={!imageAnsData}
             onClick={save}
             className="btn"
             type="button"

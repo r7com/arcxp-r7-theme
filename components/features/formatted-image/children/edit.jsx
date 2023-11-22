@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import '../index.scss'
 import React, { useState, useEffect, useRef } from 'react'
+import { useContent } from 'fusion:content'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
 import { imageFormats } from '../constants'
 
@@ -9,13 +10,12 @@ const Edit = () => {
   const [format, setFormat] = useState(null)
   const [payload, setPayload] = useState({})
   const iframeRef = useRef(null)
-
   useEffect(() => {
     ComposerHandler.sendMessage('ready', {
       height: document.documentElement.scrollHeight,
     })
     const data = ComposerHandler.getPayload()
-    setImageId(data?.config?.imageId)
+    setImageId(data?.config?.imageAnsData._id)
     setFormat(data?.config?.imageFormat)
     setPayload(data)
 
@@ -30,7 +30,13 @@ const Edit = () => {
     }
   }, [])
 
+  const imageAnsData = useContent({
+    source: 'photo-api',
+    query: { _id: imageId },
+  })
+
   async function handleIframeClick(e) {
+    setImageId('DHUQ7QJYIJO7RHBCNRA4TFDZYU')
     Array.from(this.querySelectorAll('.image-tile')).map(item => {
       if (item.classList.contains('selected')) {
         item.classList.replace('selected', 'not-selected')
@@ -69,9 +75,14 @@ const Edit = () => {
       config: {
         imageFormat:
           format === payload?.config?.imageFormat ? payload?.config?.imageFormat : format,
-        imageId: imageId === payload?.config?.imageId ? payload?.config?.imageId : imageId,
+        imageAnsData:
+          imageId === payload?.config?.imageAnsData._id
+            ? payload?.config?.imageAnsData
+            : imageAnsData,
       },
     }
+    console.log('Payload', payload)
+    console.log('Data', ansCustomEmbed)
     ComposerHandler.sendMessage('data', ansCustomEmbed)
   }
 
@@ -88,7 +99,7 @@ const Edit = () => {
           title="Photo center iframe"
           width="500"
           height="500"
-          src="https://sandbox.newr7.arcpublishing.com/photo/v2/"
+          src="http://localhost/pagebuilder/pages"
         ></iframe>
       </div>
       <div className="custom-embed-container__toolbar">
@@ -110,7 +121,16 @@ const Edit = () => {
         </div>
         <div className="custom-embed-container__toolbar-btns">
           <input onClick={cancel} className="btn" type="button" id="cancel-btn" value="Cancel" />
-          <input onClick={save} className="btn" type="button" id="apply-btn" value="Apply" />
+          <input
+            onClick={save}
+            disabled={
+              (imageId !== payload?.config?.imageAnsData._id && !imageAnsData) || !imageAnsData
+            }
+            className="btn"
+            type="button"
+            id="apply-btn"
+            value="Apply"
+          />
         </div>
       </div>
     </div>

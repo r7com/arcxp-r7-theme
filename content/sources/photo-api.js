@@ -13,7 +13,7 @@ const params = [
 
 const fetch = ({ _id }, { cachedCall }) => {
   if (_id === null) {
-    return {}
+    return null
   }
   return axios({
     url: `${CONTENT_BASE}/photo/api/v2/photos/${_id}`,

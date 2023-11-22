@@ -1,25 +1,19 @@
 /* eslint-disable no-undef */
 import '../index.scss'
-import { useContent } from 'fusion:content'
 import React, { useEffect, useState } from 'react'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
 
 const View = () => {
-  const [imageId, setImageId] = useState(null)
   const [imageFormat, setImageFormat] = useState('')
+  const [imageAnsData, setImageAnsData] = useState({})
   useEffect(() => {
     ComposerHandler.sendMessage('ready', {
       height: document.documentElement.scrollHeight,
     })
     const data = ComposerHandler.getPayload()
     setImageFormat(data?.config?.imageFormat)
-    setImageId(data?.config?.imageId)
+    setImageAnsData(data?.config?.imageAnsData)
   }, [])
-
-  const imageAnsData = useContent({
-    source: 'photo-api',
-    query: { _id: imageId },
-  })
 
   return (
     <div className="custom-embed-container view">
