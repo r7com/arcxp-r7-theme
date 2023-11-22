@@ -2,7 +2,7 @@ import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import { Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import getResizeParamsFromANSImage from '../../../../shared/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../../../../util/get-resize-params-from-ans-image'
 import { Image } from '@wpmedia/arc-themes-components'
 
 export const GalleryThumbs = ({ elements, setThumbsSwiper, className }) => {
@@ -24,7 +24,7 @@ export const GalleryThumbs = ({ elements, setThumbsSwiper, className }) => {
         return (
           <SwiperSlide key={item._id} className={`${className}-slide`}>
             <Image
-              {...getResizeParamsFromANSImage(item, arcSite, 800, [400, 600, 800, 1600])}
+              {...getResizeParamsFromANSImage(item, arcSite, item.width, [200])}
               alt={item.alt_text}
             />
           </SwiperSlide>

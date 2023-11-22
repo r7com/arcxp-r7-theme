@@ -20,7 +20,7 @@ import {
   Video,
 } from '@wpmedia/arc-themes-components'
 
-import getResizeParamsFromANSImage from './shared/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 
 import { Text } from '@r7/ui-base-components'
 
@@ -282,11 +282,12 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
     } = item
 
     if (url) {
+      console.log()
       const formattedCredits = formatCredits(vanityCredits || credits)
       return (
         <MediaItem
           key={`${_id}_${itemKey}`}
-          className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
+          className={`${BLOCK_CLASS_NAME}__image promo-image ${allowedFloatValue ? 'float' : ''}`}
           caption={!hideImageCaption ? caption : null}
           credit={!hideImageCredits ? formattedCredits : null}
           title={!hideImageTitle ? subtitle : null}
@@ -304,7 +305,7 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
                   item,
                   arcSite,
                   item.width,
-                  [390, 460, 660, 780, 1800].map(w => (allowedFloatValue ? w / 2 : w)),
+                  [390, 460, 660, 770].map(w => (allowedFloatValue ? w / 2 : w)),
                 )}
                 alt={altText}
               />

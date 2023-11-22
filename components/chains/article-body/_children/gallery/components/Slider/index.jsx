@@ -3,7 +3,7 @@ import { useFusionContext } from 'fusion:context'
 import { EffectFade, Navigation, Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../../../shared/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../../../../util/get-resize-params-from-ans-image'
 
 export const GallerySlider = ({ elements, thumbsSwiper, slideChangeHandler, className }) => {
   const { arcSite } = useFusionContext()
@@ -28,7 +28,7 @@ export const GallerySlider = ({ elements, thumbsSwiper, slideChangeHandler, clas
         return (
           <SwiperSlide key={item._id} className={`${className}__slide`}>
             <Image
-              {...getResizeParamsFromANSImage(item, arcSite, item.width, [400, 600, 800, 1600])}
+              {...getResizeParamsFromANSImage(item, arcSite, item.width, [390, 460, 660, 770])}
               alt={item.alt_text}
             />
           </SwiperSlide>

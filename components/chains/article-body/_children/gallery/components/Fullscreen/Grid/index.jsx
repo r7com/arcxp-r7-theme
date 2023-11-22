@@ -3,7 +3,7 @@
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../../../../shared/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../../../../../util/get-resize-params-from-ans-image'
 
 export const FullscreenGrid = ({
   className,
