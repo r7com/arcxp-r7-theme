@@ -1,7 +1,9 @@
 import React from 'react'
 import '@r7/ui-article-delivery/style.css'
+import '@r7/ui-base-componenets/style.css'
 import { useFusionContext } from 'fusion:context'
 import { Signature, SocialShare } from '@r7/ui-article-delivery'
+import { Heading, Subheading } from '@r7/ui-base-componenets'
 import getProperties from 'fusion:properties'
 
 function ArticleHeader() {
@@ -35,8 +37,8 @@ function ArticleHeader() {
 
   return (
     <header>
-      <h1>{headlines.basic}</h1>
-      <h2>{subheadlines.basic}</h2>
+      <Heading dangerHTML={headlines.basic} />
+      <Subheading dangerHTML={subheadlines.basic} />
       <Signature>
         <Signature.Content>
           <Signature.Info
