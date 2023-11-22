@@ -12,7 +12,7 @@ const View = () => {
     })
     const data = ComposerHandler.getPayload()
     setImageFormat(data?.config?.imageFormat)
-    setImageAnsData(data?.config?.imageAnsData)
+    setImageAnsData(JSON.parse(data?.config?.imageAnsData))
   }, [])
 
   return (

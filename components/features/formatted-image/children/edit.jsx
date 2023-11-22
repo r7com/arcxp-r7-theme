@@ -14,8 +14,9 @@ const Edit = () => {
     ComposerHandler.sendMessage('ready', {
       height: document.documentElement.scrollHeight,
     })
-    const data = ComposerHandler.getPayload()
-    setImageId(data?.config?.imageAnsData._id)
+    let data = ComposerHandler.getPayload()
+    data.config.imageAnsData = JSON.parse(data?.config?.imageAnsData)
+    setImageId(data?.config?.imageAnsData?._id)
     setFormat(data?.config?.imageFormat)
     setPayload(data)
 
@@ -36,7 +37,6 @@ const Edit = () => {
   })
 
   async function handleIframeClick(e) {
-    setImageId('DHUQ7QJYIJO7RHBCNRA4TFDZYU')
     Array.from(this.querySelectorAll('.image-tile')).map(item => {
       if (item.classList.contains('selected')) {
         item.classList.replace('selected', 'not-selected')
@@ -70,26 +70,22 @@ const Edit = () => {
   }
 
   const save = () => {
+    const imageAnsDataStr =
+      imageId === payload?.config?.imageAnsData._id ? payload?.config?.imageAnsData : imageAnsData
     const ansCustomEmbed = {
       ...payload,
       config: {
         imageFormat:
           format === payload?.config?.imageFormat ? payload?.config?.imageFormat : format,
-        imageAnsData:
-          imageId === payload?.config?.imageAnsData._id
-            ? payload?.config?.imageAnsData
-            : imageAnsData,
+        imageAnsData: JSON.stringify(imageAnsDataStr),
       },
     }
-    console.log('Payload', payload)
-    console.log('Data', ansCustomEmbed)
     ComposerHandler.sendMessage('data', ansCustomEmbed)
   }
 
   const cancel = () => {
     ComposerHandler.sendMessage('cancel')
   }
-
   return (
     <div className="custom-embed-container">
       <div className="custom-embed-container__iframe">
@@ -99,7 +95,7 @@ const Edit = () => {
           title="Photo center iframe"
           width="500"
           height="500"
-          src="http://localhost/pagebuilder/pages"
+          src="https://sandbox.newr7.arcpublishing.com/photo/v2/"
         ></iframe>
       </div>
       <div className="custom-embed-container__toolbar">
@@ -124,7 +120,9 @@ const Edit = () => {
           <input
             onClick={save}
             disabled={
-              (imageId !== payload?.config?.imageAnsData._id && !imageAnsData) || !imageAnsData
+              (imageId === payload?.config?.imageAnsData._id && !imageAnsData) ||
+              (imageId === payload?.config?.imageAnsData._id &&
+                format === payload?.config?.imageFormat)
             }
             className="btn"
             type="button"

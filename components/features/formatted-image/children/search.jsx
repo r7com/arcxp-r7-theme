@@ -32,7 +32,6 @@ const Search = () => {
   }, [])
 
   async function handleIframeClick(e) {
-    setImageId('7DSFXIB2Q5IYTGSPZOJIUM7QVY')
     Array.from(this.querySelectorAll('.image-tile')).map(item => {
       if (item.classList.contains('selected')) {
         item.classList.replace('selected', 'not-selected')
@@ -70,11 +69,10 @@ const Search = () => {
     const ansCustomEmbed = {
       ...ansStarter,
       config: {
-        imageAnsData: imageAnsData,
+        imageAnsData: JSON.stringify(imageAnsData),
         imageFormat: format,
       },
     }
-    console.log('Data', ansCustomEmbed)
     ComposerHandler.sendMessage('data', ansCustomEmbed)
   }
 
@@ -91,7 +89,7 @@ const Search = () => {
           title="Photo center iframe"
           width="500"
           height="500"
-          src="http://localhost/pagebuilder/pages"
+          src="https://sandbox.newr7.arcpublishing.com/photo/v2/"
         ></iframe>
       </div>
       <div className="custom-embed-container__toolbar">
