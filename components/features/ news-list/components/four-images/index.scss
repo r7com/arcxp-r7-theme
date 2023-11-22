@@ -13,4 +13,16 @@
       flex-basis: 0;
     }
   }
+
+  &__card {
+    flex-direction: column;
+  }
+
+  &__figure {
+    margin-bottom: 16px;
+  }
+
+  &__image {
+    width: 100%;
+  }
 }

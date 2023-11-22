@@ -6,4 +6,8 @@
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+
+  &__figure {
+    margin-right: 16px;
+  }
 }

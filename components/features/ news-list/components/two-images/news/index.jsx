@@ -11,18 +11,20 @@ export const News = ({ content }) => {
 
   return (
     <Card
-      className="relative"
+      className="two-images__card"
       newsUrl={content?.canonical_url}
       newsUrlTitle={content?.headlines?.basic}
     >
-      <Card.Image className="w-full" format="landscape" shadow>
-        <img alt={imageToUse.alt_text} className="w-full" src={imageToUse.url} />
+      <Card.Image className="two-images__figure" format="landscape" shadow>
+        <img alt={imageToUse.alt_text} className="two-images__image" src={imageToUse.url} />
       </Card.Image>
-      <div className="absolute bottom-0 p-xxxs">
+      <div className="two-images__title-wrapper">
         <Card.HatWrapper>
           <Card.HatTitle color="high">{content?.taxonomy?.primary_section?.name}</Card.HatTitle>
         </Card.HatWrapper>
-        <Card.Title color="high">{content?.headlines?.basic}</Card.Title>
+        <Card.Title color="high" fontStyle="heading-level-3">
+          {content?.headlines?.basic}
+        </Card.Title>
       </div>
     </Card>
   )

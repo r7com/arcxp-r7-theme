@@ -11,12 +11,12 @@ export const News = ({ content }) => {
 
   return (
     <Card
-      className="flex-col"
+      className="four-images__card"
       newsUrl={content?.canonical_url}
       newsUrlTitle={content?.headlines?.basic}
     >
-      <Card.Image className="mb-xxxs" format="landscape">
-        <img alt={imageToUse.alt_text} src={imageToUse.url} className="w-full" />
+      <Card.Image className="four-images__figure" format="landscape">
+        <img alt={imageToUse.alt_text} src={imageToUse.url} className="four-images__image" />
       </Card.Image>
       <div>
         <Card.HatWrapper>

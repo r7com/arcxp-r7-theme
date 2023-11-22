@@ -11,7 +11,7 @@ export const News = ({ content }) => {
 
   return (
     <Card newsUrl={content?.canonical_url} newsUrlTitle={content?.headlines?.basic}>
-      <Card.Image className="mr-xxxs">
+      <Card.Image className="eight-images__figure">
         <img alt={imageToUse.alt_text} src={imageToUse.url} />
       </Card.Image>
       <div>

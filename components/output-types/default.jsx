@@ -4,6 +4,7 @@ import { useFusionContext } from 'fusion:context'
 import { Stack, usePhrases } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/metaData/CustomMetaData'
+import '@r7/ui-base-components/style.css'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
