@@ -21,14 +21,18 @@ export const TitleWithBullets = ({ content }) => {
           </Card.Title>
         </Card>
       </div>
-      <div className="title-with-bullets__wrapper">
-        <Bullet url={content[1]?.canonical_url} size="large">
-          {content[1]?.headlines?.basic}
-        </Bullet>
-        <Bullet url={content[2]?.canonical_url} size="large">
-          {content[2]?.headlines?.basic}
-        </Bullet>
-      </div>
+      {content[1] && (
+        <div className="title-with-bullets__wrapper">
+          <Bullet url={content[1]?.canonical_url} size="large">
+            {content[1]?.headlines?.basic}
+          </Bullet>
+          {content[2] && (
+            <Bullet url={content[2]?.canonical_url} size="large">
+              {content[2]?.headlines?.basic}
+            </Bullet>
+          )}
+        </div>
+      )}
     </div>
   )
 }
