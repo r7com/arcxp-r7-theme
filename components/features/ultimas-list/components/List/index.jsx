@@ -31,8 +31,7 @@ export const SimpleList = props => {
           />
         ) : null}
         <SimpleListContent
-          contentService={customFields.listContentConfig.contentService}
-          contentConfigValues={customFields.listContentConfig.contentConfigValues}
+          customFields={customFields}
           size={size}
           className={className}
           arcSite={arcSite}

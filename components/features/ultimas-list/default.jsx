@@ -8,25 +8,9 @@ import { SimpleList } from './components/List'
 
 const BLOCK_CLASS_NAME = 'b-ultimas-list'
 
-const getFallbackImageURL = ({ deployment, contextPath, fallbackImage }) => {
-  let targetFallbackImage = fallbackImage
-
-  if (!targetFallbackImage.includes('http')) {
-    targetFallbackImage = deployment(`${contextPath}/${targetFallbackImage}`)
-  }
-
-  return targetFallbackImage
-}
-
 const SimpleListWrapper = ({ customFields }) => {
-  const { id, arcSite, contextPath, deployment, isAdmin } = useFusionContext()
-  const { websiteDomain, fallbackImage, primaryLogoAlt, primaryColor } = getProperties(arcSite)
-
-  const targetFallbackImage = getFallbackImageURL({
-    deployment,
-    contextPath,
-    fallbackImage,
-  })
+  const { id, arcSite, isAdmin } = useFusionContext()
+  const { websiteDomain, primaryLogoAlt, primaryColor } = getProperties(arcSite)
 
   if (customFields.lazyLoad && isServerSide() && !isAdmin) {
     return null
@@ -38,7 +22,6 @@ const SimpleListWrapper = ({ customFields }) => {
         id={id}
         className={BLOCK_CLASS_NAME}
         customFields={customFields}
-        targetFallbackImage={targetFallbackImage}
         websiteDomain={websiteDomain}
         arcSite={arcSite}
         primaryColor={primaryColor}
@@ -57,6 +40,11 @@ SimpleListWrapper.propTypes = {
     loadMoreSize: PropTypes.number.tag({
       group: 'Configure Content',
       label: 'Load More Size',
+    }),
+    hideCaption: PropTypes.bool.tag({
+      label: 'Hide Caption',
+      defaultValue: false,
+      group: 'Display Options',
     }),
     title: PropTypes.string.tag({ label: 'Title' }),
     lazyLoad: PropTypes.bool.tag({
