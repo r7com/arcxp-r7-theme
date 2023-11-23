@@ -1,6 +1,5 @@
 import React from 'react'
 import { useContent } from 'fusion:content'
-import { Text } from '@r7/ui-base-components'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 
@@ -20,12 +19,8 @@ export const RelatedItem = ({ item, className, arcSite }) => {
               alt={relatedStory?.promo_items?.basic?.alt_text}
             />
           </div>
-          <Text fontSize="little" as="p">
-            <span className={`${className}__item-section-name`}>{sectionName}</span>
-          </Text>
-          <Text fontSize="xxs" as="p" fontWeight="semibold">
-            {relatedStory?.headlines?.basic}
-          </Text>
+          <p className={`${className}__item-section-name`}>{sectionName}</p>
+          <p className={`${className}__item-title`}>{relatedStory?.headlines?.basic}</p>
         </a>
       </li>
     )
