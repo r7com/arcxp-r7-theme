@@ -29,7 +29,7 @@ export const AccessibilityBlock = () => {
   )
 }
 
-AccessibilityBlock.label = 'Accessibility Block'
+AccessibilityBlock.label = 'Accessibility - R7 Block'
 
 AccessibilityBlock.icon = 'tags'
 
