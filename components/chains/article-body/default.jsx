@@ -204,7 +204,12 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
 
     case 'custom_embed': {
       return item.embed ? (
-        <CustomEmbed key={item.embed.id} classPrefix={BLOCK_CLASS_NAME} element={item} />
+        <CustomEmbed
+          key={item.embed.id}
+          classPrefix={BLOCK_CLASS_NAME}
+          element={item}
+          customFields={customFields}
+        />
       ) : null
     }
 
@@ -263,6 +268,16 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
       hideImageCaption = false,
       hideImageCredits = false,
     } = customFields
+
+    //  const imageDimensions = {
+    //    width: '100%',
+    //    height: '100%',
+    //  }
+    //  if (embed.config?.imageFormat !== 'full') {
+    //    const [width, height] = embed.config?.imageFormat.split('x').map(str => Number(str))
+    //    imageDimensions.width = width
+    //    imageDimensions.height = height
+    //  }
 
     const [width, height] = itemKey.split('x').map(str => Number(str))
     let allowedFloatValue = ''
