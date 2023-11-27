@@ -9,7 +9,7 @@ function ArticleTaboola({ customFields }) {
 
   if (isAdmin) {
     return (
-      <div className="tbl-wrapper" style={{ backgroundColor: '#ffefd5', padding: '20px' }}>
+      <div style={{ backgroundColor: '#ffefd5', padding: '20px' }}>
         <small>Taboola widget&nbsp;</small>
         <strong>{placement}</strong>
       </div>
