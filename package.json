@@ -50,8 +50,8 @@
   "dependencies": {
     "@code-store-platform/story-feed-sections-subtypes": "^1.0.2",
     "@code-store-platform/story-feed-subtypes": "^1.1.1",
-    "@r7/ui-footer-delivery": "1.0.0",
     "@r7/ui-base-components": "^0.0.2-alpha.5",
-    "@r7/ui-header-delivery": "2.0.0"
+    "@r7/ui-footer-delivery": "1.0.0",
+    "@r7/ui-header-delivery": "^2.1.1"
   }
 }
