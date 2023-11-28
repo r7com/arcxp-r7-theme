@@ -1,5 +1,5 @@
-import React from 'react'
 import '@r7/ui-footer-delivery/style.css'
+import React from 'react'
 import { SitemapFooter } from '@r7/ui-footer-delivery'
 import PropTypes from 'prop-types'
 import { useContent } from 'fusion:content'

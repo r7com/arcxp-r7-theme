@@ -14,23 +14,30 @@ const HeaderNavigationMenu = props => {
   const { arcSite } = useFusionContext()
 
   const { primaryColor, websiteDomain, primaryLogo, primaryLogoAlt } = getProperties(arcSite)
+
+  /* 
+   source:site-service-hierarchy
+   hierarchy: header-navigation-menu
+  */
   const headerContent = useContent({
     source: headerConfig?.contentService,
     query: headerConfig?.contentConfigValues,
   })
+  /* 
+   source:site-service-hierarchy
+   hierarchy: sidebar-navigation-menu
+  */
   const sidebarContent = useContent({
     source: sidebarConfig?.contentService,
     query: sidebarConfig?.contentConfigValues,
   })
-  const headerMenuList = headerContent?.children[0]?.children
-  const sidebarMenuList = sidebarContent?.children[0]?.children
 
   return (
     <Header>
       <Header.MainSection bgColor={primaryColor}>
         <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-        <SidebarMenu menuList={sidebarMenuList} />
-        <HeaderMenu menuList={headerMenuList} />
+        <SidebarMenu menuList={sidebarContent} />
+        <HeaderMenu menuList={headerContent} />
         <HeaderSocials />
         <Header.SearchToggle />
         <Header.Search />
