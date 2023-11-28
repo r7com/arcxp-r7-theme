@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContent } from 'fusion:content'
 import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../chains/article-body/shared/get-resize-params-from-ans-image'
 
 export const RelatedItem = ({ item, className, arcSite }) => {
   const relatedStory = useContent({
@@ -25,4 +25,5 @@ export const RelatedItem = ({ item, className, arcSite }) => {
       </li>
     )
   }
+  return null
 }
