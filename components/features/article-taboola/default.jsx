@@ -42,11 +42,11 @@ ArticleTaboola.propTypes = {
   customFields: PropTypes.shape({
     container: PropTypes.string.tag({
       label: 'Taboola Container',
-      group: 'Configure Taboola Widget',
+      group: 'Configurações do Taboola',
     }),
     placement: PropTypes.string.tag({
       label: 'Taboola Placement',
-      group: 'Configure Taboola Widget',
+      group: 'Configurações do Taboola',
     }),
   }),
 }
