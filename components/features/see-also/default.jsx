@@ -9,29 +9,32 @@ const SeeAlso = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { primaryColor } = getProperties(arcSite)
   const BLOCK_CLASS_NAME = 'b-see-also'
-  return (
-    <div
-      className={`${BLOCK_CLASS_NAME}__container`}
-      style={{ borderLeft: `12px solid ${primaryColor}` }}
-    >
-      <Text fontSize="sm" fontWeight="semibold" as="div">
-        <h3 className={`${BLOCK_CLASS_NAME}__title`} style={{ color: primaryColor }}>
-          Veja também
-        </h3>
-      </Text>
+  if (globalContent.related_content.basic.length) {
+    return (
+      <div
+        className={`${BLOCK_CLASS_NAME}__container`}
+        style={{ borderLeft: `12px solid ${primaryColor}` }}
+      >
+        <Text fontSize="sm" fontWeight="semibold" as="div">
+          <h3 className={`${BLOCK_CLASS_NAME}__title`} style={{ color: primaryColor }}>
+            Veja também
+          </h3>
+        </Text>
 
-      <ul className={`${BLOCK_CLASS_NAME}__list`}>
-        {globalContent.related_content.basic.map(relatedItem => (
-          <RelatedItem
-            key={relatedItem._id}
-            item={relatedItem}
-            className={BLOCK_CLASS_NAME}
-            arcSite={arcSite}
-          />
-        ))}
-      </ul>
-    </div>
-  )
+        <ul className={`${BLOCK_CLASS_NAME}__list`}>
+          {globalContent.related_content.basic.map(relatedItem => (
+            <RelatedItem
+              key={relatedItem._id}
+              item={relatedItem}
+              className={BLOCK_CLASS_NAME}
+              arcSite={arcSite}
+            />
+          ))}
+        </ul>
+      </div>
+    )
+  }
+  return null
 }
 
 SeeAlso.label = 'See Also - R7 Block'
