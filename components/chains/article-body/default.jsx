@@ -22,8 +22,6 @@ import {
 
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 
-import { Text } from '@r7/ui-base-components'
-
 import Header from './_children/heading'
 import HTML from './_children/html'
 import List from './_children/list'
@@ -58,9 +56,11 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <Text key={`${type}_${index}_${key}`} as="div" fontSize="xs" fontWeight="normal">
-          <p dangerouslySetInnerHTML={{ __html: content }}></p>
-        </Text>
+        <p
+          key={`${type}_${index}_${key}`}
+          dangerouslySetInnerHTML={{ __html: content }}
+          className={`${BLOCK_CLASS_NAME}__text`}
+        ></p>
       ) : null
     }
     case 'copyright': {
@@ -269,16 +269,6 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
       hideImageCredits = false,
     } = customFields
 
-    //  const imageDimensions = {
-    //    width: '100%',
-    //    height: '100%',
-    //  }
-    //  if (embed.config?.imageFormat !== 'full') {
-    //    const [width, height] = embed.config?.imageFormat.split('x').map(str => Number(str))
-    //    imageDimensions.width = width
-    //    imageDimensions.height = height
-    //  }
-
     const [width, height] = itemKey.split('x').map(str => Number(str))
     let allowedFloatValue = ''
     if (width < IMAGE_FULLWIDTH_FORMAT) {
@@ -297,7 +287,6 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
     } = item
 
     if (url) {
-      console.log()
       const formattedCredits = formatCredits(vanityCredits || credits)
       return (
         <MediaItem

@@ -1,6 +1,18 @@
+.b-article-body {
+  font-family: 'Open Sans', sans-serif;
+  & > div {
+    clear: left;
+  }
+
+  &__text {
+    color: #333;
+    font-size: 18px;
+  }
+}
+
 .b-article-body__image.promo-image {
   &.float {
-    width: auto;
+    width: min-content;
     float: left;
     margin-right: 28px;
     margin-bottom: 24px;
