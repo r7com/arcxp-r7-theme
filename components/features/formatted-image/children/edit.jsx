@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
-import '../index.scss'
+import './index.scss'
 import React, { useState, useEffect, useRef } from 'react'
-import { useContent } from 'fusion:content'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
 import { imageFormats } from '../constants'
 
@@ -14,9 +13,8 @@ const Edit = () => {
     ComposerHandler.sendMessage('ready', {
       height: document.documentElement.scrollHeight,
     })
-    let data = ComposerHandler.getPayload()
-    data.config.imageAnsData = JSON.parse(data?.config?.imageAnsData)
-    setImageId(data?.config?.imageAnsData?._id)
+    const data = ComposerHandler.getPayload()
+    setImageId(data?.config?.imageId)
     setFormat(data?.config?.imageFormat)
     setPayload(data)
 
@@ -30,11 +28,6 @@ const Edit = () => {
       }
     }
   }, [])
-
-  const imageAnsData = useContent({
-    source: 'photo-api',
-    query: { _id: imageId },
-  })
 
   async function handleIframeClick(e) {
     Array.from(this.querySelectorAll('.image-tile')).map(item => {
@@ -70,14 +63,12 @@ const Edit = () => {
   }
 
   const save = () => {
-    const imageAnsDataStr =
-      imageId === payload?.config?.imageAnsData._id ? payload?.config?.imageAnsData : imageAnsData
     const ansCustomEmbed = {
       ...payload,
       config: {
         imageFormat:
           format === payload?.config?.imageFormat ? payload?.config?.imageFormat : format,
-        imageAnsData: JSON.stringify(imageAnsDataStr),
+        imageId: imageId === payload?.config?.imageId ? payload?.config?.imageId : imageId,
       },
     }
     ComposerHandler.sendMessage('data', ansCustomEmbed)
@@ -120,9 +111,7 @@ const Edit = () => {
           <input
             onClick={save}
             disabled={
-              (imageId === payload?.config?.imageAnsData._id && !imageAnsData) ||
-              (imageId === payload?.config?.imageAnsData._id &&
-                format === payload?.config?.imageFormat)
+              imageId === payload?.config?.imageId && format === payload?.config?.imageFormat
             }
             className="btn"
             type="button"

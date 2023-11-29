@@ -1,19 +1,13 @@
 /* eslint-disable no-undef */
-import '../index.scss'
+import './index.scss'
 import React, { useState, useEffect, useRef } from 'react'
-import { useContent } from 'fusion:content'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
 import { imageFormats } from '../constants'
 
 const Search = () => {
-  const [imageId, setImageId] = useState(null)
+  const [imageId, setImageId] = useState('')
   const [format, setFormat] = useState('full')
   const iframeRef = useRef(null)
-
-  const imageAnsData = useContent({
-    source: 'photo-api',
-    query: { _id: imageId },
-  })
 
   useEffect(() => {
     ComposerHandler.sendMessage('ready', {
@@ -69,7 +63,7 @@ const Search = () => {
     const ansCustomEmbed = {
       ...ansStarter,
       config: {
-        imageAnsData: JSON.stringify(imageAnsData),
+        imageId: imageId,
         imageFormat: format,
       },
     }
@@ -106,7 +100,7 @@ const Search = () => {
         <div className="custom-embed-container__toolbar-btns">
           <input onClick={cancel} className="btn" type="button" id="cancel-btn" value="Cancel" />
           <input
-            disabled={!imageAnsData}
+            disabled={!imageId}
             onClick={save}
             className="btn"
             type="button"
