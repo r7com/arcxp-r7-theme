@@ -202,7 +202,12 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
 
     case 'custom_embed': {
       return item.embed ? (
-        <CustomEmbed key={item.embed.id} classPrefix={BLOCK_CLASS_NAME} element={item} />
+        <CustomEmbed
+          key={item.embed.id}
+          classPrefix={BLOCK_CLASS_NAME}
+          element={item}
+          customFields={customFields}
+        />
       ) : null
     }
 

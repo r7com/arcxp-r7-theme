@@ -4,8 +4,9 @@ import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 
 import { Text } from '@r7/ui-base-components'
+import { FormattedImage } from './components/FormattedImage'
 
-const CustomEmbed = ({ element, classPrefix }) => {
+const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()
   const { primaryColor } = getProperties(arcSite)
   const { embed, subtype } = element
@@ -36,6 +37,15 @@ const CustomEmbed = ({ element, classPrefix }) => {
             ))}
           </ul>
         </div>
+      ) : null
+    case 'formatted_image':
+      return embed.config ? (
+        <FormattedImage
+          className={classPrefix}
+          customFields={customFields}
+          arcSite={arcSite}
+          item={embed}
+        />
       ) : null
   }
 }
