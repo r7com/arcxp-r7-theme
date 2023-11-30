@@ -32,7 +32,7 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
           {currentSlide + 1} / {elements.length}
         </Text>
         <Text as="p" fontSize="xxs">
-          {elements[currentSlide]?.caption}
+          {elements[currentSlide]?.headlines?.basic}
         </Text>
         <Text as="p" fontSize="little">
           {elements[currentSlide]?.credits?.by.length
