@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
+import { insertFlusher, insertLoader } from './utils/loaders'
+import { PAGE_TYPE_MAP } from './utils/page-map'
 
 function ArticleTaboola({ customFields }) {
   const { container, placement } = customFields
 
-  const { isAdmin } = useFusionContext()
+  const { isAdmin, arcSite, metaValue } = useFusionContext()
+  const { taboolaPublisherId } = getProperties(arcSite)
+
+  const pageType = PAGE_TYPE_MAP[metaValue('page-type')] || ''
+
+  const isFieldsValid = container && placement && taboolaPublisherId
+
+  useEffect(() => {
+    if (!isAdmin && isFieldsValid) {
+      insertLoader(taboolaPublisherId, pageType)
+      insertFlusher()
+    }
+  }, [])
+
+  if (!isFieldsValid) return null
 
   if (isAdmin) {
     return (
@@ -18,20 +35,21 @@ function ArticleTaboola({ customFields }) {
 
   return (
     <>
-      <div id={container}></div>
+      <div id={container} />
       <script
+        type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: `
-            window._taboola = window._taboola || [];
-            _taboola.push({
-              mode: 'thumbs-feed-02-c',
-              container: '${container}',
-              placement: '${placement}',
-              target_type: 'mix'
-            });
-          `,
+              window._taboola = window._taboola || []
+              _taboola.push({
+                mode: 'thumbs-feed-02-c',
+                container: '${container}',
+                placement: '${placement}',
+                target_type: 'mix'
+              })
+            `,
         }}
-      ></script>
+      />
     </>
   )
 }
