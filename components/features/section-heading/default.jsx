@@ -1,7 +1,8 @@
+import '@r7/ui-section-heading/style.css'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { SectionHeading } from '@r7/ui-section-heading'
-import '@r7/ui-section-heading/style.css'
+import { ConditionalLink } from '@r7/ui-base-components'
 
 const SectionHeadingBlock = props => {
   const { type, title, imageURL, imageAlt, description, url, color } = props.customFields
@@ -16,13 +17,13 @@ const SectionHeadingBlock = props => {
 
   return (
     <SectionHeading color={color || undefined}>
-      <a href={url || undefined} title={description || undefined}>
+      <ConditionalLink href={url} title={description || undefined}>
         {type === 'image' ? (
           <SectionHeading.Image src={imageURL} alt={imageAlt || undefined} />
         ) : (
           <SectionHeading.Title>{title}</SectionHeading.Title>
         )}
-      </a>
+      </ConditionalLink>
 
       <SectionHeading.Line />
 
