@@ -1,6 +1,7 @@
 .b-article-body {
   font-family: 'Open Sans', sans-serif;
-  & > div {
+  & > div,
+  & > figure {
     clear: left;
   }
 
@@ -10,7 +11,7 @@
   }
 }
 
-.b-article-body__image.promo-image {
+.b-article-body__image {
   &.float {
     width: min-content;
     float: left;

@@ -7,7 +7,7 @@ import { GalleryToolbar } from './components/Toolbar'
 import { GallerySlider } from './components/Slider'
 import { GalleryFullscreen } from './components/Fullscreen'
 
-export const Gallery = ({ element, classPrefix }) => {
+const Gallery = ({ element, classPrefix }) => {
   const { content_elements } = element
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -55,3 +55,5 @@ export const Gallery = ({ element, classPrefix }) => {
     </div>
   )
 }
+
+export default Gallery
