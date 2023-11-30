@@ -7,7 +7,14 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
+  &__card {
+    display: flex;
+  }
+
   &__figure {
     margin-right: 16px;
+    align-self: start;
+    min-width: 113px;
+    width: 113px;
   }
 }
