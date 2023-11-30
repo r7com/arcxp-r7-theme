@@ -1,6 +1,11 @@
 import React from 'react'
 import '@r7/ui-article-delivery/style.css'
-import { AccessibilityBar, ContrastControl, FontSizeControl } from '@r7/ui-article-delivery'
+import {
+  AccessibilityBar,
+  ContrastControl,
+  FontSizeControlDecrease,
+  FontSizeControlIncrease,
+} from '@r7/ui-article-delivery'
 
 export const Accessibility = () => {
   return (
@@ -12,10 +17,10 @@ export const Accessibility = () => {
           <ContrastControl />
         </AccessibilityBar.Item>
         <AccessibilityBar.Item>
-          <FontSizeControl.Increase />
+          <FontSizeControlIncrease />
         </AccessibilityBar.Item>
         <AccessibilityBar.Item>
-          <FontSizeControl.Decrease />
+          <FontSizeControlDecrease />
         </AccessibilityBar.Item>
       </AccessibilityBar.List>
     </AccessibilityBar>
