@@ -19,9 +19,7 @@ const ArticleLayout = ({ children }) => {
 
   return (
     <div className={LAYOUT_CLASS_NAME}>
-      {navigation ? (
-        <header className={`${LAYOUT_CLASS_NAME}__navigation`}>{navigation}</header>
-      ) : null}
+      {navigation ? <div className={`${LAYOUT_CLASS_NAME}__navigation`}>{navigation}</div> : null}
       {fullwidthWithoutContainer ? (
         <div className={`${LAYOUT_CLASS_NAME}__full-width-without-container`}>
           {fullwidthWithoutContainer}

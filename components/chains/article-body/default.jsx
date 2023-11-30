@@ -2,6 +2,7 @@ import './default.scss'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
+import { ArticleProvider } from '@r7/ui-article-delivery'
 
 import {
   Conditional,
@@ -22,8 +23,6 @@ import {
 
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 
-import { Text } from '@r7/ui-base-components'
-
 import Header from './_children/heading'
 import HTML from './_children/html'
 import List from './_children/list'
@@ -34,6 +33,7 @@ import Quote from './_children/quote'
 import LinkList from './_children/link-list'
 import { Gallery } from './_children/gallery'
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
+import { Accessibility } from './_children/accessibility-bar'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
@@ -58,9 +58,11 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <Text key={`${type}_${index}_${key}`} as="div" fontSize="xs" fontWeight="normal">
-          <p dangerouslySetInnerHTML={{ __html: content }}></p>
-        </Text>
+        <p
+          key={`${type}_${index}_${key}`}
+          dangerouslySetInnerHTML={{ __html: content }}
+          className={`${BLOCK_CLASS_NAME}__text`}
+        ></p>
       ) : null
     }
     case 'copyright': {
@@ -204,7 +206,12 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
 
     case 'custom_embed': {
       return item.embed ? (
-        <CustomEmbed key={item.embed.id} classPrefix={BLOCK_CLASS_NAME} element={item} />
+        <CustomEmbed
+          key={item.embed.id}
+          classPrefix={BLOCK_CLASS_NAME}
+          element={item}
+          customFields={customFields}
+        />
       ) : null
     }
 
@@ -282,7 +289,6 @@ function parsePromoItem(item, itemKey, arcSite, customFields) {
     } = item
 
     if (url) {
-      console.log()
       const formattedCredits = formatCredits(vanityCredits || credits)
       return (
         <MediaItem
@@ -387,7 +393,14 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
         ]
       : []),
   ]
-  return <article className={BLOCK_CLASS_NAME}>{articleBody}</article>
+  return (
+    <ArticleProvider>
+      <article className={BLOCK_CLASS_NAME}>
+        <Accessibility />
+        {articleBody}
+      </article>
+    </ArticleProvider>
+  )
 }
 
 const ArticleBodyChain = ({ children, customFields = {} }) => {

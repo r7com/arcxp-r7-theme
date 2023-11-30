@@ -4,23 +4,16 @@ import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
 import { Text } from '@r7/ui-base-components'
 
-export const SimpleListContent = ({
-  className,
-  arcSite,
-  size,
-  contentService,
-  contentConfigValues,
-  targetFallbackImage,
-  setLoading,
-}) => {
+export const SimpleListContent = ({ className, arcSite, size, customFields, setLoading }) => {
   const { content_elements: contentElements = [] } =
     useContent({
-      source: contentService,
-      query: { ...{ ...contentConfigValues, feedSize: size } },
+      source: customFields.listContentConfig.contentService,
+      query: { ...{ ...customFields.listContentConfig.contentConfigValues, feedSize: size } },
     }) || {}
   useEffect(() => {
     setLoading(false)
   }, [contentElements])
+
   return (
     <ul className={`${className}__items`}>
       {contentElements.map(element => {
@@ -47,16 +40,16 @@ export const SimpleListContent = ({
               responsiveImages: [274, 548, 1096],
               width: 274,
             }
-          : {
-              src: targetFallbackImage,
-            }
+          : null
         return (
           <li className={`${className}__item`} key={`simple-list-${element._id}`}>
-            <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
-              <Image {...imageParams} />
-            </Link>
+            {imageParams ? (
+              <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
+                <Image {...imageParams} />
+              </Link>
+            ) : null}
             <div className={`${className}__item-content`}>
-              <Text as="span" fontSize="little" style={{ textTransform: 'uppercase' }}>
+              <Text as="span" fontSize="little">
                 <Link href={url}>
                   {credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}
                 </Link>
@@ -65,9 +58,11 @@ export const SimpleListContent = ({
               <Text as="h3" fontSize="md" fontWeight="semibold">
                 <Link href={url}>{headlineText}</Link>
               </Text>
-              <Text as="p" fontSize="xxxs">
-                {subheadlineText}
-              </Text>
+              {!customFields.hideCaption ? (
+                <Text as="p" fontSize="xxxs">
+                  {subheadlineText}
+                </Text>
+              ) : null}
             </div>
           </li>
         )
