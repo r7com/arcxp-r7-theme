@@ -4,7 +4,6 @@ import { useFusionContext } from 'fusion:context'
 import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/metaData/CustomMetaData'
-import { PAGE_TYPE_TABOOLA_MAPPING } from './utils/taboola-types'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -105,37 +104,9 @@ const SampleOutputType = ({
     querylyId,
     querylyOrg,
     locale,
-    taboolaPublisherId,
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
   } = getProperties(arcSite)
-
-  const taboolaInlineStart = `
-    window._taboola = window._taboola || [];
-
-    _taboola.push({ ${PAGE_TYPE_TABOOLA_MAPPING[metaValue('page-type')] || ''}: 'auto' });
-
-    !function (e, f, u, i) {
-      if (!document.getElementById(i)){
-        e.defer = 1;
-        e.src = u;
-        e.id = i;
-        f.parentNode.insertBefore(e, f);
-      }
-    }(document.createElement('script'), 
-      document.getElementsByTagName('script')[0],
-      '//cdn.taboola.com/libtrc/${taboolaPublisherId}/loader.js',
-      'tb_loader_script');
-
-    if(window.performance && typeof window.performance.mark == 'function'){
-      window.performance.mark('tbl_ic');
-    }
-  `
-
-  const taboolaInlineFlush = `
-    window._taboola = window._taboola || [];
-    _taboola.push({flush: true});
-  `
 
   const chartbeatInline = `
     (function() {
@@ -173,7 +144,6 @@ const SampleOutputType = ({
   const inlineScripts = [
     ...new Set([
       ...dangerouslyInjectJS,
-      ...(taboolaPublisherId ? [taboolaInlineStart] : []),
       ...(chartbeatAccountId && chartbeatDomain ? [chartbeatInline] : []),
       ...(comscoreID ? [scriptCodeInline] : []),
       ...(gaID ? [gaScriptInline] : []),
@@ -182,10 +152,6 @@ const SampleOutputType = ({
       'window.isIE = !!window.MSInputMethodContext && !!document.documentMode;', // Not sure window.isIE is even used.
     ]),
   ].join(';')
-
-  const inlineScriptsEnd = [...new Set([...(taboolaPublisherId ? [taboolaInlineFlush] : [])])].join(
-    ';',
-  )
 
   return (
     <html lang={locale} dir={textDirection}>
@@ -280,11 +246,6 @@ const SampleOutputType = ({
           {children}
         </Stack>
         <Fusion />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: inlineScriptsEnd,
-          }}
-        ></script>
       </body>
     </html>
   )
