@@ -27,12 +27,12 @@ function taboolaFlusher() {
   `
 }
 
-function appendScript(name, container, sourceResolver) {
+function appendScript(name, container, inlineScript) {
   const script = document.createElement('script')
   script.id = name
   script.async = true
   script.type = 'text/javascript'
-  script.innerHTML = sourceResolver()
+  script.innerHTML = inlineScript
 
   container.appendChild(script)
 }
@@ -46,7 +46,7 @@ export function insertFlusher() {
   const body = document.getElementsByTagName('body')[0]
   if (!body) return
 
-  appendScript(flusherId, body, taboolaFlusher)
+  appendScript(flusherId, body, taboolaFlusher())
 }
 
 export function insertLoader(publisherId, pageType) {
@@ -59,6 +59,6 @@ export function insertLoader(publisherId, pageType) {
   if (!head) return
 
   if (pageType) {
-    appendScript(loaderId, head, () => taboolaLoader(publisherId, pageType))
+    appendScript(loaderId, head, taboolaLoader(publisherId, pageType))
   }
 }
