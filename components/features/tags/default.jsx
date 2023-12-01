@@ -12,11 +12,11 @@ export const ArticleTags = () => {
   if (globalContent.taxonomy?.tags && globalContent.taxonomy?.tags?.length) {
     return (
       <div className={`${BLOCK_CLASS_NAME}-container`}>
-        <span
-          className={`${BLOCK_CLASS_NAME}-divider`}
-          style={{ backgroundColor: primaryColor }}
-        ></span>
         <ul className={`${BLOCK_CLASS_NAME}-list`}>
+          <span
+            className={`${BLOCK_CLASS_NAME}-divider`}
+            style={{ backgroundColor: primaryColor }}
+          ></span>
           {globalContent.taxonomy.tags.map(tag => (
             <li
               key={tag.slug}
