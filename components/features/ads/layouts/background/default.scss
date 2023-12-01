@@ -1,0 +1,16 @@
+.ads-background {
+  padding-bottom: 40px;
+  background-color: #DEDEDE;
+  border-radius: 5px;
+
+  &__text {
+    display: block;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px;
+    height: 40px;
+    text-align: center;
+    color: #333;
+    font-family: "Open Sans",sans-serif;
+  }
+}
