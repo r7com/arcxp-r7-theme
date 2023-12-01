@@ -13,23 +13,23 @@ function Ads({ customFields }) {
   const layout = {
     background: (
       <Background>
-        <Placeholder />
+        {isAdmin && <Placeholder />}
         background
       </Background>
     ),
     lines: (
       <Lines>
-        <Placeholder />
+        {isAdmin && <Placeholder />}
         lines
       </Lines>
     ),
     tag: (
       <Tag>
-        <Placeholder />
+        {isAdmin && <Placeholder />}
         tag
       </Tag>
     ),
-    none: <Placeholder />,
+    none: <>{isAdmin && <Placeholder />}</>,
   }[blockLayout]
 
   return (
