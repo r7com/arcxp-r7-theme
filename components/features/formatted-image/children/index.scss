@@ -49,6 +49,16 @@
       }
     }
   }
+
+  &.view {
+    flex-direction: row;
+    justify-content: flex-start;
+
+    &__image {
+      max-height: 230px;
+      object-fit: cover;
+    }
+  }
 }
 
 #iframe-photo-center {
