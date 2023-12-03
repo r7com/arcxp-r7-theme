@@ -2,12 +2,16 @@
   &__header {
     &-container {
       position: relative;
+      margin-bottom: 8px;
     }
     &-text {
       display: inline-block;
       padding-right: 8px;
       background-color: #ffffff;
       letter-spacing: 2px;
+      font-size: 52px;
+      line-height: 1.29;
+      font-weight: 300;
     }
     &-divider {
       position: absolute;
@@ -51,8 +55,16 @@
       flex-direction: column;
       gap: 8px;
 
-      span {
+      div {
+        font-family: "Open Sans",sans-serif;
+        font-size: 11px;
+        color: #333;
+        line-height: 15px;
         text-transform: uppercase;
+
+        span {
+          font-family: "Open Sans",sans-serif;
+        }
       }
     }
 

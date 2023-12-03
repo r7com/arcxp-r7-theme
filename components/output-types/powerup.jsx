@@ -3,7 +3,7 @@ import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
 import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
-import MetaData from '../../util/metaData/CustomMetaData'
+import MetaData from '../../util/components/metaData/CustomMetaData'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {

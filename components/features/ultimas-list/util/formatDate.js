@@ -14,8 +14,8 @@ export const formatDate = dateString => {
   if (dayDifference >= 1) {
     return `${date.getUTCDate()}/${date.getUTCMonth() + 1}/${date.getUTCFullYear()}`
   } else if (hours >= 1) {
-    return `${hours} hour${hours > 1 ? 's' : ''} ago`
+    return `HÁ ${hours} HORA${hours > 1 ? 'S' : ''}`
   } else {
-    return `${minutes} minute${minutes > 1 ? 's' : ''} ago`
+    return `HÁ ${minutes} MINUTO${minutes > 1 ? 'S' : ''}`
   }
 }

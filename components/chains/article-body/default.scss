@@ -9,6 +9,12 @@
     color: #333;
     font-size: 18px;
   }
+
+  @media screen and (max-width: 48rem) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .b-article-body__image {
@@ -17,6 +23,11 @@
     float: left;
     margin-right: 28px;
     margin-bottom: 24px;
+
+    @media screen and (max-width: 48rem) {
+      float: none;
+      margin-right: 0;
+    }
   }
 
   .b-article-body__image-wrapper {
@@ -25,6 +36,11 @@
       object-fit: cover;
       width: 100%;
       height: 100%;
+    }
+
+    @media screen and (max-width: 48rem) {
+      width: 100%;
+      height: auto;
     }
   }
 }

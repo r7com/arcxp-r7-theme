@@ -2,7 +2,7 @@ import React from 'react'
 import { useContent } from 'fusion:content'
 import { Conditional, formatCredits, Image, Link, MediaItem } from '@wpmedia/arc-themes-components'
 import { IMAGE_FULLWIDTH_FORMAT } from '../../../../constants'
-import getResizeParamsFromANSImage from '../../../../shared/get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../../../../util/get-resize-params-from-ans-image'
 
 export const FormattedImage = ({ customFields, item, className, arcSite }) => {
   const {
