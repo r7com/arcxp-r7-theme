@@ -1,11 +1,12 @@
-@import './swiper.scss';
+@import '../../styles/swiper.scss';
+
 .no-scroll {
   height: 100%;
   overflow: hidden;
   width: 100%;
 }
 
-.b-article-body-gallery {
+.gallery {
   &__container {
     box-shadow: 0px 0px 0 1px #cecece;
     border-radius: 4px;

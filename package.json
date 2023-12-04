@@ -48,6 +48,7 @@
     }
   },
   "dependencies": {
+    "@arcxp/shared-powerup-composer-utils": "^1.0.0",
     "@code-store-platform/story-feed-sections-subtypes": "^1.0.2",
     "@code-store-platform/story-feed-subtypes": "^1.1.1",
     "@r7/ui-article-delivery": "^0.3.0",

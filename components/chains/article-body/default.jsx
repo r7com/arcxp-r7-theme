@@ -5,13 +5,11 @@ import { useFusionContext } from 'fusion:context'
 import { ArticleProvider } from '@r7/ui-article-delivery'
 
 import {
-  Conditional,
   Divider,
   formatCredits,
   getAspectRatio,
   Heading,
   HeadingSection,
-  Image,
   isServerSide,
   LazyLoad,
   Link,
@@ -21,29 +19,27 @@ import {
   Video,
 } from '@wpmedia/arc-themes-components'
 
-import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
-
-import Header from './_children/heading'
-import HTML from './_children/html'
-import List from './_children/list'
-import Oembed from './_children/oembed'
-import Table from './_children/table'
-import CustomEmbed from './_children/custom-embed'
-import Quote from './_children/quote'
-import LinkList from './_children/link-list'
-import { Gallery } from './_children/gallery'
+import {
+  Header,
+  HTML,
+  List,
+  Oembed,
+  Table,
+  CustomEmbed,
+  Quote,
+  LinkList,
+  Gallery,
+} from './_children'
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
 import { Accessibility } from './_children/accessibility-bar'
+import { Image } from '../../../util/components/Image'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
-function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
+function parseArticleItem(item, index, phrases, customFields) {
   const { _id: key = index, type, content } = item
 
   const {
-    hideImageTitle = false,
-    hideImageCaption = false,
-    hideImageCredits = false,
     // hideGalleryTitle = false,
     // hideGalleryCaption = false,
     // hideGalleryCredits = false,
@@ -80,50 +76,20 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
     }
 
     case 'image': {
-      const {
-        additional_properties: { link = '' } = {},
-        // alignment not always present
-        alignment = '',
-        alt_text: altText,
-        caption,
-        credits,
-        subtitle,
-        url,
-        vanity_credits: vanityCredits,
-      } = item
-
-      // only left and right float supported
+      const { alignment = '' } = item
       const allowedFloatValue = alignment === 'left' || alignment === 'right' ? alignment : ''
       const figureImageClassName = `${BLOCK_CLASS_NAME}__image${
         allowedFloatValue ? ` ${BLOCK_CLASS_NAME}__image-float-${allowedFloatValue}` : ''
       }`
 
-      if (url) {
-        const formattedCredits = formatCredits(vanityCredits || credits)
-        return (
-          <MediaItem
-            key={`${type}_${index}_${key}`}
-            className={figureImageClassName}
-            caption={!hideImageCaption ? caption : null}
-            credit={!hideImageCredits ? formattedCredits : null}
-            title={!hideImageTitle ? subtitle : null}
-          >
-            <Conditional component={Link} condition={link} href={link}>
-              <Image
-                {...getResizeParamsFromANSImage(
-                  item,
-                  arcSite,
-                  // allowedFloatValue ? 400 : 800,
-                  item.width,
-                  [390, 460, 660, 770].map(w => (allowedFloatValue ? w / 2 : w)),
-                )}
-                alt={altText}
-              />
-            </Conditional>
-          </MediaItem>
-        )
-      }
-      return null
+      return (
+        <Image
+          key={`${type}_${index}_${key}`}
+          item={item}
+          customFields={customFields}
+          className={figureImageClassName}
+        />
+      )
     }
 
     case 'interstitial_link': {
@@ -263,63 +229,24 @@ function parseArticleItem(item, index, arcSite, phrases, id, customFields) {
   }
 }
 
-function parsePromoItem(item, itemKey, arcSite, customFields) {
+function parsePromoItem(item, itemKey, customFields) {
   if (item.type === 'image') {
-    const {
-      hideImageTitle = false,
-      hideImageCaption = false,
-      hideImageCredits = false,
-    } = customFields
-
     const [width, height] = itemKey.split('x').map(str => Number(str))
     let allowedFloatValue = ''
     if (width < IMAGE_FULLWIDTH_FORMAT) {
       allowedFloatValue = 'left'
     }
 
-    const {
-      _id,
-      additional_properties: { link = '' } = {},
-      alt_text: altText,
-      caption,
-      credits,
-      subtitle,
-      url,
-      vanity_credits: vanityCredits,
-    } = item
-
-    if (url) {
-      const formattedCredits = formatCredits(vanityCredits || credits)
-      return (
-        <MediaItem
-          key={`${_id}_${itemKey}`}
-          className={`${BLOCK_CLASS_NAME}__image promo-image ${allowedFloatValue ? 'float' : ''}`}
-          caption={!hideImageCaption ? caption : null}
-          credit={!hideImageCredits ? formattedCredits : null}
-          title={!hideImageTitle ? subtitle : null}
-        >
-          <Conditional component={Link} condition={link} href={link}>
-            <div
-              className={`${BLOCK_CLASS_NAME}__image-wrapper`}
-              style={{
-                width: width,
-                height: height,
-              }}
-            >
-              <Image
-                {...getResizeParamsFromANSImage(
-                  item,
-                  arcSite,
-                  item.width,
-                  [390, 460, 660, 770].map(w => (allowedFloatValue ? w / 2 : w)),
-                )}
-                alt={altText}
-              />
-            </div>
-          </Conditional>
-        </MediaItem>
-      )
-    }
+    return (
+      <Image
+        key={`${item.type}_${item._id}`}
+        item={item}
+        width={width}
+        height={height}
+        customFields={customFields}
+        className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
+      />
+    )
   }
   return null
 }

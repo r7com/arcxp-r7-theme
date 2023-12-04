@@ -49,12 +49,12 @@ export const SimpleListContent = ({ className, arcSite, size, customFields, setL
               </Link>
             ) : null}
             <div className={`${className}__item-content`}>
-              <Text as="span" fontSize="little">
+              <div>
                 <Link href={url}>
-                  {credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}
+                  <span>{credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}</span>
                 </Link>
                 {formatDate(publish_date)}
-              </Text>
+              </div>
               <Text as="h3" fontSize="md" fontWeight="semibold">
                 <Link href={url}>{headlineText}</Link>
               </Text>
