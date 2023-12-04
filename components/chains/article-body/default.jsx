@@ -2,6 +2,7 @@ import './default.scss'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
+import { ArticleProvider } from '@r7/ui-article-delivery'
 
 import {
   Divider,
@@ -30,6 +31,7 @@ import {
   Gallery,
 } from './_children'
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
+import { Accessibility } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
@@ -318,7 +320,14 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
         ]
       : []),
   ]
-  return <article className={BLOCK_CLASS_NAME}>{articleBody}</article>
+  return (
+    <ArticleProvider>
+      <article className={BLOCK_CLASS_NAME}>
+        <Accessibility />
+        {articleBody}
+      </article>
+    </ArticleProvider>
+  )
 }
 
 const ArticleBodyChain = ({ children, customFields = {} }) => {
