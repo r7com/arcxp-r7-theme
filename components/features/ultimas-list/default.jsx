@@ -9,7 +9,7 @@ import { SimpleList } from './components/List'
 const BLOCK_CLASS_NAME = 'b-ultimas-list'
 
 const SimpleListWrapper = ({ customFields }) => {
-  const { id, arcSite, isAdmin } = useFusionContext()
+  const { arcSite, isAdmin, globalContent } = useFusionContext()
   const { websiteDomain, primaryLogoAlt, primaryColor } = getProperties(arcSite)
 
   if (customFields.lazyLoad && isServerSide() && !isAdmin) {
@@ -19,7 +19,7 @@ const SimpleListWrapper = ({ customFields }) => {
   return (
     <LazyLoad enabled={customFields.lazyLoad && !isAdmin}>
       <SimpleList
-        id={id}
+        storyId={globalContent._id}
         className={BLOCK_CLASS_NAME}
         customFields={customFields}
         websiteDomain={websiteDomain}

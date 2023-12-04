@@ -4,22 +4,14 @@ import { SimpleListContent } from '../ListContent'
 import { SimpleListHeading } from '../ListHeading'
 
 export const SimpleList = props => {
-  const {
-    className,
-    arcSite,
-    customFields,
-    id = '',
-    primaryColor,
-    targetFallbackImage,
-    websiteDomain,
-  } = props
+  const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
   const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
   const [loading, setLoading] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const clickHandler = () => {
     setSize(prev => prev + customFields.loadMoreSize)
     setLoading(true)
   }
-
   return (
     <HeadingSection>
       <Stack key={id} className={className}>
@@ -32,14 +24,14 @@ export const SimpleList = props => {
         ) : null}
         <SimpleListContent
           customFields={customFields}
-          size={size}
           className={className}
           arcSite={arcSite}
           websiteDomain={websiteDomain}
-          targetFallbackImage={targetFallbackImage}
           setLoading={setLoading}
+          setDisabled={setDisabled}
+          size={size}
+          storyId={storyId}
         />
-
         {loading ? (
           <div className={`${className}__loader-container`}>
             <div
@@ -53,6 +45,7 @@ export const SimpleList = props => {
               onClick={clickHandler}
               className={`${className}__btn`}
               style={{ backgroundColor: primaryColor }}
+              disabled={disabled}
             >
               Veja mais Notícias
             </button>

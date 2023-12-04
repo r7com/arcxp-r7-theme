@@ -90,6 +90,10 @@
     cursor: pointer;
     height: 48px;
     width: max-content;
+
+    &:disabled {
+      opacity: 0.7;
+    }
   }
   &__loader-container {
     padding: 43px 0;

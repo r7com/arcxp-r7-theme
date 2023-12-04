@@ -4,19 +4,31 @@ import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
 import { Text } from '@r7/ui-base-components'
 
-export const SimpleListContent = ({ className, arcSite, size, customFields, setLoading }) => {
-  const { content_elements: contentElements = [] } =
+export const SimpleListContent = ({
+  className,
+  arcSite,
+  customFields,
+  setLoading,
+  setDisabled,
+  size,
+  storyId,
+}) => {
+  const { content_elements } =
     useContent({
       source: customFields.listContentConfig.contentService,
       query: { ...{ ...customFields.listContentConfig.contentConfigValues, feedSize: size } },
     }) || {}
+  const contentElementsStory = content_elements.filter(item => item._id !== storyId)
   useEffect(() => {
     setLoading(false)
-  }, [contentElements])
+    if (content_elements.length < size) {
+      setDisabled(true)
+    }
+  }, [content_elements])
 
   return (
     <ul className={`${className}__items`}>
-      {contentElements.map(element => {
+      {contentElementsStory.map(element => {
         const {
           headlines: { basic: headlineText = '' } = {},
           subheadlines: { basic: subheadlineText = '' } = {},
