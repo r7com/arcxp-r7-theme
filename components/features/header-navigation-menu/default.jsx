@@ -33,14 +33,16 @@ const HeaderNavigationMenu = props => {
   })
 
   return (
-    <Header.MainSection bgColor={primaryColor}>
-      <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-      <SidebarMenu menuList={sidebarContent} />
-      <HeaderMenu menuList={headerContent} />
-      <HeaderSocials />
-      <Header.SearchToggle />
-      <Header.Search />
-    </Header.MainSection>
+    <Header>
+      <Header.MainSection bgColor={primaryColor}>
+        <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+        <SidebarMenu menuList={sidebarContent} />
+        <HeaderMenu menuList={headerContent} />
+        <HeaderSocials />
+        <Header.SearchToggle />
+        <Header.Search />
+      </Header.MainSection>
+    </Header>
   )
 }
 
