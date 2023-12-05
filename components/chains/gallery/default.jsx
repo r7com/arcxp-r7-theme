@@ -1,72 +1,73 @@
-import React from 'react'
+import './default.scss'
+import React, { useState } from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { isServerSide, LazyLoad } from '@wpmedia/arc-themes-components'
-import { Image } from '../../../util/components/Image'
+import { GalleryItem } from './_children/galleryItem'
+import { GalleryFullscreen } from '../../../util/components/FullscreenGallery'
 
 const BLOCK_CLASS_NAME = 'b-vertical-gallery'
 
-export const VerticalGalleryChainPresentation = ({ children, customFields = {}, context }) => {
-  const { globalContent: items = {} } = context
-  const { content_elements: contentElements = [] } = items
-  const { elementPlacement: adPlacementConfigObj = {} } = customFields
-
+const VerticalGalleryChain = ({ children, customFields = {} }) => {
+  const [fullscreen, setFullscreen] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
+  const context = useFusionContext()
+  const { isAdmin, globalContent: items = {} } = context
+  const { content_elements: contentElements = [], _id } = items
+  if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
+    return null
+  }
   const contentElementsImages = contentElements.filter(element => element.type === 'image')
   if (!contentElementsImages.length) {
     return null
   }
-
-  const adPlacements = Object.keys(adPlacementConfigObj).map(key => ({
+  const adPlacements = Object.keys(customFields.elementPlacement).map(key => ({
     feature: +key,
-    image: +adPlacementConfigObj[key],
+    image: +customFields.elementPlacement[key],
   }))
-  console.log(contentElementsImages)
   let imagesCounter = 0
   const elements = [
     ...contentElementsImages.map((imageItem, index) => {
-      // Start at 1 since the ad configs use one-based array indexes
       imagesCounter += 1
       const adsAfterImage = adPlacements.filter(placement => placement.image === imagesCounter)
-      // The ad features should follow the content element if they exist, but not if
-      // the current image is the last or second-to-last paragraph.
       if (adsAfterImage.length && imagesCounter < contentElementsImages.length - 1) {
-        console.log(imageItem)
         return [
-          //  parseArticleItem(contentElement, index, arcSite, phrases, id, customFields),
-          <Image
+          <GalleryItem
             key={`${index}_${imageItem._id}`}
+            itemIndex={index}
             item={imageItem}
             customFields={customFields}
             className={`${BLOCK_CLASS_NAME}__item`}
+            setFullscreen={setFullscreen}
+            setActiveSlide={setActiveSlide}
           />,
           ...adsAfterImage.map(placement => children[placement.feature - 1]),
         ]
       }
       return (
-        <Image
+        <GalleryItem
           key={`${index}_${imageItem._id}`}
+          itemIndex={index}
           item={imageItem}
           customFields={customFields}
           className={`${BLOCK_CLASS_NAME}__item`}
+          setFullscreen={setFullscreen}
+          setActiveSlide={setActiveSlide}
         />
       )
     }),
+    <GalleryFullscreen
+      key={_id}
+      setFullscreen={setFullscreen}
+      className={`gallery__overlay`}
+      isOpen={fullscreen}
+      elements={contentElementsImages}
+      initialSlide={activeSlide}
+    />,
   ]
-  console.log(elements)
-  return <article className={BLOCK_CLASS_NAME}>{elements}</article>
-}
-
-const VerticalGalleryChain = ({ children, customFields = {} }) => {
-  const context = useFusionContext()
-  const { isAdmin } = context
-  if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
-    return null
-  }
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <VerticalGalleryChainPresentation context={context} customFields={customFields}>
-        {children}
-      </VerticalGalleryChainPresentation>
+      <section className={BLOCK_CLASS_NAME}>{elements}</section>
     </LazyLoad>
   )
 }

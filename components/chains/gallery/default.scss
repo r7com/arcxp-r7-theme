@@ -1,0 +1,45 @@
+.b-vertical-gallery {
+  font-family: 'Open Sans', sans-serif;
+
+  & > figure {
+    margin-bottom: 64px;
+  }
+
+  &__item {
+    & .image-wrapper {
+      position: relative;
+    }
+
+    &-toolbar {
+      width: 100%;
+      height: 50px;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 16px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      &-expand {
+        outline: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        background: #fff;
+        border: 1px solid #dddde1;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        svg {
+          fill: #000;
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
