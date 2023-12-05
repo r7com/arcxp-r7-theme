@@ -9,7 +9,7 @@ import {
 import { useFusionContext } from 'fusion:context'
 import getResizeParamsFromANSImage from '../../get-resize-params-from-ans-image'
 
-export const Image = ({ item, customFields, className, width, height }) => {
+export const Image = ({ children, item, customFields, className, width, height }) => {
   const { arcSite } = useFusionContext()
   const { hideImageCaption, hideImageCredits, hideImageTitle } = customFields
   const {
@@ -40,6 +40,7 @@ export const Image = ({ item, customFields, className, width, height }) => {
             {...getResizeParamsFromANSImage(item, arcSite, item.width, [390, 460, 660, 770])}
             alt={altText}
           />
+          {children}
         </div>
       </Conditional>
     </MediaItem>

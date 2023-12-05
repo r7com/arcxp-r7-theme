@@ -3,7 +3,7 @@
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../../../../get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../get-resize-params-from-ans-image'
 
 export const FullscreenGrid = ({
   className,
@@ -24,7 +24,6 @@ export const FullscreenGrid = ({
             key={item._id}
             className={`${className}-grid-item`}
             onClick={() => {
-              console.log(gallery?.slideTo(index))
               gallery?.slideTo(index)
               setActiveSlideIndex(index)
               setView(views.gallery)

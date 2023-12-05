@@ -1,20 +1,23 @@
 import './index.scss'
 import React, { useState, useRef } from 'react'
-import { FullscreenHeader } from './Header'
-import { FullscreenSlider } from './Slider'
-import { FullscreenGrid } from './Grid'
-import { FullscreenToolbar } from './Toolbar'
+import { FullscreenHeader } from './components/Header'
+import { FullscreenSlider } from './components/Slider'
+import { FullscreenGrid } from './components/Grid'
+import { FullscreenToolbar } from './components/Toolbar'
 
-export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen }) => {
+export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen, initialSlide }) => {
   const views = {
     gallery: 'gallery',
     grid: 'grid',
   }
   const [view, setView] = useState(views.gallery)
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+  const [activeSlideIndex, setActiveSlideIndex] = useState(initialSlide)
   const swiperRef = useRef(null)
+  if (!isOpen) {
+    return null
+  }
   return (
-    <div className={`${className} ${isOpen ? 'active' : ''}`}>
+    <div className={`${className}`}>
       <div className={`${className}-wrapper`}>
         <FullscreenHeader
           className={className}
@@ -31,6 +34,7 @@ export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen }
               view={view}
               views={views}
               swiperRef={swiperRef}
+              initialSlide={initialSlide}
               setActiveSlideIndex={setActiveSlideIndex}
             />
             <FullscreenGrid

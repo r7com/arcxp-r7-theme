@@ -5,7 +5,7 @@ import { GalleryThumbs } from './components/Thumbs'
 import { GalleryCaption } from './components/Caption'
 import { GalleryToolbar } from './components/Toolbar'
 import { GallerySlider } from './components/Slider'
-import { GalleryFullscreen } from './components/Fullscreen'
+import { GalleryFullscreen } from '../FullscreenGallery'
 
 export const Gallery = ({ elements, className }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
@@ -45,6 +45,7 @@ export const Gallery = ({ elements, className }) => {
         }
       />
       <GalleryFullscreen
+        initialSlide={activeSlideIndex}
         setFullscreen={setFullscreen}
         className={`gallery__overlay`}
         isOpen={fullscreen}

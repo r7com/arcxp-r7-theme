@@ -1,5 +1,4 @@
 .gallery__overlay {
-  display: none;
   position: fixed;
   height: 100%;
   left: 0;
@@ -7,10 +6,6 @@
   right: 0;
   background: #111;
   z-index: 1000;
-
-  &.active {
-    display: block;
-  }
 
   &-wrapper {
     position: relative;
