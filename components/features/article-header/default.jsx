@@ -5,35 +5,28 @@ import { useFusionContext } from 'fusion:context'
 import { Signature, SocialShare } from '@r7/ui-article-delivery'
 import { Heading, Subheading } from '@r7/ui-base-componenets'
 import getProperties from 'fusion:properties'
+import { formatAuthors } from '@wpmedia/arc-themes-components'
+import { getSectionInfo } from '../../../util/get-section-info'
 
 function ArticleHeader() {
+  const { globalContent, arcSite } = useFusionContext()
+
+  if (!globalContent) return null
+
   const {
-    globalContent: {
-      taxonomy,
-      last_updated_date,
-      first_publish_date,
-      created_date,
-      credits,
-      website,
-      headlines,
-      subheadlines,
-      website_url: websiteUrl = '',
-    },
-    arcSite,
-  } = useFusionContext()
+    last_updated_date,
+    first_publish_date,
+    created_date,
+    credits,
+    headlines,
+    subheadlines,
+    website_url: websiteUrl = '',
+  } = globalContent
   const { websiteDomain } = getProperties(arcSite)
   const encodedUrl = encodeURI(`${websiteDomain}${websiteUrl}`)
-
-  // A business rule for authors has not yet been established, as arc can send a list of authors and organizations
-  const author =
-    credits.by.length > 0
-      ? credits.by
-          .map(credit => `${credit.org ? `por ${credit.org},` : ''} ${credit.name}`)
-          .join(', ')
-      : ''
-  const sectionName = taxonomy
-    ? taxonomy?.primary_section.name || taxonomy.sections[0].name
-    : website
+  const bylineNodes = formatAuthors(credits?.by, 'e')
+  const author = bylineNodes?.length > 0 ? <span>{bylineNodes}</span> : ''
+  const { sectionName, sectionUrl } = getSectionInfo(globalContent, arcSite)
 
   return (
     <header>
@@ -41,13 +34,7 @@ function ArticleHeader() {
       <Subheading dangerHTML={subheadlines.basic} />
       <Signature>
         <Signature.Content>
-          <Signature.Info
-            author={author}
-            sectionName={sectionName}
-            sectionUrl={`${websiteDomain}${
-              taxonomy?.primary_section?.path || taxonomy?.sections[0].path || '/'
-            } `}
-          />
+          <Signature.Info author={author} sectionName={sectionName} sectionUrl={sectionUrl} />
           <Signature.Date
             modified={last_updated_date}
             published={first_publish_date || created_date}
