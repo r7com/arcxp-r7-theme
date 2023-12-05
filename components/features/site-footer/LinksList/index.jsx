@@ -1,4 +1,3 @@
-import '@r7/ui-footer-delivery/style.css'
 import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
 
