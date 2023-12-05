@@ -18,14 +18,18 @@ export const SimpleListContent = ({
       source: customFields.listContentConfig.contentService,
       query: { ...{ ...customFields.listContentConfig.contentConfigValues, feedSize: size } },
     }) || {}
-  const contentElementsStory = content_elements.filter(item => item._id !== storyId)
+
   useEffect(() => {
     setLoading(false)
-    if (content_elements.length < size) {
+    if (content_elements && content_elements.length < size) {
       setDisabled(true)
     }
   }, [content_elements])
 
+  const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
+  if (!contentElementsStory) {
+    return null
+  }
   return (
     <ul className={`${className}__items`}>
       {contentElementsStory.map(element => {

@@ -4,6 +4,9 @@
   & > figure {
     clear: left;
   }
+  & > * {
+    margin-bottom: 32px !important;
+  }
 
   &__text {
     color: #333;
