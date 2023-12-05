@@ -6,7 +6,7 @@ export const SidebarMenuItem = ({ menuLink }) => {
   return (
     <>
       <Sidebar.Item>
-        {menuLink.children?.length ? (
+        {menuLink.children?.length > 0 ? (
           <>
             <Sidebar.Button id={menuLink._id}>{menuLink.name}</Sidebar.Button>
             <SidebarSubmenu submenu={menuLink} />
