@@ -35,10 +35,7 @@ export const Image = ({ item, customFields, className, width, height }) => {
       title={!hideImageTitle ? subtitle : null}
     >
       <Conditional component={Link} condition={link} href={link}>
-        <div
-          className="b-article-body__image-wrapper"
-          style={{ width: width ?? '100%', height: height ?? '100%' }}
-        >
+        <div className="image-wrapper" style={{ width: width ?? '100%', height: height ?? '100%' }}>
           <DefaultImage
             {...getResizeParamsFromANSImage(item, arcSite, item.width, [390, 460, 660, 770])}
             alt={altText}
