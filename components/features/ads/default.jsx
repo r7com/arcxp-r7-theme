@@ -51,7 +51,7 @@ Ads.propTypes = {
       defaultValue: 'background',
       labels: {
         background: 'Fundo cinza',
-        lines: 'Envolto em linhas',
+        lines: 'Linhas',
         tag: 'Tag publicidade acima',
         none: 'Nenhum',
       },
