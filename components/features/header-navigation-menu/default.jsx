@@ -33,16 +33,14 @@ const HeaderNavigationMenu = props => {
   })
 
   return (
-    <Header>
-      <Header.MainSection bgColor={primaryColor}>
-        <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-        <SidebarMenu menuList={sidebarContent} />
-        <HeaderMenu menuList={headerContent} />
-        <HeaderSocials />
-        <Header.SearchToggle />
-        <Header.Search />
-      </Header.MainSection>
-    </Header>
+    <Header.MainSection bgColor={primaryColor}>
+      <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+      <SidebarMenu menuList={sidebarContent} />
+      <HeaderMenu menuList={headerContent} />
+      <HeaderSocials />
+      <Header.SearchToggle />
+      <Header.Search />
+    </Header.MainSection>
   )
 }
 
@@ -59,7 +57,7 @@ HeaderNavigationMenu.propTypes = {
   }),
 }
 
-HeaderNavigationMenu.label = 'Header - R7 Block'
+HeaderNavigationMenu.label = 'Header Main Navigation - R7 Block'
 
 HeaderNavigationMenu.icon = 'arc-headline'
 
