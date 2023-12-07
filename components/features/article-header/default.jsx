@@ -1,9 +1,8 @@
 import React from 'react'
 import '@r7/ui-article-delivery/style.css'
-import '@r7/ui-base-componenets/style.css'
 import { useFusionContext } from 'fusion:context'
 import { Signature, SocialShare } from '@r7/ui-article-delivery'
-import { Heading, Subheading } from '@r7/ui-base-componenets'
+import { Heading, Subheading } from '@r7/ui-base-components'
 import getProperties from 'fusion:properties'
 import { formatAuthors } from '@wpmedia/arc-themes-components'
 import { getSectionInfo } from '../../../util/get-section-info'
@@ -29,29 +28,33 @@ function ArticleHeader() {
   const { sectionName, sectionUrl } = getSectionInfo(globalContent, arcSite)
 
   return (
-    <header>
-      <Heading dangerHTML={headlines.basic} />
-      <Subheading dangerHTML={subheadlines.basic} />
-      <Signature>
-        <Signature.Content>
-          <Signature.Info author={author} sectionName={sectionName} sectionUrl={sectionUrl} />
-          <Signature.Date
-            modified={last_updated_date}
-            published={first_publish_date || created_date}
-          />
-        </Signature.Content>
-      </Signature>
-      <SocialShare>
-        <SocialShare.List>
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="twitter" />
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="facebook" />
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="linkedin" />
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="whatsapp" />
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="googleNews" />
-          <SocialShare.Item link={encodedUrl} title={headlines.basic} name="share" />
-        </SocialShare.List>
-      </SocialShare>
-    </header>
+    <ArticleHeader>
+      <ArticleHeader.Heading>
+        <Heading dangerHTML={headlines.basic} />
+        <Subheading dangerHTML={subheadlines.basic} />
+      </ArticleHeader.Heading>
+      <ArticleHeader.Topbar>
+        <Signature>
+          <Signature.Content>
+            <Signature.Info author={author} sectionName={sectionName} sectionUrl={sectionUrl} />
+            <Signature.Date
+              modified={last_updated_date}
+              published={first_publish_date || created_date}
+            />
+          </Signature.Content>
+        </Signature>
+        <SocialShare>
+          <SocialShare.List>
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="twitter" />
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="facebook" />
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="linkedin" />
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="whatsapp" />
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="googleNews" />
+            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="share" />
+          </SocialShare.List>
+        </SocialShare>
+      </ArticleHeader.Topbar>
+    </ArticleHeader>
   )
 }
 
