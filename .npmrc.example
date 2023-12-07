@@ -10,5 +10,7 @@ registry=https://registry.npmjs.org/
 @r7:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=your_token
 
-@wpmedia:registry=https://npm.pkg.github.com/
+@arcxp:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=your_token
+
+registry=https://npm.pkg.github.com/

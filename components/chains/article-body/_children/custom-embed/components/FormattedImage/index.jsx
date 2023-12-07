@@ -73,4 +73,6 @@ export const FormattedImage = ({ customFields, item, className, arcSite }) => {
       </MediaItem>
     )
   }
+
+  return null
 }
