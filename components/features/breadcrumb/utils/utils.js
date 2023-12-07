@@ -1,5 +1,5 @@
 export const breadcrumbProxy = (globalContent, websiteDomain) => {
-  if (!globalContent && !websiteDomain) return null
+  if (!globalContent || !websiteDomain) return null
 
   const { websites, website } = globalContent
   const path = websites && websites[website]?.website_section?.path
@@ -8,16 +8,20 @@ export const breadcrumbProxy = (globalContent, websiteDomain) => {
 
   return (
     sectionNames?.length &&
-    sectionNames?.map((section, i) => {
-      const urlFull = `${websiteDomain}/${sectionNames
-        ?.slice(1, i + 1)
-        ?.join('/')
-        ?.replaceAll(' ', '-')}`
-
+    sectionNames?.map((sectionName, index) => {
+      const url = createURL({ websiteDomain, sectionNames, index })
       return {
-        name: section,
-        url: urlFull,
+        name: sectionName,
+        url,
+        id: `${sectionName}${index}`,
       }
     })
   )
+}
+
+const createURL = ({ websiteDomain, sectionNames, index }) => {
+  return `${websiteDomain}/${sectionNames
+    ?.slice(1, index + 1)
+    ?.join('/')
+    ?.replaceAll(' ', '-')}`
 }

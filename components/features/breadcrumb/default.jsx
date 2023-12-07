@@ -18,12 +18,12 @@ const BreadcrumbBlock = () => {
     <Breadcrumb>
       <Breadcrumb.List>
         {breadcrumb?.length &&
-          breadcrumb?.map(({ name, url }, i) => {
+          breadcrumb?.map(({ name, url, id }) => {
             const lastItem = breadcrumb[breadcrumb?.length - 1].name === name
             const propsOptional =
               isArticle && lastItem ? { href: url, title: `Ir para a página de ${name}` } : {}
             return (
-              <Breadcrumb.Item key={i}>
+              <Breadcrumb.Item key={id}>
                 <ConditionalLink {...propsOptional} aria-current={lastItem ? 'page' : 'false'}>
                   {name}
                 </ConditionalLink>
