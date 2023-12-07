@@ -11,9 +11,17 @@ import { HeaderSocials } from './components/header-socials'
 
 const HeaderNavigationMenu = props => {
   const { headerConfig, sidebarConfig } = props.customFields
-  const { arcSite } = useFusionContext()
+  const { arcSite, metaValue, globalContent } = useFusionContext()
 
   const { primaryColor, websiteDomain, primaryLogo, primaryLogoAlt } = getProperties(arcSite)
+
+  const isInternal = Boolean(
+    metaValue('page-type') && !['homepage', 'section'].includes(metaValue('page-type')),
+  )
+
+  console.log(globalContent, isInternal)
+  // const articleTitle = globalContent?.headlines?.basic
+  // const { sectionName, sectionUrl } = getSectionInfo(globalContent, arcSite)
 
   /* 
    source:site-service-hierarchy
@@ -33,16 +41,19 @@ const HeaderNavigationMenu = props => {
   })
 
   return (
-    <Header>
-      <Header.MainSection bgColor={primaryColor}>
-        <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-        <SidebarMenu menuList={sidebarContent} />
-        <HeaderMenu menuList={headerContent} />
-        <HeaderSocials />
-        <Header.SearchToggle />
-        <Header.Search />
-      </Header.MainSection>
-    </Header>
+    <>
+      <Header>
+        <Header.MainSection bgColor={primaryColor}>
+          <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+          <SidebarMenu menuList={sidebarContent} />
+          <HeaderMenu menuList={headerContent} />
+          <HeaderSocials />
+          <Header.SearchToggle />
+          <Header.Search />
+          {isInternal && <div>internals header (articleTitle, sectionName, sectionUrl)</div>}
+        </Header.MainSection>
+      </Header>
+    </>
   )
 }
 
