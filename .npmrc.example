@@ -1,0 +1,15 @@
+registry=https://registry.npmjs.org/
+#wp media
+@wpmedia:registry=https://npm.pkg.github.com/ 
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+
+#@arcxp
+@arcxp:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN
+
+#npm private @r7
+@r7:registry=https://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=YOUR_TOKEN
+
+@code-store-platform:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN

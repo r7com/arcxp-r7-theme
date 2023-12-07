@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { ArticleProvider } from '@r7/ui-article-delivery'
+import { Paragraph } from '@r7/ui-base-components'
 
 import {
   Divider,
@@ -13,7 +14,6 @@ import {
   isServerSide,
   LazyLoad,
   Link,
-  Paragraph,
   usePhrases,
   MediaItem,
   Video,
@@ -54,20 +54,12 @@ function parseArticleItem(item, index, phrases, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <p
-          key={`${type}_${index}_${key}`}
-          dangerouslySetInnerHTML={{ __html: content }}
-          className={`${BLOCK_CLASS_NAME}__text`}
-        ></p>
+        <Paragraph key={`${type}_${index}_${key}`} dangerHTML={content} />
       ) : null
     }
     case 'copyright': {
       return content && content.length > 0 ? (
-        <Paragraph
-          key={`${type}_${index}_${key}`}
-          className={`${BLOCK_CLASS_NAME}__copyright`}
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <Paragraph key={`${type}_${index}_${key}`} dangerHTML={content} />
       ) : null
     }
 
@@ -100,10 +92,7 @@ function parseArticleItem(item, index, phrases, customFields) {
       const afterContent = '&nbsp;]'
 
       return (
-        <Paragraph
-          key={`${type}_${index}_${key}`}
-          className={`${BLOCK_CLASS_NAME}__interstitial-link`}
-        >
+        <Paragraph key={`${type}_${index}_${key}`}>
           <span dangerouslySetInnerHTML={{ __html: beforeContent }} />
           <Link
             href={url}
