@@ -33,6 +33,18 @@ export const TitleWithBullets = ({ content }) => {
           )}
         </div>
       )}
+      {content[3] && (
+        <div className="title-with-bullets__wrapper">
+          <Bullet url={content[3]?.canonical_url} size="large">
+            {content[3]?.headlines?.basic}
+          </Bullet>
+          {content[4] && (
+            <Bullet url={content[4]?.canonical_url} size="large">
+              {content[4]?.headlines?.basic}
+            </Bullet>
+          )}
+        </div>
+      )}
     </div>
   )
 }
