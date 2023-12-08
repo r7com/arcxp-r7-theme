@@ -35,4 +35,6 @@ export const FormattedImage = ({ customFields, item, className }) => {
       />
     )
   }
+
+  return null
 }
