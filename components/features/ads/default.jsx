@@ -1,35 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useFusionContext } from 'fusion:context'
-import { Background } from './layouts/background'
-import { Placeholder } from './layouts/placeholder'
-import { Lines } from './layouts/lines'
-import { Tag } from './layouts/tag'
+import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
+import '@r7/ui-base-components/style.css'
 
 function Ads({ customFields }) {
   const { blockLayout, display } = customFields
   const { isAdmin } = useFusionContext()
 
   const layout = {
-    background: (
-      <Background>
-        {isAdmin && <Placeholder />}
-        background
-      </Background>
-    ),
-    lines: (
-      <Lines>
-        {isAdmin && <Placeholder />}
-        lines
-      </Lines>
-    ),
-    tag: (
-      <Tag>
-        {isAdmin && <Placeholder />}
-        tag
-      </Tag>
-    ),
-    none: <>{isAdmin && <Placeholder />}</>,
+    background: <AdShell layout="background">{isAdmin && <AdPlaceholder />}</AdShell>,
+    lines: <AdShell layout="lines">{isAdmin && <AdPlaceholder />}</AdShell>,
+    tag: <AdShell layout="tag">{isAdmin && <AdPlaceholder />}</AdShell>,
+    none: <AdShell>{isAdmin && <AdPlaceholder />}</AdShell>,
   }[blockLayout]
 
   return (
