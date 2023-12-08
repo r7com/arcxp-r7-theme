@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { ArticleProvider } from '@r7/ui-article-delivery'
-import { Paragraph } from '@r7/ui-base-components'
+import { Paragraph as ParagraphR7 } from '@r7/ui-base-components'
 
 import {
   Divider,
@@ -12,6 +12,7 @@ import {
   Heading,
   HeadingSection,
   isServerSide,
+  Paragraph,
   LazyLoad,
   Link,
   usePhrases,
@@ -54,12 +55,16 @@ function parseArticleItem(item, index, phrases, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <Paragraph key={`${type}_${index}_${key}`} dangerHTML={content} />
+        <ParagraphR7 key={`${type}_${index}_${key}`} dangerHTML={content} />
       ) : null
     }
     case 'copyright': {
       return content && content.length > 0 ? (
-        <Paragraph key={`${type}_${index}_${key}`} dangerHTML={content} />
+        <Paragraph
+          key={`${type}_${index}_${key}`}
+          className={`${BLOCK_CLASS_NAME}__copyright`}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       ) : null
     }
 
@@ -92,7 +97,10 @@ function parseArticleItem(item, index, phrases, customFields) {
       const afterContent = '&nbsp;]'
 
       return (
-        <Paragraph key={`${type}_${index}_${key}`}>
+        <Paragraph
+          key={`${type}_${index}_${key}`}
+          className={`${BLOCK_CLASS_NAME}__interstitial-link`}
+        >
           <span dangerouslySetInnerHTML={{ __html: beforeContent }} />
           <Link
             href={url}
