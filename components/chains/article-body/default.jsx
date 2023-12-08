@@ -19,17 +19,16 @@ import {
   Video,
 } from '@wpmedia/arc-themes-components'
 
-import {
-  Header,
-  HTML,
-  List,
-  Oembed,
-  Table,
-  CustomEmbed,
-  Quote,
-  LinkList,
-  Gallery,
-} from './_children'
+import Gallery from './_children/gallery'
+import LinkList from './_children/link-list'
+import Quote from './_children/quote'
+import CustomEmbed from './_children/custom-embed'
+import Table from './_children/table'
+import Oembed from './_children/oembed'
+import List from './_children/list'
+import HTML from './_children/html'
+import Header from './_children/heading'
+
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
 import { Accessibility } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'

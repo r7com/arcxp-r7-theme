@@ -3,7 +3,7 @@ import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 
-import { Text } from '@r7/ui-base-components'
+import { Paragraph } from '@r7/ui-base-components'
 
 const Quote = ({ element, classPrefix }) => {
   const { arcSite } = useFusionContext()
@@ -21,19 +21,19 @@ const Quote = ({ element, classPrefix }) => {
                 className={`${COMPONENT_CLASS_NAME}__container`}
                 style={{ borderLeft: `12px solid ${primaryColor}` }}
               >
-                <Text fontSize="sm" fontWeight="bold" as="div">
+                <Paragraph fontSize="sm" fontWeight="bold" as="div">
                   <blockquote
                     className={`${COMPONENT_CLASS_NAME}__title`}
                     style={{ color: primaryColor }}
                   >
                     {`"${contentItem.content}"`}
                   </blockquote>
-                </Text>
-                <Text fontSize="little" as="p">
+                </Paragraph>
+                <Paragraph fontSize="little" as="p">
                   <span className={`${COMPONENT_CLASS_NAME}__author`}>{`${
                     citation.content.length ? `(${citation.content})` : ''
                   }`}</span>
-                </Text>
+                </Paragraph>
               </div>
             )
           })
