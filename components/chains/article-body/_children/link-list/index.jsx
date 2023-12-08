@@ -3,7 +3,7 @@ import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 
-import { Text } from '@r7/ui-base-components'
+import { Paragraph } from '@r7/ui-base-components'
 
 const LinkList = ({ element, classPrefix }) => {
   const { arcSite } = useFusionContext()
@@ -16,18 +16,18 @@ const LinkList = ({ element, classPrefix }) => {
       className={`${COMPONENT_CLASS_NAME}__container`}
       style={{ borderLeft: `12px solid ${primaryColor}` }}
     >
-      <Text fontSize="sm" fontWeight="semibold" as="div">
+      <Paragraph fontSize="sm" fontWeight="semibold" as="div">
         <h3 className={`${COMPONENT_CLASS_NAME}__title`} style={{ color: primaryColor }}>
           {title}
         </h3>
-      </Text>
+      </Paragraph>
 
       <ul className={`${COMPONENT_CLASS_NAME}__list`}>
         {items.map((listItem, index) => (
           <li key={`${listItem.url}${index}`}>
-            <Text as="span" fontSize="xs" fontWeight="bold">
+            <Paragraph as="span" fontSize="xs" fontWeight="bold">
               <a href={listItem.url}>{listItem.content}</a>
-            </Text>
+            </Paragraph>
           </li>
         ))}
       </ul>

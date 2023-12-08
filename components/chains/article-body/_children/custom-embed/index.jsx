@@ -18,12 +18,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
       ) : null
     case 'formatted_image':
       return embed.config ? (
-        <FormattedImage
-          className={classPrefix}
-          customFields={customFields}
-          arcSite={arcSite}
-          item={embed}
-        />
+        <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
   }
 }
