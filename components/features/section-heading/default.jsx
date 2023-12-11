@@ -16,10 +16,10 @@ const SectionHeadingBlock = props => {
   })
 
   return (
-    <SectionHeading color={color}>
-      <ConditionalLink href={url} title={description}>
+    <SectionHeading color={color || undefined}>
+      <ConditionalLink href={url} title={description || undefined}>
         {type === 'image' ? (
-          <SectionHeading.Image src={imageURL} alt={imageAlt} />
+          <SectionHeading.Image src={imageURL} alt={imageAlt || undefined} />
         ) : (
           <SectionHeading.Title>{title}</SectionHeading.Title>
         )}
@@ -32,7 +32,7 @@ const SectionHeadingBlock = props => {
           return (
             tag.title &&
             tag.url && (
-              <SectionHeading.Tag key={i} href={tag.url} alt={tag.description}>
+              <SectionHeading.Tag key={i} href={tag.url} title={tag.description || undefined}>
                 {tag.title}
               </SectionHeading.Tag>
             )
