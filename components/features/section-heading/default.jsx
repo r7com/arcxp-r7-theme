@@ -63,7 +63,7 @@ SectionHeadingBlock.propTypes = {
       description: 'Mostrado quando o template é "texto"',
     }),
     imageURL: PropTypes.string.tag({
-      label: 'Imagem',
+      label: 'Imagem (110x70)',
       searchable: 'image',
     }),
     imageAlt: PropTypes.string.tag({
