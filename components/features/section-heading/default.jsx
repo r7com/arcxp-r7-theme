@@ -32,7 +32,7 @@ const SectionHeadingBlock = props => {
           return (
             tag.title &&
             tag.url && (
-              <SectionHeading.Tag key={i} href={tag.url}>
+              <SectionHeading.Tag key={i} href={tag.url} alt={tag.description}>
                 {tag.title}
               </SectionHeading.Tag>
             )
