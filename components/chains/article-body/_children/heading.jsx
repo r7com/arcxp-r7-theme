@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Heading = ({ element, classPrefix = '' }) => {
+const Header = ({ element, classPrefix = '' }) => {
   const defaultHeaderLevel = 2
   const HeadingLevel = `h${element.level ? element.level : defaultHeaderLevel}`
   const className = classPrefix ? `${classPrefix}__${HeadingLevel}` : null
@@ -10,4 +10,4 @@ const Heading = ({ element, classPrefix = '' }) => {
   )
 }
 
-export default Heading
+export default Header

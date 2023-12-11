@@ -1,15 +1,15 @@
-import { Text } from '@r7/ui-base-components'
 import React from 'react'
+import { Paragraph } from '@r7/ui-base-components'
 
 export const GalleryCaption = ({ className, title = '', credits = '' }) => {
   return (
     <div className={className}>
-      <Text as="p" fontSize="xxs">
+      <Paragraph as="p" fontSize="xxs">
         {title}
-      </Text>
-      <Text as="p" fontSize="little">
+      </Paragraph>
+      <Paragraph as="p" fontSize="little">
         {credits}
-      </Text>
+      </Paragraph>
     </div>
   )
 }

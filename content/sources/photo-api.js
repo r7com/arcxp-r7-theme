@@ -1,7 +1,9 @@
-import signImagesInANSObject from '@code-store-platform/sign-image-in-ans-object'
-import signingService from '@code-store-platform/signing-service'
 import axios from 'axios'
 import { ARC_ACCESS_TOKEN, CONTENT_BASE, RESIZER_TOKEN_VERSION } from 'fusion:environment'
+import signImagesInANSObject from '@wpmedia/arc-themes-components/src/utils/sign-images-in-ans-object'
+import handleFetchError from '@wpmedia/arc-themes-components/src/utils/handle-fetch-error'
+import handleRedirect from '@wpmedia/arc-themes-components/src/utils/handle-redirect'
+import { fetch as resizerFetch } from '@wpmedia/signing-service-content-source-block'
 
 const params = [
   {
@@ -12,9 +14,6 @@ const params = [
 ]
 
 const fetch = ({ _id }, { cachedCall }) => {
-  if (_id === null) {
-    return null
-  }
   return axios({
     url: `${CONTENT_BASE}/photo/api/v2/photos/${_id}`,
     headers: {
@@ -23,11 +22,10 @@ const fetch = ({ _id }, { cachedCall }) => {
     },
     method: 'GET',
   })
-    .then(signImagesInANSObject(cachedCall, signingService.fetch, RESIZER_TOKEN_VERSION))
+    .then(handleRedirect)
+    .then(signImagesInANSObject(cachedCall, resizerFetch, RESIZER_TOKEN_VERSION))
     .then(({ data }) => data)
-    .catch(err => {
-      console.log('Error while fetching the photo', err)
-    })
+    .catch(handleFetchError)
 }
 
 export default {

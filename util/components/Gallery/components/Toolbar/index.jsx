@@ -1,12 +1,12 @@
-import { Text } from '@r7/ui-base-components'
 import React from 'react'
+import { Paragraph } from '@r7/ui-base-components'
 
 export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFullscreen }) => {
   return (
     <div className={className}>
-      <Text as="p" fontSize="xs" fontWeight="semibold">
+      <Paragraph as="p" fontSize="xs" fontWeight="semibold">
         {currentSlide} / {slidesAmount}
-      </Text>
+      </Paragraph>
       <div>
         <button
           className={`${className}-expand`}

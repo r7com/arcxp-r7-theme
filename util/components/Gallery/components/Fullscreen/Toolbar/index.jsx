@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text } from '@r7/ui-base-components'
+import { Paragraph } from '@r7/ui-base-components'
 
 export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
   const [showCaption, setShowCaption] = useState(false)
@@ -7,9 +7,9 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
     <div className={`${className}-caption ${showCaption ? 'active' : ''}`}>
       <div className={`${className}-caption-toolbar`}>
         <div>
-          <Text as="p" fontSize="little" fontWeight="semibold">
+          <Paragraph as="p" fontSize="little" fontWeight="semibold">
             LEGENDA
-          </Text>
+          </Paragraph>
           <button
             onClick={() => {
               setShowCaption(prev => !prev)
@@ -28,17 +28,17 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
         </div>
       </div>
       <div className={`${className}-caption-content`}>
-        <Text as="p" fontSize="xxs" fontWeight="semibold">
+        <Paragraph as="p" fontSize="xxs" fontWeight="semibold">
           {currentSlide + 1} / {elements.length}
-        </Text>
-        <Text as="p" fontSize="xxs">
+        </Paragraph>
+        <Paragraph as="p" fontSize="xxs">
           {elements[currentSlide]?.headlines?.basic}
-        </Text>
-        <Text as="p" fontSize="little">
+        </Paragraph>
+        <Paragraph as="p" fontSize="little">
           {elements[currentSlide]?.credits?.by.length
             ? elements[currentSlide]?.credits?.by[0].name
             : ''}
-        </Text>
+        </Paragraph>
       </div>
     </div>
   )
