@@ -28,11 +28,15 @@ const SectionHeadingBlock = props => {
       <SectionHeading.Line />
 
       <SectionHeading.Tags>
-        {tags.map((tag, i) => {
+        {tags.map(tag => {
           return (
             tag.title &&
             tag.url && (
-              <SectionHeading.Tag key={i} href={tag.url} title={tag.description || undefined}>
+              <SectionHeading.Tag
+                key={tag.title}
+                href={tag.url}
+                title={tag.description || undefined}
+              >
                 {tag.title}
               </SectionHeading.Tag>
             )
