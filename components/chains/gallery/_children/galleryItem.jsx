@@ -1,5 +1,7 @@
 import React from 'react'
 import { Image } from '../../../../util/components/Image'
+import { SocialShare } from '@r7/ui-article-delivery'
+import { ExpandableSocialShare } from '../../../../util/components/ExpandableSocialShare'
 
 export const GalleryItem = ({
   item,
@@ -10,8 +12,25 @@ export const GalleryItem = ({
   setActiveSlide,
 }) => {
   return (
-    <Image item={item} customFields={customFields} className={`${className}`}>
+    <Image
+      item={item}
+      customFields={customFields}
+      className={`${className}`}
+      anchor={`#foto/${itemIndex + 1}`}
+    >
       <div className={`${className}-toolbar`}>
+        <ExpandableSocialShare>
+          <SocialShare>
+            <SocialShare.List>
+              <SocialShare.Item name="facebook" link="#facebook" title="facebook" />
+              <SocialShare.Item name="linkedin" link="#linkedin" title="linkedin" />
+              <SocialShare.Item name="twitter" link="#twitter" title="twitter" />
+              <SocialShare.Item name="whatsapp" link="#whatsapp" title="whatsapp" />
+              <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
+              <SocialShare.Item name="share" link="#share" title="share" />
+            </SocialShare.List>
+          </SocialShare>
+        </ExpandableSocialShare>
         <button
           className={`${className}-toolbar-expand`}
           onClick={() => {
