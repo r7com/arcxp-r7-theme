@@ -5,12 +5,11 @@ import getProperties from 'fusion:properties'
 import { breadcrumbProxy } from './utils/utils'
 
 const BreadcrumbBlock = () => {
-  const { globalContent, arcSite } = useFusionContext()
+  const { globalContent, arcSite, metaValue } = useFusionContext()
 
   if (!globalContent) return null
 
-  const { subtype } = globalContent
-  const isArticle = subtype === 'Article'
+  const isArticle = metaValue('page-type') === 'article'
   const { websiteDomain } = getProperties(arcSite)
   const breadcrumb = breadcrumbProxy(globalContent, websiteDomain)
 
@@ -19,12 +18,12 @@ const BreadcrumbBlock = () => {
       <Breadcrumb.List>
         {breadcrumb?.length &&
           breadcrumb?.map(({ name, url, id }) => {
-            const lastItem = breadcrumb[breadcrumb?.length - 1].name === name
+            const isLastItem = breadcrumb[breadcrumb?.length - 1].id === id
             const propsOptional =
-              isArticle && lastItem ? { href: url, title: `Ir para a página de ${name}` } : {}
+              isArticle && isLastItem ? { href: url, title: `Ir para a página de ${name}` } : {}
             return (
               <Breadcrumb.Item key={id}>
-                <ConditionalLink {...propsOptional} aria-current={lastItem ? 'page' : 'false'}>
+                <ConditionalLink {...propsOptional} aria-current={isLastItem ? 'page' : 'false'}>
                   {name}
                 </ConditionalLink>
               </Breadcrumb.Item>
