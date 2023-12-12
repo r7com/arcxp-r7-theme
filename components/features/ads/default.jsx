@@ -1,15 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useFusionContext } from 'fusion:context'
+import { LazyLoad } from '@wpmedia/arc-themes-components'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import '@r7/ui-base-components/style.css'
 
 function Ads({ customFields }) {
-  const { blockLayout, display } = customFields
+  const { lazyload, blockLayout, display } = customFields
   const { isAdmin } = useFusionContext()
 
   const layout = {
-    background: <AdShell layout="background">{isAdmin && <AdPlaceholder />}</AdShell>,
+    background: (
+      <AdShell layout="background">
+        {isAdmin ? (
+          <AdPlaceholder />
+        ) : (
+          <LazyLoad
+            enabled={lazyload}
+            offsetBottom={0}
+            offsetLeft={0}
+            offsetRight={0}
+            offsetTop={200}
+            renderPlaceholder={ref => <div data-testid="lazy-load-placeholder" ref={ref} />}
+          >
+            <p>adhere</p>
+          </LazyLoad>
+        )}
+      </AdShell>
+    ),
     lines: <AdShell layout="lines">{isAdmin && <AdPlaceholder />}</AdShell>,
     tag: <AdShell layout="tag">{isAdmin && <AdPlaceholder />}</AdShell>,
     none: <AdShell>{isAdmin && <AdPlaceholder />}</AdShell>,
@@ -39,8 +57,22 @@ Ads.propTypes = {
         none: 'Nenhum',
       },
     }),
+    desktopSizes: PropTypes.string.tag({
+      label: 'Tamanhos no desktop',
+      description:
+        'Inserir os tamanhos no formato [larguraxaltura], se for apenas um tamanho, ou [[larguraxaltura], ... [larguraxaltura]], se forem múltiplos tamanhos.',
+    }),
+    mobileSizes: PropTypes.string.tag({
+      label: 'Tamanhos no mobile',
+      description:
+        'Inserir os tamanhos no formato [larguraxaltura], se for apenas um tamanho, ou [[larguraxaltura], ... [larguraxaltura]], se forem múltiplos tamanhos.',
+    }),
     display: PropTypes.boolean.tag({
       label: 'Exibir publicidade',
+    }),
+    lazyload: PropTypes.boolean.tag({
+      name: 'Lazy Load',
+      defaultValue: true,
     }),
   }),
 }
