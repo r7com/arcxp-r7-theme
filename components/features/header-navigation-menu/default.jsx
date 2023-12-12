@@ -11,9 +11,9 @@ import { HeaderMenu } from './components/header-menu'
 import { HeaderSocials } from './components/header-socials'
 
 const HeaderNavigationMenu = ({ customFields }) => {
-  let { headerConfig, sidebarConfig, internalHeaderTrigger } = customFields
+  const { headerConfig, sidebarConfig, internalHeaderTrigger } = customFields
 
-  if (!internalHeaderTrigger) internalHeaderTrigger = 'h1'
+  const defaultSelector = 'h1'
 
   const { arcSite, metaValue, globalContent } = useFusionContext()
 
@@ -53,7 +53,7 @@ const HeaderNavigationMenu = ({ customFields }) => {
           <Header.SearchToggle />
           <Header.Search />
           {isInternal && (
-            <InternalsHeader triggerElementSelector={internalHeaderTrigger}>
+            <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
               <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
               <InternalsHeader.SectionName sectionUrl={sectionUrl}>
                 {sectionName}
