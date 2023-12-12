@@ -10,8 +10,11 @@ import { SidebarMenu } from './components/sidebar-menu'
 import { HeaderMenu } from './components/header-menu'
 import { HeaderSocials } from './components/header-socials'
 
-const HeaderNavigationMenu = props => {
-  const { headerConfig, sidebarConfig, internalHeaderTrigger } = props.customFields
+const HeaderNavigationMenu = ({ customFields }) => {
+  let { headerConfig, sidebarConfig, internalHeaderTrigger } = customFields
+
+  if (!internalHeaderTrigger) internalHeaderTrigger = 'h1'
+
   const { arcSite, metaValue, globalContent } = useFusionContext()
 
   const { primaryColor, websiteDomain, primaryLogo, primaryLogoAlt } = getProperties(arcSite)
