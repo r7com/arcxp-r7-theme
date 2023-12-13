@@ -26,5 +26,6 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
+    - npx http-server
     - npx fusion zip
     - npm run deploy
