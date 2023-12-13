@@ -43,4 +43,5 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
+    - apt-get install zip
     - npm run deploy
