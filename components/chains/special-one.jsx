@@ -12,13 +12,13 @@ const SpecialOneChain = ({ children }) => {
     <SpecialOne
       renderMain={
         <SpecialOne.Main
-          lineOne={
+          rowOne={
             <>
               {block1 && block1}
               {block2 && block2}
             </>
           }
-          lineTwo={
+          rowTwo={
             <>
               {block3 && block3}
               {block4 && block4}

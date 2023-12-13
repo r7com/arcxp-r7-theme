@@ -24,9 +24,14 @@
   },
   "homepage": "https://github.com/arc-partners/NewR7-Themes-PageBuilder-Fusion-Features-Mirror#readme",
   "devDependencies": {
-    "@arc-fusion/cli": "^2.1.1",
+    "@arc-fusion/cli": "^2.2.1",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@r7/ui-base-components": "file:../../r7-workspace/front-monorepo/dist/libs/ui-base-components",
+    "@r7/ui-card": "file:../../r7-workspace/front-monorepo/dist/libs/ui-card",
+    "@r7/ui-footer-delivery": "file:../../r7-workspace/front-monorepo/dist/libs/ui-footer-delivery",
+    "@r7/ui-header-delivery": "file:../../r7-workspace/front-monorepo/dist/libs/ui-header-delivery",
+    "@r7/ui-layout": "file:../../r7-workspace/front-monorepo/dist/libs/ui-layout",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
@@ -40,12 +45,7 @@
     "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^2.6.2",
-    "@r7/ui-header-delivery": "file:../../r7-workspace/front-monorepo/dist/libs/ui-header-delivery",
-    "@r7/ui-footer-delivery": "file:../../r7-workspace/front-monorepo/dist/libs/ui-footer-delivery",
-    "@r7/ui-base-components": "file:../../r7-workspace/front-monorepo/dist/libs/ui-base-components",
-    "@r7/ui-layout": "file:../../r7-workspace/front-monorepo/dist/libs/ui-layout",
-    "@r7/ui-card": "file:../../r7-workspace/front-monorepo/dist/libs/ui-card"
+    "prettier": "^2.6.2"
   },
   "config": {
     "commitizen": {
