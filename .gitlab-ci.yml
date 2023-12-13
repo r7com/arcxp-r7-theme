@@ -42,6 +42,7 @@ lint:
 
 deploy-sandbox:
   stage: deploy-sandbox
+  image: washpost/fusion-engine:3.3.7
   script:
     - npm run zip
     - npm run deploy
