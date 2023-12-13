@@ -13,23 +13,7 @@ image: $NODE_VERSION
 default:
   tags:
     - gitlab-runner-ec2
-  cache:  # Cache modules using lock file
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - .npm/  
-  before_script:
-      - echo "registry=https://registry.npmjs.org/" > .npmrc
-      - echo "@wpmedia:registry=https://npm.pkg.github.com/" >> .npmrc
-      - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
-      - echo "@code-store-platform:registry=https://npm.pkg.github.com/" >> .npmrc
-      - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
-      - echo "@r7:registry=https://registry.npmjs.org/" >> .npmrc
-      - echo "//registry.npmjs.org/:_authToken=${R7_NPM_TOKEN}" >> .npmrc
-      - echo "@arcxp:registry=https://npm.pkg.github.com/" >> .npmrc
-      - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
-      - npm ci --cache .npm --prefer-offline
+  
 
 stages: 
   - lint
