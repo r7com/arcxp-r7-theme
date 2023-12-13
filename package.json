@@ -6,6 +6,8 @@
   "scripts": {
     "fusion": "fusion",
     "start": "fusion start",
+    "zip": "fusion zip",
+    "deploy": "node ./deployer.js",
     "arc-themes": "node arc-themes.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"**/*.js\" --fix",
