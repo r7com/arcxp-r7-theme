@@ -5,8 +5,7 @@
 
 variables:
   NODE_VERSION: washpost/fusion-engine:3.3.7
-  CI: 'true'
-  GIT_DEPTH: 0
+  CI_DEBUG_TRACE: "true"
 
 image: $NODE_VERSION
 
@@ -14,7 +13,6 @@ default:
   tags:
     - gitlab-runner-ec2
   
-
 stages: 
   - lint
   - deploy-sandbox
