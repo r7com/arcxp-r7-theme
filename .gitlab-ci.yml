@@ -4,15 +4,13 @@
 # tag -> Staging -> Prod
 
 variables:
-  NODE_VERSION: node:18
+  NODE_VERSION: washpost/fusion-engine:3.3.7
   CI: 'true'
   GIT_DEPTH: 0
 
 image: $NODE_VERSION
 
 default:
-  services:
-    - docker:24.0.5-dind
   tags:
     - gitlab-runner-ec2
   cache:  # Cache modules using lock file
@@ -45,7 +43,6 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - docker container run washpost/fusion-engine:3.3.7 npm run zip
     - ls
     - pwd
     - npm run zip
