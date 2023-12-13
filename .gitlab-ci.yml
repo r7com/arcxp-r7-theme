@@ -4,8 +4,9 @@
 # tag -> Staging -> Prod
 
 variables:
-  NODE_VERSION: washpost/fusion-engine:3.3.7
-  CI_DEBUG_TRACE: "true"
+  NODE_VERSION: node:18
+  CI: 'true'
+  GIT_DEPTH: 0
 
 image: $NODE_VERSION
 
@@ -25,7 +26,5 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - ls
-    - pwd
-    - npm run zip
+    - npx funsion zip
     - npm run deploy
