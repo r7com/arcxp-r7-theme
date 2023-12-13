@@ -11,6 +11,8 @@ variables:
 image: $NODE_VERSION
 
 default:
+  services:
+    - docker:24.0.5-dind
   tags:
     - gitlab-runner-ec2
   cache:  # Cache modules using lock file
@@ -42,8 +44,8 @@ lint:
 
 deploy-sandbox:
   stage: deploy-sandbox
-  image: washpost/fusion-engine:3.3.7
   script:
+    - docker conatiner run washpost/fusion-engine:3.3.7 npm run zip
     - ls
     - pwd
     - npm run zip
