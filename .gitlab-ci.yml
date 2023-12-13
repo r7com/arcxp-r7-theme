@@ -45,7 +45,7 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - docker conatiner run washpost/fusion-engine:3.3.7 npm run zip
+    - docker container run washpost/fusion-engine:3.3.7 npm run zip
     - ls
     - pwd
     - npm run zip
