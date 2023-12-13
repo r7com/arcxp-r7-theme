@@ -26,5 +26,5 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - npx funsion zip
+    - npx fusion zip
     - npm run deploy
