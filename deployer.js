@@ -34,7 +34,7 @@ const branch_name = execSync('git rev-parse --abbrev-ref HEAD').toString().trim(
 console.log(`Current branch: ${branch_name}. Env: ${environment}`)
 
 console.log("zipping")
-execSync('zip bundle.zip -r . -x .git/\* node_modules/\* coverage/\* .github/\* .fusion/\* mocks/\* __mocks__/\* data/\* README.md documentation/\* \*.test.jsx .env .npmrc')
+execSync('zip bundle.zip -r . -x .git/\* node_modules/\* coverage/\* .github/\* .fusion/\* mocks/\* __mocks__/\* data/\* README.md documentation/\* \*.test.jsx .env .npmrc', { stdio: 'ignore'})
 
 const commit_hash = execSync(`git log -n 1 --oneline | cut -d ' ' -f1`, (err, stdout, stderr) => {
   if (err) {
