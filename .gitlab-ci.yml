@@ -20,6 +20,7 @@ default:
     paths:
       - .npm/  
   before_script:
+      - printenv
       - echo "registry=https://registry.npmjs.org/" > .npmrc
 
       - echo "@wpmedia:registry=https://npm.pkg.github.com/" >> .npmrc
