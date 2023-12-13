@@ -54,7 +54,7 @@ function parseArticleItem(item, index, phrases, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <ParagraphR7 key={`${type}_${index}_${key}`} dangerHTML={content} />
+        <ParagraphR7 key={`${type}_${index}_${key}`} fontSize="xs" dangerHTML={content} />
       ) : null
     }
     case 'copyright': {
