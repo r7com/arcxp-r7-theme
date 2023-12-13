@@ -4,6 +4,8 @@
 # tag -> Staging -> Prod
 
 default:
+  tags:
+    - gitlab-runner-ec2
   cache:  # Cache modules using lock file
     key:
       files:
