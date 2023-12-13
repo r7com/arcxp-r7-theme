@@ -32,16 +32,11 @@ default:
       - npm ci --cache .npm --prefer-offline
   
 stages: 
-  - lint
   - deploy-sandbox
-
-lint:     
-  stage: lint
-  script:
-    - echo "Linting..."
 
 deploy-sandbox:
   stage: deploy-sandbox
   script:
+    - apt-get update
     - apt-get install zip
     - npm run deploy
