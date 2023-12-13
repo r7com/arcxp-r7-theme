@@ -240,6 +240,7 @@
     }
 
     &.active {
+      overflow-y: overlay;
       display: block;
     }
   }
@@ -313,17 +314,6 @@
           justify-content: center;
           align-items: center;
           cursor: pointer;
-
-          @media screen and (max-width: 640px) {
-            width: 40px;
-            height: 40px;
-          }
-        }
-
-        button.gallery__overlay-caption-toolbar-more {
-          @media screen and (max-width: 640px) {
-            display: none;
-          }
         }
       }
     }

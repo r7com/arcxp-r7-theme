@@ -22,6 +22,7 @@
 
 .b-article-body__image {
   &.float {
+    max-width: 100%;
     width: min-content;
     float: left;
     margin-right: 28px;
