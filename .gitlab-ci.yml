@@ -12,7 +12,7 @@ image: $NODE_VERSION
 
 default:
   services:
-    - docker:dind
+    - gitlab/dind
   tags:
     - gitlab-runner-ec2
   
@@ -23,7 +23,7 @@ stages:
 lint:     
   stage: lint
   services:
-    - docker:dind
+    - gitlab/dind
   script:
     - docker container list 
     - echo "Linting..."
