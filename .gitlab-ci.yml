@@ -3,6 +3,13 @@
 # create tag
 # tag -> Staging -> Prod
 
+variables:
+  NODE_VERSION: node:18
+  CI: 'true'
+  GIT_DEPTH: 0
+
+image: $NODE_VERSION
+
 default:
   tags:
     - gitlab-runner-ec2
