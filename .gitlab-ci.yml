@@ -43,4 +43,5 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - node ./deployer.js
+    - npm run zip
+    - npm run deploy
