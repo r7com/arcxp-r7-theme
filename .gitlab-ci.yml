@@ -11,6 +11,8 @@ variables:
 image: $NODE_VERSION
 
 default:
+  services:
+    - docker:dind
   tags:
     - gitlab-runner-ec2
   
@@ -21,11 +23,11 @@ stages:
 lint:     
   stage: lint  
   script:
+    - docker container list 
     - echo "Linting..."
 
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - npx http-server
     - npx fusion zip
     - npm run deploy
