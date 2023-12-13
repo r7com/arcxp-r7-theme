@@ -44,5 +44,7 @@ deploy-sandbox:
   stage: deploy-sandbox
   image: washpost/fusion-engine:3.3.7
   script:
+    - ls
+    - pwd
     - npm run zip
     - npm run deploy
