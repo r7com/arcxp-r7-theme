@@ -20,7 +20,15 @@ default:
     paths:
       - .npm/  
   before_script:
-    - npm ci --cache .npm --prefer-offline
+      - echo "registry=https://registry.npmjs.org/" > .npmrc
+      - echo "@wpmedia:registry=https://npm.pkg.github.com/" >> .npmrc
+      - echo "//npm.pkg.github.com/:_authToken=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" >> .npmrc
+      - echo "@r7:registry=https://registry.npmjs.org/" >> .npmrc
+      - echo "//registry.npmjs.org/:_authToken=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" >> .npmrc
+      - echo "@arcxp:registry=https://npm.pkg.github.com/" >> .npmrc
+      - echo "//npm.pkg.github.com/:_authToken=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" >> .npmrc
+    # - npm ci --cache .npm --prefer-offline
+
 
 stages:          # List of stages for jobs, and their order of execution
   - build
