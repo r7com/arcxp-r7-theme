@@ -43,4 +43,4 @@ lint:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - ./
+    - node ./deployer.js
