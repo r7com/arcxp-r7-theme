@@ -1,4 +1,4 @@
-export const PAGE_TYPE_TABOOLA_MAPPING = {
+export const PAGE_TYPE_MAP = {
   article: 'article',
   video: 'video',
   gallery: 'photo',
