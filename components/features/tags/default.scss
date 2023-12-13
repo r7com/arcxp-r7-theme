@@ -26,5 +26,13 @@
     padding: 8px;
     color: #ffffff;
     text-transform: uppercase;
+
+    span {
+      line-height: 1.36;
+      color: #fff;
+      font-size: 11px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
   }
 }

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
-import { Paragraph } from '@r7/ui-base-components'
 
 export const SimpleListContent = ({
   className,
@@ -71,14 +70,10 @@ export const SimpleListContent = ({
                 </Link>
                 {formatDate(publish_date)}
               </div>
-              <Paragraph as="h3" fontSize="md" fontWeight="semibold">
-                <Link href={url}>{headlineText}</Link>
-              </Paragraph>
-              {!customFields.hideCaption ? (
-                <Paragraph as="p" fontSize="xxxs">
-                  {subheadlineText}
-                </Paragraph>
-              ) : null}
+              <Link href={url}>
+                <h3>{headlineText}</h3>
+              </Link>
+              {!customFields.hideCaption ? <p>{subheadlineText}</p> : null}
             </div>
           </li>
         )
