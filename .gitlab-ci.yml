@@ -1,0 +1,30 @@
+# deploy para branch main
+# main -> (e2e depois) -> Sandbox
+# create tag
+# tag -> Staging -> Prod
+
+default:
+  cache:  # Cache modules using lock file
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/  
+    before_script:
+      - npm ci --cache .npm --prefer-offline
+
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - lint
+
+build:     
+  stage: build  
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
+
+lint:     
+  stage: lint  
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
