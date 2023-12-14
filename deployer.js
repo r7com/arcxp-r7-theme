@@ -33,7 +33,7 @@ console.log(`Current branch: ${branch_name}. Env: ${environment}`)
 
 console.log('zipping')
 execSync(
-  'zip bundle.zip -r . -x .git/* node_modules/* coverage/* .github/* .fusion/* mocks/* __mocks__/* data/* README.md documentation/* *.test.jsx .env .npmrc',
+  'zip bundle.zip -r . -x *.git* node_modules/\* coverage/\* .github/\* .fusion/\* mocks/\* __mocks__/\* data/\* README.md documentation/\* *.test.jsx .env .npmrc',
   { stdio: 'ignore' },
 )
 
