@@ -44,5 +44,4 @@ deploy-sandbox:
     - export SANDBOX_DEPLOYER_FUSION_RELEASE=3.3.7
     - export SANDBOX_DEPLOYER_ENDPOINT=api.sandbox.newr7.arcpublishing.com
     - export SANDBOX_DEPLOYER_ACCESS_TOKEN=G3NBPUSB0UN8K0VJ9C86H4TELANAMB77lZv+FF5Jj7LWpFGPJEtxagItA2X6Hk3Gn91/mlKE
-    - printenv
     - npm run deploy
