@@ -4,33 +4,31 @@ import { useFusionContext } from 'fusion:context'
 import { LazyLoad } from '@wpmedia/arc-themes-components'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import '@r7/ui-base-components/style.css'
+import R7AdUnit from './R7AdUnit'
 
 function Ads({ customFields }) {
   const { lazyload, blockLayout, display } = customFields
   const { isAdmin } = useFusionContext()
+  const ad = lazyload ? (
+    <LazyLoad
+      enabled={lazyload}
+      offsetBottom={0}
+      offsetLeft={0}
+      offsetRight={0}
+      offsetTop={200}
+      renderPlaceholder={ref => <div data-testid="lazy-load-placeholder" ref={ref} />}
+    >
+      <R7AdUnit />
+    </LazyLoad>
+  ) : (
+    <R7AdUnit />
+  )
 
   const layout = {
-    background: (
-      <AdShell layout="background">
-        {isAdmin ? (
-          <AdPlaceholder />
-        ) : (
-          <LazyLoad
-            enabled={lazyload}
-            offsetBottom={0}
-            offsetLeft={0}
-            offsetRight={0}
-            offsetTop={200}
-            renderPlaceholder={ref => <div data-testid="lazy-load-placeholder" ref={ref} />}
-          >
-            <p>adhere</p>
-          </LazyLoad>
-        )}
-      </AdShell>
-    ),
-    lines: <AdShell layout="lines">{isAdmin && <AdPlaceholder />}</AdShell>,
-    tag: <AdShell layout="tag">{isAdmin && <AdPlaceholder />}</AdShell>,
-    none: <AdShell>{isAdmin && <AdPlaceholder />}</AdShell>,
+    background: <AdShell layout="background">{isAdmin ? <AdPlaceholder /> : ad}</AdShell>,
+    lines: <AdShell layout="lines">{isAdmin ? <AdPlaceholder /> : ad}</AdShell>,
+    tag: <AdShell layout="tag">{isAdmin ? <AdPlaceholder /> : ad}</AdShell>,
+    none: <AdShell>{isAdmin ? <AdPlaceholder /> : ad}</AdShell>,
   }[blockLayout]
 
   return (
