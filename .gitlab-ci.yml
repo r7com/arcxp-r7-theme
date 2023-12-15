@@ -39,9 +39,4 @@ deploy-sandbox:
   script:
     - apt-get update
     - apt-get install zip
-    - export CONTENT_BASE=https://api.newr7.arcpublishing.com
-    - export ARC_ACCESS_TOKEN=ED9JNTOPJNCVFGM16KJTA64VR8N9THODs22NHaACshFBzKy548diLkhE+80KCqJg7u8RGNBW
-    - export SANDBOX_DEPLOYER_FUSION_RELEASE=3.3.7
-    - export SANDBOX_DEPLOYER_ENDPOINT=api.sandbox.newr7.arcpublishing.com
-    - export SANDBOX_DEPLOYER_ACCESS_TOKEN=G3NBPUSB0UN8K0VJ9C86H4TELANAMB77lZv+FF5Jj7LWpFGPJEtxagItA2X6Hk3Gn91/mlKE
     - npm run deploy
