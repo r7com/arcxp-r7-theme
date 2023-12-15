@@ -50,6 +50,7 @@ console.log(`Commit hash: ${commit_hash}`)
 
 const pbVersion = process.env[`${environment}_DEPLOYER_FUSION_RELEASE`] || 'latest'
 const endpoint = process.env[`${environment}_DEPLOYER_ENDPOINT`]
+console.log(endpoint, pbVersion)
 const authToken = process.env[`${environment}_DEPLOYER_ACCESS_TOKEN`]
 const delay = process.env.POLLING_DELAY || 10000
 const timeout = process.env.TIMEOUT || 30
