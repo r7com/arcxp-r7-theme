@@ -9,8 +9,11 @@
   }
 
   &__text {
-    color: #333;
-    font-size: 18px;
+    a {
+      font-weight: 700;
+      text-decoration: underline;
+      color: #228ee1 !important;
+    }
   }
 
   @media screen and (max-width: 48rem) {

@@ -20,7 +20,6 @@
 
   &__list {
     display: flex;
-    justify-content: space-between;
     gap: 31px;
     overflow-x: scroll;
 
@@ -39,6 +38,7 @@
   &__item {
     padding-bottom: 8px;
     min-width: 221px;
+    max-width: 221px;
     list-style: none;
 
     &-image {
