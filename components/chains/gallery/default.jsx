@@ -21,13 +21,29 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
   if (!contentElementsImages.length) {
     return null
   }
-  const adPlacements = Object.keys(customFields.elementPlacement).map(key => ({
-    feature: +key,
-    image: +customFields.elementPlacement[key],
-  }))
+  const adPlacements = customFields.elementPlacement
+    ? Object.keys(customFields.elementPlacement).map(key => ({
+        feature: +key,
+        image: +customFields.elementPlacement[key],
+      }))
+    : null
+
   let imagesCounter = 0
   const elements = [
     ...contentElementsImages.map((imageItem, index) => {
+      if (!adPlacements) {
+        return (
+          <GalleryItem
+            key={`${index}_${imageItem._id}`}
+            itemIndex={index}
+            item={imageItem}
+            customFields={customFields}
+            className={`${BLOCK_CLASS_NAME}__item`}
+            setFullscreen={setFullscreen}
+            setActiveSlide={setActiveSlide}
+          />
+        )
+      }
       imagesCounter += 1
       const adsAfterImage = adPlacements.filter(placement => placement.image === imagesCounter)
       if (adsAfterImage.length && imagesCounter < contentElementsImages.length - 1) {

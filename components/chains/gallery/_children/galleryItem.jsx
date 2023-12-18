@@ -43,6 +43,7 @@ export const GalleryItem = ({
           </svg>
         </button>
       </div>
+      <div className={`${className}-overlay`}></div>
     </Image>
   )
 }
