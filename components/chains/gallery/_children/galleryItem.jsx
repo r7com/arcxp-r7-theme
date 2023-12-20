@@ -22,11 +22,11 @@ export const GalleryItem = ({
         <ExpandableSocialShare>
           <SocialShare>
             <SocialShare.List>
+              <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
               <SocialShare.Item name="facebook" link="#facebook" title="facebook" />
-              <SocialShare.Item name="linkedin" link="#linkedin" title="linkedin" />
               <SocialShare.Item name="twitter" link="#twitter" title="twitter" />
               <SocialShare.Item name="whatsapp" link="#whatsapp" title="whatsapp" />
-              <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
+              <SocialShare.Item name="linkedin" link="#linkedin" title="linkedin" />
               <SocialShare.Item name="share" link="#share" title="share" />
             </SocialShare.List>
           </SocialShare>
