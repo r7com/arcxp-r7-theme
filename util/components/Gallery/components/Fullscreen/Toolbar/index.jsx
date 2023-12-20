@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Paragraph } from '@r7/ui-base-components'
+import { SocialShare } from '@r7/ui-article-delivery'
+import { ExpandableSocialShare } from '../../../../ExpandableSocialShare'
 
 export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
   const [showCaption, setShowCaption] = useState(false)
   return (
     <div className={`${className}-caption ${showCaption ? 'active' : ''}`}>
       <div className={`${className}-caption-toolbar`}>
-        <div>
+        <div className={`${className}-caption-toolbar-title`}>
           <Paragraph as="p" fontSize="little" fontWeight="semibold">
             LEGENDA
           </Paragraph>
@@ -25,6 +27,20 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
               </g>
             </svg>
           </button>
+        </div>
+        <div className={`${className}-caption-toolbar-btns`}>
+          <ExpandableSocialShare>
+            <SocialShare>
+              <SocialShare.List>
+                <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
+                <SocialShare.Item name="facebook" link="#facebook" title="facebook" />
+                <SocialShare.Item name="twitter" link="#twitter" title="twitter" />
+                <SocialShare.Item name="whatsapp" link="#whatsapp" title="whatsapp" />
+                <SocialShare.Item name="linkedin" link="#linkedin" title="linkedin" />
+                <SocialShare.Item name="share" link="#share" title="share" />
+              </SocialShare.List>
+            </SocialShare>
+          </ExpandableSocialShare>
         </div>
       </div>
       <div className={`${className}-caption-content`}>

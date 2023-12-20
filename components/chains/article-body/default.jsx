@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { ArticleProvider } from '@r7/ui-article-delivery'
+import { Paragraph as ParagraphR7 } from '@r7/ui-base-components'
 
 import {
   Divider,
@@ -11,9 +12,9 @@ import {
   Heading,
   HeadingSection,
   isServerSide,
+  Paragraph,
   LazyLoad,
   Link,
-  Paragraph,
   usePhrases,
   MediaItem,
   Video,
@@ -53,11 +54,12 @@ function parseArticleItem(item, index, phrases, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <p
-          key={`${type}_${index}_${key}`}
-          dangerouslySetInnerHTML={{ __html: content }}
-          className={`${BLOCK_CLASS_NAME}__text`}
-        ></p>
+        <ParagraphR7 key={`${type}_${index}_${key}`} fontSize="xs">
+          <span
+            className={`${BLOCK_CLASS_NAME}__text`}
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></span>
+        </ParagraphR7>
       ) : null
     }
     case 'copyright': {

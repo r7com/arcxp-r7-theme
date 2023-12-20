@@ -2,7 +2,6 @@ import './default.scss'
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
-import { Paragraph } from '@r7/ui-base-components'
 
 export const ArticleTags = () => {
   const { arcSite, globalContent } = useFusionContext()
@@ -23,9 +22,7 @@ export const ArticleTags = () => {
               className={`${BLOCK_CLASS_NAME}-item`}
               style={{ backgroundColor: primaryColor }}
             >
-              <Paragraph as="span" fontSize="little" color="">
-                {tag.text}
-              </Paragraph>
+              <span>{tag.text}</span>
             </li>
           ))}
         </ul>

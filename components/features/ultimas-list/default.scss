@@ -24,6 +24,7 @@
     }
   }
   &__items {
+    font-size: 1em;
     padding: 0 16px;
     background-color: #f4f4f4;
     border-radius: 5px;
@@ -56,15 +57,33 @@
       gap: 8px;
 
       div {
-        font-family: "Open Sans",sans-serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 11px;
         color: #333;
         line-height: 15px;
         text-transform: uppercase;
 
         span {
-          font-family: "Open Sans",sans-serif;
+          font-family: 'Open Sans', sans-serif;
         }
+      }
+
+      h3 {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.38;
+        letter-spacing: -0.2px;
+        color: #333;
+      }
+
+      p {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 0;
+        line-height: 1.29;
+        letter-spacing: 0;
+        font-size: 14px;
+        color: #333;
       }
     }
 

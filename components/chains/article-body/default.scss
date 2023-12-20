@@ -9,8 +9,11 @@
   }
 
   &__text {
-    color: #333;
-    font-size: 18px;
+    a {
+      font-weight: 700;
+      text-decoration: underline;
+      color: #228ee1 !important;
+    }
   }
 
   @media screen and (max-width: 48rem) {
@@ -22,6 +25,7 @@
 
 .b-article-body__image {
   &.float {
+    max-width: 100%;
     width: min-content;
     float: left;
     margin-right: 28px;

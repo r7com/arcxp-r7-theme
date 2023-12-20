@@ -4,13 +4,7 @@ import { SvgIcon } from '@r7/ui-base-components'
 export const FullscreenHeader = ({ className, setView, setFullscreen, view, views }) => {
   return (
     <div className={`${className}-header`}>
-      <SvgIcon
-        iconName="logo-R7"
-        title="Logo-R7"
-        className={`${className}-header-logo fill-neutral-high-400`}
-        width={35}
-        height={31}
-      />
+      <SvgIcon iconName="logo-R7" title="Logo-R7" width={35} height={31} />
       <h3 className={`${className}-header-title`}>Cidade Alerta</h3>
       <div className={`${className}-header-toolbar`}>
         <span className={`${className}-header-toolbar-title`}>Modo de visualização:</span>

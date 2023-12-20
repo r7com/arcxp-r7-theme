@@ -31,6 +31,10 @@
     background-color: #1a1a1a;
     color: #fff;
 
+    & > svg {
+      fill: #fff;
+    }
+
     @media screen and (max-width: 48rem) {
       grid-template-columns: 1fr 1fr;
     }
@@ -236,6 +240,7 @@
     }
 
     &.active {
+      overflow-y: overlay;
       display: block;
     }
   }
@@ -269,25 +274,46 @@
       justify-content: space-between;
       align-items: center;
 
-      div {
+      & > div {
         display: flex;
         align-items: center;
         gap: 8px;
       }
 
-      button {
-        transform: rotate(180deg);
-        border: none;
-        cursor: pointer;
-        overflow: hidden;
-        outline: none;
-        transition: transform 0.2s ease;
-        display: flex;
-        padding: 0;
-
-        &.active {
-          transform: rotate(0);
+      &-title {
+        button {
+          transform: rotate(180deg);
+          border: none;
+          cursor: pointer;
+          overflow: hidden;
+          outline: none;
           transition: transform 0.2s ease;
+          display: flex;
+          padding: 0;
+
+          &.active {
+            transform: rotate(0);
+            transition: transform 0.2s ease;
+          }
+        }
+      }
+
+      &-btns {
+        li {
+          background-color: #fff;
+        }
+
+        & > button {
+          outline: none;
+          border-radius: 4px;
+          background: #fff;
+          border: 1px solid #dddde1;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
         }
       }
     }
