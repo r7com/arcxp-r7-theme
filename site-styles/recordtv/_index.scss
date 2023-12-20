@@ -336,43 +336,16 @@
 						"image": (
 							"border-radius": 4px 4px 0 0
 						),
-						"media-item": (
-							"border-radius": 4px,
-							"display": block,
-							"box-shadow": 0px 0px 0 1px var(--global-light-gray)
-						),
-						"media-item-title": (
-							"display": block,
-							"color": var(--global-neutral-low),
-							"font-weight": var(--global-font-weight-6),
-							"font-size": var(--global-font-size-4),
-							"line-height": var(--global-line-height-6)
-						),
-						"media-item-caption": (
-							"display": block,
-							"color": var(--global-neutral-low),
-							"text-transform": uppercase,
-							"font-size": var(--global-font-size-1)
-						),
-						"media-item-credit": (
-							"display": block,
-							"color": var(--global-neutral-low),
-							"text-transform": uppercase,
-							"font-size": var(--global-font-size-1)
-						),
-						"media-item-fig-caption": (
-							"border-radius": 0 0 4px 4px,
-							"border-top": none,
-							"padding": 8px 16px,
-							"background-color": var(--global-white),
-							"line-height": var(--body-line-height-5)
-						),
 						"link": (
 							"color": var(--color-primary)
 						),
 						"paragraph": (
 							"display": block,
 							"overflow": initial
+						),
+						"media-item-fig-caption": (
+							"background-color": var(--global-white),
+							"line-height": var(--body-line-height-5)
 						),
 						"icon": (
 							"fill": currentColor
@@ -1940,15 +1913,14 @@
 					"margin": var(--global-spacing-6) 0 0 0
 				),
 				"right-rail-advanced-main": (
-					"max-width": 1100px,
 					"gap": var(--global-spacing-6),
+					"max-width": calc(var(--content-max-width) * 1px),
 					"width": var(--content-scale-width),
 					"margin": auto
 				),
 				"right-rail-advanced-main-interior-item": (
-					"max-width": 800px,
-					"border-right": none,
 					"padding": initial,
+					"border-right": initial,
 					"gap": var(--global-spacing-5),
 					"display": contents
 				),
@@ -1973,11 +1945,11 @@
 					"grid-area": main-right-rail-top
 				),
 				"right-rail-advanced-navigation": (
-					"margin": 0,
 					"position": sticky,
 					"top": 0,
 					"width": 100%,
-					"z-index": 9
+					"z-index": 9,
+					"margin": 0 0 var(--global-spacing-5) 0
 				),
 				"right-rail-advanced-rail-container": (
 					"grid-template-areas": "main-right-rail-top" "main-interior-item-1" "main-right-rail-middle" "main-interior-item-2" "main-right-rail-bottom",
@@ -2993,12 +2965,29 @@
 					"text-decoration": none
 				),
 				"media-item": (
+					"border-radius": 4px,
+					"display": block,
+					"box-shadow": 0px 0px 0 1px var(--global-light-gray),
 					"align-items": stretch,
-					"display": flex,
 					"flex-direction": column,
 					"gap": var(--global-spacing-2)
 				),
+				"media-item-caption": (
+					"display": block,
+					"color": var(--global-neutral-low),
+					"text-transform": uppercase,
+					"font-size": var(--global-font-size-1)
+				),
+				"media-item-credit": (
+					"display": block,
+					"color": var(--global-neutral-low),
+					"text-transform": uppercase,
+					"font-size": var(--global-font-size-1)
+				),
 				"media-item-fig-caption": (
+					"border-radius": 0 0 4px 4px,
+					"border-top": none,
+					"padding": 8px 16px,
 					"color": var(--text-color-subtle),
 					"font-size": var(--body-font-size-tiny),
 					"line-height": var(--body-line-height-tiny)
@@ -3008,7 +2997,11 @@
 					"padding-right": var(--global-spacing-5)
 				),
 				"media-item-title": (
-					"font-weight": var(--global-font-weight-7)
+					"display": block,
+					"color": var(--global-neutral-low),
+					"font-weight": var(--global-font-weight-6),
+					"font-size": var(--global-font-size-4),
+					"line-height": var(--global-line-height-6)
 				),
 				"overline": (
 					"color": var(--text-color),
@@ -3377,8 +3370,7 @@
 					)
 				),
 				"right-rail-advanced-main-interior-item": (
-					"max-width": 800px,
-					"border-right": none,
+					"border-right": 1px solid #dadada,
 					"padding": 0 var(--global-spacing-6) 0 0,
 					"display": flex
 				),
