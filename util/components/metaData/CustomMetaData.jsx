@@ -11,7 +11,7 @@ import {
   imageANSToImageSrc,
   normalizeFallbackImage,
 } from './metaDataUtils'
-import { useSiteSectionProp } from '../useSiteTopperProp'
+import { useSiteSectionProp } from '../../useSiteTopperProp'
 
 const CustomMetaData = props => {
   const {

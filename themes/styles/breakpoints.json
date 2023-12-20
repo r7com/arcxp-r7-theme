@@ -1,1 +1,5 @@
-{}
+{
+  "default": "min-width: 0",
+  "desktop": "min-width: 48rem",
+  "medium": "min-width: 72rem"
+}

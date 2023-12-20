@@ -1,0 +1,10 @@
+.b-site-footer {
+  width: 100%;
+
+  &__wrapper {
+    max-width: 1100px;
+    padding: 40px 15px 32px;
+    box-sizing: content-box;
+    margin: 0 auto;
+  }
+}
