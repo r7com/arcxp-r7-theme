@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { adMap, sizeMapBreakpoints as breakpoints } from './ad-mapping'
+import { adMap } from './ad-mapping'
 
 export const getType = (globalContent = {}) => globalContent?.type
 
@@ -15,12 +15,24 @@ export const getAdName = ({ adType }) => adMap[adType]?.adName
 
 export const getAdClass = ({ adType }) => adMap[adType]?.adClass
 
-// returns an array of arrays
-// in some instances, possibly array of arrays of arrays
-// [width, height]
-// [[300, 250], [[300, 250], [150, 125]], [300, 250]]
-export const getDimensions = ({ adType }) => adMap[adType]?.dimensionsArray
+const convertSizesToArray = sizes => {
+  const splitedSizes = sizes.trim().split(',')
+  console.log({ splitedSizes })
+  if (splitedSizes.length > 1) {
+    return splitedSizes.map(size => size.split('x').map(Number))
+  } else {
+    return splitedSizes[0].split('x').map(Number)
+  }
+}
 
+export const getDimensions = props => {
+  console.log({ props })
+  const { desktopSizes, tabletSizes, mobileSizes } = props.customFields
+  const desktopArray = convertSizesToArray(desktopSizes)
+  const tabletArray = convertSizesToArray(tabletSizes)
+  const mobileArray = convertSizesToArray(mobileSizes)
+  return [desktopArray, tabletArray, mobileArray]
+}
 export const getCategory = sectionPath => sectionPath && sectionPath.split('/')[1]
 
 export const getID = ({ globalContent } = {}) => globalContent?._id
@@ -114,20 +126,19 @@ export const getSlotTargeting = props => ({
 /* Expects a 'props' object containing feature props, FusionContext */
 export const getAdObject = props => {
   const { instanceId = '' } = props
-  const adName = getAdName(props)
-  const display = adName === 'right_rail_cube' ? 'desktop' : props?.display || 'all'
-  console.log('retorno', getSlotName(props))
+  console.log(getDimensions(props))
   const adObj = {
     id: `arcad_${instanceId}`,
-    slotName: getSlotName(props),
-    adType: adName,
-    adClass: getAdClass(props),
+    slotName: '/7542/r7home/home',
     dimensions: getDimensions(props),
     sizemap: {
-      breakpoints,
+      breakpoints: [
+        [992, 0],
+        [768, 0],
+        [0, 0],
+      ],
       refresh: true,
     },
-    display,
   }
   adObj.targeting = getSlotTargeting(adObj)
   return adObj

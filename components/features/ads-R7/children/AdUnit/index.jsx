@@ -6,6 +6,7 @@ import { setPageTargeting } from '../../utils/ad-helper'
 const AdUnit = props => {
   const { adConfig, featureConfig } = props
   const { id } = adConfig
+  console.log({ id })
   const {
     customFields: { debug },
     siteProperties,
@@ -13,6 +14,7 @@ const AdUnit = props => {
 
   const registerAd = useCallback(() => {
     const publisherIds = { dfp_publisher_id: siteProperties.dfpId }
+    console.log({ adConfig })
     ArcAdsInstance.getInstance(siteProperties, () => {
       setPageTargeting(featureConfig)
     }).registerAd({
@@ -33,11 +35,8 @@ AdUnit.propTypes = {
   adConfig: PropTypes.shape({
     id: PropTypes.string.isRequired,
     slotName: PropTypes.string.isRequired,
-    adType: PropTypes.string.isRequired,
-    adClass: PropTypes.string.isRequired,
     dimensions: PropTypes.array.isRequired,
     sizemap: PropTypes.object.isRequired,
-    display: PropTypes.string.isRequired,
   }).isRequired,
   featureConfig: PropTypes.shape({
     siteProperties: PropTypes.shape({
