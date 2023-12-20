@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
-import { ExpandableSocialShare } from '../../../../ExpandableSocialShare'
+import { ExpandableSocialShare } from '../../../ExpandableSocialShare'
 
 export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
   const [showCaption, setShowCaption] = useState(false)

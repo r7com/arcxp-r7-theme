@@ -3,7 +3,7 @@ import { useFusionContext } from 'fusion:context'
 import { Navigation, Thumbs } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Image } from '@wpmedia/arc-themes-components'
-import getResizeParamsFromANSImage from '../../../../../get-resize-params-from-ans-image'
+import getResizeParamsFromANSImage from '../../../../get-resize-params-from-ans-image'
 
 export const FullscreenSlider = ({
   swiperRef,
@@ -12,6 +12,8 @@ export const FullscreenSlider = ({
   view,
   views,
   elements,
+  initialSlide,
+  setThumbsSwiper,
 }) => {
   const { arcSite } = useFusionContext()
   return (
@@ -27,8 +29,11 @@ export const FullscreenSlider = ({
       onSlideChange={e => {
         setActiveSlideIndex(e.realIndex)
       }}
+      initialSlide={initialSlide}
       navigation
       loop={true}
+      watchSlidesProgress
+      onSwiper={setThumbsSwiper}
     >
       {elements.map(item => {
         return (
