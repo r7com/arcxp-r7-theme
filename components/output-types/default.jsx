@@ -166,7 +166,7 @@ const SampleOutputType = ({
         <link
           rel="icon"
           type="image/x-icon"
-          href={deployment(`${contextPath}/resources/favicon.ico`)}
+          href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
         <MetaData
           arcSite={arcSite}
