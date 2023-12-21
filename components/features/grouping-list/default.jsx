@@ -14,7 +14,7 @@ const SimpleListWrapper = ({ customFields }) => {
     return null
   }
 
-  if (globalContent?.site_topper?.is_grouping === 'true') {
+  if (globalContent?.is_grouping === 'true') {
     return (
       <LazyLoad enabled={customFields.lazyLoad && !isAdmin}>
         <SimpleList

@@ -17,7 +17,7 @@ const GroupingHeader = () => {
           query: { sectionId: globalContent.websites[arcSite].website_section?._id },
         })
 
-  if (headerContent?.site_topper?.is_grouping === 'true') {
+  if (headerContent?.is_grouping === 'true') {
     return (
       <div className={BLOCK_CLASS_NAME}>
         <a
