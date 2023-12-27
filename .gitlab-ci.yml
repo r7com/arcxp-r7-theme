@@ -32,6 +32,8 @@ default:
       - echo "SANDBOX_DEPLOYER_FUSION_RELEASE=${SANDBOX_DEPLOYER_FUSION_RELEASE}" > .env
       - echo "SANDBOX_DEPLOYER_ENDPOINT=${SANDBOX_DEPLOYER_ENDPOINT}" >> .env
       - echo "SANDBOX_DEPLOYER_ACCESS_TOKEN=${SANDBOX_DEPLOYER_ACCESS_TOKEN}" >> .env
+      - cat .env
+      - echo "${SANDBOX_DEPLOYER_ACCESS_TOKEN}"
       - npm ci --cache .npm --prefer-offline
   
 stages: 
