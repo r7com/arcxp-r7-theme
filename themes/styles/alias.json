@@ -1,6 +1,6 @@
 {
   "default": {
-    "font-family-primary": "Open Sans",
+    "font-family-primary": "record-type",
     "font-family-secondary": "Playfair Display",
     "color-primary": "var(--global-blue-6)",
     "color-primary-hover": "var(--global-neutral-7)",
