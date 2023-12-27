@@ -32,6 +32,7 @@ const branch_name = execSync('git rev-parse --abbrev-ref HEAD').toString().trim(
 console.log(`Current branch: ${branch_name}. Env: ${environment}`)
 
 console.log('zipping')
+console.log(JSON.stringify(process.env))
 execSync(
   'zip bundle.zip -r . -x ".git/*" ".npm/*" "node_modules/*" "coverage/*" ".github/*" ".fusion/*" "mocks/*" "__mocks__/*" "data/*" README.md "documentation/*" *.test.jsx .env .npmrc',
   { stdio: 'ignore' },
