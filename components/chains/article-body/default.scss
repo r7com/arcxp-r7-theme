@@ -1,5 +1,5 @@
 .b-article-body {
-  font-family: var(--font-family-primary), sans-serif !important;
+  font-family: var(--font-family-primary, 'sans-serif'), sans-serif !important;
   & > div,
   & > figure {
     clear: left;
