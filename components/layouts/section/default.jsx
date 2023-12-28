@@ -8,7 +8,7 @@ const SectionLayout = ({ children }) => {
   const [headerFixed, header, main, footer] = React.Children.toArray(children)
 
   return (
-    <div>
+    <>
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
@@ -19,7 +19,7 @@ const SectionLayout = ({ children }) => {
         </main>
       )}
       {footer && <footer>{footer}</footer>}
-    </div>
+    </>
   )
 }
 

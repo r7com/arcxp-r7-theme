@@ -1,1 +1,13 @@
-{}
+{
+  "article-body": {
+    "styles": {
+      "default": {
+        "components": {
+          "image": {
+            "border-radius": "4px 4px 0 0"
+          }
+        }
+      }
+    }
+  }
+}
