@@ -9,6 +9,8 @@ import { BreakingNews } from '@r7/ui-card'
 function BreakingNewsBar({ customFields }) {
   const bars = filterBars(customFields)
 
+  console.log(bars)
+
   return (
     <>
       {bars.map((bar, index) => (
@@ -45,15 +47,20 @@ BreakingNewsBar.propTypes = {
             label: 'Mostrar barra?',
             defaultValue: true,
           }),
-          [`theme${counter}`]: PropTypes.oneOf(['urgent', 'live', 'now']).tag({
+          [`theme${counter}`]: PropTypes.oneOf(['live', 'urgent', 'now']).tag({
             group: `Barra ${counter}`,
             label: 'Tema',
+            labels: {
+              live: 'Ao vivo (padrão)',
+              urgent: 'Urgente',
+              now: 'Agora',
+            },
             defaultValue: 'live',
           }),
           [`tag${counter}`]: PropTypes.string.tag({
             group: `Barra ${counter}`,
             label: 'Tag',
-            defaultValue: 'Minha Tag',
+            defaultValue: '',
           }),
           [`title${counter}`]: PropTypes.string.tag({
             group: `Barra ${counter}`,
