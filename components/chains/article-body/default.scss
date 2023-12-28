@@ -1,5 +1,6 @@
 .b-article-body {
   font-family: 'Open Sans', sans-serif !important;
+  overflow-wrap: anywhere;
   & > div,
   & > figure {
     clear: left;
