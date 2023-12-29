@@ -224,7 +224,6 @@ TwoCardsSquarePhotoBlock.propTypes = {
     config: PropTypes.contentConfig().tag({
       group: 'Configurar conteúdo',
       label: 'Fonte de conteúdo',
-      searchable: 'image',
     }),
   }),
 }
