@@ -18,8 +18,8 @@ export const TwoCardsSquarePhotoBlock = props => {
     source: config?.contentService,
     query: {
       ...config?.contentConfigValues,
-      from: '0',
-      size: '2',
+      from: config?.contentConfigValues.from ?? '0',
+      size: config?.contentConfigValues.size ?? '2',
     },
   })
 
@@ -38,7 +38,7 @@ export const TwoCardsSquarePhotoBlock = props => {
   const blocks = [
     { ...content?.content_elements[0], ...customFields[0] },
     { ...content?.content_elements[1], ...customFields[1] },
-  ]
+  ].filter(item => item._id)
 
   if (!display && isAdmin) {
     return <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>
@@ -86,7 +86,7 @@ export const TwoCardsSquarePhotoBlock = props => {
                 )}
 
                 {(item.sponsoredBy ||
-                  (item.displayLabel && item.label) ||
+                  (item.displayLabel && item.label && item.label !== 'automatic') ||
                   (item.displayLabel &&
                     item.label === 'automatic' &&
                     LABEL_BY_SITE[item.taxonomy?.primary_site?.path])) && (
