@@ -1,0 +1,37 @@
+.b-grouping-header {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 79px;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+
+  @media screen and (max-width: 48rem) {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: 16px;
+    height: auto;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    height: 100%;
+  }
+
+  &__title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    height: 100%;
+
+    @media screen and (max-width: 48rem) {
+      font-size: 35px;
+      letter-spacing: -0.2px;
+      margin-bottom: 8px;
+    }
+  }
+}
