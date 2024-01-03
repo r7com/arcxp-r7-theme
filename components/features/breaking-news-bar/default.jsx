@@ -3,6 +3,7 @@ import '@r7/ui-card/style.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 import { filterBars } from './utils/helpers'
 import { BreakingNews } from '@r7/ui-card'
 
@@ -20,25 +21,11 @@ function BreakingNewsBar({ customFields }) {
   )
 }
 
-const createShape = ({ count, shapeTemplate }) => {
-  let counter = 1
-
-  let obj = {}
-
-  while (counter <= count) {
-    Object.assign(obj, shapeTemplate(counter))
-
-    counter += 1
-  }
-
-  return obj
-}
-
 BreakingNewsBar.label = 'Barra Urgente - R7 Block'
 
 BreakingNewsBar.propTypes = {
   customFields: PropTypes.shape({
-    ...createShape({
+    ...repeatProptypeStructure({
       count: 3,
       shapeTemplate(counter) {
         return {
