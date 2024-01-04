@@ -249,6 +249,7 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
+        <script src={`${contextPath}/resources/plugins/prebid.js`}></script>
       </head>
       <body>
         {comscoreNoScript(comscoreID)}

@@ -17,12 +17,12 @@ export const getAdClass = ({ adType }) => adMap[adType]?.adClass
 
 const convertSizesToArray = sizes => {
   const splitedSizes = sizes.trim().split(',')
-  console.log({ splitedSizes })
+
   if (splitedSizes.length > 1) {
     return splitedSizes.map(size => size.split('x').map(Number))
-  } else {
-    return splitedSizes[0].split('x').map(Number)
   }
+
+  return splitedSizes[0].split('x').map(Number)
 }
 
 export const getDimensions = props => {
