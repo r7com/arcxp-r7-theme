@@ -8,3 +8,4 @@ babel.config.js
 environment/*
 deployer.js
 arc-themes.js
+resources/plugins/prebid.js
