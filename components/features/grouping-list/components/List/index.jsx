@@ -3,7 +3,7 @@ import { Stack, HeadingSection } from '@wpmedia/arc-themes-components'
 import { SimpleListContent } from '../ListContent'
 
 export const SimpleList = props => {
-  const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
+  const { className, arcSite, customFields, id = '', primaryColor, websiteDomain } = props
   const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(false)
@@ -22,7 +22,6 @@ export const SimpleList = props => {
           setLoading={setLoading}
           setDisabled={setDisabled}
           size={size}
-          storyId={storyId}
         />
         {loading ? (
           <div className={`${className}__loader-container`}>
