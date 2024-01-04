@@ -9,13 +9,25 @@ const GroupingHeader = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { primaryColor } = getProperties(arcSite)
 
-  const headerContent =
-    globalContent.node_type && globalContent.node_type === 'section'
-      ? globalContent
-      : useContent({
+  let headerContent
+
+  if (globalContent.node_type && globalContent.node_type === 'section') {
+    headerContent = globalContent
+  } else {
+    globalContent.taxonomy.sections.find(section => {
+      if (section._website === arcSite) {
+        const sectionContent = useContent({
           source: 'site-service-hierarchy',
-          query: { sectionId: globalContent.websites[arcSite].website_section?._id },
+          query: { sectionId: section._id },
         })
+
+        if (sectionContent?.is_grouping === 'true') {
+          headerContent = sectionContent
+          return true
+        }
+      }
+    })
+  }
 
   if (headerContent?.is_grouping === 'true') {
     return (
