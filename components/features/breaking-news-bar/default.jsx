@@ -1,23 +1,56 @@
 import '@r7/ui-card/style.css'
+import './default.scss'
 
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper'
 
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 import { filterBars } from './utils/helpers'
 import { BreakingNews } from '@r7/ui-card'
+import { SliderNavigation } from './components/navigation'
+import { SliderControls } from './components/controls'
 
 function BreakingNewsBar({ customFields }) {
+  const [swiper, setSwiper] = useState(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
   const bars = filterBars(customFields)
 
-  console.log(bars)
+  const activateSwiper = bars.length > 1
 
   return (
-    <>
-      {bars.map((bar, index) => (
-        <BreakingNews key={index} {...bar} />
-      ))}
-    </>
+    <div className="breaking-news-bar">
+      <Swiper
+        className="breaking-news-bar__wrapper"
+        modules={[Autoplay]}
+        loop={true}
+        onSwiper={setSwiper}
+        onSlideChange={({ realIndex }) => setCurrentSlide(realIndex)}
+        autoplay={
+          activateSwiper
+            ? {
+                delay: 8000,
+                disabledOnInteraction: true,
+              }
+            : false
+        }
+      >
+        {bars.map((bar, index) => (
+          <SwiperSlide key={index}>
+            <BreakingNews {...bar} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {activateSwiper && (
+        <>
+          <SliderNavigation bars={bars} swiper={swiper} currentSlide={currentSlide} />
+          <SliderControls swiper={swiper} />
+        </>
+      )}
+    </div>
   )
 }
 
