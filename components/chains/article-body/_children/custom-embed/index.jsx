@@ -5,6 +5,7 @@ import getProperties from 'fusion:properties'
 
 import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
+import { EmbedPlayer } from './components/Player'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()
@@ -20,6 +21,8 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
       return embed.config ? (
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
+    case 'legacy_video':
+      return embed.config ? <EmbedPlayer item={embed}></EmbedPlayer> : null
   }
 }
 
