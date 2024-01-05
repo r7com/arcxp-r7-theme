@@ -7,10 +7,10 @@ export const Distributor = ({ publishDate, storyDistributor }) => {
   const distributorData = DISTRIBUTORS.find(
     distributor => storyDistributor?.name.toLowerCase() === distributor.agency_name.toLowerCase(),
   )
-
+  console.log(storyDistributor)
   return (
     <div className="distributor">
-      {distributorData ? (
+      {distributorData && (
         <>
           <a
             className="distributor__link"
@@ -23,7 +23,13 @@ export const Distributor = ({ publishDate, storyDistributor }) => {
           </a>
           <span>/</span>
         </>
-      ) : null}
+      )}
+      {storyDistributor && (
+        <>
+          <span>{storyDistributor?.name}</span>
+          <span>/</span>
+        </>
+      )}
 
       <time className="distributor__time" dateTime={publishDate}>
         {formatDate(publishDate)}
