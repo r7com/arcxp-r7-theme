@@ -1,4 +1,5 @@
 .b-article-body {
+  overflow-wrap: anywhere;
   font-family: var(--font-family-primary, 'sans-serif'), sans-serif !important;
   & > div,
   & > figure {

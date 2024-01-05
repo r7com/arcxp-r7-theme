@@ -1,30 +1,32 @@
 import React, { useState } from 'react'
 import { Stack, HeadingSection } from '@wpmedia/arc-themes-components'
-import { SimpleListContent } from '../ListContent'
+import { UltimasListItem } from '../ListItem'
 
-export const SimpleList = props => {
+export const UltimasList = props => {
   const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
   const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
-  const [loading, setLoading] = useState(false)
-  const [disabled, setDisabled] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false)
   const clickHandler = () => {
-    setSize(prev => prev + customFields.loadMoreSize)
-    setLoading(true)
+    setSize(prev => prev + customFields.listContentConfig.contentConfigValues.feedSize)
+    setIsLoading(true)
   }
   return (
     <HeadingSection>
       <Stack key={id} className={className}>
-        <SimpleListContent
+        <UltimasListItem
           customFields={customFields}
           className={className}
           arcSite={arcSite}
           websiteDomain={websiteDomain}
-          setLoading={setLoading}
-          setDisabled={setDisabled}
+          setIsLoading={setIsLoading}
           size={size}
           storyId={storyId}
+          isLoading={isLoading}
+          setSize={setSize}
+          setIsDisabled={setIsDisabled}
         />
-        {loading ? (
+        {isLoading ? (
           <div className={`${className}__loader-container`}>
             <div
               className={`${className}__loader`}
@@ -37,7 +39,7 @@ export const SimpleList = props => {
               onClick={clickHandler}
               className={`${className}__btn`}
               style={{ backgroundColor: primaryColor }}
-              disabled={disabled}
+              disabled={isDisabled}
             >
               Veja mais Notícias
             </button>
