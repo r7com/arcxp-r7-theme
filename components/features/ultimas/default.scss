@@ -1,4 +1,5 @@
 .b-ultimas {
+  max-width: 752px;
   &__items {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -24,7 +25,7 @@
           color: #606060;
           font-size: 11px;
           font-weight: 400;
-          font-family: "Open Sans", sans-serif;
+          font-family: 'Open Sans', sans-serif;
         }
       }
     }
@@ -53,7 +54,7 @@
       }
 
       h3 {
-        font-family: "Open Sans", sans-serif;
+        font-family: 'Open Sans', sans-serif;
         max-height: 90px;
         overflow: hidden;
         a {
@@ -109,7 +110,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       display: inline-block;
       position: absolute;
       top: 0;
