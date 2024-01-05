@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Record Type Regular';
+  src: url('../fonts/record-font/RecordType-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Record Type Light';
+  src: url('../fonts/record-font/RecordType-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Record Type Medium';
+  src: url('../fonts/record-font/RecordType-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Record Type Bold';
+  src: url('../fonts/record-font/RecordType-Bold.ttf') format('truetype');
+}

@@ -8,6 +8,7 @@ import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 import '@r7/ui-card/style.css'
 import { TwoCardsSquarePhoto, Card } from '@r7/ui-card'
+import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
 export const TwoCardsSquarePhotoBlock = props => {
   const { config, display } = props.customFields
@@ -18,8 +19,8 @@ export const TwoCardsSquarePhotoBlock = props => {
     source: config?.contentService,
     query: {
       ...config?.contentConfigValues,
-      from: '0',
-      size: '2',
+      from: config?.contentConfigValues.from ?? '0',
+      size: config?.contentConfigValues.size ?? '2',
     },
   })
 
@@ -38,7 +39,7 @@ export const TwoCardsSquarePhotoBlock = props => {
   const blocks = [
     { ...content?.content_elements[0], ...customFields[0] },
     { ...content?.content_elements[1], ...customFields[1] },
-  ]
+  ].filter(item => item._id)
 
   if (!display && isAdmin) {
     return <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>
@@ -86,7 +87,7 @@ export const TwoCardsSquarePhotoBlock = props => {
                 )}
 
                 {(item.sponsoredBy ||
-                  (item.displayLabel && item.label) ||
+                  (item.displayLabel && item.label && item.label !== 'automatic') ||
                   (item.displayLabel &&
                     item.label === 'automatic' &&
                     LABEL_BY_SITE[item.taxonomy?.primary_site?.path])) && (
@@ -121,110 +122,66 @@ TwoCardsSquarePhotoBlock.propTypes = {
       label: 'Exibir bloco',
       defaultValue: true,
     }),
-    displayLabel1: PropTypes.boolean.tag({
-      group: '1. Label',
-      label: 'Exibir label',
-      defaultValue: true,
-    }),
-    label1: PropTypes.oneOf([
-      'automatic',
-      'live',
-      'blog',
-      'studio',
-      'voting',
-      'podcast',
-      'aclr',
-    ]).tag({
-      group: '1. Label',
-      label: 'Template',
-      labels: {
-        automatic: 'Automático (padrão)',
-        live: 'Ao vivo',
-        blog: 'Blog',
-        studio: 'Estúdio',
-        voting: 'Votação',
-        podcast: 'Podcast',
-        aclr: 'ACLR',
-      },
-      defaultValue: 'automatic',
-    }),
-    sponsoredBy1: PropTypes.boolean.tag({
-      label: 'Exibir oferecido por',
-      group: '1. Oferecido por',
-    }),
-    sponsoredByImage1: PropTypes.string.tag({
-      group: '1. Oferecido por',
-      label: 'Imagem (24px largura)',
-      searchable: 'image',
-    }),
-    sponsoredByImageDesc1: PropTypes.string.tag({
-      group: '1. Oferecido por',
-      label: 'Descrição da imagem (alt)',
-      description: 'Descreva o que você vê na imagem',
-    }),
-    sponsoredByTitle1: PropTypes.string.tag({
-      group: '1. Oferecido por',
-      label: 'Titulo',
-      description: 'Descreva o conteúdo do link destino',
-    }),
-    sponsoredByUrl1: PropTypes.string.tag({
-      group: '1. Oferecido por',
-      label: 'URL (https)',
-    }),
-    displayLabel2: PropTypes.boolean.tag({
-      group: '2. Label',
-      label: 'Exibir label',
-      defaultValue: true,
-    }),
-    label2: PropTypes.oneOf([
-      'automatic',
-      'live',
-      'blog',
-      'studio',
-      'voting',
-      'podcast',
-      'aclr',
-    ]).tag({
-      group: '2. Label',
-      label: 'Template',
-      labels: {
-        automatic: 'Automático (padrão)',
-        live: 'Ao vivo',
-        blog: 'Blog',
-        studio: 'Estúdio',
-        voting: 'Votação',
-        podcast: 'Podcast',
-        aclr: 'ACLR',
-      },
-      defaultValue: 'automatic',
-    }),
-    sponsoredBy2: PropTypes.boolean.tag({
-      label: 'Exibir oferecido por',
-      group: '2. Oferecido por',
-    }),
-    sponsoredByImage2: PropTypes.string.tag({
-      group: '2. Oferecido por',
-      label: 'Imagem (24px largura)',
-      searchable: 'image',
-    }),
-    sponsoredByImageDesc2: PropTypes.string.tag({
-      group: '2. Oferecido por',
-      label: 'Descrição da imagem (alt)',
-      description: 'Descreva o que você vê na imagem',
-    }),
-    sponsoredByTitle2: PropTypes.string.tag({
-      group: '2. Oferecido por',
-      label: 'Titulo',
-      description: 'Descreva o conteúdo do link destino',
-    }),
-    sponsoredByUrl2: PropTypes.string.tag({
-      group: '2. Oferecido por',
-      label: 'URL (https)',
-    }),
     config: PropTypes.contentConfig().tag({
       group: 'Configurar conteúdo',
       label: 'Fonte de conteúdo',
-      searchable: 'image',
+    }),
+    ...repeatProptypeStructure({
+      count: 2,
+      shapeTemplate(counter) {
+        return {
+          [`displayLabel${counter}`]: PropTypes.boolean.tag({
+            group: `${counter}. Label`,
+            label: 'Exibir label',
+            defaultValue: true,
+          }),
+          [`label${counter}`]: PropTypes.oneOf([
+            'automatic',
+            'live',
+            'blog',
+            'studio',
+            'voting',
+            'podcast',
+            'aclr',
+          ]).tag({
+            group: `${counter}. Label`,
+            label: 'Template',
+            labels: {
+              automatic: 'Automático (padrão)',
+              live: 'Ao vivo',
+              blog: 'Blog',
+              studio: 'Estúdio',
+              voting: 'Votação',
+              podcast: 'Podcast',
+              aclr: 'ACLR',
+            },
+            defaultValue: 'automatic',
+          }),
+          [`sponsoredBy${counter}`]: PropTypes.boolean.tag({
+            label: 'Exibir oferecido por',
+            group: `${counter}. Oferecido por`,
+          }),
+          [`sponsoredByImage${counter}`]: PropTypes.string.tag({
+            group: `${counter}. Oferecido por`,
+            label: 'Imagem (24px largura)',
+            searchable: 'image',
+          }),
+          [`sponsoredByImageDesc${counter}`]: PropTypes.string.tag({
+            group: `${counter}. Oferecido por`,
+            label: 'Descrição da imagem (alt)',
+            description: 'Descreva o que você vê na imagem',
+          }),
+          [`sponsoredByTitle${counter}`]: PropTypes.string.tag({
+            group: `${counter}. Oferecido por`,
+            label: 'Titulo',
+            description: 'Descreva o conteúdo do link destino',
+          }),
+          [`sponsoredByUrl${counter}`]: PropTypes.string.tag({
+            group: `${counter}. Oferecido por`,
+            label: 'URL (https)',
+          }),
+        }
+      },
     }),
   }),
 }

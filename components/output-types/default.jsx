@@ -169,6 +169,7 @@ const SampleOutputType = ({
           type="image/x-icon"
           href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
+        <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
         <MetaData
           arcSite={arcSite}
           canonicalDomain={
