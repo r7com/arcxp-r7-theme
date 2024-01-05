@@ -1,6 +1,7 @@
 .b-ultimas {
-  max-width: 752px;
   &__items {
+    max-width: 752px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 28px;
