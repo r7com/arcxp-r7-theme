@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import './default.scss'
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
@@ -7,16 +8,25 @@ import { useSiteSectionProp } from '../../../util/useSiteTopperProp'
 const HeaderImage = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { websiteDomain, primaryColor, headerImage } = getProperties(arcSite)
+  const articleSectionId = globalContent?.websites
+    ? globalContent.websites[arcSite].website_section._id
+    : null
   const sectionHeaderImage =
-    useSiteSectionProp('site_topper.section_header_image', globalContent['_id']) || headerImage
+    useSiteSectionProp(
+      'site_topper.section_header_image',
+      articleSectionId || globalContent['_id'],
+    ) || headerImage
   let sectionPrimaryColor =
-    useSiteSectionProp('site_topper.section_primary_color', globalContent['_id']) || primaryColor
+    useSiteSectionProp(
+      'site_topper.section_primary_color',
+      articleSectionId || globalContent['_id'],
+    ) || primaryColor
 
   if (sectionPrimaryColor) {
     sectionPrimaryColor = sectionPrimaryColor.replace('#', '')
   }
 
-  const BLOCK_CLASS_NAME = 'b-header-image'
+  const BLOCK_CLASS_NAME = 'b-header'
   const BLOCK_STYLE = {
     backgroundImage: `url(${sectionHeaderImage})${
       sectionPrimaryColor
@@ -28,9 +38,9 @@ const HeaderImage = () => {
   return (
     <>
       {sectionHeaderImage && (
-        <a href={websiteDomain}>
-          <div className={BLOCK_CLASS_NAME} style={BLOCK_STYLE}></div>
-        </a>
+        <div className={`${BLOCK_CLASS_NAME}-image`} style={BLOCK_STYLE}>
+          <a className={`${BLOCK_CLASS_NAME}-link`} target="_self" href={websiteDomain} />
+        </div>
       )}
     </>
   )
