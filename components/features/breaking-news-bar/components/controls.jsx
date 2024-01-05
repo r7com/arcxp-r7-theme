@@ -5,11 +5,11 @@ export function SliderControls({ swiper }) {
   return (
     <div className="breaking-news-bar__controls">
       <button className="control-button prev" onClick={() => swiper.slidePrev()}>
-        <span className="visually-hidden">prev</span>
+        <span className="visually-hidden">anterior</span>
         <SvgIcon iconName="chevron-left" size="small" />
       </button>
       <button className="control-button next" onClick={() => swiper.slideNext()}>
-        <span className="visually-hidden">next</span>
+        <span className="visually-hidden">próximo</span>
         <SvgIcon iconName="chevron-right" size="small" />
       </button>
     </div>

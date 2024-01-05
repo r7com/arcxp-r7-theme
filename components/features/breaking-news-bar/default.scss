@@ -36,6 +36,9 @@
     inset: 0;
 
     .control-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: $buttonWidth;
       background-color: #fff;
       border: 1px solid #979797;
