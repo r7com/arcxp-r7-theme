@@ -5,6 +5,9 @@
   "BLOCK_DIST_TAG": "stable",
   "RESIZER_TOKEN_VERSION": 1,
   "SIGNING_SERVICE_DEFAULT_APP": "resizer",
+  "CONTENT_BASE": "https://api.sandbox.newr7.arcpublishing.com",
+  "DB_NAME": "NewR7-Themes-PageBuilder-Fusion-Features-Mirror",
+  "FUSION_RELEASE": "5.0",
   "siteStyles": {
     "r7": "r7",
     "recordtv": "recordtv",
