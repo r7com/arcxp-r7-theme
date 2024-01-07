@@ -1,0 +1,1 @@
+export const IMAGE_FULLWIDTH_FORMAT = 771

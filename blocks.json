@@ -1,5 +1,6 @@
 {
   "org": "@wpmedia/",
+  "buildSiteStyles": true,
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
   "localeList": ["en", "sv", "no", "fr", "de", "es", "ja", "ko", "pt"],
@@ -73,13 +74,31 @@
   ],
   "values": {
     "sites": {
-      "new-r7": { "siteProperties": { "textDirection": "ltr", "textFlow": "horizontal-tb" } },
       "noticias": {
         "siteProperties": {
           "websiteName": "Noticias R7",
           "websiteDomain": "https://noticias.r7.com",
           "primaryColor": "#556373",
           "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
+          "headerImageAlt": "Header image"
+        }
+      },
+      "recordtv": {
+        "siteProperties": {
+          "websiteName": "Record TV",
+          "websiteDomain": "https://recordtv.r7.com",
+          "primaryLogoAlt": "Website logo",
+          "primaryColor": "#5D6F9D",
+          "headerImage": "https://img.r7.com/images/record-tv-06112023200313177",
+          "headerImageAlt": "Header image"
+        }
+      },
+      "esportes": {
+        "siteProperties": {
+          "websiteName": "R7 Esporte",
+          "websiteDomain": "https://esportes.r7.com",
+          "primaryColor": "#0E8148",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808247535.jpg",
           "headerImageAlt": "Header image"
         }
       },
@@ -92,38 +111,20 @@
           "headerImageAlt": "Header image"
         }
       },
-      "r7": { "siteProperties": { "primaryColor": "#218EE1" } },
-      "esportes": {
-        "siteProperties": {
-          "websiteName": "R7 Esporte",
-          "websiteDomain": "https://esportes.r7.com",
-          "primaryColor": "#0E8148",
-          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808247535.jpg",
-          "headerImageAlt": "Header image"
-        }
-      },
-      "recordtv": {
-        "siteProperties": {
-          "websiteName": "Record TV",
-          "websiteDomain": "https://recordtv.r7.com",
-          "primaryLogoAlt": "Website logo",
-          "primaryColor": "#4766ac",
-          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808310345.png",
-          "headerImageAlt": "Header image"
-        }
-      }
+      "new-r7": { "siteProperties": { "textDirection": "ltr", "textFlow": "horizontal-tb" } },
+      "r7": { "siteProperties": { "primaryColor": "#218EE1" } }
     },
     "default": {
       "siteProperties": {
         "websiteName": "R7",
         "websiteDomain": "https://www.r7.com",
-        "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695891496962.png",
+        "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1698842893138.svg",
         "primaryLogoAlt": "Logo",
         "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
         "copyrightText": "All rights reserved - 2009-2023 - Rádio e Televisão Record SA",
         "facebookPage": "https://www.facebook.com/portalr7",
         "twitterUsername": "https://twitter.com/portalr7",
-        "resizerURL": "/resizer/v2/",
+        "resizerURL": "https://newr7-r7-sandbox.web.arc-cdn.net/resizer/v2/",
         "taboolaPublisherId": "r7-r7com",
         "locale": "en",
         "dateLocalization": {
