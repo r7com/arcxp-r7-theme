@@ -3,7 +3,6 @@ import { Menu } from '@r7/ui-header-delivery'
 
 export const HeaderMenu = ({ menuList }) => {
   const hasMenu = menuList?.children.length > 0
-  console.log(menuList)
 
   if (!hasMenu) return null
 
