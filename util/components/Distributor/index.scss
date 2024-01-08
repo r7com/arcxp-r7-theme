@@ -1,0 +1,27 @@
+.distributor {
+  font-size: 11px;
+  color: #333;
+  line-height: 15px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+
+  & > span {
+    padding: 0 3px;
+  }
+
+  &__link {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    img {
+      border-radius: 5px;
+      width: 29px;
+      height: 29px;
+      min-width: 29px;
+      max-width: 29px;
+    }
+  }
+}

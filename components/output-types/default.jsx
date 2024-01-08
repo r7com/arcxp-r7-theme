@@ -1,10 +1,11 @@
+import '@r7/ui-base-components/style.css'
+import '@r7/ui-layout/style.css'
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { Stack, usePhrases } from '@wpmedia/arc-themes-components'
+import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
-import MetaData from '../../util/metaData/CustomMetaData'
-import '@r7/ui-base-components/style.css'
+import MetaData from '../../util/components/metaData/CustomMetaData'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -107,6 +108,7 @@ const SampleOutputType = ({
     locale,
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
+    primaryColor,
   } = getProperties(arcSite)
 
   const chartbeatInline = `
@@ -154,21 +156,20 @@ const SampleOutputType = ({
     ]),
   ].join(';')
 
-  const phrases = usePhrases()
-
   return (
     <html lang={locale} dir={textDirection}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {globalContent?.label?.noindex?.text === 'Yes' && <meta name="robots" content="noindex" />}
-        {globalContent?.additional_properties?.canonical_url && (
-          <link rel="canonical" href={globalContent.additional_properties.canonical_url} />
+        {globalContent?.additional_properties?.url && (
+          <link rel="canonical" href={globalContent.additional_properties.url} />
         )}
         <link
           rel="icon"
           type="image/x-icon"
-          href={deployment(`${contextPath}/resources/favicon.ico`)}
+          href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
+        <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
         <MetaData
           arcSite={arcSite}
           canonicalDomain={
@@ -196,7 +197,16 @@ const SampleOutputType = ({
         {fontUrlLink(fontUrl)}
         <CssLinks />
         <Libs />
-        <style>{`body { writing-mode: ${textFlow}; }`}</style>
+        <style>
+          {`
+            :root {
+              --editorial-color: ${primaryColor};
+            }
+            body { 
+              writing-mode: ${textFlow}; 
+            }
+          `}
+        </style>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
@@ -245,9 +255,6 @@ const SampleOutputType = ({
       <body>
         {comscoreNoScript(comscoreID)}
         {googleTagManagerNoScript(gtmID)}
-        <a className="skip-main" href="#main">
-          {phrases.t('default-output-block.skip-main')}
-        </a>
         <Stack id="fusion-app" className="b-application">
           {children}
         </Stack>

@@ -1,0 +1,100 @@
+{
+  "_id": "6565ebbe1df97bea34000c5b",
+  "alternative_urls": [
+    {
+      "_id": "6565ebbe1df97bea34000c63",
+      "full_url": "https://www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js",
+      "section_id": "5cdc5374416eb9a71500079c",
+      "shortened_url": null,
+      "url": "www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js"
+    }
+  ],
+  "answers": [
+    {
+      "_id": "6565ebbe1df97bea34000c5f",
+      "embed": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/6stlCkUDG_s?si=BMBz2momU46x2TUP\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+      "image_id": "6564d6fb416eb968e900077e",
+      "text": "first answer",
+      "votes": 1432,
+      "self": "http://cms-api.ir7.com.br/polls/6565ebbe1df97bea34000c5b/answers/6565ebbe1df97bea34000c5f",
+      "image_url": "https://img.r7.com/images/teste-suporte-27112023145051789",
+      "image_title": "Teste Suporte"
+    },
+    {
+      "_id": "6565ebbe1df97bea34000c61",
+      "embed": "",
+      "image_id": "6565e2a4cd77c072fa0015a5",
+      "text": "second answer",
+      "votes": 423,
+      "self": "http://cms-api.ir7.com.br/polls/6565ebbe1df97bea34000c5b/answers/6565ebbe1df97bea34000c61",
+      "image_url": "https://img.r7.com/images/trama-retrata-o-amor-entre-dois-jovens-de-diferentes-classes-sociais-28112023095253039",
+      "image_title": "Trama retrata o amor entre dois jovens de diferentes classes sociais   "
+    },
+    {
+      "_id": "6568a0ffc012adb760000285",
+      "embed": "",
+      "image_id": null,
+      "text": "third options",
+      "votes": 59,
+      "self": "http://cms-api.ir7.com.br/polls/6565ebbe1df97bea34000c5b/answers/6568a0ffc012adb760000285",
+      "image_url": null,
+      "image_title": null
+    }
+  ],
+  "captcha_type": "fixed",
+  "closing_date": "2024-02-28T10:33:00-03:00",
+  "coupon": {
+    "_id": "6565ebbe1df97bea34000c5d",
+    "enable_counter": false,
+    "image_id": null,
+    "impression_counter": "",
+    "link": "",
+    "show": false,
+    "text": "",
+    "title": "",
+    "image_url": null
+  },
+  "created_at": "2023-11-28T10:31:42-03:00",
+  "default_embed": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/6stlCkUDG_s?si=BMBz2momU46x2TUP\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe>",
+  "default_image_id": "6564a26f1df97bd565000722",
+  "first_published_at": "2023-11-28T10:31:00-03:00",
+  "first_published_at_cache": "2023-11-28T10:31:00-03:00",
+  "js_url": "https://www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js&time=1701789969",
+  "main_media": "embed",
+  "main_section_id": "5cdc5374416eb9a71500079c",
+  "modified_at": null,
+  "multiple_votes": true,
+  "parent_id": null,
+  "preview": null,
+  "publish_on": null,
+  "question": "ARC - Test - First question",
+  "section_ids": ["5cdc5374416eb9a71500079c"],
+  "shortened_url": null,
+  "show_result": true,
+  "state": "published",
+  "theme": "Meu tema",
+  "time_now_day": "30",
+  "time_now_month": "10",
+  "time_now_year": "2023",
+  "title": "Polls tests - ARC - Moiteiro",
+  "updated_at": "2023-11-30T11:49:35-03:00",
+  "url": "www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js",
+  "url_hash": "359cc4aa644bb3b37f81416b8b2d23c1",
+  "user_login": "bmoiteiro",
+  "version": 5,
+  "vote_format": "absolute_votes",
+  "closed?": false,
+  "default_image_url": "https://img.r7.com/images/teste-27112023110639528",
+  "vertical_color": "#4766AC",
+  "is_vertical": true,
+  "default_image_author": "teste",
+  "vote_storage": "https://poll.r7.com/increment",
+  "alternative_urls_mv_s": [
+    "https://www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js"
+  ],
+  "canonical_url": "https://www.r7.com/supprod2022/enquetes/arc-test-first-question-359cc4aa644bb3b37f81416b8b2d23c1-30112023.js",
+  "is_blog": false,
+  "is_hotsite": false,
+  "gg_analytics": false,
+  "disable_taboola": true
+}
