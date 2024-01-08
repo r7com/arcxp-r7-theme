@@ -13,7 +13,7 @@ const CardCouponBlock = ({ customFields }) => {
     )
     const couponData = await response.json()
     setData(couponData)
-  }, [])
+  }, [category])
 
   return (
     <CardCoupon>
