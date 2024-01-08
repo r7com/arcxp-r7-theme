@@ -3,21 +3,22 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { SectionHeading } from '@r7/ui-section-heading'
 import { ConditionalLink } from '@r7/ui-base-components'
+import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
 const SectionHeadingBlock = props => {
-  const { type, title, imageURL, imageAlt, description, url, color } = props.customFields
+  const { type, title, imageURL, imageAlt, url, urlDescription, color } = props.customFields
 
   const tags = [1, 2, 3].map(tag => {
     return {
       title: props.customFields[`tagLabel${tag}`],
       url: props.customFields[`tagUrl${tag}`],
-      description: props.customFields[`tagDescription${tag}`],
+      urlDescription: props.customFields[`tagUrlDescription${tag}`],
     }
   })
 
   return (
     <SectionHeading color={color || undefined}>
-      <ConditionalLink href={url} title={description || undefined}>
+      <ConditionalLink href={url} title={urlDescription || title}>
         {type === 'image' ? (
           <SectionHeading.Image src={imageURL} alt={imageAlt || undefined} />
         ) : (
@@ -35,7 +36,7 @@ const SectionHeadingBlock = props => {
               <SectionHeading.Tag
                 key={tag.title}
                 href={tag.url}
-                title={tag.description || undefined}
+                title={tag.urlDescription || undefined}
               >
                 {tag.title}
               </SectionHeading.Tag>
@@ -74,56 +75,37 @@ SectionHeadingBlock.propTypes = {
       label: 'Descrição da imagem (alt)',
       description: 'Descreva o que você vê na imagem',
     }),
-    description: PropTypes.string.tag({
-      label: 'Descrição da seção',
-      description: 'Descreva a seção/conteúdo do link destino (não deve ser igual ao título)',
-    }),
     url: PropTypes.string.tag({
       label: 'URL da seção (https)',
       description: 'Serve pra ambos templates',
+    }),
+    urlDescription: PropTypes.string.tag({
+      label: 'Descrição da seção',
+      description: 'Descreva a seção/conteúdo do link destino (não deve ser igual ao título)',
     }),
     color: PropTypes.string.tag({
       label: 'Cor da seção (hexadecimal/rgb)',
       description: 'Cor da editoria (colore o titulo e o separador)',
     }),
-    tagLabel1: PropTypes.string.tag({
-      group: 'Tag 1',
-      label: 'Texto',
-    }),
-    tagUrl1: PropTypes.string.tag({
-      group: 'Tag 1',
-      label: 'Url',
-    }),
-    tagDescription1: PropTypes.string.tag({
-      group: 'Tag 1',
-      label: 'Descrição (opcional)',
-      description: 'Descreva a tag/conteúdo do link destino (não deve ser igual à tag)',
-    }),
-    tagLabel2: PropTypes.string.tag({
-      group: 'Tag 2',
-      label: 'Texto',
-    }),
-    tagUrl2: PropTypes.string.tag({
-      group: 'Tag 2',
-      label: 'Url',
-    }),
-    tagDescription2: PropTypes.string.tag({
-      group: 'Tag 2',
-      label: 'Descrição (opcional)',
-      description: 'Descreva a tag/conteúdo do link destino (não deve ser igual à tag)',
-    }),
-    tagLabel3: PropTypes.string.tag({
-      group: 'Tag 3',
-      label: 'Texto',
-    }),
-    tagUrl3: PropTypes.string.tag({
-      group: 'Tag 3',
-      label: 'Url',
-    }),
-    tagDescription3: PropTypes.string.tag({
-      group: 'Tag 3',
-      label: 'Descrição (opcional)',
-      description: 'Descreva a tag/conteúdo do link destino (não deve ser igual à tag)',
+    ...repeatProptypeStructure({
+      count: 3,
+      shapeTemplate(counter) {
+        return {
+          [`tagLabel${counter}`]: PropTypes.string.tag({
+            group: `Tag ${counter}`,
+            label: 'Título',
+          }),
+          [`tagUrl${counter}`]: PropTypes.string.tag({
+            group: `Tag ${counter}`,
+            label: 'URL (https)',
+          }),
+          [`tagUrlDescription${counter}`]: PropTypes.string.tag({
+            group: `Tag ${counter}`,
+            label: 'Descrição da URL',
+            description: 'Descreva a tag/conteúdo do link destino (não deve ser igual ao título)',
+          }),
+        }
+      },
     }),
   }),
 }
