@@ -1,0 +1,8 @@
+$buttonWidth: 28px;
+
+/*
+  $buttonQtd == 0: controls are hidden
+  $buttonQtd == 1: only "next" button is visible
+  $buttonQtd == 2: both "prev" and "next" buttons are visible
+*/
+$buttonQtd: 1;
