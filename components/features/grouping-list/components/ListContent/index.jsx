@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useContent } from 'fusion:content'
 import { useFusionContext } from 'fusion:context'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
-import { formatDate } from '../../util/formatDate'
 import { Paragraph } from '@r7/ui-base-components'
+import { Distributor } from '../../../../../util/components/Distributor'
 
 export const SimpleListContent = ({ className, customFields, setLoading, setDisabled, size }) => {
   const { arcSite, globalContent } = useFusionContext()
@@ -33,7 +33,7 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
           headlines: { basic: headlineText = '' } = {},
           subheadlines: { basic: subheadlineText = '' } = {},
           websites,
-          credits,
+          distributor,
           publish_date,
         } = element
         const image = getImageFromANS(element)
@@ -61,12 +61,7 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
               </Link>
             ) : null}
             <div className={`${className}__item-content`}>
-              <div>
-                <Link href={url}>
-                  <span>{credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}</span>
-                </Link>
-                {formatDate(publish_date)}
-              </div>
+              <Distributor publishDate={publish_date} storyDistributor={distributor} />
               <Paragraph as="h3" fontSize="md" fontWeight="semibold">
                 <Link href={url}>{headlineText}</Link>
               </Paragraph>
