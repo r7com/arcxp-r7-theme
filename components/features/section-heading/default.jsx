@@ -80,7 +80,7 @@ SectionHeadingBlock.propTypes = {
       description: 'Serve pra ambos templates',
     }),
     urlDescription: PropTypes.string.tag({
-      label: 'Descrição da seção',
+      label: 'Descrição da URL',
       description: 'Descreva a seção/conteúdo do link destino (não deve ser igual ao título)',
     }),
     color: PropTypes.string.tag({
