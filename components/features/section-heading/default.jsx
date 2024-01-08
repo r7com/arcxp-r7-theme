@@ -10,7 +10,7 @@ const SectionHeadingBlock = props => {
 
   const tags = [1, 2, 3].map(tag => {
     return {
-      title: props.customFields[`tagLabel${tag}`],
+      title: props.customFields[`tagTitle${tag}`],
       url: props.customFields[`tagUrl${tag}`],
       urlDescription: props.customFields[`tagUrlDescription${tag}`],
     }
@@ -31,12 +31,11 @@ const SectionHeadingBlock = props => {
       <SectionHeading.Tags>
         {tags.map(tag => {
           return (
-            tag.title &&
-            tag.url && (
+            tag.title && (
               <SectionHeading.Tag
                 key={tag.title}
                 href={tag.url}
-                title={tag.urlDescription || undefined}
+                title={tag.urlDescription || tag.title}
               >
                 {tag.title}
               </SectionHeading.Tag>
@@ -91,7 +90,7 @@ SectionHeadingBlock.propTypes = {
       count: 3,
       shapeTemplate(counter) {
         return {
-          [`tagLabel${counter}`]: PropTypes.string.tag({
+          [`tagTitle${counter}`]: PropTypes.string.tag({
             group: `Tag ${counter}`,
             label: 'Título',
           }),
