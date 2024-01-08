@@ -24,7 +24,7 @@ const CardCouponBlock = ({ customFields }) => {
         {data.length > 0 &&
           data.map(({ id, name, url, logo, best_offer_text, anchor_text }) => (
             <CardCoupon.Item key={id}>
-              <ConditionalLink target="_blank" title={anchor_text} href={url} data-partner={name}>
+              <ConditionalLink target="_blank" title={anchor_text} href={url}>
                 <CardCoupon.Content>
                   <img
                     className="card-mr-xxxs card-rounded-md card-h-lg card-w-lg"
