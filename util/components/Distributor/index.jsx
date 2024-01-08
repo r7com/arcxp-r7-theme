@@ -24,7 +24,7 @@ export const Distributor = ({ publishDate, storyDistributor }) => {
           <span>/</span>
         </>
       )}
-      {storyDistributor && (
+      {!distributorData && storyDistributor && (
         <>
           <span>{storyDistributor?.name}</span>
           <span>/</span>
