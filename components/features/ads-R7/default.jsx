@@ -55,6 +55,7 @@ const AdsR7 = props => {
   }
   const { customFields, isAdmin } = propsWithContext
   const { lazyLoad = true, reserveSpace = true } = customFields
+  console.log(reserveSpace)
   const [config] = useState(
     getAdObject({
       ...customFields,
@@ -63,7 +64,6 @@ const AdsR7 = props => {
   )
   //pegar o min height e fazer o reserve space
 
-  console.log(reserveSpace)
   return (
     <R7ArcAdDisplay
       config={config}
