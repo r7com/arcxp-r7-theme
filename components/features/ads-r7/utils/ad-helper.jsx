@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 import { adMap } from './ad-mapping'
 
+export const generateInstanceId = componentId => {
+  return `${componentId}-${Math.floor(Math.random() * 9007199254740991).toString(16)}`
+}
 export const getType = (globalContent = {}) => globalContent?.type
 
 export const isContentPage = ({ globalContent } = {}) => {

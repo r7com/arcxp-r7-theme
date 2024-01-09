@@ -3,13 +3,9 @@ import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { LazyLoad } from '@wpmedia/arc-themes-components'
 import AdUnit from './children/AdUnit'
-import { getAdObject } from './utils/ad-helper'
+import { generateInstanceId, getAdObject } from './utils/ad-helper'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import '@r7/ui-base-components/style.css'
-
-function generateInstanceId(componentId) {
-  return `${componentId}-${Math.floor(Math.random() * 9007199254740991).toString(16)}`
-}
 
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
@@ -109,6 +105,10 @@ AdsR7.propTypes = {
     reserveSpace: PropTypes.boolean.tag({
       name: 'Reserve space for Ad',
       defaultValue: true,
+    }),
+    fixed: PropTypes.boolean.tag({
+      name: 'Fixar no scoll',
+      defaultValue: false,
     }),
     display: PropTypes.boolean.tag({
       name: 'Exibir publicidade',
