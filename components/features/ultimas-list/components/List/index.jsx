@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Stack, HeadingSection } from '@wpmedia/arc-themes-components'
 import { SimpleListContent } from '../ListContent'
-import { SimpleListHeading } from '../ListHeading'
 
 export const SimpleList = props => {
   const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
@@ -15,13 +14,6 @@ export const SimpleList = props => {
   return (
     <HeadingSection>
       <Stack key={id} className={className}>
-        {customFields.title ? (
-          <SimpleListHeading
-            className={className}
-            primaryColor={primaryColor}
-            title={customFields.title}
-          />
-        ) : null}
         <SimpleListContent
           customFields={customFields}
           className={className}

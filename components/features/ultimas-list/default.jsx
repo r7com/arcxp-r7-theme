@@ -46,7 +46,6 @@ SimpleListWrapper.propTypes = {
       defaultValue: false,
       group: 'Display Options',
     }),
-    title: PropTypes.string.tag({ label: 'Title' }),
     lazyLoad: PropTypes.bool.tag({
       name: 'Lazy Load block?',
       defaultValue: false,

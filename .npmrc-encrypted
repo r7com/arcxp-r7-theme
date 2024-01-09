@@ -6,14 +6,14 @@ registry=https://registry.npmjs.org/
 registry=https://npm.pkg.github.com/
 
 @wpmedia:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHwHwTP6/XNXyd3aTNynRcFAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDPwGtDB1kJXBcr0SwwIBEIBDSXfUxJ0w4PkvH2Rvxk/0fRLThYB8DI/jiO5xIR2ok1OKBaEpH9lJlBKuH4PqHF3rP/v3RvZuhuqc20yqzVm0WukB3A==}
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHYAiL22nG9wujb/+iW2s6pAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOq2WfVwBMoor9VqPgIBEIBD1e+zCs+ZTJRIGerF3obEEcPau3lMFM9FIyYMnSHovruhdyZDNYqQROUhDeqyau8RXlULBl9TeKIhiuEW1NGuLAzPuQ==}
 
 registry=https://npm.pkg.github.com/
 
 @arcxp:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHwHwTP6/XNXyd3aTNynRcFAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDPwGtDB1kJXBcr0SwwIBEIBDSXfUxJ0w4PkvH2Rvxk/0fRLThYB8DI/jiO5xIR2ok1OKBaEpH9lJlBKuH4PqHF3rP/v3RvZuhuqc20yqzVm0WukB3A==}
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHYAiL22nG9wujb/+iW2s6pAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOq2WfVwBMoor9VqPgIBEIBD1e+zCs+ZTJRIGerF3obEEcPau3lMFM9FIyYMnSHovruhdyZDNYqQROUhDeqyau8RXlULBl9TeKIhiuEW1NGuLAzPuQ==}
 
 registry=https://npm.pkg.github.com/
 
 @code-store-platform:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHwHwTP6/XNXyd3aTNynRcFAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDPwGtDB1kJXBcr0SwwIBEIBDSXfUxJ0w4PkvH2Rvxk/0fRLThYB8DI/jiO5xIR2ok1OKBaEpH9lJlBKuH4PqHF3rP/v3RvZuhuqc20yqzVm0WukB3A==}
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHYAiL22nG9wujb/+iW2s6pAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOq2WfVwBMoor9VqPgIBEIBD1e+zCs+ZTJRIGerF3obEEcPau3lMFM9FIyYMnSHovruhdyZDNYqQROUhDeqyau8RXlULBl9TeKIhiuEW1NGuLAzPuQ==}

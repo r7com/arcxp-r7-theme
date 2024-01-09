@@ -2,8 +2,8 @@ import './default.scss'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
-import { ArticleProvider } from '@r7/ui-article-delivery'
-import { Paragraph as ParagraphR7 } from '@r7/ui-base-components'
+import { ArticleProvider, useArticleAction } from '@r7/ui-article-delivery'
+import { Paragraph, Typography } from '@r7/ui-base-components'
 
 import {
   Divider,
@@ -12,7 +12,6 @@ import {
   Heading,
   HeadingSection,
   isServerSide,
-  Paragraph,
   LazyLoad,
   Link,
   usePhrases,
@@ -54,20 +53,15 @@ function parseArticleItem(item, index, phrases, customFields) {
   switch (type) {
     case 'text': {
       return content && content.length > 0 ? (
-        <ParagraphR7 key={`${type}_${index}_${key}`} fontSize="xs">
-          <span
-            className={`${BLOCK_CLASS_NAME}__text`}
-            dangerouslySetInnerHTML={{ __html: content }}
-          ></span>
-        </ParagraphR7>
+        <Paragraph key={`${type}_${index}_${key}`} fontSize="xs" dangerHTML={content} />
       ) : null
     }
     case 'copyright': {
       return content && content.length > 0 ? (
-        <Paragraph
+        <Typography
           key={`${type}_${index}_${key}`}
           className={`${BLOCK_CLASS_NAME}__copyright`}
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerHTML={content}
         />
       ) : null
     }
@@ -101,7 +95,7 @@ function parseArticleItem(item, index, phrases, customFields) {
       const afterContent = '&nbsp;]'
 
       return (
-        <Paragraph
+        <Typography
           key={`${type}_${index}_${key}`}
           className={`${BLOCK_CLASS_NAME}__interstitial-link`}
         >
@@ -113,7 +107,7 @@ function parseArticleItem(item, index, phrases, customFields) {
             {content}
           </Link>
           <span dangerouslySetInnerHTML={{ __html: afterContent }} />
-        </Paragraph>
+        </Typography>
       )
     }
 
@@ -154,7 +148,7 @@ function parseArticleItem(item, index, phrases, customFields) {
         <section className={`${BLOCK_CLASS_NAME}__correction`} key={`${type}_${index}_${key}`}>
           <HeadingSection>
             <Heading>{labelText}</Heading>
-            <Paragraph>{item.text}</Paragraph>
+            <Typography>{item.text}</Typography>
           </HeadingSection>
         </section>
       ) : null
@@ -254,6 +248,7 @@ function parsePromoItem(item, itemKey, customFields) {
 
 export const ArticleBodyChainPresentation = ({ children, customFields = {}, context }) => {
   const { globalContent: items = {}, arcSite, id } = context
+  const { fontSize } = useArticleAction()
   const {
     content_elements: contentElements = [],
     copyright,
@@ -321,13 +316,12 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
         ]
       : []),
   ]
+
   return (
-    <ArticleProvider>
-      <article className={BLOCK_CLASS_NAME}>
-        <Accessibility />
-        {articleBody}
-      </article>
-    </ArticleProvider>
+    <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
+      <Accessibility />
+      {articleBody}
+    </article>
   )
 }
 
@@ -340,9 +334,11 @@ const ArticleBodyChain = ({ children, customFields = {} }) => {
   }
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <ArticleBodyChainPresentation context={context} customFields={customFields}>
-        {children}
-      </ArticleBodyChainPresentation>
+      <ArticleProvider>
+        <ArticleBodyChainPresentation context={context} customFields={customFields}>
+          {children}
+        </ArticleBodyChainPresentation>
+      </ArticleProvider>
     </LazyLoad>
   )
 }

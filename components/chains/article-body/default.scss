@@ -1,5 +1,6 @@
 .b-article-body {
-  font-family: 'Open Sans', sans-serif !important;
+  overflow-wrap: anywhere;
+  font-family: var(--font-family-primary, 'sans-serif'), sans-serif !important;
   & > div,
   & > figure {
     clear: left;
@@ -24,17 +25,22 @@
 }
 
 .b-article-body__image {
-  &.float {
+  &.floated {
     max-width: 100%;
     width: min-content;
     float: left;
     margin-right: 28px;
-    margin-bottom: 24px;
 
     @media screen and (max-width: 48rem) {
       float: none;
       margin-right: 0;
     }
+  }
+
+  &.centered {
+    max-width: 100%;
+    width: min-content;
+    margin: 0 auto 32px;
   }
 
   .image-wrapper {

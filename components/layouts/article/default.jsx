@@ -1,11 +1,13 @@
 import './default.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Header } from '@r7/ui-header-delivery'
 
 const LAYOUT_CLASS_NAME = 'b-article-layout'
 const ArticleLayout = ({ children }) => {
   const [
-    navigation,
+    headerFixed,
+    header,
     fullwidthWithoutContainer,
     fullwidth1,
     main,
@@ -19,7 +21,10 @@ const ArticleLayout = ({ children }) => {
 
   return (
     <div className={LAYOUT_CLASS_NAME}>
-      {navigation ? <div className={`${LAYOUT_CLASS_NAME}__navigation`}>{navigation}</div> : null}
+      <Header>
+        {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
+        {header && header}
+      </Header>
       {fullwidthWithoutContainer ? (
         <div className={`${LAYOUT_CLASS_NAME}__full-width-without-container`}>
           {fullwidthWithoutContainer}
@@ -54,7 +59,8 @@ ArticleLayout.propTypes = {
 }
 
 ArticleLayout.sections = [
-  'navigation',
+  'header-fixed',
+  'header',
   'fullwidthWithoutContainer',
   'fullwidth1',
   'main-1',
