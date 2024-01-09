@@ -10,4 +10,4 @@ deployer.js
 arc-themes.js
 resources/plugins/prebid.js
 components/features/automatic-page-refresh/*
-components/features/ads-R7/children/ArcAdsInstance/*
+components/features/ads-r7/children/ArcAdsInstance/*
