@@ -51,17 +51,32 @@ function addRubicon(bids, id) {
 
 function addTeads(bids, id, dimensions) {
   // PER-6812: Teads é válido apenas para peças 300x250
-  console.log(dimensions)
-  bids.push({
-    bidder: 'teads',
-    params: {
-      placementId: 152515,
-      pageId: 138995,
-      inventory: {
-        adunit: id,
-      },
-    },
+  let has300x250 = false
+  dimensions.forEach(dimension => {
+    if (typeof dimension[0] !== 'number') {
+      dimension.forEach(innerDimension => {
+        if (innerDimension[0] === 300 && innerDimension[1] === 250) {
+          has300x250 = true
+        }
+      })
+    }
+    if (dimension[0] === 300 && dimension[1] === 250) {
+      has300x250 = true
+    }
   })
+
+  if (has300x250) {
+    bids.push({
+      bidder: 'teads',
+      params: {
+        placementId: 152515,
+        pageId: 138995,
+        inventory: {
+          adunit: id,
+        },
+      },
+    })
+  }
 }
 
 export { addSmart, addLiveramp, addRubicon, addTeads }

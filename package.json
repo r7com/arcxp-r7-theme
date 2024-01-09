@@ -25,10 +25,6 @@
   "homepage": "https://github.com/arc-partners/NewR7-Themes-PageBuilder-Fusion-Features-Mirror#readme",
   "devDependencies": {
     "@arc-fusion/cli": "^2.2.1",
-    "@babel/eslint-parser": "^7.23.3",
-    "@babel/eslint-plugin": "^7.23.5",
-    "@babel/plugin-syntax-class-properties": "^7.12.13",
-    "@babel/preset-env": "^7.23.8",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@r7/ui-base-components": "file:../../front-monorepo/dist/libs/ui-base-components",
