@@ -1,6 +1,7 @@
 module.exports = {
   extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
   plugins: ["jsx-a11y", "prettier"],
+  parser: '@babel/eslint-parser',
   parserOptions: {
     sourceType: "module",
     ecmaVersion: "latest"
