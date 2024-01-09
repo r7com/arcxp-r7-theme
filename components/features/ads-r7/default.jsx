@@ -6,30 +6,33 @@ import AdUnit from './children/AdUnit'
 import { generateInstanceId, getAdObject } from './utils/ad-helper'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import '@r7/ui-base-components/style.css'
+import './default.scss'
 
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
 
   console.log({ propsWithContext })
   const { customFields } = propsWithContext
-  const { blockLayout = 'background', display = true } = customFields
+  const { blockLayout = 'background', display = true, fixed } = customFields
   const showAd = !isAdmin && display
 
   return (
     <>
       {showAd ? (
-        <AdShell layout={blockLayout}>
-          <LazyLoad
-            enabled={lazyLoad}
-            offsetBottom={0}
-            offsetLeft={0}
-            offsetRight={0}
-            offsetTop={200}
-            renderPlaceholder={ref => <div ref={ref} />}
-          >
-            <AdUnit adConfig={config} featureConfig={propsWithContext} />
-          </LazyLoad>
-        </AdShell>
+        <div className={fixed && 'ad-fixed'}>
+          <AdShell layout={blockLayout}>
+            <LazyLoad
+              enabled={lazyLoad}
+              offsetBottom={0}
+              offsetLeft={0}
+              offsetRight={0}
+              offsetTop={200}
+              renderPlaceholder={ref => <div ref={ref} />}
+            >
+              <AdUnit adConfig={config} featureConfig={propsWithContext} />
+            </LazyLoad>
+          </AdShell>
+        </div>
       ) : null}
       {isAdmin && display ? (
         <AdShell layout={blockLayout}>
@@ -107,7 +110,7 @@ AdsR7.propTypes = {
       defaultValue: true,
     }),
     fixed: PropTypes.boolean.tag({
-      name: 'Fixar no scoll',
+      name: 'Fixar no scroll',
       defaultValue: false,
     }),
     display: PropTypes.boolean.tag({
