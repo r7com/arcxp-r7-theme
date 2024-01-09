@@ -29,7 +29,9 @@ class AutomaticPageRefresh extends Component {
   goToOriginalPosition = () => {
     const scrollTopPosition = localStorage.getItem(key)
     if (scrollTopPosition) {
-      document.documentElement.scrollTop = document.body.scrollTop = scrollTopPosition
+      setTimeout(() => {
+        window.scrollTo({ behavior: 'smooth', left: 0, top: scrollTopPosition })
+      }, 350)
       localStorage.removeItem(key)
     }
   }
@@ -40,8 +42,7 @@ class AutomaticPageRefresh extends Component {
 
     // Set up a new interval based on the current reload interval state
     this.reloadInterval = setInterval(() => {
-      const scrollTopPosition = document.documentElement.scrollTop || document.body.scrollTop
-      localStorage.setItem(key, scrollTopPosition)
+      localStorage.setItem(key, window.scrollY)
 
       window.location.reload(true)
     }, this.state.timer * 1000)
