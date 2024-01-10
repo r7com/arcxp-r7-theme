@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CardCoupon } from '@r7/ui-card'
+import { useContent } from 'fusion:content'
 import { Typography, ConditionalLink } from '@r7/ui-base-components'
 import PropTypes from '@arc-fusion/prop-types'
 
@@ -7,13 +8,14 @@ const CardCouponBlock = ({ customFields }) => {
   const [data, setData] = useState([])
   const { category } = customFields
 
-  useEffect(async () => {
-    const response = await fetch(
-      `https://cms-coupons-api-qa.ir7.com.br/v1/shops?categories=${category}`,
-    )
-    const couponData = await response.json()
-    setData(couponData)
-  }, [category])
+  const couponData = useContent({
+    source: 'coupon-api',
+    query: { category },
+  })
+
+  useEffect(() => {
+    couponData & setData(couponData)
+  }, [category, couponData])
 
   return (
     <CardCoupon>
@@ -21,8 +23,8 @@ const CardCouponBlock = ({ customFields }) => {
         r7 Cupons
       </Typography>
       <CardCoupon.List>
-        {data.length > 0 &&
-          data.map(({ id, name, url, logo, best_offer_text, anchor_text }) => (
+        {data?.length > 0 &&
+          data?.map(({ id, name, url, logo, best_offer_text, anchor_text }) => (
             <CardCoupon.Item key={id}>
               <ConditionalLink target="_blank" title={anchor_text} href={url}>
                 <CardCoupon.Content>
