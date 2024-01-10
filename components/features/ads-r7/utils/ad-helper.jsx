@@ -90,19 +90,6 @@ export const getSectionPath = props => {
 
 export const getSectionID = props => formatSectionPath(getAdPath(props) || getSectionPath(props))
 
-export const getSlotName = (props = {}) => {
-  const { siteProperties } = props
-  const { websiteAdPath = '' } = siteProperties || {}
-  const sectionId = getSectionID(props)
-  if (websiteAdPath && !sectionId) {
-    return websiteAdPath
-  }
-  if (websiteAdPath && sectionId) {
-    return `${websiteAdPath}/${sectionId}`
-  }
-  return sectionId
-}
-
 export const setPageTargeting = props => {
   window.googletag = window.googletag || {}
   window.googletag.cmd = window.googletag.cmd || []
@@ -132,7 +119,7 @@ export const getAdObject = props => {
   console.log(getDimensions(props))
   const adObj = {
     id: `arcad_${instanceId}`,
-    slotName: '/7542/r7home/home',
+    slotName: props.siteProperties.hash || 'r7home/home',
     dimensions: getDimensions(props),
     sizemap: {
       breakpoints: [
