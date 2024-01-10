@@ -8,9 +8,9 @@ export function getHatBySite({ taxonomy }) {
   }
 
   return {
-    /** 16x16 @type string */
+    /** 16x16 @type string | null */
     image: HAT_IMAGE_BY_SITE[taxonomy?.primary_site?.path],
-    /** @type string */
-    name: taxonomy?.primary_section.name,
+    /** @type string | null */
+    name: taxonomy?.primary_section?.name,
   }
 }
