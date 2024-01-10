@@ -9,5 +9,53 @@
         }
       }
     }
+  },
+  "card-list": {
+    "styles": {
+      "default": {
+        "box-shadow": "none",
+        "padding": "none",
+        "components": {
+          "attribution": {
+            "display": "none"
+          },
+          "image": {
+            "border-radius": "5px"
+          }
+        }
+      }
+    }
+  },
+  "simple-list": {
+    "styles": {
+      "default": {
+        "components": {
+          "stack-divider-vertical": {
+            "display": "none"
+          },
+          "image": {
+            "border-radius": "5px"
+          }
+        }
+      }
+    }
+  },
+  "top-table-list-xl": {
+    "styles": {
+      "desktop": {
+        "components": {
+          "heading": {
+            "align-self": "left"
+          }
+        }
+      },
+      "default": {
+        "components": {
+          "heading": {
+            "align-self": "left"
+          }
+        }
+      }
+    }
   }
 }
