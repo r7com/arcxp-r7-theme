@@ -10,8 +10,6 @@ import {
 export const Accessibility = () => {
   return (
     <AccessibilityBar>
-      <div id="audimaWidget"></div>
-      <script src="https://audio8.audima.co/audima-widget.js" async></script>
       <AccessibilityBar.List>
         <AccessibilityBar.Item>
           <ContrastControl />
