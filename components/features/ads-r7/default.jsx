@@ -3,7 +3,7 @@ import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { LazyLoad } from '@wpmedia/arc-themes-components'
 import AdUnit from './children/AdUnit'
-import { generateInstanceId, getAdObject } from './utils/ad-helper'
+import { generateInstanceId, getAdObject, getMinHeight } from './utils/ad-helper'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import '@r7/ui-base-components/style.css'
 import './default.scss'
@@ -11,14 +11,14 @@ import './default.scss'
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
   const { customFields } = propsWithContext
-  const { blockLayout = 'background', display = true, fixed } = customFields
+  const { blockLayout = 'background', display = true, fixed, reserveSpace = true } = customFields
   const showAd = !isAdmin && display
 
   return (
     <>
       {showAd ? (
         <div className={fixed && 'ad-fixed'}>
-          <AdShell layout={blockLayout}>
+          <AdShell layout={blockLayout} minHeight={reserveSpace && getMinHeight(customFields)}>
             <LazyLoad
               enabled={lazyLoad}
               offsetBottom={0}
@@ -50,15 +50,13 @@ const AdsR7 = props => {
     instanceId,
   }
   const { customFields, isAdmin } = propsWithContext
-  const { lazyLoad = true, reserveSpace = true } = customFields
-  console.log(reserveSpace)
+  const { lazyLoad = true } = customFields
   const [config] = useState(
     getAdObject({
       ...customFields,
       ...propsWithContext,
     }),
   )
-  //pegar o min height e fazer o reserve space
 
   return (
     <R7ArcAdDisplay

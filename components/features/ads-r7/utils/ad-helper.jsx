@@ -29,6 +29,31 @@ export const getDimensions = props => {
   const mobileArray = convertSizesToArray(mobileSizes)
   return [desktopArray, tabletArray, mobileArray]
 }
+
+const addHeights = (sizes, heights) => {
+  const splitedSizes = sizes.trim().split(',')
+  if (splitedSizes.length > 1) {
+    splitedSizes.forEach(size => {
+      heights.push(Number(size.split('x')[1]))
+    })
+  } else {
+    heights.push(Number(splitedSizes[0].split('x')[1]))
+  }
+}
+
+export const getMinHeight = props => {
+  const { desktopSizes, tabletSizes, mobileSizes } = props
+  const heights = []
+
+  addHeights(desktopSizes, heights)
+  addHeights(tabletSizes, heights)
+  addHeights(mobileSizes, heights)
+
+  const orderedHeights = heights.sort((a, b) => a - b)
+
+  return orderedHeights[0] + 'px'
+}
+
 export const getCategory = sectionPath => sectionPath && sectionPath.split('/')[1]
 
 export const getID = ({ globalContent } = {}) => globalContent?._id
