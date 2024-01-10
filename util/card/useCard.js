@@ -23,6 +23,7 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
    * @property {CollectionItem[]} content_elements
    * @typedef {Object} CollectionItem
    * @property {string} _id
+   * @property {string} canonical_url
    * @property {{primary_section:{name:string}}} taxonomy
    * @property {{basic:string}} headlines
    * @property {{basic:{alt_text:string,auth:Record<string,string>}}} promo_items
