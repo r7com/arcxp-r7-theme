@@ -56,7 +56,7 @@ const ProportionalPhotoBlock = withCard(
 ProportionalPhotoBlock.label = 'Proportional Photo - R7 Block'
 
 ProportionalPhotoBlock.propTypes = {
-  customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
+  customFields: PropTypes.shape({ ...getCardPropTypes(1) }),
 }
 
 export default ProportionalPhotoBlock
