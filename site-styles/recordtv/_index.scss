@@ -121,6 +121,7 @@
 		"default": (
 			"alias": (
 				"font-family-primary": Record Type Regular,
+				"font-family-primary-light": Record Type Light,
 				"font-family-secondary": Playfair Display,
 				"color-primary": var(--global-blue-6),
 				"color-primary-hover": var(--global-neutral-7),
@@ -626,11 +627,16 @@
 					)
 				),
 				"card-list": (
-					"box-shadow": var(--global-box-shadow-1),
-					"border-radius": 0 var(--border-radius) var(--border-radius) 0,
-					"background-color": var(--background-color),
-					"padding": var(--global-spacing-4) 0,
+					"box-shadow": none,
+					"padding": none,
 					"components": (
+						"attribution": (
+							"display": none
+						),
+						"image": (
+							"border-radius": 5px,
+							"transition": opacity 0.4s ease
+						),
 						"heading": (
 							"font-size": var(--heading-level-5-font-size),
 							"font-weight": var(--heading-level-5-font-weight),
@@ -642,9 +648,6 @@
 						"separator": (
 							"padding": 0 var(--global-spacing-2)
 						),
-						"image": (
-							"transition": opacity 0.4s ease
-						),
 						"image-hover": (
 							"cursor": pointer,
 							"opacity": 0.8
@@ -655,7 +658,9 @@
 						"link-hover": (
 							"color": var(--text-color-subtle)
 						)
-					)
+					),
+					"border-radius": 0 var(--border-radius) var(--border-radius) 0,
+					"background-color": var(--background-color)
 				),
 				"card-list-list": (
 					"padding": 0 var(--global-spacing-4)
@@ -704,6 +709,7 @@
 					"line-height": var(--heading-level-5-line-height)
 				),
 				"double-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"heading": (
 							"font-size": var(--heading-level-3-font-size),
@@ -2202,13 +2208,19 @@
 					"color": var(--text-color-subtle)
 				),
 				"simple-list": (
-					"gap": var(--global-spacing-4),
 					"components": (
+						"stack-divider-vertical": (
+							"display": none
+						),
+						"image": (
+							"border-radius": 5px
+						),
 						"heading": (
 							"font-size": var(--heading-level-6-font-size),
 							"line-height": var(--heading-level-6-line-height)
 						)
-					)
+					),
+					"gap": var(--global-spacing-4)
 				),
 				"simple-list-item": (
 					"gap": var(--global-spacing-6)
@@ -2356,10 +2368,10 @@
 					)
 				),
 				"top-table-list": (
-					"grid-template-columns": 1fr,
-					"grid-template-rows": auto,
-					"gap": var(--global-spacing-5),
 					"components": (
+						"heading": (
+							"margin-bottom": 15px
+						),
 						"grid": (
 							"gap": var(--global-spacing-5)
 						),
@@ -2376,7 +2388,10 @@
 						"link-hover": (
 							"color": var(--text-color-subtle)
 						)
-					)
+					),
+					"grid-template-columns": 1fr,
+					"grid-template-rows": auto,
+					"gap": var(--global-spacing-5)
 				),
 				"top-table-list-large": (
 					"gap": var(--global-spacing-4),
@@ -2564,6 +2579,7 @@
 					"grid-template-columns": 1fr
 				),
 				"triple-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"heading": (
 							"font-size": var(--heading-level-3-font-size),
@@ -3087,6 +3103,7 @@
 					"margin-top": var(--global-spacing-4)
 				),
 				"double-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"stack": (
 							"gap": var(--global-spacing-5)
@@ -3458,6 +3475,13 @@
 				"single-column-regular-body": (
 					"max-inline-size": 37rem
 				),
+				"top-table-list": (
+					"components": (
+						"heading": (
+							"margin-bottom": 15px
+						)
+					)
+				),
 				"top-table-list-large": (
 					"gap": var(--global-spacing-6),
 					"components": (
@@ -3542,7 +3566,7 @@
 				"top-table-list-xl": (
 					"components": (
 						"heading": (
-							"align-self": center,
+							"align-self": left,
 							"font-size": var(--heading-level-1-font-size),
 							"justify-content": center,
 							"line-height": var(--heading-level-1-line-height)
@@ -3557,6 +3581,7 @@
 					)
 				),
 				"triple-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"stack": (
 							"gap": var(--global-spacing-5)
