@@ -51,8 +51,6 @@ class ArcAdsInstance {
       addSmart(arcAdsConfig.bidding.prebid.bids)
       addRubicon(arcAdsConfig.bidding.prebid.bids, params.id)
       addTeads(arcAdsConfig.bidding.prebid.bids, params.id, params.dimensions)
-      console.log('23423', arcAdsConfig)
-      console.log('23421113', params)
       this.arcAds = new ArcAds(arcAdsConfig, evt => {
         logEvent(evt, debug)
       })
@@ -60,7 +58,6 @@ class ArcAdsInstance {
   }
 
   registerAd(props, cb) {
-    console.log('12332', props)
     const { params, disableAds } = props
     if (disableAds) return
     this.initArcAds(props)

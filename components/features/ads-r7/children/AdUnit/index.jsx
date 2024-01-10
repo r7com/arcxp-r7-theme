@@ -6,7 +6,6 @@ import { setPageTargeting } from '../../utils/ad-helper'
 const AdUnit = props => {
   const { adConfig, featureConfig } = props
   const { id } = adConfig
-  console.log({ id })
   const {
     customFields: { debug },
     siteProperties,
@@ -14,7 +13,6 @@ const AdUnit = props => {
 
   const registerAd = useCallback(() => {
     const publisherIds = { dfp_publisher_id: siteProperties.dfpId }
-    console.log({ adConfig })
     ArcAdsInstance.getInstance(siteProperties, () => {
       setPageTargeting(featureConfig)
     }).registerAd({
