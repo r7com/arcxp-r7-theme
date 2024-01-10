@@ -1,6 +1,4 @@
 /* eslint-disable no-undef */
-import { adMap } from './ad-mapping'
-
 export const generateInstanceId = componentId => {
   return `${componentId}-${Math.floor(Math.random() * 9007199254740991).toString(16)}`
 }
@@ -14,10 +12,6 @@ export const isContentPage = ({ globalContent } = {}) => {
 export const isSectionPage = ({ globalContent } = {}) =>
   (globalContent?.node_type || '') === 'section'
 
-export const getAdName = ({ adType }) => adMap[adType]?.adName
-
-export const getAdClass = ({ adType }) => adMap[adType]?.adClass
-
 const convertSizesToArray = sizes => {
   const splitedSizes = sizes.trim().split(',')
 
@@ -29,7 +23,6 @@ const convertSizesToArray = sizes => {
 }
 
 export const getDimensions = props => {
-  console.log({ props })
   const { desktopSizes, tabletSizes, mobileSizes } = props.customFields
   const desktopArray = convertSizesToArray(desktopSizes)
   const tabletArray = convertSizesToArray(tabletSizes)
@@ -109,16 +102,12 @@ export const setPageTargeting = props => {
   })
 }
 
-export const getSlotTargeting = props => ({
-  ad_type: props?.adType,
-})
-
 /* Expects a 'props' object containing feature props, FusionContext */
 export const getAdObject = props => {
-  const { instanceId = '' } = props
-  console.log(getDimensions(props))
+  const { instanceId = '', customFields } = props
+  const { pos, context } = customFields
   const adObj = {
-    id: `arcad_${instanceId}`,
+    id: `r7ad_${instanceId}`,
     slotName: props.siteProperties.hash || 'r7home/home',
     dimensions: getDimensions(props),
     sizemap: {
@@ -129,7 +118,10 @@ export const getAdObject = props => {
       ],
       refresh: true,
     },
+    targeting: {
+      pos: pos || '',
+      context: context || '',
+    },
   }
-  adObj.targeting = getSlotTargeting(adObj)
   return adObj
 }

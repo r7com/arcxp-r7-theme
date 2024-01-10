@@ -10,8 +10,6 @@ import './default.scss'
 
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
-
-  console.log({ propsWithContext })
   const { customFields } = propsWithContext
   const { blockLayout = 'background', display = true, fixed } = customFields
   const showAd = !isAdmin && display
@@ -44,7 +42,6 @@ export const R7ArcAdDisplay = props => {
 }
 
 const AdsR7 = props => {
-  console.log({ props })
   const fusionContext = useFusionContext()
   const [instanceId] = useState(() => generateInstanceId(fusionContext.id || '0000'))
   const propsWithContext = {
@@ -100,6 +97,12 @@ AdsR7.propTypes = {
       label: 'Tamanhos no mobile',
       description:
         'Inserir os tamanhos no formato larguraxaltura, separados por , (vírgula). Ex.: largura1xaltura1, largura2xaltura2.',
+    }),
+    pos: PropTypes.string.tag({
+      label: 'pos',
+    }),
+    context: PropTypes.string.tag({
+      label: 'context',
     }),
     lazyLoad: PropTypes.boolean.tag({
       name: 'Lazy Load Ad?',
