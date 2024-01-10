@@ -709,6 +709,7 @@
 					"line-height": var(--heading-level-5-line-height)
 				),
 				"double-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"heading": (
 							"font-size": var(--heading-level-3-font-size),
@@ -2367,10 +2368,10 @@
 					)
 				),
 				"top-table-list": (
-					"grid-template-columns": 1fr,
-					"grid-template-rows": auto,
-					"gap": var(--global-spacing-5),
 					"components": (
+						"heading": (
+							"margin-bottom": 15px
+						),
 						"grid": (
 							"gap": var(--global-spacing-5)
 						),
@@ -2387,7 +2388,10 @@
 						"link-hover": (
 							"color": var(--text-color-subtle)
 						)
-					)
+					),
+					"grid-template-columns": 1fr,
+					"grid-template-rows": auto,
+					"gap": var(--global-spacing-5)
 				),
 				"top-table-list-large": (
 					"gap": var(--global-spacing-4),
@@ -2575,6 +2579,7 @@
 					"grid-template-columns": 1fr
 				),
 				"triple-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"heading": (
 							"font-size": var(--heading-level-3-font-size),
@@ -3098,6 +3103,7 @@
 					"margin-top": var(--global-spacing-4)
 				),
 				"double-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"stack": (
 							"gap": var(--global-spacing-5)
@@ -3469,6 +3475,13 @@
 				"single-column-regular-body": (
 					"max-inline-size": 37rem
 				),
+				"top-table-list": (
+					"components": (
+						"heading": (
+							"margin-bottom": 15px
+						)
+					)
+				),
 				"top-table-list-large": (
 					"gap": var(--global-spacing-6),
 					"components": (
@@ -3568,6 +3581,7 @@
 					)
 				),
 				"triple-chain": (
+					"margin-bottom": 28px,
 					"components": (
 						"stack": (
 							"gap": var(--global-spacing-5)

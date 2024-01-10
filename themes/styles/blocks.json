@@ -40,6 +40,44 @@
       }
     }
   },
+  "top-table-list": {
+    "styles": {
+      "desktop": {
+        "components": {
+          "heading": {
+            "margin-bottom": "15px"
+          }
+        }
+      },
+      "default": {
+        "components": {
+          "heading": {
+            "margin-bottom": "15px"
+          }
+        }
+      }
+    }
+  },
+  "triple-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
+      }
+    }
+  },
+  "double-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
+      }
+    }
+  },
   "top-table-list-xl": {
     "styles": {
       "desktop": {
