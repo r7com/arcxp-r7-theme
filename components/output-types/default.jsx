@@ -203,7 +203,8 @@ const SampleOutputType = ({
               --editorial-color: ${primaryColor};
             }
             body { 
-              writing-mode: ${textFlow}; 
+              writing-mode: ${textFlow};
+              font-family: var(--font-family-primary, 'sans-serif'), sans-serif;
             }
           `}
         </style>
