@@ -21,7 +21,7 @@ const TwoCardsSquarePhotoBlock = withCard(
             hat={item.taxonomy?.primary_section?.name}
             title={item.headlines?.basic}
             renderImage={
-              <>
+              <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
                 {item.promo_items?.basic ? (
                   <Image
                     {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 113, [113])}
@@ -44,7 +44,7 @@ const TwoCardsSquarePhotoBlock = withCard(
                 )}
 
                 <CardLabel {...item} {...item.customFields.label} />
-              </>
+              </a>
             }
           />
         ))}
