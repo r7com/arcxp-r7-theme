@@ -121,7 +121,7 @@ AdsR7.propTypes = {
   }),
 }
 
-AdsR7.label = 'AdsR7 – R7 Block'
+AdsR7.label = 'Publicidade – R7 Block'
 AdsR7.icon = 'arc-ads'
 
 export default AdsR7
