@@ -29,6 +29,12 @@ function addLiveramp() {
             refreshInSeconds: 1800,
           },
         },
+        {
+          name: 'pairId',
+          params: {
+            liveramp: {},
+          },
+        },
       ],
       syncDelay: 3000,
     },
