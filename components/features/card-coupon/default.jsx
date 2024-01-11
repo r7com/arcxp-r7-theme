@@ -1,21 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { CardCoupon } from '@r7/ui-card'
 import { useContent } from 'fusion:content'
 import { Typography, ConditionalLink } from '@r7/ui-base-components'
 import PropTypes from '@arc-fusion/prop-types'
 
 const CardCouponBlock = ({ customFields }) => {
-  const [data, setData] = useState([])
   const { category } = customFields
 
-  const couponData = useContent({
+  const data = useContent({
     source: 'coupon-api',
     query: { category },
   })
-
-  useEffect(() => {
-    couponData & setData(couponData)
-  }, [category, couponData])
 
   return (
     <CardCoupon>

@@ -1,5 +1,7 @@
+import { COUPON_API } from 'fusion:environment'
+
 const resolve = query => {
-  return `https://cms-coupons-api-qa.ir7.com.br/v1/shops?categories=${query.category}`
+  return `${COUPON_API}${query.category}`
 }
 
 export default {
