@@ -49,8 +49,6 @@ const HeaderNavigationMenu = ({ customFields }) => {
         <SidebarMenu menuList={sidebarContent} />
         <HeaderMenu menuList={headerContent} />
         <HeaderSocials />
-        <Header.SearchToggle />
-        <Header.Search />
         {isInternal && (
           <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
             <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
