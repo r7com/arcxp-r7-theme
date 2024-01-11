@@ -24,7 +24,7 @@ export function RenderCard({ display, content, isAdmin, children }) {
       return (
         <p>
           Nenhum item encontrado na collection, verifique os valores &quot;from&quot; e
-          &quot;size&quot;.ddd
+          &quot;size&quot;.
         </p>
       )
     }
