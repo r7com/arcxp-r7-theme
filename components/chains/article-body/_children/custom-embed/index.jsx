@@ -5,6 +5,7 @@ import getProperties from 'fusion:properties'
 
 import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
+import { Poll } from './components/Poll'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()
@@ -20,6 +21,10 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
       return embed.config ? (
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
+    case 'poll':
+      return embed.config ? <Poll className={classPrefix} item={embed} /> : null
+    default:
+      return null
   }
 }
 

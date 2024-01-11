@@ -211,6 +211,10 @@ const SampleOutputType = ({
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
         />
+        <script src={`https://www.google.com/recaptcha/api.js?render=explicit`}></script>
+        {/* <script
+          src={`https://www.google.com/recaptcha/api.js?render=${GOOGLE_RECAPTCHA_APIKEY}`}
+        ></script> */}
         <script
           data-integration="inlineScripts"
           dangerouslySetInnerHTML={{ __html: inlineScripts }}
