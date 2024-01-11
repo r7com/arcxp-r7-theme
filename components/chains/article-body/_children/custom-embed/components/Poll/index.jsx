@@ -3,13 +3,12 @@ import './index.scss'
 import React, { useState, useEffect, useCallback } from 'react'
 import { submitForm } from './util/submitForm'
 import { storeData } from './util/storeData'
-// import { executeCaptcha } from './util/executeCaptcha'
+import { executeCaptcha } from './util/executeCaptcha'
 import { getPollData } from './util/getPollData'
 import { PollResults } from './components/PollResults'
 import { PollForm } from './components/PollForm'
 import { PollMedia } from './components/PollMedia'
 import { Captcha } from './components/Captcha'
-import { executeCaptcha } from './util/captcha'
 
 export const Poll = ({ className, item }) => {
   const [showResults, setShowResults] = useState(false)

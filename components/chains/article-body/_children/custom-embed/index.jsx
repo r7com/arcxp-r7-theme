@@ -22,7 +22,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
     case 'poll':
-      return embed.config ? <Poll className={classPrefix} item={embed} /> : null
+      return embed.config ? <Poll className={COMPONENT_CLASS_NAME} item={embed} /> : null
     default:
       return null
   }
