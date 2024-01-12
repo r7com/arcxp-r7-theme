@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import ArcAdsInstance from '../ArcAdsInstance'
 import { setPageTargeting } from '../../utils/ad-helper'
+import { addRubicon, addSmart, addTeads } from '../../utils/ad-adapters-configs'
 
 const AdUnit = props => {
   const { adConfig, featureConfig } = props
@@ -13,6 +14,20 @@ const AdUnit = props => {
 
   const registerAd = useCallback(() => {
     const publisherIds = { dfp_publisher_id: siteProperties.dfpId }
+    console.log({ adConfig })
+
+    adConfig.bidding = {
+      prebid: {
+        enabled: true,
+        timeout: 3000,
+        bids: [],
+      },
+    }
+
+    addSmart(adConfig.bidding.prebid.bids, adConfig.dimensions)
+    addRubicon(adConfig.bidding.prebid.bids, adConfig.id)
+    addTeads(adConfig.bidding.prebid.bids, adConfig.id, adConfig.dimensions)
+
     ArcAdsInstance.getInstance(siteProperties, () => {
       setPageTargeting(featureConfig)
     }).registerAd({

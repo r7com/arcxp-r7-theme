@@ -1,7 +1,7 @@
 /* eslint-disable */
 // istanbul ignore file
 import { ArcAds } from 'arcads'
-import { addLiveramp, addRubicon, addSmart, addTeads } from '../../utils/ad-adapters-configs'
+import { addLiveramp } from '../../utils/ad-adapters-configs'
 
 export const logEvent = (evt, debug = false) => {
   if (debug) {
@@ -38,19 +38,7 @@ class ArcAdsInstance {
         dfp: {
           id,
         },
-        bidding: {
-          prebid: {
-            enabled: true,
-            timeout: 3000,
-            // useSlotForAdUnit: true *se formos usar o slot name para identificar
-            // sizeConfig é interessante
-            bids: [],
-          },
-        },
       }
-      addSmart(arcAdsConfig.bidding.prebid.bids)
-      addRubicon(arcAdsConfig.bidding.prebid.bids, params.id)
-      addTeads(arcAdsConfig.bidding.prebid.bids, params.id, params.dimensions)
       this.arcAds = new ArcAds(arcAdsConfig, evt => {
         logEvent(evt, debug)
       })
