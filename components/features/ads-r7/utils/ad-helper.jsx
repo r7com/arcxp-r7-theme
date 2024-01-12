@@ -61,6 +61,12 @@ export const getSmartId = dimensions => {
   return smartIds
 }
 
+/**
+ * Converts the ['widthxhwight','widthxhwight', ['widthxhwight','widthxhwight']] array to
+ * [[w,h],[w,h],[[w,h], [w,h]]] array of numbers
+ * @param {Array} sizes
+ * @returns {Array}
+ */
 const convertSizesToArray = sizes => {
   const splitedSizes = sizes.trim().split(',')
 
@@ -71,7 +77,12 @@ const convertSizesToArray = sizes => {
   return splitedSizes[0].split('x').map(Number)
 }
 
-export const getDimensions = props => {
+/**
+ * Converts the user inputed sizes to an array valid to prebib.js (array of numbers)
+ * @param {Object} props
+ * @returns {Array}
+ */
+const getDimensions = props => {
   const { desktopSizes, tabletSizes, mobileSizes } = props.customFields
   const desktopArray = convertSizesToArray(desktopSizes)
   const tabletArray = convertSizesToArray(tabletSizes)
@@ -79,6 +90,11 @@ export const getDimensions = props => {
   return [desktopArray, tabletArray, mobileArray]
 }
 
+/**
+ * Gets the height of each size of ads, converted to number
+ * @param {Array} sizes
+ * @param {Array} heights
+ */
 const addHeights = (sizes, heights) => {
   const splitedSizes = sizes.trim().split(',')
   if (splitedSizes.length > 1) {
@@ -90,6 +106,11 @@ const addHeights = (sizes, heights) => {
   }
 }
 
+/**
+ * Returns the minor height of each advertising block
+ * @param {Object} props
+ * @returns {string} minor height found
+ */
 export const getMinHeight = props => {
   const { desktopSizes, tabletSizes, mobileSizes } = props
   const heights = []
