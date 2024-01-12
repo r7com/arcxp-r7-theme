@@ -2,8 +2,8 @@ import { getSmartId } from './ad-helper'
 import { smartConfigs } from './smart-configs'
 
 function addSmart(bids, dimensions) {
-  const formatIds = getSmartId(dimensions)
-  const idToUse = formatIds.find(id => id)
+  const smartIds = getSmartId(dimensions)
+  const idToUse = smartIds.find(id => id)
 
   if (idToUse) {
     bids.unshift({

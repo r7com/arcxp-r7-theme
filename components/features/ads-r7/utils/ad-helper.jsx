@@ -39,7 +39,7 @@ export const getSmartId = dimensions => {
   const existingKeyTablet = sizesTablet.find(size => ids[size] !== undefined)
   const existingKeyMobile = sizesMobile.find(size => ids[size] !== undefined)
 
-  const activedIds = [
+  const smartIds = [
     ids[smartKeyDesktop],
     ids[smartKeyTablet],
     ids[smartKeyMobile],
@@ -48,7 +48,7 @@ export const getSmartId = dimensions => {
     ids[existingKeyMobile],
   ]
 
-  return activedIds
+  return smartIds
 }
 
 const convertSizesToArray = sizes => {
