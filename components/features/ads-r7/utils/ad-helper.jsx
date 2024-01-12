@@ -14,6 +14,11 @@ export const isContentPage = ({ globalContent } = {}) => {
 export const isSectionPage = ({ globalContent } = {}) =>
   (globalContent?.node_type || '') === 'section'
 
+/**
+ * Groups each width and height of the array of ads
+ * @param {Array} array
+ * @returns {Array} an array of 'widthxheight' formats
+ */
 const groupSizesAsString = array => {
   let grouped = []
 
@@ -25,6 +30,11 @@ const groupSizesAsString = array => {
   return [grouped, grouped.join(',')]
 }
 
+/**
+ * Gets the corresponding smart id for each format mapped on smartConfigs
+ * @param {Array} dimensions
+ * @returns {Array} array of ids, depending on formats passed
+ */
 export const getSmartId = dimensions => {
   const { ids } = smartConfigs
   const flatedArrayDesktop = dimensions[0].flatMap(array => array)
@@ -35,9 +45,9 @@ export const getSmartId = dimensions => {
   const [sizesTablet, smartKeyTablet] = groupSizesAsString(flatedArrayTablet)
   const [sizesMobile, smartKeyMobile] = groupSizesAsString(flatedArrayMobile)
 
-  const existingKeyDesktop = sizesDesktop.find(size => ids[size] !== undefined)
-  const existingKeyTablet = sizesTablet.find(size => ids[size] !== undefined)
-  const existingKeyMobile = sizesMobile.find(size => ids[size] !== undefined)
+  const existingKeyDesktop = sizesDesktop.find(size => ids[size])
+  const existingKeyTablet = sizesTablet.find(size => ids[size])
+  const existingKeyMobile = sizesMobile.find(size => ids[size])
 
   const smartIds = [
     ids[smartKeyDesktop],
