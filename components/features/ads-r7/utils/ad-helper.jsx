@@ -14,23 +14,6 @@ export const isContentPage = ({ globalContent } = {}) => {
 export const isSectionPage = ({ globalContent } = {}) =>
   (globalContent?.node_type || '') === 'section'
 
-const flatArray = array => {
-  let flated
-  let hadArray = false
-  array.forEach(item => {
-    if (typeof item === 'object') {
-      flated = array.flat()
-      hadArray = true
-    }
-  })
-
-  if (hadArray) {
-    return flatArray(flated)
-  }
-
-  return array
-}
-
 const groupSizesAsString = array => {
   let grouped = []
 
@@ -44,9 +27,9 @@ const groupSizesAsString = array => {
 
 export const getSmartId = dimensions => {
   const { ids } = smartConfigs
-  const flatedArrayDesktop = flatArray(dimensions[0])
-  const flatedArrayTablet = flatArray(dimensions[1])
-  const flatedArrayMobile = flatArray(dimensions[2])
+  const flatedArrayDesktop = dimensions[0].flatMap(array => array)
+  const flatedArrayTablet = dimensions[1].flatMap(array => array)
+  const flatedArrayMobile = dimensions[2].flatMap(array => array)
 
   const [sizesDesktop, smartKeyDesktop] = groupSizesAsString(flatedArrayDesktop)
   const [sizesTablet, smartKeyTablet] = groupSizesAsString(flatedArrayTablet)
