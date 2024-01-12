@@ -24,7 +24,7 @@ export const R7ArcAdDisplay = props => {
               offsetBottom={0}
               offsetLeft={0}
               offsetRight={0}
-              offsetTop={200}
+              offsetTop={500}
               renderPlaceholder={ref => <div ref={ref} />}
             >
               <AdUnit adConfig={config} featureConfig={propsWithContext} />
@@ -45,7 +45,7 @@ const AdsR7 = props => {
   const fusionContext = useFusionContext()
   const [instanceId] = useState(() => generateInstanceId(fusionContext.id || '0000'))
   const propsWithContext = {
-    ...fusionContext, // siteProperties: { dfpId } included in fusionContext
+    ...fusionContext,
     ...props,
     instanceId,
   }
