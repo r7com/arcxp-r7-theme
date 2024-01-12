@@ -30,7 +30,7 @@ class ArcAdsInstance {
     this.registerAd = this.registerAd.bind(this)
   }
 
-  initArcAds({ publisherIds, debug = false, params }) {
+  initArcAds({ publisherIds, debug = false }) {
     if (!this.arcAds) {
       addLiveramp()
       const { dfp_publisher_id: id } = publisherIds
