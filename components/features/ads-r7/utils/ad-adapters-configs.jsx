@@ -1,15 +1,20 @@
+import { getSmartId } from './ad-helper'
 import { smartConfigs } from './smart-configs'
 
-function addSmart(bids) {
-  bids.unshift({
-    bidder: 'smartadserver',
-    params: {
-      domain: 'https://prg.smartadserver.com',
-      siteId: smartConfigs.global.siteId,
-      pageId: smartConfigs.global.pageId,
-      // formatId: formatId,
-    },
-  })
+function addSmart(bids, dimensions) {
+  const formatId = getSmartId(dimensions)
+  console.log('43234', formatId)
+  if (formatId) {
+    bids.unshift({
+      bidder: 'smartadserver',
+      params: {
+        domain: 'https://prg.smartadserver.com',
+        siteId: smartConfigs.global.siteId,
+        pageId: smartConfigs.global.pageId,
+        formatId,
+      },
+    })
+  }
 }
 
 function addLiveramp() {

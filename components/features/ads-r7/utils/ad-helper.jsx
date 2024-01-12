@@ -1,3 +1,5 @@
+import { smartConfigs } from './smart-configs'
+
 /* eslint-disable no-undef */
 export const generateInstanceId = componentId => {
   return `${componentId}-${Math.floor(Math.random() * 9007199254740991).toString(16)}`
@@ -11,6 +13,51 @@ export const isContentPage = ({ globalContent } = {}) => {
 
 export const isSectionPage = ({ globalContent } = {}) =>
   (globalContent?.node_type || '') === 'section'
+
+const flatArray = array => {
+  let flated
+  let hadArray = false
+  array.forEach(item => {
+    if (typeof item === 'object') {
+      flated = array.flat()
+      hadArray = true
+    }
+  })
+
+  if (hadArray) {
+    return flatArray(flated)
+  }
+
+  return array
+}
+
+const groupSizesAsString = array => {
+  let grouped = []
+
+  for (let i = 0; i < array.length; i += 2) {
+    const group = array.slice(i, i + 2).join('x')
+    grouped.push(group)
+  }
+
+  return [grouped, grouped.join(',')]
+}
+
+export const getSmartId = dimensions => {
+  console.log('qwer', dimensions)
+  const flatedArray = flatArray(dimensions)
+  console.log('qeqwe', flatedArray)
+  const [sizes, smartKey] = groupSizesAsString(flatedArray)
+  console.log('qeqwe', smartKey, sizes)
+
+  if (smartConfigs.ids[smartKey]) {
+    return smartConfigs.ids[smartKey]
+  }
+
+  const existingKey = sizes.find(size => {
+    smartConfigs.ids[size] !== undefined
+  })
+  return smartConfigs.ids[existingKey]
+}
 
 const convertSizesToArray = sizes => {
   const splitedSizes = sizes.trim().split(',')
