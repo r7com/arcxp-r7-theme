@@ -3,7 +3,16 @@ import { Stack, HeadingSection } from '@wpmedia/arc-themes-components'
 import { UltimasListItem } from '../ListItem'
 
 export const UltimasList = props => {
-  const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
+  const {
+    className,
+    arcSite,
+    customFields,
+    id = '',
+    primaryColor,
+    websiteDomain,
+    storyId,
+    isAdmin,
+  } = props
   const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
   const [isLoading, setIsLoading] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
@@ -25,6 +34,7 @@ export const UltimasList = props => {
           isLoading={isLoading}
           setSize={setSize}
           setIsDisabled={setIsDisabled}
+          isAdmin={isAdmin}
         />
         {isLoading ? (
           <div className={`${className}__loader-container`}>

@@ -1,17 +1,26 @@
 import './default.scss'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { isServerSide, LazyLoad } from '@wpmedia/arc-themes-components'
 import { UltimasList } from './components/List'
+import { insertFlusher, insertLoader } from '../../../util/taboola-loaders'
 
 const BLOCK_CLASS_NAME = 'b-ultimas'
 
 function Ultimas({ customFields }) {
   const { arcSite, isAdmin, globalContent } = useFusionContext()
-  const { websiteDomain, primaryLogoAlt, primaryColor } = getProperties(arcSite)
+  const { websiteDomain, primaryLogoAlt, primaryColor, taboolaPublisherId } = getProperties(arcSite)
+  console.log(getProperties(arcSite))
+
+  useEffect(() => {
+    if (!isAdmin) {
+      insertLoader(taboolaPublisherId, 'homepage')
+      insertFlusher()
+    }
+  }, [])
 
   if (customFields.lazyLoad && isServerSide() && !isAdmin) {
     return null
@@ -27,6 +36,7 @@ function Ultimas({ customFields }) {
         arcSite={arcSite}
         primaryColor={primaryColor}
         primaryLogoAlt={primaryLogoAlt}
+        isAdmin={isAdmin}
       />
     </LazyLoad>
   )
@@ -43,6 +53,16 @@ Ultimas.propTypes = {
       defaultValue: true,
       description:
         'Turning on lazy-loading will prevent this block from being loaded on the page until it is nearly in-view for the user.',
+    }),
+    enableTaboola: PropTypes.bool.tag({
+      label: 'Habilitar card de taboola',
+      group: 'Configurações do Taboola',
+      defaultValue: true,
+    }),
+    positionTaboolaCard: PropTypes.number.tag({
+      label: 'Posição do card de taboola',
+      group: 'Configurações do Taboola',
+      defaultValue: 6,
     }),
   }),
 }
