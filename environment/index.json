@@ -5,6 +5,7 @@
   "BLOCK_DIST_TAG": "stable",
   "RESIZER_TOKEN_VERSION": 1,
   "SIGNING_SERVICE_DEFAULT_APP": "resizer",
+  "COUPON_API": "https://cms-coupons-api-qa.ir7.com.br/v1/shops?categories=",
   "siteStyles": {
     "r7": "r7",
     "recordtv": "recordtv",
