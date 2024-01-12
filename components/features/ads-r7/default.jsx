@@ -97,17 +97,19 @@ AdsR7.propTypes = {
         'Inserir os tamanhos no formato larguraxaltura, separados por , (vírgula). Ex.: largura1xaltura1, largura2xaltura2.',
     }),
     pos: PropTypes.string.tag({
-      label: 'pos',
+      label: 'Pos',
     }),
     context: PropTypes.string.tag({
-      label: 'context',
+      label: 'Context',
     }),
     lazyLoad: PropTypes.boolean.tag({
-      name: 'Lazy Load Ad?',
+      name: 'Ativar lazyload',
       defaultValue: true,
     }),
     reserveSpace: PropTypes.boolean.tag({
-      name: 'Reserve space for Ad',
+      name: 'Reservar espaço',
+      description:
+        'Reserva espaço na página de acordo com a altura da menor publicidade. Isso aumenta a estabilidade visual da página (CLS)',
       defaultValue: true,
     }),
     fixed: PropTypes.boolean.tag({
