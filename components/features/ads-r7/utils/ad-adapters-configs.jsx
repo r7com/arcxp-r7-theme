@@ -2,16 +2,17 @@ import { getSmartId } from './ad-helper'
 import { smartConfigs } from './smart-configs'
 
 function addSmart(bids, dimensions) {
-  const formatId = getSmartId(dimensions)
-  console.log('43234', formatId)
-  if (formatId) {
+  const formatIds = getSmartId(dimensions)
+  const idToUse = formatIds.find(id => id)
+
+  if (idToUse) {
     bids.unshift({
       bidder: 'smartadserver',
       params: {
         domain: 'https://prg.smartadserver.com',
         siteId: smartConfigs.global.siteId,
         pageId: smartConfigs.global.pageId,
-        formatId,
+        idToUse,
       },
     })
   }

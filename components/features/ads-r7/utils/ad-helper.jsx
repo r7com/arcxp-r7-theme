@@ -43,20 +43,29 @@ const groupSizesAsString = array => {
 }
 
 export const getSmartId = dimensions => {
-  console.log('qwer', dimensions)
-  const flatedArray = flatArray(dimensions)
-  console.log('qeqwe', flatedArray)
-  const [sizes, smartKey] = groupSizesAsString(flatedArray)
-  console.log('qeqwe', smartKey, sizes)
+  const { ids } = smartConfigs
+  const flatedArrayDesktop = flatArray(dimensions[0])
+  const flatedArrayTablet = flatArray(dimensions[1])
+  const flatedArrayMobile = flatArray(dimensions[2])
 
-  if (smartConfigs.ids[smartKey]) {
-    return smartConfigs.ids[smartKey]
-  }
+  const [sizesDesktop, smartKeyDesktop] = groupSizesAsString(flatedArrayDesktop)
+  const [sizesTablet, smartKeyTablet] = groupSizesAsString(flatedArrayTablet)
+  const [sizesMobile, smartKeyMobile] = groupSizesAsString(flatedArrayMobile)
 
-  const existingKey = sizes.find(size => {
-    smartConfigs.ids[size] !== undefined
-  })
-  return smartConfigs.ids[existingKey]
+  const existingKeyDesktop = sizesDesktop.find(size => ids[size] !== undefined)
+  const existingKeyTablet = sizesTablet.find(size => ids[size] !== undefined)
+  const existingKeyMobile = sizesMobile.find(size => ids[size] !== undefined)
+
+  const activedIds = [
+    ids[smartKeyDesktop],
+    ids[smartKeyTablet],
+    ids[smartKeyMobile],
+    ids[existingKeyDesktop],
+    ids[existingKeyTablet],
+    ids[existingKeyMobile],
+  ]
+
+  return activedIds
 }
 
 const convertSizesToArray = sizes => {
