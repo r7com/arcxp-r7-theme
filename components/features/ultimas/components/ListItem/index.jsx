@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
-import { formatDate } from '../../../ultimas-list/util/formatDate'
+import { formatDate } from '../../util/formatDate'
 import { Paragraph } from '@r7/ui-base-components'
 
 export const UltimasListItem = ({

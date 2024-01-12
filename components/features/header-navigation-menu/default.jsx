@@ -44,26 +44,22 @@ const HeaderNavigationMenu = ({ customFields }) => {
 
   return (
     <>
-      <Header>
-        <Header.MainSection bgColor={primaryColor}>
-          <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-          <SidebarMenu menuList={sidebarContent} />
-          <HeaderMenu menuList={headerContent} />
-          <HeaderSocials />
-          <Header.SearchToggle />
-          <Header.Search />
-          {isInternal && (
-            <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
-              <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-              <InternalsHeader.SectionName sectionUrl={sectionUrl}>
-                {sectionName}
-              </InternalsHeader.SectionName>
+      <Header.MainSection bgColor={primaryColor}>
+        <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+        <SidebarMenu menuList={sidebarContent} />
+        <HeaderMenu menuList={headerContent} />
+        <HeaderSocials />
+        {isInternal && (
+          <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
+            <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+            <InternalsHeader.SectionName sectionUrl={sectionUrl}>
+              {sectionName}
+            </InternalsHeader.SectionName>
 
-              <InternalsHeader.Title>{globalContent?.headlines?.basic}</InternalsHeader.Title>
-            </InternalsHeader>
-          )}
-        </Header.MainSection>
-      </Header>
+            <InternalsHeader.Title>{globalContent?.headlines?.basic}</InternalsHeader.Title>
+          </InternalsHeader>
+        )}
+      </Header.MainSection>
     </>
   )
 }
@@ -85,7 +81,7 @@ HeaderNavigationMenu.propTypes = {
   }),
 }
 
-HeaderNavigationMenu.label = 'Header - R7 Block'
+HeaderNavigationMenu.label = 'Header Main Navigation - R7 Block'
 
 HeaderNavigationMenu.icon = 'arc-headline'
 

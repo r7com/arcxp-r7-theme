@@ -1,6 +1,7 @@
 {
   "default": {
     "font-family-primary": "Record Type Regular",
+    "font-family-primary-light": "Record Type Light",
     "font-family-secondary": "Playfair Display",
     "color-primary": "var(--global-blue-6)",
     "color-primary-hover": "var(--global-neutral-7)",

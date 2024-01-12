@@ -9,5 +9,122 @@
         }
       }
     }
+  },
+  "card-list": {
+    "styles": {
+      "default": {
+        "box-shadow": "none",
+        "padding": "none",
+        "components": {
+          "attribution": {
+            "display": "none"
+          },
+          "image": {
+            "border-radius": "5px"
+          },
+          "stack-divider-vertical": {
+            "display": "none"
+          },
+          "overline": {
+            "color": "#606060",
+            "font-weight": 400
+          }
+        }
+      }
+    }
+  },
+  "card-list-list": {
+    "styles": {
+      "default": {
+        "padding": 0
+      }
+    }
+  },
+  "simple-list": {
+    "styles": {
+      "default": {
+        "components": {
+          "stack-divider-vertical": {
+            "display": "none"
+          },
+          "image": {
+            "border-radius": "5px"
+          }
+        }
+      }
+    }
+  },
+  "simple-list-item": {
+    "styles": {
+      "default": {
+        "gap": "16px"
+      }
+    }
+  },
+  "top-table-list": {
+    "styles": {
+      "desktop": {
+        "components": {
+          "heading": {
+            "margin-bottom": "15px"
+          }
+        }
+      },
+      "default": {
+        "components": {
+          "heading": {
+            "margin-bottom": "15px"
+          }
+        }
+      }
+    }
+  },
+  "quad-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
+      }
+    }
+  },
+  "triple-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
+      }
+    }
+  },
+  "double-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
+      }
+    }
+  },
+  "top-table-list-xl": {
+    "styles": {
+      "desktop": {
+        "components": {
+          "heading": {
+            "align-self": "left"
+          }
+        }
+      },
+      "default": {
+        "components": {
+          "heading": {
+            "align-self": "left"
+          }
+        }
+      }
+    }
   }
 }
