@@ -31,4 +31,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
   },
+  "globals": {
+    "pbjs": "readonly"
+  }
 }
