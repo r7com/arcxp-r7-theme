@@ -26,6 +26,11 @@
           "id": "headerImage",
           "title": "Header Image",
           "description": "Upload header image for website"
+        },
+        {
+          "id": "secondaryLogo",
+          "title": "Secondary Logo",
+          "description": "Upload secondary logo for website"
         }
       ]
     },
@@ -93,6 +98,31 @@
       "fieldCategory": "extads",
       "fieldSubcategory": "hash",
       "fieldTarget": "site"
+    },
+    {
+      "fieldId": "secondaryLogo",
+      "fieldType": "image",
+      "fieldTitle": "Secondary logo image of the website",
+      "fieldDescription": "Secondary logo image of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "secondaryLogo",
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "secondaryLogo",
+          "fieldType": "file",
+          "fieldTitle": "Secondary Logo Image",
+          "fieldTarget": "site",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "secondaryLogoAlt",
+          "fieldType": "text",
+          "fieldTitle": "Secondary Logo alt text",
+          "fieldDescription": "Enter Secondary Logo alt text",
+          "fieldTarget": "site"
+        }
+      ]
     }
   ]
 }
