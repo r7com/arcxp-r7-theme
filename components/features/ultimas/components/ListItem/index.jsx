@@ -36,7 +36,7 @@ export const UltimasListItem = ({
 
   const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
   const shouldRenderTaboola = idx => {
-    if (!customFields.enableTaboola || idx === 0) return null
+    if (!customFields.enableTaboola || idx === 0) return false
 
     return idx % (customFields.positionTaboolaCard - 1) === 0
   }
