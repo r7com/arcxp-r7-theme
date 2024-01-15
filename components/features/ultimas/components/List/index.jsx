@@ -10,6 +10,7 @@ export const UltimasList = props => {
     id = '',
     primaryColor,
     websiteDomain,
+    websiteName,
     storyId,
     isAdmin,
   } = props
@@ -28,6 +29,7 @@ export const UltimasList = props => {
           className={className}
           arcSite={arcSite}
           websiteDomain={websiteDomain}
+          websiteName={websiteName}
           setIsLoading={setIsLoading}
           size={size}
           storyId={storyId}

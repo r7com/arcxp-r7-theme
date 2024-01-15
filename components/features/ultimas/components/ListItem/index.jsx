@@ -3,8 +3,7 @@ import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
 import { Paragraph } from '@r7/ui-base-components'
-
-let posNative
+import { TaboolaCard } from '../Taboola'
 
 export const UltimasListItem = ({
   className,
@@ -15,6 +14,7 @@ export const UltimasListItem = ({
   setIsDisabled,
   setIsLoading,
   isAdmin,
+  websiteName,
 }) => {
   const { content_elements } =
     useContent({
@@ -32,55 +32,15 @@ export const UltimasListItem = ({
     if (content_elements && content_elements.length < size) {
       setIsDisabled(true)
     }
-  }, [content_elements, customFields.positionTaboolaCard])
-
-  useEffect(() => {
-    posNative = customFields.positionTaboolaCard
-  }, [])
-
-  const posNativeOriginal = customFields.positionTaboolaCard - 1
-  console.log(customFields)
-
-  const RenderTaboolaCard = ({ index }) => {
-    if (posNative === index + 1) {
-      const counter = Math.ceil(Math.random() * 100000000)
-      // TODO: Logica para Home r7
-      const ENV = {
-        placement: '',
-        container: '',
-      }
-
-      const taboolaConfig = {
-        mode: 'thumbnails-1x1-mid-article',
-        container: `taboola-ultimas-noticias-widget-organico${ENV.container}-${counter}`,
-        placement: `Ultimas noticias widget organico${ENV.placement} - ${counter}`,
-        target_type: 'mix',
-      }
-
-      posNative += posNativeOriginal
-      // TODO: Logica para Home r7
-      taboolaConfig.homepage = 'auto'
-
-      if (!isAdmin) {
-        window._taboola = window._taboola || []
-        window._taboola.push(taboolaConfig)
-      }
-
-      return (
-        <div
-          data-observerid={index}
-          className={`${className}__item`}
-          id={`taboola-ultimas-noticias-widget-organico${ENV.container}-${counter}`}
-        >
-          {isAdmin ? 'Taboola Card' : ''}
-        </div>
-      )
-    }
-
-    return null
-  }
+  }, [content_elements])
 
   const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
+  const shouldRenderTaboola = idx => {
+    if (!customFields.enableTaboola || idx === 0) return null
+
+    return idx % (customFields.positionTaboolaCard - 1) === 0
+  }
+
   if (!contentElementsStory) {
     return null
   }
@@ -94,6 +54,8 @@ export const UltimasListItem = ({
           publish_date,
         } = element
         const image = getImageFromANS(element)
+
+        if (!websites) return null
 
         if (!websites[arcSite]) {
           return null
@@ -112,7 +74,14 @@ export const UltimasListItem = ({
           : null
         return (
           <Fragment key={`simple-list-${element._id}`}>
-            {customFields.enableTaboola && <RenderTaboolaCard index={idx} />}
+            {shouldRenderTaboola(idx) && (
+              <TaboolaCard
+                customFields={customFields}
+                websiteName={websiteName}
+                isAdmin={isAdmin}
+                className={className}
+              />
+            )}
             <article data-observerid={idx} className={`${className}__item`}>
               <div className={`${className}__item-author`}>
                 <Link href={url}>

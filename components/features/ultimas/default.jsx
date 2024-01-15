@@ -12,8 +12,8 @@ const BLOCK_CLASS_NAME = 'b-ultimas'
 
 function Ultimas({ customFields }) {
   const { arcSite, isAdmin, globalContent } = useFusionContext()
-  const { websiteDomain, primaryLogoAlt, primaryColor, taboolaPublisherId } = getProperties(arcSite)
-  console.log(getProperties(arcSite))
+  const { websiteDomain, primaryLogoAlt, primaryColor, taboolaPublisherId, websiteName } =
+    getProperties(arcSite)
 
   useEffect(() => {
     if (!isAdmin) {
@@ -34,6 +34,7 @@ function Ultimas({ customFields }) {
         customFields={customFields}
         websiteDomain={websiteDomain}
         arcSite={arcSite}
+        websiteName={websiteName}
         primaryColor={primaryColor}
         primaryLogoAlt={primaryLogoAlt}
         isAdmin={isAdmin}
