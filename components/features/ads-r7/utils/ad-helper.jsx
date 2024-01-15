@@ -84,10 +84,13 @@ const convertSizesToArray = sizes => {
  */
 const getDimensions = props => {
   const { desktopSizes, tabletSizes, mobileSizes } = props.customFields
-  const desktopArray = convertSizesToArray(desktopSizes)
-  const tabletArray = convertSizesToArray(tabletSizes)
-  const mobileArray = convertSizesToArray(mobileSizes)
-  return [desktopArray, tabletArray, mobileArray]
+
+  if (desktopSizes && tabletSizes && mobileSizes) {
+    const desktopArray = convertSizesToArray(desktopSizes)
+    const tabletArray = convertSizesToArray(tabletSizes)
+    const mobileArray = convertSizesToArray(mobileSizes)
+    return [desktopArray, tabletArray, mobileArray]
+  }
 }
 
 /**
