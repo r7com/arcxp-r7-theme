@@ -6,10 +6,6 @@ export const PollMedia = ({ item, className }) => {
       {item.main_media === 'image' ? (
         <figure className={`${className}-media-image`}>
           <img src={item.default_image_url} alt={item.title} />
-          {/* <figcaption>
-            <span className="title"></span>
-            <span className="caption"></span>
-          </figcaption> */}
         </figure>
       ) : (
         <MediaItem>
