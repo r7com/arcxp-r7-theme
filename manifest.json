@@ -90,7 +90,7 @@
       "fieldType": "text",
       "fieldTitle": "Ad hash of the website",
       "fieldDescription": "Ad hash of the website",
-      "fieldCategory": "extbrand",
+      "fieldCategory": "extads",
       "fieldSubcategory": "hash",
       "fieldTarget": "site"
     }
