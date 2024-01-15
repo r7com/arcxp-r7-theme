@@ -9,7 +9,6 @@ export const SidebarMenu = ({ menuList }) => {
     <>
       <Sidebar.Toggle>MENU</Sidebar.Toggle>
       <Sidebar>
-        <Sidebar.Search />
         {hasMenuSection &&
           menuList.children.map(menuItem => (
             <SidebarMenuSection key={menuItem._id} menuItem={menuItem} />
