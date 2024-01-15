@@ -16,14 +16,15 @@ export const Poll = ({ className, item }) => {
   const [vote, setVote] = useState(null)
 
   const handleSubmit = useCallback(
-    optionId => {
-      executeCaptcha(token => {
-        console.log(token)
-        submitForm(pollData._id, optionId, token)
+    async optionId => {
+      executeCaptcha(async token => {
+        const data = await submitForm(pollData._id, optionId, token)
+        if (data) {
+          setShowResults(true)
+          setVote(optionId)
+          storeData(pollData._id, optionId)
+        }
       })
-      setShowResults(true)
-      setVote(optionId)
-      storeData(pollData._id, optionId)
     },
     [pollData],
   )
@@ -32,8 +33,10 @@ export const Poll = ({ className, item }) => {
     ;(async () => {
       const storagedVote = JSON.parse(localStorage.getItem('selectedOption'))
       const data = await getPollData(item.config?.pollId)
-      setPollData(data)
-      setVote(storagedVote?.[data?._id])
+      if (data) {
+        setPollData(data)
+        setVote(storagedVote?.[data._id])
+      }
     })()
   }, [])
 
