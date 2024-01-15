@@ -14,7 +14,6 @@ const AdUnit = props => {
 
   const registerAd = useCallback(() => {
     const publisherIds = { dfp_publisher_id: siteProperties.dfpId }
-    console.log({ adConfig })
 
     adConfig.bidding = {
       prebid: {

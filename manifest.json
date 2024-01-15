@@ -28,6 +28,17 @@
           "description": "Upload header image for website"
         }
       ]
+    },
+    {
+      "id": "extads",
+      "title": "Extended Advertising Settings",
+      "subcategories": [
+        {
+          "id": "hash",
+          "title": "Advertising Hash",
+          "description": "Enter in advertising hash for website (e.g., r7home/home)"
+        }
+      ]
     }
   ],
   "fields": [
