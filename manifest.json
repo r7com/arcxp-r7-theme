@@ -33,6 +33,17 @@
           "description": "Upload secondary logo for website"
         }
       ]
+    },
+    {
+      "id": "extads",
+      "title": "Extended Advertising Settings",
+      "subcategories": [
+        {
+          "id": "hash",
+          "title": "Advertising Hash",
+          "description": "Enter in advertising hash for website (e.g., r7home/home)"
+        }
+      ]
     }
   ],
   "fields": [
@@ -78,6 +89,15 @@
           "fieldTarget": "site"
         }
       ]
+    },
+    {
+      "fieldId": "hash",
+      "fieldType": "text",
+      "fieldTitle": "Ad hash of the website",
+      "fieldDescription": "Ad hash of the website",
+      "fieldCategory": "extads",
+      "fieldSubcategory": "hash",
+      "fieldTarget": "site"
     },
     {
       "fieldId": "secondaryLogo",
