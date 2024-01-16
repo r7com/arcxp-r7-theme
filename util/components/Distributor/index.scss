@@ -6,6 +6,8 @@
   display: flex;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
+  flex-wrap: wrap;
+  row-gap: 2px;
 
   & > span {
     padding: 0 3px;

@@ -6,6 +6,7 @@ import { useFusionContext } from 'fusion:context'
 import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
+import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -203,7 +204,8 @@ const SampleOutputType = ({
               --editorial-color: ${primaryColor};
             }
             body { 
-              writing-mode: ${textFlow}; 
+              writing-mode: ${textFlow};
+              font-family: var(--font-family-primary, 'sans-serif'), sans-serif;
             }
           `}
         </style>
@@ -211,6 +213,9 @@ const SampleOutputType = ({
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
         />
+        <script
+          src={`https://www.google.com/recaptcha/api.js?render=${GOOGLE_RECAPTCHA_APIKEY}`}
+        ></script>
         <script
           data-integration="inlineScripts"
           dangerouslySetInnerHTML={{ __html: inlineScripts }}
