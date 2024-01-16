@@ -101,6 +101,7 @@ BreakingNewsBar.propTypes = {
             group: `Barra ${counter}`,
             label: 'Url da imagem',
             defaultValue: '#',
+            searchable: 'image',
           }),
           [`imageAlt${counter}`]: PropTypes.string.tag({
             group: `Barra ${counter}`,
