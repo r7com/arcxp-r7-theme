@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 function taboolaLoader(publisherId, pageType) {
   return `
     window._taboola = window._taboola || [];

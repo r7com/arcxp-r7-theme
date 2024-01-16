@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { insertFlusher, insertLoader } from './utils/loaders'
-import { PAGE_TYPE_MAP } from './utils/page-map'
+import { insertFlusher, insertLoader } from '../../../util/taboola-loaders'
+import { PAGE_TYPE_MAP } from '../../../util/page-map'
 
 function ArticleTaboola({ customFields }) {
   const { container, placement } = customFields
