@@ -3,17 +3,11 @@ registry=https://registry.npmjs.org/
 @r7:registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHNW5sa1bV+VZ2VDRx6pldiAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDLZ34YAjxPFcxBV9fwIBEIBDGm+sW+AJ8A1cqOg5Ig6Jeo9Z8x9X+hnDWwGh4X+j9NS69NZglD6VLsYPY+UOpMN5sfTnkSJ+KNseW7rPv5ZQYjmb4w==}
 
-registry=https://npm.pkg.github.com/
-
 @wpmedia:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}
 
-registry=https://npm.pkg.github.com/
-
 @arcxp:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}
-
-registry=https://npm.pkg.github.com/
 
 @code-store-platform:registry=https://npm.pkg.github.com/
 //npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}
