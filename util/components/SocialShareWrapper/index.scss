@@ -1,0 +1,11 @@
+.social-share-wrapper {
+  ul {
+    @media screen and (max-width: 640px) {
+      gap: 8px;
+
+      li:last-child {
+        display: none;
+      }
+    }
+  }
+}
