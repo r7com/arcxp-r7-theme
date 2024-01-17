@@ -1,7 +1,7 @@
 import React from 'react'
 import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
-import { ExpandableSocialShare } from '../../../ExpandableSocialShare'
+import { SocialShareWrapper } from '../../../SocialShareWrapper'
 
 export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFullscreen }) => {
   return (
@@ -10,7 +10,7 @@ export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFulls
         {currentSlide} / {slidesAmount}
       </Paragraph>
       <div className={`${className}-btns`}>
-        <ExpandableSocialShare>
+        <SocialShareWrapper>
           <SocialShare>
             <SocialShare.List>
               <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
@@ -21,7 +21,7 @@ export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFulls
               <SocialShare.Item name="share" link="#share" title="share" />
             </SocialShare.List>
           </SocialShare>
-        </ExpandableSocialShare>
+        </SocialShareWrapper>
         <button
           className={`${className}-expand`}
           onClick={() => {
