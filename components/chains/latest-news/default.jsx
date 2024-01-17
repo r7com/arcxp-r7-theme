@@ -21,6 +21,6 @@ const LatestNewsChain = ({ children }) => {
   )
 }
 
-LatestNewsChain.label = 'Últimas Notícias - R7'
+LatestNewsChain.label = 'Ultimas Notícias - R7'
 
 export default LatestNewsChain
