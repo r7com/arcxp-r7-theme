@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image } from '../../../../util/components/Image'
 import { SocialShare } from '@r7/ui-article-delivery'
-import { ExpandableSocialShare } from '../../../../util/components/ExpandableSocialShare'
+import { SocialShareWrapper } from '../../../../util/components/SocialShareWrapper'
 
 export const GalleryItem = ({
   item,
@@ -20,7 +20,7 @@ export const GalleryItem = ({
       anchor={`#foto/${itemIndex + 1}`}
     >
       <div className={`${className}-toolbar`}>
-        <ExpandableSocialShare>
+        <SocialShareWrapper>
           <SocialShare>
             <SocialShare.List>
               <SocialShare.Item name="googleNews" link={urlForShare} title="google-news" />
@@ -31,7 +31,7 @@ export const GalleryItem = ({
               <SocialShare.Item name="share" link={urlForShare} title="share" />
             </SocialShare.List>
           </SocialShare>
-        </ExpandableSocialShare>
+        </SocialShareWrapper>
         <button
           className={`${className}-toolbar-expand`}
           onClick={() => {

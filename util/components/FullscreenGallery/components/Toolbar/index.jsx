@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
-import { ExpandableSocialShare } from '../../../ExpandableSocialShare'
+import { SocialShareWrapper } from '../../../SocialShareWrapper'
 
 export const FullscreenToolbar = ({ className, elements, currentSlide, urlForShare }) => {
   const [showCaption, setShowCaption] = useState(false)
@@ -29,7 +29,7 @@ export const FullscreenToolbar = ({ className, elements, currentSlide, urlForSha
           </button>
         </div>
         <div className={`${className}-caption-toolbar-btns`}>
-          <ExpandableSocialShare>
+          <SocialShareWrapper>
             <SocialShare>
               <SocialShare.List>
                 <SocialShare.Item name="googleNews" link={urlForShare} title="google-news" />
@@ -40,7 +40,7 @@ export const FullscreenToolbar = ({ className, elements, currentSlide, urlForSha
                 <SocialShare.Item name="share" link={urlForShare} title="share" />
               </SocialShare.List>
             </SocialShare>
-          </ExpandableSocialShare>
+          </SocialShareWrapper>
         </div>
       </div>
       <div className={`${className}-caption-content`}>
