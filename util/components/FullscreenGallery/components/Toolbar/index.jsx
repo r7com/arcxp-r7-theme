@@ -3,7 +3,7 @@ import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
 import { SocialShareWrapper } from '../../../SocialShareWrapper'
 
-export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
+export const FullscreenToolbar = ({ className, elements, currentSlide, urlForShare }) => {
   const [showCaption, setShowCaption] = useState(false)
   return (
     <div className={`${className}-caption ${showCaption ? 'active' : ''}`}>
@@ -32,12 +32,12 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
           <SocialShareWrapper>
             <SocialShare>
               <SocialShare.List>
-                <SocialShare.Item name="googleNews" link="#googlenews" title="google-news" />
-                <SocialShare.Item name="facebook" link="#facebook" title="facebook" />
-                <SocialShare.Item name="twitter" link="#twitter" title="twitter" />
-                <SocialShare.Item name="whatsapp" link="#whatsapp" title="whatsapp" />
-                <SocialShare.Item name="linkedin" link="#linkedin" title="linkedin" />
-                <SocialShare.Item name="share" link="#share" title="share" />
+                <SocialShare.Item name="googleNews" link={urlForShare} title="google-news" />
+                <SocialShare.Item name="facebook" link={urlForShare} title="facebook" />
+                <SocialShare.Item name="twitter" link={urlForShare} title="twitter" />
+                <SocialShare.Item name="whatsapp" link={urlForShare} title="whatsapp" />
+                <SocialShare.Item name="linkedin" link={urlForShare} title="linkedin" />
+                <SocialShare.Item name="share" link={urlForShare} title="share" />
               </SocialShare.List>
             </SocialShare>
           </SocialShareWrapper>

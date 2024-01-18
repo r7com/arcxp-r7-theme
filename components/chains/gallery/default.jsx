@@ -5,6 +5,7 @@ import { useFusionContext } from 'fusion:context'
 import { isServerSide, LazyLoad } from '@wpmedia/arc-themes-components'
 import { GalleryItem } from './_children/galleryItem'
 import { GalleryFullscreen } from '../../../util/components/FullscreenGallery'
+import getProperties from 'fusion:properties'
 
 const BLOCK_CLASS_NAME = 'b-vertical-gallery'
 
@@ -13,7 +14,9 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const context = useFusionContext()
   const { isAdmin, globalContent: items = {} } = context
-  const { content_elements: contentElements = [], _id } = items
+  const { content_elements: contentElements = [], _id, website_url } = items
+  const { websiteDomain } = getProperties(context.arcSite)
+
   if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
     return null
   }
@@ -27,8 +30,8 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
         image: +customFields.elementPlacement[key],
       }))
     : null
-
   let imagesCounter = 0
+  const urlForShare = encodeURI(`${websiteDomain}${website_url}`)
   const elements = [
     ...contentElementsImages.map((imageItem, index) => {
       if (!adPlacements) {
@@ -41,6 +44,7 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
             className={`${BLOCK_CLASS_NAME}__item`}
             setFullscreen={setFullscreen}
             setActiveSlide={setActiveSlide}
+            urlForShare={urlForShare}
           />
         )
       }
@@ -56,6 +60,7 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
             className={`${BLOCK_CLASS_NAME}__item`}
             setFullscreen={setFullscreen}
             setActiveSlide={setActiveSlide}
+            urlForShare={urlForShare}
           />,
           ...adsAfterImage.map(placement => children[placement.feature - 1]),
         ]
@@ -69,6 +74,7 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
           className={`${BLOCK_CLASS_NAME}__item`}
           setFullscreen={setFullscreen}
           setActiveSlide={setActiveSlide}
+          urlForShare={urlForShare}
         />
       )
     }),
@@ -79,6 +85,7 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
       isOpen={fullscreen}
       elements={contentElementsImages}
       initialSlide={activeSlide}
+      urlForShare={urlForShare}
     />,
   ]
   return (
