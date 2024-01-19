@@ -225,25 +225,32 @@ function parseArticleItem(item, index, phrases, customFields) {
 }
 
 function parsePromoItem(item, itemKey, customFields) {
-  if (item.type === 'image') {
-    const [width, height] = itemKey.split('x').map(str => Number(str))
-    let allowedFloatValue = ''
-    if (width < IMAGE_FULLWIDTH_FORMAT) {
-      allowedFloatValue = 'left'
-    }
+  switch (item.type) {
+    case 'custom_embed':
+      return (
+        <CustomEmbed element={item} classPrefix={BLOCK_CLASS_NAME} customFields={customFields} />
+      )
+    case 'image': {
+      const [width, height] = itemKey.split('x').map(str => Number(str))
+      let allowedFloatValue = ''
+      if (width < IMAGE_FULLWIDTH_FORMAT) {
+        allowedFloatValue = 'left'
+      }
 
-    return (
-      <Image
-        key={`${item.type}_${item._id}`}
-        item={item}
-        width={width}
-        height={height}
-        customFields={customFields}
-        className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
-      />
-    )
+      return (
+        <Image
+          key={`${item.type}_${item._id}`}
+          item={item}
+          width={width}
+          height={height}
+          customFields={customFields}
+          className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
+        />
+      )
+    }
+    default:
+      return null
   }
-  return null
 }
 
 export const ArticleBodyChainPresentation = ({ children, customFields = {}, context }) => {
