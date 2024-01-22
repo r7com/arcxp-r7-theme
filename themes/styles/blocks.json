@@ -21,8 +21,22 @@
           },
           "image": {
             "border-radius": "5px"
+          },
+          "stack-divider-vertical": {
+            "display": "none"
+          },
+          "overline": {
+            "color": "#606060",
+            "font-weight": 400
           }
         }
+      }
+    }
+  },
+  "card-list-list": {
+    "styles": {
+      "default": {
+        "padding": 0
       }
     }
   },
@@ -37,6 +51,13 @@
             "border-radius": "5px"
           }
         }
+      }
+    }
+  },
+  "simple-list-item": {
+    "styles": {
+      "default": {
+        "gap": "16px"
       }
     }
   },
@@ -55,6 +76,16 @@
             "margin-bottom": "15px"
           }
         }
+      }
+    }
+  },
+  "quad-chain": {
+    "styles": {
+      "desktop": {
+        "margin-bottom": "28px"
+      },
+      "default": {
+        "margin-bottom": "28px"
       }
     }
   },

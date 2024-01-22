@@ -2,18 +2,18 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { insertFlusher, insertLoader } from './utils/loaders'
-import { PAGE_TYPE_MAP } from './utils/page-map'
+import { insertFlusher, insertLoader } from '../../../util/taboola-loaders'
+import { PAGE_TYPE_MAP } from '../../../util/page-map'
 
-function ArticleTaboola({ customFields }) {
-  const { container, placement } = customFields
+function Taboola({ customFields }) {
+  const { container, placement, mode } = customFields
 
   const { isAdmin, arcSite, metaValue } = useFusionContext()
   const { taboolaPublisherId } = getProperties(arcSite)
 
   const pageType = PAGE_TYPE_MAP[metaValue('page-type')] || ''
 
-  const isFieldsValid = container && placement && taboolaPublisherId
+  const isFieldsValid = container && placement && mode && taboolaPublisherId
 
   useEffect(() => {
     if (!isAdmin && isFieldsValid) {
@@ -42,7 +42,7 @@ function ArticleTaboola({ customFields }) {
           __html: `
               window._taboola = window._taboola || []
               _taboola.push({
-                mode: 'thumbs-feed-02-c',
+                mode: '${mode}',
                 container: '${container}',
                 placement: '${placement}',
                 target_type: 'mix'
@@ -54,9 +54,9 @@ function ArticleTaboola({ customFields }) {
   )
 }
 
-ArticleTaboola.label = 'Article Taboola Feeds - R7 Block'
+Taboola.label = 'Taboola Feeds - R7 Block'
 
-ArticleTaboola.propTypes = {
+Taboola.propTypes = {
   customFields: PropTypes.shape({
     container: PropTypes.string.tag({
       label: 'Taboola Container',
@@ -66,7 +66,12 @@ ArticleTaboola.propTypes = {
       label: 'Taboola Placement',
       group: 'Configurações do Taboola',
     }),
+    mode: PropTypes.string.tag({
+      label: 'Taboola Mode',
+      group: 'Configurações do Taboola',
+      defaultValue: 'thumbs-feed-02-c',
+    }),
   }),
 }
 
-export default ArticleTaboola
+export default Taboola
