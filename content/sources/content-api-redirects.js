@@ -15,7 +15,6 @@ const RedirectError = (location, message = 'Redirect', code = 302) => {
 const handleRedirect = response => {
   const content = response.data
   const contentType = content.type
-  // const redirectUrl = get(content, 'related_content.redirect[0].redirect_url', null)
   const redirectUrl =
     get(content, 'related_content.redirect[0].redirect_url', null) ||
     get(content, 'redirect_url', null)
