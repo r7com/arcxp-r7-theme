@@ -22,6 +22,15 @@
     flex-direction: column;
     align-items: center;
   }
+
+  .dark &  {
+    .c-media-item__fig-caption {
+      background-color: var(--contrast-primary-color);
+      span  {
+        color: var(--contrast-secondary-color);  
+      }
+    }
+  } 
 }
 
 .b-article-body__image {
@@ -41,6 +50,7 @@
     max-width: 100%;
     width: min-content;
     margin: 0 auto 32px;
+    width: 100%;
   }
 
   .image-wrapper {
