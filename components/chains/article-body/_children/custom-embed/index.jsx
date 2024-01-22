@@ -12,6 +12,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { primaryColor } = getProperties(arcSite)
   const { embed, subtype } = element
   const COMPONENT_CLASS_NAME = `${classPrefix}-custom-embed`
+
   switch (subtype) {
     case 'brief_news':
       return embed.config ? (

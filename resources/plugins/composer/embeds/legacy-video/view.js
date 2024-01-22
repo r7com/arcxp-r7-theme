@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 window.onload = function () {
   const parameters = Object.assign(
     {
@@ -9,24 +7,26 @@ window.onload = function () {
   )
   setTimeout(function () {
     sendMessage('ready', {
-      height: document.documentElement.scrollHeight,
+      height: 440,
     })
   }, Number.parseInt(parameters.wait))
+
   const data = JSON.parse(decodeURIComponent(parameters.p))
   render(data.config)
 }
 
-function render({ textList, textTitle }) {
-  const list = document.getElementById('list')
-  const title = document.getElementById('title')
-
-  title.textContent = textTitle
-  textList.forEach(text => {
-    const entry = document.createElement('li')
-    entry.textContent = text
-    entry.classList.add('list__item')
-    list.appendChild(entry)
+function render({ url, poster, playerUrl, metadata }) {
+  const videosSrc = document.querySelectorAll('[data-legacy-video-src]')
+  videosSrc.forEach(videoSource => {
+    videoSource.src = url
   })
+
+  const videoElement = document.getElementById('r7-video')
+  videoElement.poster = poster
+  videoElement.dataset.playerUrl = playerUrl
+  videoElement.dataset.metadata = JSON.stringify(metadata)
+
+  videoElement.load()
 }
 
 function parseQueryString() {

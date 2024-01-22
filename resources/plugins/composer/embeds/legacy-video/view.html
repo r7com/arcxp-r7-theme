@@ -11,8 +11,22 @@
   <body>
     <main class="main" role="main">
       <div class="container">
-        <h3 class="container__title" id="title"></h3>
-        <ul class="container__list" id="list"></ul>
+        <div>VIEW</div>
+        <video
+          controls
+          id="r7-video"
+          className="video-js"
+          preload="auto"
+          poster=""
+          data-sprite-url=""
+          data-player-url=""
+          data-metadata=""
+          data-player-params=""
+        >
+          <source data-legacy-video-src src="" type="application/vnd.apple.mpegurl">
+          <source data-legacy-video-src src="" type="application/x-mpegURL">
+          <source data-legacy-video-src src="" type="video/mp4"></source>
+        </video>
       </div>
     </main>
     <script src="./view.js"></script>

@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const list = document.getElementById('list')
 const title = document.getElementById('title')
 

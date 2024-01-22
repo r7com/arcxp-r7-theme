@@ -9,3 +9,4 @@ environment/*
 deployer.js
 arc-themes.js
 components/features/automatic-page-refresh/*
+data
