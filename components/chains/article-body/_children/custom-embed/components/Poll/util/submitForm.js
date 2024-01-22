@@ -7,16 +7,11 @@ export const submitForm = async (formId, selectedOptionId, recapatchaToken) => {
   formData.append('g-recaptcha-response', recapatchaToken)
 
   try {
-    const res = await fetch(POST_POLL_ANSWER_API, {
+    await fetch(POST_POLL_ANSWER_API, {
       method: 'POST',
       body: formData,
     })
-    const data = await res.json()
-    if (data) {
-      return true
-    } else {
-      throw new Error('Invalid data')
-    }
+    return true
   } catch (error) {
     console.error('Form submission - Error:', error)
     return null

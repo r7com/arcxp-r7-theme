@@ -5,7 +5,7 @@ export const Option = ({ className, optionText, optionVotesPercentage }) => {
     <li className={className}>
       <div className={`${className}-top`}>
         <p>{optionText}</p>
-        <span>{optionVotesPercentage}%</span>
+        <span>{`${optionVotesPercentage}%`}</span>
       </div>
       <div className={`${className}-bar`}>
         <span style={{ width: `${optionVotesPercentage}%` }}></span>
