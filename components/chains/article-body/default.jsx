@@ -228,7 +228,12 @@ function parsePromoItem(item, itemKey, customFields) {
   switch (item.type) {
     case 'custom_embed':
       return (
-        <CustomEmbed element={item} classPrefix={BLOCK_CLASS_NAME} customFields={customFields} />
+        <CustomEmbed
+          element={item}
+          classPrefix={BLOCK_CLASS_NAME}
+          customFields={customFields}
+          key={`${item.type}_${item._id}`}
+        />
       )
     case 'image': {
       const [width, height] = itemKey.split('x').map(str => Number(str))
