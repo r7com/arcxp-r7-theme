@@ -25,7 +25,7 @@ export function withCard(Component, { defaultFrom, defaultSize, length }) {
     })
 
     return (
-      <RenderCard display={display} content={cardProps.content} isAdmin={isAdmin}>
+      <RenderCard display={display} items={cardProps.collection} isAdmin={isAdmin}>
         <Component {...props} cardProps={{ ...cardProps }} />
       </RenderCard>
     )
