@@ -60,39 +60,26 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
     })
   }
 
-  const getSlicedItemsFromSource = () => {
-    const items = getItemsWithCustomFields(content)
+  const getSlicedItems = () => {
+    let items = getItemsWithCustomFields(content)
 
     if (isGlobalContent) {
-      // Manual "from" and "size" when using globalContent
-      return items.slice(globalContentFrom).slice(0, globalContentSize)
+      /** Manual "from" and "size" when using globalContent */
+      items = items.slice(globalContentFrom).slice(0, globalContentSize)
     }
-
-    // Is a collection - Already sliced by the collection "size" field
-    return items
-  }
-
-  const getSlicedItemsFromLength = () => {
-    const items = getSlicedItemsFromSource()
 
     if (length) {
       /** Set a max length for the array size,
        * Two Cards Square Blocks is 2 for instance
        * Proportional Photo is 1 */
-      return items.slice(0, length)
+      items = items.slice(0, length)
     }
 
-    /**
-     * If the user sets a "size" of 10 on a widget with 1 card, we need
-     * to either slice it or not use a map the custom block code
-     */
     return items
   }
 
-  const items = getSlicedItemsFromLength()
-
   return {
-    collection: items,
+    collection: getSlicedItems(),
     siteProperties,
     fusionContext,
   }
