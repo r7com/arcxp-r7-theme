@@ -12,7 +12,7 @@ function renderItem(menuLink) {
     )
   }
 
-  if (menuLink.navigation) {
+  if (menuLink.navigation.menu_url) {
     return (
       <Sidebar.Link href={menuLink.navigation.menu_url} title={menuLink.navigation.nav_title}>
         {menuLink.name}
