@@ -5,12 +5,13 @@ import { getLabelCustomFields } from './get-label-props'
 
 /**
  * useCard hook
+ * @type CardOptions
+ * @typedef {Object} CardOptions
+ * @property {string} defaultFrom The default "from" value
+ * @property {string} defaultSize The default "size" of the collection
+ * @property {number} length The max number of cards on the `collection` array
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
- * @param {Object} options - Hook options
- * @param {CardPropTypes} options.customFields - Custom Fields
- * @param {string} options.defaultFrom - The default "from" value.
- * @param {string} options.defaultSize - The default size of the collection.
- * @param {number} options.length - How many cards/items from the collection.
+ * @param {CardOptions & {customFields:CardPropTypes}} options
  */
 export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) {
   const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
