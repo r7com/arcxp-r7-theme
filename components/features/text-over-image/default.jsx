@@ -29,13 +29,33 @@ const TextOverImageBlock = withCard(
       },
     }
 
+    const LAYOUTS = {
+      vertical: {
+        container: {
+          size: 'full',
+        },
+        figure: {
+          layout: 'half',
+          size: 'full',
+          responsiveAfter: 'md',
+        },
+      },
+      half: {
+        container: {
+          size: 'fullHeight',
+        },
+        figure: {
+          layout: 'vertical',
+          size: 'fullHeight',
+          responsiveAfter: 'md',
+        },
+      },
+    }
+
     return (
-      <TextOverPhoto
-        layout={layout}
-        renderTitle={({ CardTitle }) => <CardTitle>{collection[0].headlines?.basic}</CardTitle>}
-        renderHat={<CardHat color="high" {...collection[0]} />}
-        renderImage={
-          <>
+      <TextOverPhoto {...LAYOUTS[layout].container}>
+        <TextOverPhoto.Figure {...LAYOUTS[layout].figure}>
+          <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
             {collection[0].promo_items?.basic ? (
               <Image
                 {...getResizeParamsFromANSImage(
@@ -57,13 +77,23 @@ const TextOverImageBlock = withCard(
               <img
                 src={fallbackImage}
                 alt={fallbackImageAlt}
-                style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                style={{ objectFit: 'contain', height: 330 }}
               />
             )}
-            <CardLabel {...collection[0]} {...collection[0].customFields.label} />
-          </>
-        }
-      />
+            <CardLabel {...collection[0]} />
+          </a>
+        </TextOverPhoto.Figure>
+
+        <TextOverPhoto.TextWrapper>
+          <CardHat {...collection[0]} color="high" />
+
+          <TextOverPhoto.Title>
+            <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
+              {collection[0].headlines?.basic}
+            </a>
+          </TextOverPhoto.Title>
+        </TextOverPhoto.TextWrapper>
+      </TextOverPhoto>
     )
   },
   { defaultFrom: '0', defaultSize: '1', length: 1 },
