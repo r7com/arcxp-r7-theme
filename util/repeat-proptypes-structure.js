@@ -1,6 +1,6 @@
 /**
  * @param {{count: number; shapeTemplate: Function}} params
- * @returns {Object}
+ * @returns {Record<string,string>}
  * @example
  * How to use:
  * ```

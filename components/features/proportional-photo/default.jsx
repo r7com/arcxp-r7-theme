@@ -14,14 +14,8 @@ const ProportionalPhotoBlock = withCard(
     const { fallbackImage, fallbackImageAlt } = siteProperties
 
     return (
-      <ProportionalPhoto
-        title={collection[0].headlines?.basic}
-        renderHat={
-          <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
-            <CardHat {...collection[0]} />
-          </a>
-        }
-        renderImage={
+      <ProportionalPhoto>
+        <ProportionalPhoto.Figure>
           <a href={collection[0].canonical_url}>
             {collection[0].promo_items?.basic ? (
               <Image
@@ -44,16 +38,26 @@ const ProportionalPhotoBlock = withCard(
                 style={{ objectFit: 'contain', width: '100%', height: '100%' }}
               />
             )}
-            <CardLabel {...collection[0]} {...collection[0].customFields.label} />
+            <CardLabel {...collection[0]} />
           </a>
-        }
-      />
+        </ProportionalPhoto.Figure>
+
+        <ProportionalPhoto.TextWrapper>
+          <CardHat {...collection[0]} />
+
+          <ProportionalPhoto.Title>
+            <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
+              {collection[0].headlines?.basic}
+            </a>
+          </ProportionalPhoto.Title>
+        </ProportionalPhoto.TextWrapper>
+      </ProportionalPhoto>
     )
   },
   { defaultFrom: '0', defaultSize: '1', length: 1 },
 )
 
-ProportionalPhotoBlock.label = 'Proportional Photo - R7 Block'
+ProportionalPhotoBlock.label = 'Chamada foto proporcional - R7 Block'
 
 ProportionalPhotoBlock.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(1) }),
