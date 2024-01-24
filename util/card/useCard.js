@@ -51,18 +51,18 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
   const labels = getLabelCustomFields({ length, customFields })
 
   /**
-   *@param {Collection} source - Hook options
+   *@param {Collection["content_elements"]} items - Hook options
    * Join the collection/globalContent props and the custom fields for label/sponsored
    * This way we can get all information on a unique `blocks.map(card => card)`
    */
-  const getItemsWithCustomFields = source => {
-    return source?.content_elements.map((item, i) => {
+  const getItemsWithCustomFields = items => {
+    return items?.map((item, i) => {
       return { ...item, customFields: { label: labels[i] } }
     })
   }
 
   const getSlicedItems = () => {
-    let items = getItemsWithCustomFields(content)
+    let items = content?.content_elements
 
     if (isGlobalContent) {
       /** Manual "from" and "size" when using globalContent */
@@ -76,7 +76,7 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
       items = items?.slice(0, length)
     }
 
-    return items
+    return getItemsWithCustomFields(items)
   }
 
   return {
