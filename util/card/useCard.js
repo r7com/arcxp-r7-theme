@@ -66,14 +66,14 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
 
     if (isGlobalContent) {
       /** Manual "from" and "size" when using globalContent */
-      items = items.slice(globalContentFrom).slice(0, globalContentSize)
+      items = items?.slice(globalContentFrom)?.slice(0, globalContentSize)
     }
 
     if (length) {
       /** Set a max length for the array size,
        * Two Cards Square Blocks is 2 for instance
        * Proportional Photo is 1 */
-      items = items.slice(0, length)
+      items = items?.slice(0, length)
     }
 
     return items
