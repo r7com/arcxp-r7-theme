@@ -64,7 +64,7 @@ const TwoCardsLandscapeVariant = withCard(
   { defaultFrom: '0', defaultSize: '2', length: 2 },
 )
 
-TwoCardsLandscapeVariant.label = 'Duas chamadas retangulares grandes - R7 Block'
+TwoCardsLandscapeVariant.label = 'Two Cards Large Landscape Photo - R7 Block'
 
 TwoCardsLandscapeVariant.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
