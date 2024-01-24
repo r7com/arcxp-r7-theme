@@ -1,11 +1,20 @@
-import { COUPON_API } from 'fusion:environment'
+import { COUPON_API, COUPON_TOKEN } from 'fusion:environment'
+import axios from 'axios'
 
-const resolve = query => {
-  return `${COUPON_API}${query.category}`
+const fetch = async query => {
+  const { data } = await axios({
+    url: `${COUPON_API}${query.category}`,
+    headers: {
+      'content-type': 'application/json',
+      Authorization: COUPON_TOKEN,
+    },
+  })
+
+  return data
 }
 
 export default {
-  resolve,
+  fetch,
   params: {
     category: '',
   },
