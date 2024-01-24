@@ -6,7 +6,7 @@ import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 import { Guerra } from '@r7/ui-card'
 import { Bullet } from '@r7/ui-base-components'
-import { withCard, getCardPropTypes, CardLabel } from '../../../util/card'
+import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
 
 const GuerraBlock = withCard(
   props => {
@@ -15,10 +15,8 @@ const GuerraBlock = withCard(
     const { fallbackImage, fallbackImageAlt } = siteProperties
 
     return (
-      <Guerra
-        hat={collection[0].taxonomy?.primary_section?.name}
-        title={collection[0].headlines?.basic}
-        renderImage={
+      <Guerra>
+        <Guerra.Figure>
           <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
             {collection[0].promo_items?.basic ? (
               <Image
@@ -38,22 +36,31 @@ const GuerraBlock = withCard(
               <img
                 src={fallbackImage}
                 alt={fallbackImageAlt}
-                style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                style={{ objectFit: 'contain', width: '100%', height: 628 }}
               />
             )}
-            <CardLabel {...collection[0]} {...collection[0].customFields.label} />
+            <CardLabel {...collection[0]} />
           </a>
-        }
-        renderBullets={
-          <>
+        </Guerra.Figure>
+
+        <Guerra.Overlay>
+          <CardHat {...collection[0]} type="warning" color="high-bold" />
+
+          <Guerra.Title>
+            <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
+              {collection[0].headlines?.basic}
+            </a>
+          </Guerra.Title>
+
+          <Guerra.Bullets>
             {collection.slice(1).map(item => (
               <Bullet key={item._id} url={item.canonical_url} color="neutralHigh">
                 {item.headlines.basic}
               </Bullet>
             ))}
-          </>
-        }
-      />
+          </Guerra.Bullets>
+        </Guerra.Overlay>
+      </Guerra>
     )
   },
   { defaultFrom: '0', defaultSize: '9', length: 9 },

@@ -4,7 +4,7 @@ import PropTypes from '@arc-fusion/prop-types'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
-import { withCard } from '../../../util/card'
+import { withCard, getCardPropTypes } from '../../../util/card'
 import { FiveVerticalNews } from '@r7/ui-card'
 
 const FiveVerticalNewsBlock = withCard(
@@ -69,6 +69,7 @@ FiveVerticalNewsBlock.label = 'Cinco Chamadas Vertical - R7 Block'
 
 FiveVerticalNewsBlock.propTypes = {
   customFields: PropTypes.shape({
+    ...getCardPropTypes(1),
     blockTitle: PropTypes.string.tag({
       label: 'Título',
       defaultValue: '',
