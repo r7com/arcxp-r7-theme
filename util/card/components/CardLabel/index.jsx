@@ -11,6 +11,8 @@ import { getLabelTypeBySite } from '../../get-label-type-by-site'
 export const CardLabel = ({ customFields, taxonomy, fallbackImage }) => {
   const labelBySite = getLabelTypeBySite({ taxonomy })
 
+  if (!customFields?.label) return null
+
   const {
     displayLabel,
     sponsoredBy,
