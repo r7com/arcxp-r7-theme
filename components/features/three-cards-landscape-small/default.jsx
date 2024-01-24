@@ -7,7 +7,7 @@ import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-an
 import { LeftPhoto } from '@r7/ui-card'
 import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
 
-const TwoCardsSquarePhotoBlock = withCard(
+const ThreeCardsLandscapeSmall = withCard(
   props => {
     const { collection, siteProperties, fusionContext } = props.cardProps
     const { arcSite } = fusionContext
@@ -18,14 +18,14 @@ const TwoCardsSquarePhotoBlock = withCard(
         {collection.map(item => (
           <LeftPhoto.Item key={item._id}>
             <LeftPhoto.Flex>
-              <LeftPhoto.Figure format="square">
+              <LeftPhoto.Figure format="landscape">
                 <a href={item.canonical_url} title={item.headlines?.basic}>
                   {item.promo_items?.basic ? (
                     <Image
                       {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 113, [113])}
                       alt={item.promo_items?.basic.alt_text}
                       sizes={[{ isDefault: true, sourceSizeValue: '113px' }]}
-                      height={113}
+                      height={65}
                       resizedOptions={{
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
@@ -36,8 +36,8 @@ const TwoCardsSquarePhotoBlock = withCard(
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={113}
-                      height={113}
-                      style={{ objectFit: 'cover' }}
+                      height={65}
+                      style={{ height: '100%', objectFit: 'contain' }}
                     />
                   )}
 
@@ -60,14 +60,13 @@ const TwoCardsSquarePhotoBlock = withCard(
       </LeftPhoto>
     )
   },
-  // This might be unnecessary, but without the `length` a `slice` would be necessary
-  { defaultFrom: '0', defaultSize: '2', length: 2 },
+  { defaultFrom: '0', defaultSize: '3', length: 3 },
 )
 
-TwoCardsSquarePhotoBlock.label = 'Duas chamadas quadradas - R7 Block'
+ThreeCardsLandscapeSmall.label = 'Três chamadas retangular - R7 Block'
 
-TwoCardsSquarePhotoBlock.propTypes = {
+ThreeCardsLandscapeSmall.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
 }
 
-export default TwoCardsSquarePhotoBlock
+export default ThreeCardsLandscapeSmall

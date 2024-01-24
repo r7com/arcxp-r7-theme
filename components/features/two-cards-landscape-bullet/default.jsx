@@ -4,10 +4,11 @@ import PropTypes from '@arc-fusion/prop-types'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
+import { Bullet } from '@r7/ui-base-components'
 import { LeftPhoto } from '@r7/ui-card'
 import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
 
-const TwoCardsSquarePhotoBlock = withCard(
+const TwoCardsLandscapeBullet = withCard(
   props => {
     const { collection, siteProperties, fusionContext } = props.cardProps
     const { arcSite } = fusionContext
@@ -15,17 +16,17 @@ const TwoCardsSquarePhotoBlock = withCard(
 
     return (
       <LeftPhoto>
-        {collection.map(item => (
+        {collection.slice(0, 2).map(item => (
           <LeftPhoto.Item key={item._id}>
             <LeftPhoto.Flex>
-              <LeftPhoto.Figure format="square">
+              <LeftPhoto.Figure format="landscape">
                 <a href={item.canonical_url} title={item.headlines?.basic}>
                   {item.promo_items?.basic ? (
                     <Image
-                      {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 113, [113])}
+                      {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 160, [160])}
                       alt={item.promo_items?.basic.alt_text}
-                      sizes={[{ isDefault: true, sourceSizeValue: '113px' }]}
-                      height={113}
+                      sizes={[{ isDefault: true, sourceSizeValue: '160px' }]}
+                      height={90}
                       resizedOptions={{
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
@@ -35,9 +36,9 @@ const TwoCardsSquarePhotoBlock = withCard(
                     <img
                       src={fallbackImage}
                       alt={fallbackImageAlt}
-                      width={113}
-                      height={113}
-                      style={{ objectFit: 'cover' }}
+                      width={160}
+                      height="auto"
+                      style={{ objectFit: 'contain', height: '100%' }}
                     />
                   )}
 
@@ -57,17 +58,20 @@ const TwoCardsSquarePhotoBlock = withCard(
             </LeftPhoto.Flex>
           </LeftPhoto.Item>
         ))}
+
+        {collection[2] && (
+          <Bullet url={collection[2].canonical_url}>{collection[2].headlines?.basic}</Bullet>
+        )}
       </LeftPhoto>
     )
   },
-  // This might be unnecessary, but without the `length` a `slice` would be necessary
-  { defaultFrom: '0', defaultSize: '2', length: 2 },
+  { defaultFrom: '0', defaultSize: '3', length: 3 },
 )
 
-TwoCardsSquarePhotoBlock.label = 'Duas chamadas quadradas - R7 Block'
+TwoCardsLandscapeBullet.label = 'Duas chamadas retangular com bullet - R7 Block'
 
-TwoCardsSquarePhotoBlock.propTypes = {
+TwoCardsLandscapeBullet.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
 }
 
-export default TwoCardsSquarePhotoBlock
+export default TwoCardsLandscapeBullet

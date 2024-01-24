@@ -5,16 +5,18 @@ import { getLabelCustomFields } from './get-label-props'
 
 /**
  * useCard hook
- * @param {Object} options - Hook options
- * @param {Object} options.customFields - Component props
- * @param {string} options.defaultFrom - The default "from" value.
- * @param {string} options.defaultSize - The default size of the collection.
- * @param {number} options.length - How many cards/items from the collection.
+ * @type CardOptions
+ * @typedef {Object} CardOptions
+ * @property {string} defaultFrom The default "from" value
+ * @property {string} defaultSize The default "size" of the collection
+ * @property {number} length The max number of cards on the `collection` array
+ * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
+ * @param {CardOptions & {customFields:CardPropTypes}} options
  */
 export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) {
-  const { config } = customFields
+  const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
   const fusionContext = useFusionContext()
-  const { arcSite } = fusionContext
+  const { arcSite, globalContent } = fusionContext
   const siteProperties = getProperties(arcSite)
 
   /**
@@ -27,18 +29,19 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
    * @property {{primary_section:{name:string}}} taxonomy
    * @property {{basic:string}} headlines
    * @property {{basic:{alt_text:string,auth:Record<string,string>}}} promo_items
+   * Uses globalContent for automatic homes when "Usar conteúdo global" is checked,
+   * and the collection when it's not checked
    */
-  const content = useContent({
-    source: config?.contentService,
-    query: {
-      ...config?.contentConfigValues,
-      from: config?.contentConfigValues.from ?? defaultFrom,
-      size: config?.contentConfigValues.size ?? defaultSize,
-    },
-  })
-
-  /** Cards quantity defined by `length` */
-  const cards = [...Array(length).keys()]
+  const content = isGlobalContent
+    ? globalContent
+    : useContent({
+        source: config?.contentService,
+        query: {
+          ...config?.contentConfigValues,
+          from: config?.contentConfigValues.from ?? defaultFrom,
+          size: config?.contentConfigValues.size ?? defaultSize,
+        },
+      })
 
   /**
    * Gets the label custom fields for each card
@@ -48,19 +51,36 @@ export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) 
   const labels = getLabelCustomFields({ length, customFields })
 
   /**
-   * Join the card collection props and the custom fields for label/sponsored
-   * This way we can get this information on a `blocks.map(card => card)`
+   *@param {Collection["content_elements"]} items - Hook options
+   * Join the collection/globalContent props and the custom fields for label/sponsored
+   * This way we can get all information on a unique `blocks.map(card => card)`
    */
-  const collection = cards
-    .map((card, i) => {
-      const collectionProps = content?.content_elements[card]
-      return { ...collectionProps, customFields: { label: labels[i] } }
+  const getItemsWithCustomFields = items => {
+    return items?.map((item, i) => {
+      return { ...item, customFields: { label: labels[i] } }
     })
-    .filter(item => item._id)
+  }
+
+  const getSlicedItems = () => {
+    let items = content?.content_elements
+
+    if (isGlobalContent) {
+      /** Manual "from" and "size" when using globalContent */
+      items = items?.slice(globalContentFrom)?.slice(0, globalContentSize)
+    }
+
+    if (length) {
+      /** Set a max length for the array size,
+       * Two Cards Square Blocks is 2 for instance
+       * Proportional Photo is 1 */
+      items = items?.slice(0, length)
+    }
+
+    return getItemsWithCustomFields(items)
+  }
 
   return {
-    content,
-    collection,
+    collection: getSlicedItems(),
     siteProperties,
     fusionContext,
   }
