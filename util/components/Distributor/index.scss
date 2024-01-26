@@ -11,6 +11,10 @@
 
   & > span {
     padding: 0 3px;
+
+    .dark & {
+      color: var(--contrast-secondary-color);
+    }
   }
 
   &__link {
@@ -24,6 +28,16 @@
       height: 29px;
       min-width: 29px;
       max-width: 29px;
+
+      .dark & {
+        filter: grayscale(1);
+      }
+    }
+  }
+
+  &__time {
+    .dark & {
+      color: var(--contrast-secondary-color);
     }
   }
 }
