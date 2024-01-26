@@ -1,6 +1,5 @@
-/* eslint-disable no-undef*/
 import './index.scss'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { GalleryThumbs } from './components/Thumbs'
 import { GalleryCaption } from './components/Caption'
 import { GalleryToolbar } from './components/Toolbar'
@@ -11,9 +10,13 @@ export const Gallery = ({ elements, className }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [fullscreen, setFullscreen] = useState(false)
-  fullscreen
-    ? document.body.classList.add('no-scroll')
-    : document.body.classList.remove('no-scroll')
+
+  useEffect(() => {
+    fullscreen
+      ? document.body.classList.add('no-scroll')
+      : document.body.classList.remove('no-scroll')
+  }, [fullscreen])
+
   return (
     <div className={`${className} gallery__container`}>
       <div className={`gallery__slider-wrapper`}>

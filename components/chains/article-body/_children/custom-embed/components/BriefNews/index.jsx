@@ -1,24 +1,25 @@
-import { Text } from '@r7/ui-base-components'
+import { Typography } from '@r7/ui-base-components'
 import React from 'react'
 
 export const BriefNews = ({ item, className, primaryColor }) => {
+  if (!item) return
   return (
     <div
       className={`${className}-brief-news__container`}
       style={{ borderLeft: `12px solid ${primaryColor}` }}
     >
-      <Text fontSize="sm" fontWeight="semibold" as="div">
+      <Typography fontSize="sm" fontWeight="semibold" as="div">
         <h3 className={`${className}-brief-news__title`} style={{ color: primaryColor }}>
-          {item.config.textTitle}
+          {item.config?.textTitle}
         </h3>
-      </Text>
+      </Typography>
 
       <ul className={`${className}-brief-news__list`}>
-        {item.config.textList.map((listItem, index) => (
+        {item?.config?.textList.map((listItem, index) => (
           <li key={`${item.id}${index}`}>
-            <Text fontSize="xxs" as="span">
+            <Typography fontSize="xxs" as="span">
               {listItem}
-            </Text>
+            </Typography>
           </li>
         ))}
       </ul>

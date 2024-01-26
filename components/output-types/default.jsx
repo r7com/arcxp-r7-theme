@@ -205,7 +205,7 @@ const SampleOutputType = ({
             }
             body { 
               writing-mode: ${textFlow};
-              font-family: var(--font-family-primary, 'sans-serif'), sans-serif;
+              font-family: var(--font-family-primary, sans-serif), sans-serif;
             }
           `}
         </style>

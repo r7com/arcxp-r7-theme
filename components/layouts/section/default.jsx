@@ -2,7 +2,7 @@ import '@r7/ui-header-delivery/style.css'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Header } from '@r7/ui-header-delivery'
-import { Container } from '@r7/ui-layout'
+import { Container, SectionWrapper } from '@r7/ui-layout'
 
 const SectionLayout = ({ children }) => {
   const [headerFixed, header, main, footer] = React.Children.toArray(children)
@@ -15,7 +15,9 @@ const SectionLayout = ({ children }) => {
       </Header>
       {main && (
         <main>
-          <Container>{main}</Container>
+          <Container>
+            <SectionWrapper>{main}</SectionWrapper>
+          </Container>
         </main>
       )}
       {footer && <footer>{footer}</footer>}

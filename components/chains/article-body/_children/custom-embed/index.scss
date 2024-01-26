@@ -8,11 +8,21 @@
       border-right: 0.5px solid;
       border-bottom: 0.5px solid;
       background-color: #f8f8f8;
+
+      .dark & {
+        border-color: var(--contrast-secondary-color);
+        border-left-color: var(--contrast-secondary-color) !important;
+        background-color: var(--contrast-primary-color);
+      }
     }
     &__title {
       line-height: 1.6;
       margin-bottom: 16px;
       text-transform: uppercase;
+
+      .dark & {
+        color: var(--contrast-secondary-color) !important;
+      }
     }
 
     &__list {
@@ -26,6 +36,10 @@
         &::before {
           content: '•';
           margin-right: 5px;
+
+          .dark & {
+            color: var(--contrast-secondary-color);
+          }
         }
       }
     }
