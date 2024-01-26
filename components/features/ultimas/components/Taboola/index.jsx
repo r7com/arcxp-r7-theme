@@ -1,8 +1,9 @@
 import React from 'react'
 import { isR7Home } from '../../../../../util/global-helpers'
 
-export const TaboolaCard = ({ websiteName, isAdmin, className }) => {
-  const counter = Math.ceil(Math.random() * 100000000)
+let ids = []
+
+export const TaboolaCard = ({ websiteName, isAdmin, className, id }) => {
   const configIds = isR7Home(websiteName)
     ? {
         placement: '',
@@ -13,24 +14,26 @@ export const TaboolaCard = ({ websiteName, isAdmin, className }) => {
         container: '-capas-internas',
       }
 
-  const taboolaConfig = {
-    mode: 'thumbnails-1x1-mid-article',
-    container: `taboola-ultimas-noticias-widget-organico${configIds.container}-${counter}`,
-    placement: `Ultimas noticias widget organico${configIds.placement} - ${counter}`,
-    target_type: 'mix',
-  }
+  const idExists = ids.includes(id)
 
-  isR7Home(websiteName) ? (taboolaConfig.homepage = 'auto') : (taboolaConfig.category = 'auto')
+  if (!isAdmin && !idExists) {
+    const taboolaConfig = {
+      mode: 'thumbnails-1x1-mid-article',
+      container: `taboola-ultimas-noticias-widget-organico${configIds.container}-${id}`,
+      placement: `Ultimas noticias widget organico${configIds.placement} - ${id}`,
+      target_type: 'mix',
+    }
 
-  if (!isAdmin) {
+    isR7Home(websiteName) ? (taboolaConfig.homepage = 'auto') : (taboolaConfig.category = 'auto')
     window._taboola = window._taboola || []
     window._taboola.push(taboolaConfig)
+    ids.push(id)
   }
 
   return (
     <div
       className={`${className}__item`}
-      id={`taboola-ultimas-noticias-widget-organico${configIds.container}-${counter}`}
+      id={`taboola-ultimas-noticias-widget-organico${configIds.container}-${id}`}
     >
       {isAdmin ? 'Taboola Card' : ''}
     </div>
