@@ -4,7 +4,6 @@ import PropTypes from '@arc-fusion/prop-types'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
-import { Bullet } from '@r7/ui-base-components'
 import { LeftPhoto } from '@r7/ui-card'
 import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
 
@@ -15,7 +14,7 @@ const TwoCardsLandscapeVariant = withCard(
 
     return (
       <LeftPhoto>
-        {collection.slice(0, 2).map(item => (
+        {collection.map(item => (
           <LeftPhoto.Item key={item._id}>
             <LeftPhoto.Flex>
               <LeftPhoto.Figure imgSize="large" format="landscape">
@@ -54,17 +53,13 @@ const TwoCardsLandscapeVariant = withCard(
             </LeftPhoto.Flex>
           </LeftPhoto.Item>
         ))}
-
-        {collection[2] && (
-          <Bullet url={collection[2].canonical_url}>{collection[2].headlines?.basic}</Bullet>
-        )}
       </LeftPhoto>
     )
   },
   { defaultFrom: '0', defaultSize: '2', length: 2 },
 )
 
-TwoCardsLandscapeVariant.label = 'Two Cards Large Landscape Photo - R7 Block'
+TwoCardsLandscapeVariant.label = 'Dois cards retangulares - R7 Block'
 
 TwoCardsLandscapeVariant.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
