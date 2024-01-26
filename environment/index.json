@@ -11,6 +11,7 @@
   "GOOGLE_RECAPTCHA_APIKEY": "6LclHXkUAAAAAJGwrX5Zivh3kihuGkNrY8em_FKk",
   "GET_POLL_DATA_API": "https://poll-api-qa.r7.com/polls/",
   "POST_POLL_ANSWER_API": "https://poll-api-qa.r7.com/polls/increment",
+  "GET_QUIZ_DATA_API": "https://quiz-api-qa.r7.com/api/v1/quiz/",
   "COUPON_API": "https://cms-coupons-api-qa.ir7.com.br/v1/shops?categories=",
   "siteStyles": {
     "r7": "r7",
