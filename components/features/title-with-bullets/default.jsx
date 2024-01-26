@@ -8,17 +8,18 @@ import { CardHat, withCard } from '../../../util/card'
 const TitleWithBulletsBlock = withCard(
   props => {
     const { collection } = props.cardProps
+    const [mainNews, ...bulletNews] = collection
     return (
       <Guerra>
-        <CardHat {...collection[0]} color="low" />
+        <CardHat {...mainNews} color="low" />
 
         <Guerra.Title color="low">
-          <a href={collection[0].canonical_url} title={collection[0].headlines?.basic}>
-            {collection[0].headlines?.basic}
+          <a href={mainNews.canonical_url} title={mainNews.headlines?.basic}>
+            {mainNews.headlines?.basic}
           </a>
         </Guerra.Title>
         <Guerra.Bullets>
-          {collection.slice(1).map(item => (
+          {bulletNews.map(item => (
             <Bullet key={item._id} url={item.canonical_url}>
               {item.headlines.basic}
             </Bullet>
