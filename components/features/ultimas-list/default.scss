@@ -44,27 +44,6 @@
       flex-direction: row;
     }
 
-    .c-link {
-      .dark & {
-        color: var(--contrast-secondary-color);
-      }
-    }
-
-    img {
-      min-width: 100%;
-      max-height: 206px;
-      border-radius: 5px;
-      object-fit: cover;
-
-      .dark & {
-        filter: grayscale(1);
-      }
-
-      @media (min-width: 72rem) {
-        min-width: 369px;
-      }
-    }
-
     &-content {
       display: flex;
       flex-direction: column;
@@ -91,6 +70,25 @@
 
     &-anchor {
       display: block;
+
+      .dark & {
+        color: var(--contrast-secondary-color);
+      }
+
+      img {
+        min-width: 100%;
+        max-height: 206px;
+        border-radius: 5px;
+        object-fit: cover;
+
+        .dark & {
+          filter: grayscale(1);
+        }
+
+        @media (min-width: 72rem) {
+          min-width: 369px;
+        }
+      }
     }
   }
   &__btn-container {
@@ -98,7 +96,7 @@
     text-align: center;
 
     .dark & {
-      background-color: var(--contrast-primary-color); 
+      background-color: var(--contrast-primary-color);
     }
   }
   &__btn {
