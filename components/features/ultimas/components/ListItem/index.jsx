@@ -80,6 +80,7 @@ export const UltimasListItem = ({
                 websiteName={websiteName}
                 isAdmin={isAdmin}
                 className={className}
+                id={element._id}
               />
             )}
             <article data-observerid={idx} className={`${className}__item`}>
