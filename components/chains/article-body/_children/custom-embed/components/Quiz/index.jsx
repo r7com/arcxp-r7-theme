@@ -25,7 +25,7 @@ const Quiz = ({ className, item }) => {
 
   useEffect(() => {
     ;(async () => {
-      const response = await getQuizData(item.id)
+      const response = await getQuizData(item.config?.quizId)
       setQuizData(quizDataProcesser(response))
     })()
   }, [])
