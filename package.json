@@ -26,7 +26,6 @@
   "devDependencies": {
     "@arc-fusion/cli": "^2.2.3",
     "@commitlint/cli": "^17.7.1",
-    "@r7/ui-card": "file:[../arc/front-monorepo/dist/libs/ui-card]",
     "@commitlint/config-conventional": "^17.7.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
