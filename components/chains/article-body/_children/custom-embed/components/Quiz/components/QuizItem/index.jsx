@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { QuizItemOption } from '../QuizItemOption'
 import { QuizItemImage } from '../QuizItemImage'
 import { QuizItemAnswer } from '../QuizItemAnswer'
+import { QuizContext } from '../../context'
 
-export const QuizItem = ({ className, item, order }) => {
-  const { question, options, answer } = item
+export const QuizItem = ({ className, item, order, showAnswer }) => {
+  const { text, answers, register_summary, _id } = item
+  const { selectedAnswers } = useContext(QuizContext)
   return (
     <li className={className}>
       <p className={`${className}-order`}>{order}</p>
-      <h4 className={`${className}-heading`}>{question}</h4>
+      <h4 className={`${className}-heading`}>{text}</h4>
       <QuizItemImage className={className} item={item} />
       <ul className={`${className}-options`}>
-        {options.map(option => (
-          <QuizItemOption key={option.id} text={option.text} className={className} />
+        {answers.map(answer => (
+          <QuizItemOption
+            key={answer._id}
+            className={className}
+            option={answer}
+            questionId={_id}
+            showAnswer={showAnswer}
+          />
         ))}
       </ul>
-      <QuizItemAnswer className={className} answer={answer} />
+      {selectedAnswers[_id] && showAnswer && (
+        <QuizItemAnswer
+          className={className}
+          isCorrect={selectedAnswers[_id].correct}
+          summary={register_summary}
+        />
+      )}
     </li>
   )
 }

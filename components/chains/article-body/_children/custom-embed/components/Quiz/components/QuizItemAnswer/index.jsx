@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { QuizContext } from '../../context'
 
-export const QuizItemAnswer = ({ className, answer }) => {
-  const { text, title } = answer
+export const QuizItemAnswer = ({ className, isCorrect, summary }) => {
+  const { primaryColor } = useContext(QuizContext)
   return (
-    <div className={`${className}-answer`}>
-      <h5 className={`${className}-answer-title incorrect`}>
+    <div className={`${className}-answer`} style={{ borderLeft: `12px solid ${primaryColor}` }}>
+      <h5 className={`${className}-answer-title ${isCorrect ? 'correct' : 'incorrect'}`}>
         <span></span>
-        {title}
+        {isCorrect ? 'Muito bom você acertou!' : 'Você não acertou :('}
       </h5>
-      <p className={`${className}-answer-text`}>{text}</p>
+      <p className={`${className}-answer-text`}>{summary}</p>
     </div>
   )
 }

@@ -1,9 +1,11 @@
-import { SocialShare } from '@r7/ui-article-delivery'
 import React from 'react'
+import { SocialShare } from '@r7/ui-article-delivery'
 
-export const QuizSummary = ({ className, title }) => {
+export const QuizSummary = ({ className, primaryColor, result, reset }) => {
+  const { title, text, image_url } = result
   return (
-    <div className={className}>
+    <div className={className} style={{ borderLeft: `12px solid ${primaryColor}` }}>
+      {image_url ? <img className={`${className}-image`} src={image_url} alt={title} /> : null}
       <h3 className={`${className}-title`}>{title}</h3>
       <div className={`${className}-share`}>
         <SocialShare>
@@ -17,11 +19,14 @@ export const QuizSummary = ({ className, title }) => {
           </SocialShare.List>
         </SocialShare>
       </div>
-      <p className={`${className}-descr`}>
-        Obrigado (a) por sua participação, logo teremos mais perguntas que desafiaram seus
-        conhecimentos.
-      </p>
-      <button className={`${className}-btn`}>Refazer o Quiz</button>
+      <p className={`${className}-descr`}>{text}</p>
+      <button
+        className={`${className}-btn`}
+        style={{ backgroundColor: primaryColor }}
+        onClick={reset}
+      >
+        Refazer o Quiz
+      </button>
     </div>
   )
 }
