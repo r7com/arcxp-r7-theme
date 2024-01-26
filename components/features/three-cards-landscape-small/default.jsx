@@ -51,7 +51,7 @@ const ThreeCardsLandscapeSmall = withCard(
 
                 <LeftPhoto.Title fontSize="small">
                   <a href={item.canonical_url} title={item.headlines?.basic}>
-                    {item.headlines?.basic} d
+                    {item.headlines?.basic}
                   </a>
                 </LeftPhoto.Title>
               </LeftPhoto.TextWrapper>
