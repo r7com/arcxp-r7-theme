@@ -38,8 +38,6 @@ deploy-sandbox:
   script:
     - apt-get update
     - node deployer.mjs
-  only:
-    - main
 
 deploy-production:
   stage: deploy-production
