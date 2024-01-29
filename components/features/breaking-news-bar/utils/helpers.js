@@ -13,7 +13,7 @@ export function filterBars(fields) {
         tag: fields[`tag${counter}`].trim(),
         title: fields[`title${counter}`],
         href: fields[`href${counter}`],
-        showImage: fields[`showImage${counter}`],
+        showImage: Boolean(fields[`showImage${counter}`]),
         imageUrl: fields[`imageUrl${counter}`],
         imageAlt: fields[`imageAlt${counter}`],
       })
