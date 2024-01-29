@@ -50,6 +50,7 @@ stages:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
+    - sam deploy-sandbox --no-confirm-changeset --no-fail-on-empty-changeset
     - apt-get update
     - DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
     - mkdir -p $DOCKER_CONFIG/cli-plugins
