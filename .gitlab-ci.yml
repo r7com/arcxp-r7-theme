@@ -3,9 +3,6 @@ variables:
   CI: 'true'
   GIT_DEPTH: 0
 
-stages:
-  - deploy
-
 default:
   tags:
     - gitlab-runner-ec2
@@ -37,15 +34,16 @@ default:
       - export SANDBOX_DEPLOYER_ENDPOINT=api.sandbox.newr7.arcpublishing.com
       - export SANDBOX_DEPLOYER_ACCESS_TOKEN=G3NBPUSB0UN8K0VJ9C86H4TELANAMB77lZv+FF5Jj7LWpFGPJEtxagItA2X6Hk3Gn91/mlKE
       - npm ci --cache .npm --prefer-offline
+stages:
+  - deploy
+  - deploy-production
 
 deploy:
   stage: deploy
-  image: node:$NODE_VERSION
   script:
     - echo "$NPM_REGISTRY_WP" >> .npmrc
     - echo "$NPM_REGISTRY_ARCXP" >> .npmrc
     - echo "//npm.pkg.github.com/:_authToken=$CI_JOB_TOKEN" >> .npmrc
     - npm ci
     - node deployer.mjs
-  environment:
-    name: production
+
