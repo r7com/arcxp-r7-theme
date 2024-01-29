@@ -5,7 +5,9 @@ variables:
   NODE_VERSION: "18.17.0"
   NPM_REGISTRY_WP: "@wpmedia:registry=https://npm.pkg.github.com/"
   NPM_REGISTRY_ARCXP: "@arcxp:registry=https://npm.pkg.github.com/"
-
+default:
+  tags:
+    - gitlab-runner-ec2
 cache:
   paths:
     - node_modules
