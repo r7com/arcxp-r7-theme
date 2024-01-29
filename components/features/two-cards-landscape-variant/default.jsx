@@ -9,7 +9,8 @@ import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/ca
 
 const TwoCardsLandscapeVariant = withCard(
   props => {
-    const { collection, siteProperties } = props.cardProps
+    const { collection, siteProperties, fusionContext } = props.cardProps
+    const { arcSite } = fusionContext
     const { fallbackImage, fallbackImageAlt } = siteProperties
 
     return (
@@ -21,7 +22,7 @@ const TwoCardsLandscapeVariant = withCard(
                 <a href={item.canonical_url} title={item.headlines?.basic}>
                   {item.promo_items?.basic ? (
                     <Image
-                      {...getResizeParamsFromANSImage(item.promo_items?.basic)}
+                      {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite)}
                       alt={item.promo_items?.basic.alt_text}
                       resizedOptions={{
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
