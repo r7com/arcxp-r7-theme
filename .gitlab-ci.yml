@@ -11,6 +11,8 @@ variables:
 image: $NODE_VERSION
 
 default:
+  tags:
+    - gitlab-runner-ec2
   cache:  # Cache modules using lock file
     key:
       files:
