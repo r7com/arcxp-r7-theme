@@ -39,8 +39,7 @@ stages:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - apt install --upgrade docker-compose
-    - apt install --upgrade docker
+    - apt-get install docker.io
     - apt-get update
     - node deployer.mjs
 
