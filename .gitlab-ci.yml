@@ -1,3 +1,8 @@
+variables:
+  NODE_VERSION: node:18
+  CI: 'true'
+  GIT_DEPTH: 0
+
 stages:
   - deploy
 
