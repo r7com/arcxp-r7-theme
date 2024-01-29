@@ -30,6 +30,7 @@ const ThreeCardsLandscapeSmall = withCard(
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
                       }}
+                      style={{ width: 113, height: 65, objectFit: 'cover' }}
                     />
                   ) : (
                     <img
@@ -37,7 +38,7 @@ const ThreeCardsLandscapeSmall = withCard(
                       alt={fallbackImageAlt}
                       width={113}
                       height={65}
-                      style={{ height: '100%', objectFit: 'contain' }}
+                      style={{ width: 113, height: 65, objectFit: 'contain' }}
                     />
                   )}
 

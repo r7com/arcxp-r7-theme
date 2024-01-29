@@ -31,14 +31,15 @@ const TwoCardsLandscapeBullet = withCard(
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
                       }}
+                      style={{ width: 160, height: 90, objectFit: 'cover' }}
                     />
                   ) : (
                     <img
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={160}
-                      height="auto"
-                      style={{ objectFit: 'contain', height: '100%' }}
+                      height={90}
+                      style={{ width: 160, height: 90, objectFit: 'contain' }}
                     />
                   )}
 
