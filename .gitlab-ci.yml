@@ -51,6 +51,8 @@ deploy-sandbox:
   stage: deploy-sandbox
   script:
     - apt-get update
+    - apt-get install docker-compose-plugin
+    - docker compose version
     - node deployer.mjs
 
 deploy-production:
