@@ -20,6 +20,7 @@ default:
     paths:
       - .npm/
   before_script:
+      - printenv
       - echo "registry=https://registry.npmjs.org/" > .npmrc
       - echo "@wpmedia:registry=https://npm.pkg.github.com/" >> .npmrc
       - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
@@ -38,6 +39,8 @@ stages:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
+    - sudo apt install --upgrade docker-compose
+    - sudo apt install --upgrade docker
     - apt-get update
     - node deployer.mjs
 
