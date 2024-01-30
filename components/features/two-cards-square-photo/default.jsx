@@ -30,6 +30,7 @@ const TwoCardsSquarePhotoBlock = withCard(
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
                       }}
+                      style={{ width: 113, height: 113, objectFit: 'cover' }}
                     />
                   ) : (
                     <img
@@ -37,7 +38,7 @@ const TwoCardsSquarePhotoBlock = withCard(
                       alt={fallbackImageAlt}
                       width={113}
                       height={113}
-                      style={{ objectFit: 'cover' }}
+                      style={{ width: 113, height: 113, objectFit: 'cover' }}
                     />
                   )}
 
