@@ -65,8 +65,8 @@ filesAndFolders.forEach(item => {
   try {
     try {
       console.log('Create bundle: start')
-      // const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
-      // console.log('Create bundle: result', { stdout, stderr })
+      const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
+      console.log('Create bundle: result', { stdout, stderr })
     } catch (err) {
       console.error('Create bundle: error', err)
       throw new Error(err)
