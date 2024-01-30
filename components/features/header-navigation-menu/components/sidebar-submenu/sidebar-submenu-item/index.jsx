@@ -22,6 +22,5 @@ function renderItem(item) {
 }
 
 export const SidebarSubmenuItem = ({ item }) => {
-  console.log(item)
   return <Sidebar.Item key={item._id}>{renderItem(item)}</Sidebar.Item>
 }
