@@ -22,19 +22,20 @@ const TwoCardsLandscapeVariant = withCard(
                 <LeftPhoto.Figure imgSize="large" format="landscape">
                   {item.promo_items?.basic ? (
                     <Image
-                      {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite)}
+                      {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 160, [238])}
                       alt={item.promo_items?.basic.alt_text}
+                      sizes={[{ isDefault: true }]}
                       resizedOptions={{
                         auth: item.promo_items?.basic.auth[RESIZER_TOKEN_VERSION],
                         smart: true,
                       }}
+                      style={{ objectFit: 'cover' }}
                     />
                   ) : (
                     <img
                       src={fallbackImage}
                       alt={fallbackImageAlt}
-                      height="auto"
-                      style={{ objectFit: 'contain', height: '100%' }}
+                      style={{ objectFit: 'cover' }}
                     />
                   )}
 
