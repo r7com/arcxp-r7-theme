@@ -18,5 +18,6 @@
     "entretenimento": "entretenimento",
     "esportes": "esportes",
     "noticias": "noticias"
-  }
+  },
+  "R7_PLAYER_ASSET": "http://localhost:8181/index.js"
 }

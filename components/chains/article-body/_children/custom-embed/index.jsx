@@ -5,8 +5,8 @@ import getProperties from 'fusion:properties'
 
 import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
-import { EmbedPlayer } from './components/Player'
 import { Poll } from './components/Poll'
+import { EmbedPlayer } from '../../../../../util/components/Player'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()
