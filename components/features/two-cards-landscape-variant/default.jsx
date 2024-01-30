@@ -18,8 +18,8 @@ const TwoCardsLandscapeVariant = withCard(
         {collection.map(item => (
           <LeftPhoto.Item key={item._id}>
             <LeftPhoto.Flex>
-              <LeftPhoto.Figure imgSize="large" format="landscape">
-                <a href={item.canonical_url} title={item.headlines?.basic}>
+              <a href={item.canonical_url} title={item.headlines?.basic}>
+                <LeftPhoto.Figure imgSize="large" format="landscape">
                   {item.promo_items?.basic ? (
                     <Image
                       {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite)}
@@ -39,8 +39,8 @@ const TwoCardsLandscapeVariant = withCard(
                   )}
 
                   <CardLabel {...item} />
-                </a>
-              </LeftPhoto.Figure>
+                </LeftPhoto.Figure>
+              </a>
 
               <LeftPhoto.TextWrapper>
                 <CardHat {...item} />
