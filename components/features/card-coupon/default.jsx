@@ -23,14 +23,7 @@ const CardCouponBlock = ({ customFields }) => {
             <CardCoupon.Item key={id}>
               <ConditionalLink target="_blank" title={anchor_text} href={url}>
                 <CardCoupon.Content>
-                  <img
-                    className="card-mr-xxxs card-rounded-md card-h-lg card-w-lg"
-                    src={logo}
-                    alt={anchor_text}
-                    loading="lazy"
-                    height={58}
-                    width={58}
-                  />
+                  <CardCoupon.Image logo={logo} alt={anchor_text} />
                   <div>
                     <Typography className="uppercase" fontSize="little" color="neutralLow">
                       {name}

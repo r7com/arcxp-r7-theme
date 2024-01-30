@@ -65,6 +65,10 @@
           fill: #000;
           width: 20px;
           height: 20px;
+
+          .dark & {
+            fill: var(--contrast-secondary-color);
+          }
         }
 
         @media screen and (max-width: 640px) {
@@ -75,6 +79,10 @@
             width: 25px;
             height: 25px;
           }
+        }
+        .dark & {
+          background-color: var(--contrast-primary-color);
+          border: 1px solid var(--contrast-secondary-color);
         }
       }
     }
@@ -94,6 +102,18 @@
   figcaption {
     @media screen and (max-width: 48rem) {
       margin-top: 66px;
+    }
+
+    .c-media-item__caption  {
+      .dark & {
+        color: var(--contrast-secondary-color);
+      }
+    }
+  }
+
+  .dark & {
+    img {
+      filter: grayscale(1);
     }
   }
 }

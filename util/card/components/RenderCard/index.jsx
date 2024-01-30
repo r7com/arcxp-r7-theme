@@ -1,9 +1,9 @@
 import React from 'react'
 
 /** Conditionally renders the card with fallbacks */
-export function RenderCard({ display, content, isAdmin, children }) {
+export function RenderCard({ display, items, isAdmin, children }) {
   // Returns the wrapped component if has checked "Exibir bloco" and has collection
-  if (display && content?.content_elements?.length > 0) {
+  if (display && items?.length > 0) {
     return children
   }
 
@@ -15,18 +15,13 @@ export function RenderCard({ display, content, isAdmin, children }) {
     }
 
     // Is checked to display but got no content from the collection and is admin
-    if (!content) {
+    if (!items) {
       return <p>É necessário definir uma fonte de conteúdo para este bloco.</p>
     }
 
     // Didn't find any item on the collection
-    if (content?.content_elements?.length === 0) {
-      return (
-        <p>
-          Nenhum item encontrado na collection, verifique os valores &quot;from&quot; e
-          &quot;size&quot;.
-        </p>
-      )
+    if (items?.length === 0) {
+      return <p>Nenhum item encontrado na collection, verifique &quot;Configurar conteúdo&quot;</p>
     }
 
     return null

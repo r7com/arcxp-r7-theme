@@ -11,7 +11,9 @@
   "GOOGLE_RECAPTCHA_APIKEY": "6LclHXkUAAAAAJGwrX5Zivh3kihuGkNrY8em_FKk",
   "GET_POLL_DATA_API": "https://poll-api-qa.r7.com/polls/",
   "POST_POLL_ANSWER_API": "https://poll-api-qa.r7.com/polls/increment",
+  "GET_QUIZ_DATA_API": "https://quiz-api-qa.r7.com/api/v1/quiz/",
   "COUPON_API": "https://cms-coupons-api-qa.ir7.com.br/v1/shops?categories=",
+  "COUPON_TOKEN": "011eb122e54197ba004cc5447d9eda28f6f6264da66d371855b2179ac94096a7",
   "siteStyles": {
     "r7": "r7",
     "recordtv": "recordtv",

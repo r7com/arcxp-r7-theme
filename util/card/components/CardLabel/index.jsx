@@ -2,19 +2,26 @@ import React from 'react'
 import { Card } from '@r7/ui-card'
 import { getLabelTypeBySite } from '../../get-label-type-by-site'
 
-/** CardLabel component */
-export const CardLabel = ({
-  displayLabel,
-  label,
-  sponsoredBy,
-  sponsoredByImage,
-  sponsoredByImageDesc,
-  sponsoredByTitle,
-  sponsoredByUrl,
-  taxonomy,
-  fallbackImage,
-}) => {
+/**
+ * CardLabel component
+ * @typedef {{fallbackImage:string}} CardLabelProps
+ * @typedef {ReturnType<typeof import("../../useCard").useCard>} UseCardReturn
+ * @param {UseCardReturn["collection"][number]} - CardCollection
+ */
+export const CardLabel = ({ customFields, taxonomy, fallbackImage }) => {
   const labelBySite = getLabelTypeBySite({ taxonomy })
+
+  if (!customFields?.label) return null
+
+  const {
+    displayLabel,
+    sponsoredBy,
+    label,
+    sponsoredByImage,
+    sponsoredByImageDesc,
+    sponsoredByTitle,
+    sponsoredByUrl,
+  } = customFields.label
 
   if (!displayLabel && !sponsoredBy) return null
 

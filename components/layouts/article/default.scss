@@ -52,3 +52,13 @@
     }
   }
 }
+
+html.dark {
+  & body {
+    background-color: var(--contrast-primary-color);
+  }
+
+  & article img {
+    filter: grayscale(1);
+  }
+}
