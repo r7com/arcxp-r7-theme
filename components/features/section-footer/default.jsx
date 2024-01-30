@@ -17,7 +17,7 @@ const SectionFootBlock = props => {
   )
 }
 
-SectionFootBlock.label = 'Section Foot - R7 Block'
+SectionFootBlock.label = 'Rodapé da seção - R7 Block'
 
 SectionFootBlock.icon = 'arc-headline'
 
