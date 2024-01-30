@@ -41,6 +41,22 @@ async function uploadFile(url, form) {
   })
 }
 async function deploy() {
+  const rootDir = __dirname;
+
+// Read the contents of the root directory
+const filesAndFolders = fs.readdirSync(rootDir);
+
+// Print each file and folder
+filesAndFolders.forEach(item => {
+  // Construct the full path
+  const fullPath = path.join(rootDir, item);
+
+  // Check if it's a file or a directory
+  const type = fs.statSync(fullPath).isDirectory() ? 'Directory' : 'File';
+
+  // Print the result
+  console.log(`${item} (${type})`);
+});
   try {
     try {
       if (!fs.existsSync('./dist')) {
