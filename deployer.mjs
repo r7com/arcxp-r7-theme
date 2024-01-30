@@ -16,10 +16,10 @@ if (!fs.existsSync('./dist')) {
 deploy()
 async function getUploadMetadata(fileName) {
   return axios.get(
-    `${CONTENT_BASE}/themesettings/api/presigned-bundle-upload?name=${fileName}&fileType=application%2Fzip`,
+    `https://api.sandbox.newr7.arcpublishing.com/themesettings/api/presigned-bundle-upload?name=${fileName}&fileType=application%2Fzip`,
     {
       headers: {
-        Authorization: `Bearer ${ARC_ACCESS_TOKEN}`,
+        Authorization: `Bearer T7BQIRAHM589FJ73CT3DLR1AIV2PQOSIXU9REqCy7Bn3NamJlnRBzjGsmXgNofYWCP55ENq4`,
       },
     },
   )
