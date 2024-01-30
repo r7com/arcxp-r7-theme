@@ -9,7 +9,10 @@ import path from 'path';
 const execPromisified = util.promisify(exec)
 const readDirPromisified = util.promisify(fs.readdir)
 const { ARC_ACCESS_TOKEN, CONTENT_BASE } = process.env
-
+if (!fs.existsSync('./dist')) {
+        fs.mkdirSync('./dist')
+        console.log(`Folder './dist' created successfully.`)
+      }
 deploy()
 async function getUploadMetadata(fileName) {
   return axios.get(
@@ -61,13 +64,9 @@ filesAndFolders.forEach(item => {
 });
   try {
     try {
-      if (!fs.existsSync('./dist')) {
-        fs.mkdirSync('./dist')
-        console.log(`Folder './dist' created successfully.`)
-      }
       console.log('Create bundle: start')
-      const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
-      console.log('Create bundle: result', { stdout, stderr })
+      // const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
+      // console.log('Create bundle: result', { stdout, stderr })
     } catch (err) {
       console.error('Create bundle: error', err)
       throw new Error(err)
