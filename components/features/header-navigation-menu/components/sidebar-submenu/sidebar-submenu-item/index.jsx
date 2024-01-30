@@ -1,18 +1,26 @@
 import React from 'react'
 import { Sidebar } from '@r7/ui-header-delivery'
 
-export const SidebarSubmenuItem = ({ item }) => {
+function renderItem(item) {
+  if (item.navigation?.menu_url) {
+    return (
+      <Sidebar.Link
+        href={item.navigation.menu_url}
+        title={item.navigation.nav_title}
+        style={{ textTransform: 'capitalize' }}
+      >
+        {item.name}
+      </Sidebar.Link>
+    )
+  }
+
   return (
-    <>
-      <Sidebar.Item key={item._id}>
-        <Sidebar.Link
-          style={{ textTransform: 'capitalize' }}
-          title={item.display_name}
-          href={item.url}
-        >
-          {item.display_name}
-        </Sidebar.Link>
-      </Sidebar.Item>
-    </>
+    <Sidebar.Link href={item.url} title={item.display_name} style={{ textTransform: 'capitalize' }}>
+      {item.display_name}
+    </Sidebar.Link>
   )
+}
+
+export const SidebarSubmenuItem = ({ item }) => {
+  return <Sidebar.Item key={item._id}>{renderItem(item)}</Sidebar.Item>
 }

@@ -7,7 +7,7 @@ export const SidebarSubmenu = ({ submenu }) => {
     <Sidebar.Submenu id={submenu._id}>
       <Sidebar.List label={submenu.name}>
         {submenu.children.map(submenuItem =>
-          submenuItem.node_type === 'section' ? (
+          submenuItem.node_type === 'section' && submenuItem.children.length > 0 ? (
             <Sidebar.Category key={submenuItem._id} title={submenuItem.name}>
               <Sidebar.List label={submenuItem.name}>
                 {submenuItem?.children.map(submenuLink => {
