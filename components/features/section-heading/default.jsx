@@ -47,7 +47,7 @@ const SectionHeadingBlock = props => {
   )
 }
 
-SectionHeadingBlock.label = 'Section Heading - R7 Block'
+SectionHeadingBlock.label = 'Título da seção - R7 Block'
 
 SectionHeadingBlock.icon = 'arc-headline'
 
