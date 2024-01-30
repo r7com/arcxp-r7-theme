@@ -43,6 +43,10 @@ async function uploadFile(url, form) {
 async function deploy() {
   try {
     try {
+      if (!fs.existsSync('./dist')) {
+        fs.mkdirSync('./dist')
+        console.log(`Folder './dist' created successfully.`)
+      }
       console.log('Create bundle: start')
       const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
       console.log('Create bundle: result', { stdout, stderr })
@@ -71,6 +75,8 @@ async function deploy() {
     console.log(`API reponse status: ${apiStatus}`)
     const form = await buildFormData(apiData.fields, getRenamedFileName)
     const { status: s3Status } = await uploadFile(apiData.url, form)
+
+    fs.unlinkSync(`./dist/${getRenamedFileName}`);
     console.log(`S3 upload complete: status code ${s3Status}`)
   } catch (err) {
     if (err.isAxiosError && err.response.status) {
