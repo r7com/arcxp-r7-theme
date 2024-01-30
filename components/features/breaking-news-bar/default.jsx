@@ -95,7 +95,7 @@ BreakingNewsBar.propTypes = {
           [`showImage${counter}`]: PropTypes.bool.tag({
             group: `Barra ${counter}`,
             label: 'Mostrar imagem da barra?',
-            defaultValue: true,
+            defaultValue: false,
           }),
           [`imageUrl${counter}`]: PropTypes.string.tag({
             group: `Barra ${counter}`,
