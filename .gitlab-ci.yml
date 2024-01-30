@@ -20,7 +20,7 @@ default:
     paths:
       - .npm/
   before_script:
-    - printenv
+      - printenv
       - echo "registry=https://registry.npmjs.org/" > .npmrc
       - echo "@wpmedia:registry=https://npm.pkg.github.com/" >> .npmrc
       - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
@@ -45,7 +45,6 @@ deploy-sandbox:
   stage: deploy-sandbox
   script:
     - apt-get update
-    
     - DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
     - mkdir -p $DOCKER_CONFIG/cli-plugins
     - curl -SL https://github.com/docker/compose/releases/download/v2.24.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
