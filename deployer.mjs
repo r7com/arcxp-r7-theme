@@ -41,7 +41,7 @@ async function uploadFile(url, form) {
   })
 }
 async function deploy() {
-  const rootDir = __dirname;
+  const rootDir = process.cwd();;
 
 // Read the contents of the root directory
 const filesAndFolders = fs.readdirSync(rootDir);
