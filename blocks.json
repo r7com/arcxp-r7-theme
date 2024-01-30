@@ -3,7 +3,31 @@
   "buildSiteStyles": true,
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
-  "localeList": ["en", "sv", "no", "fr", "de", "es", "ja", "ko", "pt"],
+  "localeList": [
+    "ar",
+    "bn",
+    "bo",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "id",
+    "ja",
+    "km-KH",
+    "ko",
+    "lo",
+    "ms",
+    "my",
+    "no",
+    "pt-BR",
+    "pt",
+    "sv",
+    "th",
+    "ug",
+    "vi",
+    "zh-CN",
+    "zh-TW"
+  ],
   "themesReleaseVersion": "arc-themes-release-version-2.1.3",
   "blocks": [
     "@wpmedia/ad-taboola-block",
@@ -81,7 +105,8 @@
           "primaryColor": "#556373",
           "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
           "headerImageAlt": "Header image",
-          "hash": "r7noticias/home"
+          "hash": "r7noticias/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038915673.svg"
         }
       },
       "recordtv": {
@@ -92,7 +117,8 @@
           "primaryColor": "#5D6F9D",
           "headerImage": "https://img.r7.com/images/record-tv-06112023200313177",
           "headerImageAlt": "Header image",
-          "hash": "recordtv/home"
+          "hash": "recordtv/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038947330.svg"
         }
       },
       "esportes": {
@@ -102,21 +128,48 @@
           "primaryColor": "#0E8148",
           "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808247535.jpg",
           "headerImageAlt": "Header image",
-          "hash": "r7esportes/home"
+          "hash": "r7esportes/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038887445.svg"
         }
       },
       "entretenimento": {
         "siteProperties": {
           "websiteName": "R7 Entretenimento",
           "websiteDomain": "https://entretenimento.r7.com",
+          "taboolaPublisherId": "r7-r7com",
           "primaryColor": "#F78714",
           "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697806773401.jpg",
           "headerImageAlt": "Header image",
-          "hash": "r7entretenimento/home"
+          "hash": "r7entretenimento/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038871041.svg"
         }
       },
-      "new-r7": { "siteProperties": { "textDirection": "ltr", "textFlow": "horizontal-tb" } },
-      "r7": { "siteProperties": { "primaryColor": "#218EE1" } }
+      "new-r7": {
+        "siteProperties": {
+          "textDirection": "ltr",
+          "textFlow": "horizontal-tb"
+        }
+      },
+      "r7": {
+        "siteProperties": {
+          "api": {
+            "identity": {
+              "origin": ""
+            },
+            "retail": {
+              "endpoint": "",
+              "origin": "",
+              "script": ""
+            },
+            "sales": {
+              "origin": ""
+            }
+          },
+          "primaryColor": "#218EE1",
+          "hash": "r7home/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038934034.svg"
+        }
+      }
     },
     "default": {
       "siteProperties": {
@@ -140,10 +193,23 @@
         "nativoIntegration": "false",
         "textDirection": "ltr",
         "textFlow": "horizontal-tb",
-        "api": { "identity": { "origin": "" } },
+        "api": {
+          "identity": {
+            "origin": ""
+          },
+          "retail": {
+            "endpoint": "",
+            "origin": "",
+            "script": ""
+          },
+          "sales": {
+            "origin": ""
+          }
+        },
         "instagramPage": "https://instagram.com/portalr7",
         "primaryColor": "#fff",
         "dfpId": 7542,
+        "gtmID": "GTM-PQFPRPC",
         "hash": "r7home/home"
       }
     }
