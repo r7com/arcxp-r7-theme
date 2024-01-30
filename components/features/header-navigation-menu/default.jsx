@@ -17,7 +17,14 @@ const HeaderNavigationMenu = ({ customFields }) => {
 
   const { arcSite, metaValue, globalContent } = useFusionContext()
 
-  const { primaryColor, websiteDomain, primaryLogo, primaryLogoAlt } = getProperties(arcSite)
+  const {
+    primaryColor,
+    websiteDomain,
+    primaryLogo,
+    primaryLogoAlt,
+    secondaryLogo,
+    secondaryLogoAlt,
+  } = getProperties(arcSite)
 
   const isInternal = Boolean(
     metaValue('page-type') && !['homepage', 'section'].includes(metaValue('page-type')),
@@ -50,7 +57,7 @@ const HeaderNavigationMenu = ({ customFields }) => {
       <HeaderSocials />
       {isInternal && (
         <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
-          <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
+          <Header.Logo link={websiteDomain} logoUrl={secondaryLogo} alt={secondaryLogoAlt} />
           <InternalsHeader.SectionName sectionUrl={sectionUrl}>
             {sectionName}
           </InternalsHeader.SectionName>
