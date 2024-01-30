@@ -56,7 +56,7 @@ async function deploy() {
     }
     // get created file name
     const getFileName = fs.readdirSync('./dist')[0]
-    console.log('getFileName',getFileName);
+    console.log('getFileName', fs.readdirSync('./dist'));
 
     // Parse command line arguments
     const argv = process.argv.slice(2)
