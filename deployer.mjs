@@ -5,6 +5,7 @@ import FormData from 'form-data'
 import fs from 'fs'
 // import { uid } from 'uid/secure'
 import util from 'util'
+import path from 'path';
 const execPromisified = util.promisify(exec)
 const readDirPromisified = util.promisify(fs.readdir)
 const { ARC_ACCESS_TOKEN, CONTENT_BASE } = process.env
@@ -42,6 +43,7 @@ async function uploadFile(url, form) {
 }
 async function deploy() {
   const rootDir = process.cwd();
+  console.log('rootDir', rootDir);
 
 // Read the contents of the root directory
 const filesAndFolders = fs.readdirSync(rootDir);
