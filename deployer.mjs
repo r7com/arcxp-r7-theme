@@ -55,20 +55,24 @@ async function deploy() {
       throw new Error(err)
     }
     // get created file name
-    const getFileName = ((await readDirPromisified('./dist')) || [])[0]
+    const getFileName = fs.readdirSync('./dist')[0]
+    console.log('getFileName',getFileName);
 
     // Parse command line arguments
     const argv = process.argv.slice(2)
     const getNameParam = argv.find(el => el.includes('-name='))
+    console.log('getNameParam',getNameParam);
     const customName = getNameParam ? getNameParam.split('=')[1] : ''
+    console.log('customName',customName);
 
     // rename file
-    const [fileName, extension] = getFileName.split('.')
-    const newName = customName ? `${fileName}-${customName}.${extension}` : getFileName
-    fs.renameSync(`./dist/${getFileName}`, `./dist/${newName}`)
+    // const [fileName, extension] = getFileName.split('.')
+    // const newName = customName ? `${fileName}-${customName}.${extension}` : getFileName
+    const newName =  getFileName
+    // fs.renameSync(`./dist/${getFileName}`, `./dist/${newName}`)
 
     // get renamed fileName
-    const getRenamedFileName = (await readDirPromisified('./dist'))[0]
+    const getRenamedFileName = fs.readdirSync('./dist')[0]
 
     const { status: apiStatus, data: apiData } = await getUploadMetadata(getRenamedFileName)
     console.log('apiData', apiData)
