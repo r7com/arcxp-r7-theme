@@ -73,7 +73,7 @@ filesAndFolders.forEach(item => {
     }
     // get created file name
     const getFileName = fs.readdirSync('./dist')[0]
-    console.log('getFileName', fs.readdirSync('./dist'));
+    console.log('getFileName', fs.readdirSync(path.join(rootDir, 'dist')));
 
     // Parse command line arguments
     const argv = process.argv.slice(2)
