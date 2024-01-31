@@ -5,17 +5,21 @@ import FormData from 'form-data'
 import fs from 'fs'
 // import { uid } from 'uid/secure'
 import util from 'util'
+import path from 'path';
 const execPromisified = util.promisify(exec)
 const readDirPromisified = util.promisify(fs.readdir)
 const { ARC_ACCESS_TOKEN, CONTENT_BASE } = process.env
-
+if (!fs.existsSync('./dist')) {
+        fs.mkdirSync('./dist')
+        console.log(`Folder './dist' created successfully.`)
+      }
 deploy()
 async function getUploadMetadata(fileName) {
   return axios.get(
-    `${CONTENT_BASE}/themesettings/api/presigned-bundle-upload?name=${fileName}&fileType=application%2Fzip`,
+    `https://api.sandbox.newr7.arcpublishing.com/themesettings/api/presigned-bundle-upload?name=${fileName}&fileType=application%2Fzip`,
     {
       headers: {
-        Authorization: `Bearer ${ARC_ACCESS_TOKEN}`,
+        Authorization: `Bearer T7BQIRAHM589FJ73CT3DLR1AIV2PQOSIXU9REqCy7Bn3NamJlnRBzjGsmXgNofYWCP55ENq4`,
       },
     },
   )
@@ -41,12 +45,25 @@ async function uploadFile(url, form) {
   })
 }
 async function deploy() {
+  const rootDir = process.cwd();
+  console.log('rootDir', rootDir);
+
+// Read the contents of the root directory
+const filesAndFolders = fs.readdirSync(rootDir);
+
+// Print each file and folder
+filesAndFolders.forEach(item => {
+  // Construct the full path
+  const fullPath = path.join(rootDir, item);
+
+  // Check if it's a file or a directory
+  const type = fs.statSync(fullPath).isDirectory() ? 'Directory' : 'File';
+
+  // Print the result
+  console.log(`${item} (${type})`);
+});
   try {
     try {
-      if (!fs.existsSync('./dist')) {
-        fs.mkdirSync('./dist')
-        console.log(`Folder './dist' created successfully.`)
-      }
       console.log('Create bundle: start')
       const { stdout, stderr } = await execPromisified(`npx fusion zip --force`)
       console.log('Create bundle: result', { stdout, stderr })
@@ -56,7 +73,7 @@ async function deploy() {
     }
     // get created file name
     const getFileName = fs.readdirSync('./dist')[0]
-    console.log('getFileName', fs.readdirSync('./dist'));
+    console.log('getFileName', fs.readdirSync(path.join(rootDir, 'dist')));
 
     // Parse command line arguments
     const argv = process.argv.slice(2)

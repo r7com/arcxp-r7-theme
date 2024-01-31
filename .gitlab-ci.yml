@@ -30,17 +30,13 @@ default:
       - echo "//registry.npmjs.org/:_authToken=${R7_NPM_TOKEN}" >> .npmrc
       - echo "@arcxp:registry=https://npm.pkg.github.com/" >> .npmrc
       - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
-      - echo "SANDBOX_DEPLOYER_FUSION_RELEASE=${SANDBOX_DEPLOYER_FUSION_RELEASE}" > .env
-      - echo "SANDBOX_DEPLOYER_ENDPOINT=${SANDBOX_DEPLOYER_ENDPOINT}" >> .env
-      - echo "SANDBOX_DEPLOYER_ACCESS_TOKEN=${SANDBOX_DEPLOYER_ACCESS_TOKEN}" >> .env
       - echo "CONTENT_BASE=${CONTENT_BASE}" >> .env
+      - echo "FUSION_RELEASE=${FUSION_RELEASE}" >> .env
       - echo "ARC_ACCESS_TOKEN=${ARC_ACCESS_TOKEN}" >> .env
-      - export CONTENT_BASE=https://api.newr7.arcpublishing.com
-      - export ARC_ACCESS_TOKEN=ED9JNTOPJNCVFGM16KJTA64VR8N9THODs22NHaACshFBzKy548diLkhE+80KCqJg7u8RGNBW
-      - export SANDBOX_DEPLOYER_FUSION_RELEASE=3.3.7
-      - export SANDBOX_DEPLOYER_ENDPOINT=api.sandbox.newr7.arcpublishing.com
-      - export SANDBOX_DEPLOYER_ACCESS_TOKEN=G3NBPUSB0UN8K0VJ9C86H4TELANAMB77lZv+FF5Jj7LWpFGPJEtxagItA2X6Hk3Gn91/mlKE
-      - npm ci --cache .npm --prefer-offline
+      - export CONTENT_BASE=https://api.sandbox.newr7.arcpublishing.com
+      - export ARC_ACCESS_TOKEN=T7BQIRAHM589FJ73CT3DLR1AIV2PQOSIXU9REqCy7Bn3NamJlnRBzjGsmXgNofYWCP55ENq4
+      - export FUSION_RELEASE=5.0.2
+      - npm ci --cache .npm
 
 
 stages:
@@ -51,9 +47,6 @@ deploy-sandbox:
   stage: deploy-sandbox
   script:
     - apt-get update
-    - DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-    - mkdir -p $DOCKER_CONFIG/cli-plugins
-    - curl -SL https://github.com/docker/compose/releases/download/v2.24.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
     - apt-get -y install docker-compose
     - node deployer.mjs
 
