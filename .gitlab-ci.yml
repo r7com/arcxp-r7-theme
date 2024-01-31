@@ -44,8 +44,8 @@ stages:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - apt-get -y install docker-compose-plugin
     - apt-get update
+    - apt-get -y install docker-compose
     - npx fusion version
     - node deployer.mjs
 
