@@ -47,9 +47,6 @@ deploy-sandbox:
     - apt-get -y install docker-compose-plugin
         - apt-get update
     - npx fusion version
-    - docker-compose version
-    - docker compose version
-    - docker version
     - node deployer.mjs
 
 deploy-production:
