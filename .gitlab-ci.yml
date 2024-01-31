@@ -44,11 +44,11 @@ stages:
 deploy-sandbox:
   stage: deploy-sandbox
   script:
-    - apt-get update
+    - apt-get remove docker docker-engine docker.io containerd runc
+    - apt-get -y install docker.io
     - apt-get -y install docker-compose
     #for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
     - uname -a
-    - apt -y install docker.io
     - apt-get update
     - npx fusion version
     #node deployer.mjs
