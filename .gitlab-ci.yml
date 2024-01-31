@@ -31,9 +31,11 @@ default:
       - echo "@arcxp:registry=https://npm.pkg.github.com/" >> .npmrc
       - echo "//npm.pkg.github.com/:_authToken=${ARC_GITHUB_TOKEN}" >> .npmrc
       - echo "CONTENT_BASE=${CONTENT_BASE}" >> .env
+      - echo "FUSION_RELEASE=${FUSION_RELEASE}" >> .env
       - echo "ARC_ACCESS_TOKEN=${ARC_ACCESS_TOKEN}" >> .env
       - export CONTENT_BASE=https://api.sandbox.newr7.arcpublishing.com
       - export ARC_ACCESS_TOKEN=T7BQIRAHM589FJ73CT3DLR1AIV2PQOSIXU9REqCy7Bn3NamJlnRBzjGsmXgNofYWCP55ENq4
+      - export FUSION_RELEASE=5.0.2
       - npm ci --cache .npm --prefer-offline
 
 
