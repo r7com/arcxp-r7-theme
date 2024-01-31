@@ -126,7 +126,6 @@ const CustomMetaData = props => {
     if (typeof window === 'undefined') {
       const description = gc && gc.description && gc.description.basic
       const headline = gc && gc.headlines && gc.headlines.basic
-
       metaData.title =
         metaValue('title') || (headline && `${headline} – ${websiteName}`) || websiteName
       metaData.description = metaValue('description') || description || null
@@ -137,7 +136,7 @@ const CustomMetaData = props => {
       metaData['twitter:title'] = metaValue('twitter:title') || headline || websiteName
       metaData.twitterImage = getImgURL('twitter:image') || resizedFallbackImage
       metaData.twitterImageAlt = getImgAlt('twitter:image:alt')
-
+      console.log(metaData)
       // Keywords could be comma delimited string or array of string or an array of objects
       if (metaValue('keywords')) {
         metaData.keywords = metaValue('keywords')
@@ -157,6 +156,9 @@ const CustomMetaData = props => {
         metaData.keywords = null
       }
 
+      const articleTags = gc?.taxonomy?.tags?.map(tag => tag.text).join('-')
+      const articlePrimarySection = gc?.websites[arcSite]?.website_section?._id
+      console.log(gc)
       pageMetaDataTags = (
         <>
           {metaData.description && (
@@ -177,6 +179,12 @@ const CustomMetaData = props => {
           {metaData.twitterImageAlt && (
             <meta name="twitter:image:alt" content={metaData.twitterImageAlt} />
           )}
+          {articlePrimarySection && (
+            <meta property="article:section" content={articlePrimarySection} />
+          )}
+          {articleTags && <meta property="article:tag" content={articleTags} />}
+          <meta property="article:published_time" content={gc?.publish_date} />
+          <meta property="article:modified_time" content={gc?.last_updated_date} />
 
           {pageType === 'article' && (
             <>
@@ -365,7 +373,10 @@ const CustomMetaData = props => {
   return (
     <>
       <title>{metaData.title}</title>
+      <meta property="og:locale" content="pt_BR" />
       {pageMetaDataTags}
+      <meta property="og:image:width" content="340" />
+      <meta property="og:image:height" content="191" />
       {customMetaTags}
       {commonTagsOnPage && twitterTags}
       {canonicalLink}
