@@ -45,9 +45,10 @@ deploy-sandbox:
   stage: deploy-sandbox
   script:
     - apt-get update
-    - apt-get -y install docker-compose
+    #apt-get -y install docker-compose
+    - for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
     - npx fusion version
-    - node deployer.mjs
+    #node deployer.mjs
 
 deploy-production:
   stage: deploy-production
