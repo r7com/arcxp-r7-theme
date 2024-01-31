@@ -1,34 +1,33 @@
 import React, { useEffect } from 'react'
-import { useContent } from 'fusion:content'
-import { useFusionContext } from 'fusion:context'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { Paragraph } from '@r7/ui-base-components'
 import { Distributor } from '../../../../../util/components/Distributor'
+import { useCustomContent } from '../../../../../util/hooks/useCustomContent'
 
-export const SimpleListContent = ({ className, customFields, setLoading, setDisabled, size }) => {
-  const { arcSite, globalContent } = useFusionContext()
-  const { content_elements } =
-    useContent({
-      source: 'content-feed-sections-subtypes',
-      query: {
-        ...{
-          ...customFields.listContentConfig.contentConfigValues,
-          includeSections: globalContent._id,
-          feedSize: size,
-        },
-      },
-    }) || {}
-
+export const SimpleListContent = ({
+  className,
+  arcSite,
+  customFields,
+  setLoading,
+  setDisabled,
+  offset,
+}) => {
+  const contentElements = useCustomContent(customFields.listContentConfig, offset)
   useEffect(() => {
     setLoading(false)
-    if (content_elements && content_elements.length < size) {
+    if (
+      contentElements &&
+      contentElements.length < offset + customFields.listContentConfig.contentConfigValues.feedSize
+    ) {
       setDisabled(true)
+    } else {
+      setDisabled(false)
     }
-  }, [content_elements])
+  }, [contentElements])
 
   return (
     <ul className={`${className}__items`}>
-      {content_elements.map(element => {
+      {contentElements.map(element => {
         const {
           headlines: { basic: headlineText = '' } = {},
           subheadlines: { basic: subheadlineText = '' } = {},

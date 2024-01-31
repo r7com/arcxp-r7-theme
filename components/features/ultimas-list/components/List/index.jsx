@@ -4,11 +4,13 @@ import { SimpleListContent } from '../ListContent'
 
 export const SimpleList = props => {
   const { className, arcSite, customFields, id = '', primaryColor, websiteDomain, storyId } = props
-  const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
+  const [offset, setOffset] = useState(
+    customFields.listContentConfig.contentConfigValues.offset || 0,
+  )
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const clickHandler = () => {
-    setSize(prev => prev + customFields.loadMoreSize)
+    setOffset(prev => prev + customFields.loadMoreSize)
     setLoading(true)
   }
   return (
@@ -21,7 +23,7 @@ export const SimpleList = props => {
           websiteDomain={websiteDomain}
           setLoading={setLoading}
           setDisabled={setDisabled}
-          size={size}
+          offset={offset}
           storyId={storyId}
         />
         {loading ? (

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { Paragraph } from '@r7/ui-base-components'
 import { Distributor } from '../../../../../util/components/Distributor'
+import { useCustomContent } from '../../../../../util/hooks/useCustomContent'
 
 export const SimpleListContent = ({
   className,
@@ -10,23 +10,23 @@ export const SimpleListContent = ({
   customFields,
   setLoading,
   setDisabled,
-  size,
+  offset,
   storyId,
 }) => {
-  const { content_elements } =
-    useContent({
-      source: customFields.listContentConfig.contentService,
-      query: { ...{ ...customFields.listContentConfig.contentConfigValues, feedSize: size } },
-    }) || {}
-
+  const contentElements = useCustomContent(customFields.listContentConfig, offset)
   useEffect(() => {
     setLoading(false)
-    if (content_elements && content_elements.length < size) {
+    if (
+      contentElements &&
+      contentElements.length < offset + customFields.listContentConfig.contentConfigValues.feedSize
+    ) {
       setDisabled(true)
+    } else {
+      setDisabled(false)
     }
-  }, [content_elements])
+  }, [contentElements])
 
-  const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
+  const contentElementsStory = contentElements?.filter(item => item._id !== storyId)
   if (!contentElementsStory) {
     return null
   }

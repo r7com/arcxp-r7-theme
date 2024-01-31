@@ -7,7 +7,6 @@ export const Distributor = ({ publishDate, storyDistributor }) => {
   const distributorData = DISTRIBUTORS.find(
     distributor => storyDistributor?.name.toLowerCase() === distributor.agency_name.toLowerCase(),
   )
-  console.log(storyDistributor)
   return (
     <div className="distributor">
       {distributorData && (
