@@ -48,7 +48,7 @@ deploy-sandbox:
     #apt-get -y install docker-compose
     #for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
     - uname -a
-    - apt install docker.io
+    - apt -y install docker.io
     - npx fusion version
     #node deployer.mjs
 
