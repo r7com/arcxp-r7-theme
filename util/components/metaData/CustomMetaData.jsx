@@ -31,8 +31,7 @@ const CustomMetaData = props => {
     websiteDomain,
     websiteName,
   } = props
-  const pageType = metaValue('page-type')
-
+  const pageType = gc?.type || gc?.node_type
   let pageMetaDataTags = null
   let commonTagsOnPage = true
   let canonicalLink = null
@@ -86,7 +85,7 @@ const CustomMetaData = props => {
   )
 
   const resizedOptions = { smart: true }
-  const imageURL = (src, auth, height) =>
+  const imageURL = (src, auth, height = 1200) =>
     formatSrc(resizerURL.concat(src), { ...resizedOptions, auth }, 1200, height)
 
   const resizedFallbackImage = fallbackImageHash
@@ -121,8 +120,7 @@ const CustomMetaData = props => {
       null
     )
   }
-
-  if (pageType === 'article' || pageType === 'video' || pageType === 'gallery') {
+  if (pageType === 'story') {
     if (typeof window === 'undefined') {
       const description = gc && gc.description && gc.description.basic
       const headline = gc && gc.headlines && gc.headlines.basic
@@ -136,7 +134,6 @@ const CustomMetaData = props => {
       metaData['twitter:title'] = metaValue('twitter:title') || headline || websiteName
       metaData.twitterImage = getImgURL('twitter:image') || resizedFallbackImage
       metaData.twitterImageAlt = getImgAlt('twitter:image:alt')
-      console.log(metaData)
       // Keywords could be comma delimited string or array of string or an array of objects
       if (metaValue('keywords')) {
         metaData.keywords = metaValue('keywords')
@@ -155,10 +152,8 @@ const CustomMetaData = props => {
       } else {
         metaData.keywords = null
       }
-
       const articleTags = gc?.taxonomy?.tags?.map(tag => tag.text).join('-')
       const articlePrimarySection = gc?.websites[arcSite]?.website_section?._id
-      console.log(gc)
       pageMetaDataTags = (
         <>
           {metaData.description && (
@@ -175,6 +170,8 @@ const CustomMetaData = props => {
 
           {metaData.ogImage && <meta property="og:image" content={metaData.ogImage} />}
           {metaData.ogImageAlt && <meta property="og:image:alt" content={metaData.ogImageAlt} />}
+          <meta property="og:image:width" content="340" />
+          <meta property="og:image:height" content="191" />
           {metaData.twitterImage && <meta name="twitter:image" content={metaData.twitterImage} />}
           {metaData.twitterImageAlt && (
             <meta name="twitter:image:alt" content={metaData.twitterImageAlt} />
@@ -226,6 +223,8 @@ const CustomMetaData = props => {
           <>
             <meta property="og:image" content={resizedAuthorImage} />
             <meta property="og:image:alt" content={authorAlt} />
+            <meta property="og:image:width" content="340" />
+            <meta property="og:image:height" content="191" />
             <meta name="twitter:image" content={resizedAuthorImage} />
             <meta name="twitter:image:alt" content={authorAlt} />
           </>
@@ -267,6 +266,8 @@ const CustomMetaData = props => {
           <>
             <meta property="og:image" content={resizedFallbackImage} />
             <meta property="og:image:alt" content={metaData['og:title']} />
+            <meta property="og:image:width" content="340" />
+            <meta property="og:image:height" content="191" />
             <meta name="twitter:image" content={resizedFallbackImage} />
             <meta name="twitter:image:alt" content={metaData['twitter:title']} />
           </>
@@ -299,6 +300,8 @@ const CustomMetaData = props => {
           <>
             <meta property="og:image" content={sectionOgImage} />
             <meta property="og:image:alt" content={sectionHeaderImageAlt || metaData['og:title']} />
+            <meta property="og:image:width" content="340" />
+            <meta property="og:image:height" content="191" />
             <meta name="twitter:image" content={sectionOgImage} />
             <meta
               name="twitter:image:alt"
@@ -317,6 +320,8 @@ const CustomMetaData = props => {
           <>
             <meta property="og:image" content={resizedFallbackImage} />
             <meta property="og:image:alt" content={websiteName} />
+            <meta property="og:image:width" content="340" />
+            <meta property="og:image:height" content="191" />
             <meta name="twitter:image" content={resizedFallbackImage} />
             <meta name="twitter:image:alt" content={websiteName} />
           </>
@@ -375,8 +380,6 @@ const CustomMetaData = props => {
       <title>{metaData.title}</title>
       <meta property="og:locale" content="pt_BR" />
       {pageMetaDataTags}
-      <meta property="og:image:width" content="340" />
-      <meta property="og:image:height" content="191" />
       {customMetaTags}
       {commonTagsOnPage && twitterTags}
       {canonicalLink}
