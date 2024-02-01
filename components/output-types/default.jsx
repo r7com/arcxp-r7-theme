@@ -171,6 +171,7 @@ const SampleOutputType = ({
           href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
         <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
+        <link rel="preconnect" crossOrigin href="//tt-9964-3.seg.t.tailtarget.com" />
         <MetaData
           arcSite={arcSite}
           canonicalDomain={
@@ -257,6 +258,21 @@ const SampleOutputType = ({
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
         <script src={`${contextPath}/resources/plugins/prebid.js`}></script>
+        {
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `(function(i) {
+                var ts = document.createElement('script');
+                ts.type = 'text/javascript';
+                ts.async = true;
+                ts.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'tags.t.tailtarget.com/t3m.js?i=' + i;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ts, s);
+                })('TT-9964-3/CT-23');`,
+            }}
+          />
+        }
       </head>
       <body>
         {comscoreNoScript(comscoreID)}
