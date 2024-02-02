@@ -8,13 +8,26 @@
     border-bottom: 0.5px solid;
     background-color: #f8f8f8;
     text-align: center;
+
+    .dark &  {
+      background-color: var(--contrast-primary-color);
+      border-color: var(--contrast-secondary-color);
+    } 
   }
   &__title {
     line-height: 1.6;
     font-style: italic;
     letter-spacing: 0.2px;
+
+    .dark &  {
+      color: var(--contrast-secondary-color) !important;
+    } 
   }
   &__author {
     text-transform: uppercase;
+
+    .dark &  {
+      color: var(--contrast-secondary-color) !important;
+    } 
   }
 }
