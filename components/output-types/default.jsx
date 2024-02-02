@@ -1,5 +1,4 @@
 import '@r7/ui-base-components/style.css'
-import '@r7/ui-layout/style.css'
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'

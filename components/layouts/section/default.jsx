@@ -3,10 +3,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Header } from '@r7/ui-header-delivery'
 import { Container, SectionWrapper } from '@r7/ui-layout'
+import { PrivacyBox } from '@r7/ui-base-components'
+import { useFusionContext } from 'fusion:context'
+import getProperties from 'fusion:properties'
 
 const SectionLayout = ({ children }) => {
   const [headerFixed, header, main, footer] = React.Children.toArray(children)
-
+  const { arcSite, isAdmin } = useFusionContext()
+  const { privacyLink } = getProperties(arcSite)
   return (
     <>
       <Header>
@@ -21,6 +25,7 @@ const SectionLayout = ({ children }) => {
         </main>
       )}
       {footer && <footer>{footer}</footer>}
+      {!isAdmin && <PrivacyBox link={privacyLink} />}
     </>
   )
 }
