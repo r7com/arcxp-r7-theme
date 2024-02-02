@@ -31,6 +31,11 @@
           "id": "secondaryLogo",
           "title": "Secondary Logo",
           "description": "Upload secondary logo for website"
+        },
+        {
+          "id": "playPlusLogo",
+          "title": "PlayPlus Logo",
+          "description": "Upload playplus logo for website"
         }
       ]
     },
@@ -121,6 +126,28 @@
           "fieldTitle": "Secondary Logo alt text",
           "fieldDescription": "Enter Secondary Logo alt text",
           "fieldTarget": "site"
+        }
+      ]
+    },
+    {
+      "fieldId": "playPlusLogo",
+      "fieldType": "image",
+      "fieldTitle": "PlayPlus logo image",
+      "fieldDescription": "PlayPlus logo image",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "playPlusLogo",
+      "descendants": [
+        {
+          "fieldId": "playPlusLogo",
+          "fieldType": "file",
+          "fieldTitle": "PlayPlus Logo Image",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "playPlusLogoAlt",
+          "fieldType": "text",
+          "fieldTitle": "PlayPlus Logo alt text",
+          "fieldDescription": "Enter PlayPlus Logo alt text"
         }
       ]
     }
