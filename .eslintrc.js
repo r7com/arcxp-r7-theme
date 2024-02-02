@@ -24,6 +24,7 @@ module.exports = {
         "plugin:prettier/recommended"
       ],
       rules: {
+        "no-undef": "off",
         semi: 0,
         "prettier/prettier": ["error", { "semi": false }]
       }
