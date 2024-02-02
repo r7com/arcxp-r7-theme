@@ -28,6 +28,11 @@
           "description": "Upload header image for website"
         },
         {
+          "id": "privacyLink",
+          "title": "Privacy Link",
+          "description": "Enter in privacy link for website"
+        },
+        {
           "id": "secondaryLogo",
           "title": "Secondary Logo",
           "description": "Upload secondary logo for website"
