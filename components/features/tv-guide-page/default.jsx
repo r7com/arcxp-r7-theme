@@ -6,17 +6,15 @@ import { daysOfTheWeek, guides } from './utils/mock'
 import { addLiveKey, getCurrentDayEvents, getEndDate, getStartDate } from './utils/helpers'
 
 function TvGuidePage({ customFields }) {
-  const firstGuide = customFields['guide-1']
-  const getFirstGuide = firstGuide && guides.find(guide => guide.name === firstGuide)
   const allGuidesSelected = guides.filter(guide =>
     Object.values(customFields).some(field => field === guide.name),
   )
   const events =
-    getFirstGuide &&
+    allGuidesSelected.length > 0 &&
     useContent({
       source: 'tv-guide-api',
       query: {
-        id: getFirstGuide.id,
+        id: allGuidesSelected[0].id,
         startDate: getStartDate(),
         endDate: getEndDate(),
       },
