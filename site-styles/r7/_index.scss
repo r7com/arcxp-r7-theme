@@ -177,7 +177,9 @@
 				"content-scale-width": calc(var(--content-max-width) / var(--layout-max-width) * 100%),
 				"header-nav-chain-height": 80px,
 				"header-nav-chain-height-scrolled": 80px,
-				"header-nav-chain-overlay-background-color": rgba(25, 25, 25, 0.5)
+				"header-nav-chain-overlay-background-color": rgba(25, 25, 25, 0.5),
+				"contrast-primary-color": var(--global-black, #000),
+				"contrast-secondary-color": var(--global-white, #fff)
 			),
 			"blocks": (
 				"account-management": (

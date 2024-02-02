@@ -2,11 +2,12 @@
 import './index.scss'
 
 import React, { useEffect, useState } from 'react'
-import { VIDEO_DATA } from './mocks/VIDEO_DATA'
 import { R7_PLAYER_ASSET } from 'fusion:environment'
 
-export const EmbedPlayer = ({ item }) => {
+export const R7Player = ({ item }) => {
   const [isLoaded, setIsLoaded] = useState(false)
+
+  window.console.log('DATAAAAAAAAAAAAAAAAAA: ', item)
 
   useEffect(() => {
     const script = document.createElement('script')
@@ -32,15 +33,15 @@ export const EmbedPlayer = ({ item }) => {
         id="r7-player"
         className="r7-player video-js"
         preload="metadata"
-        poster={item.config.poster}
-        data-sprite-url={VIDEO_DATA.spriteUrl}
-        data-player-url={item.config.playerUrl}
-        data-metadata={item.config.metadata}
-        data-player-params={VIDEO_DATA.playerParams}
+        poster={item.poster}
+        data-sprite-url={item.spriteUrl}
+        data-player-url={item.playerUrl}
+        data-metadata={item.metadata}
+        data-player-params={item.playerParams}
       >
-        <source src={item.config.url} type="application/vnd.apple.mpegurl"></source>
-        <source src={item.config.url} type="application/x-mpegURL"></source>
-        <source src={item.config.url} type="video/mp4"></source>
+        <source src={item.urlHls} type="application/vnd.apple.mpegurl"></source>
+        <source src={item.urlHls} type="application/x-mpegURL"></source>
+        <source src={item.urlMp4} type="video/mp4"></source>
       </video>
       <noscript>
         <p className="vjs-no-js">

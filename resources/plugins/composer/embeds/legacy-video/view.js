@@ -15,15 +15,17 @@ window.onload = function () {
   render(data.config)
 }
 
-function render({ url, poster, playerUrl, metadata }) {
-  const videosSrc = document.querySelectorAll('[data-legacy-video-src]')
-  videosSrc.forEach(videoSource => {
-    videoSource.src = url
+function render({ urlHls, urlMp4, poster, metadata }) {
+  const videosSrcHls = document.querySelectorAll('[data-legacy-video-src-hls]')
+  videosSrcHls.forEach(videoSource => {
+    videoSource.src = urlHls
   })
+
+  const videosSrcMp4 = document.querySelector('[data-legacy-video-src-mp4]')
+  videosSrcMp4.src = urlMp4
 
   const videoElement = document.getElementById('r7-video')
   videoElement.poster = poster
-  videoElement.dataset.playerUrl = playerUrl
   videoElement.dataset.metadata = JSON.stringify(metadata)
 
   videoElement.load()

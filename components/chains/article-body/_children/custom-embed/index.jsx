@@ -6,8 +6,9 @@ import getProperties from 'fusion:properties'
 import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
 import { Poll } from './components/Poll'
-import { EmbedPlayer } from '../../../../../util/components/Player'
+import { R7Player } from '../../../../../util/components/Player'
 import Quiz from './components/Quiz'
+import { getPlayerDataProxy } from '../../../../../util/components/Player/proxy/proxy'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()
@@ -25,7 +26,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
     case 'legacy_video':
-      return embed.config ? <EmbedPlayer item={embed}></EmbedPlayer> : null
+      return embed.config ? <R7Player item={getPlayerDataProxy(embed)}></R7Player> : null
     case 'poll':
       return embed.config ? <Poll className={COMPONENT_CLASS_NAME} item={embed} /> : null
     case 'quiz':

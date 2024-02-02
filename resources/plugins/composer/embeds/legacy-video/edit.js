@@ -1,5 +1,3 @@
-import { applyChanges, parseQueryString, sendMessage } from './utils/utils'
-
 window.onload = function () {
   const parameters = Object.assign(
     {
@@ -19,10 +17,10 @@ window.onload = function () {
   document.getElementById('cancel-btn').onclick = cancelChanges
 }
 
-function render({ url, poster, playerUrl, metadata }) {
-  document.getElementById('legacy-video-src').value = url
+function render({ urlHls, urlMp4, poster, metadata }) {
+  document.getElementById('legacy-video-src-hls').value = urlHls
+  document.getElementById('legacy-video-src-mp4').value = urlMp4
   document.getElementById('legacy-video-poster').value = poster
-  document.getElementById('legacy-video-player-url').value = playerUrl
 
   const formElements = document.getElementById('form-embed-legacy-video').elements
 
@@ -39,4 +37,59 @@ function render({ url, poster, playerUrl, metadata }) {
 
 function cancelChanges() {
   sendMessage('cancel')
+}
+
+function applyChanges() {
+  const formElements = document.getElementById('form-embed-legacy-video').elements
+  const metadata = {}
+
+  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl']
+
+  Array.from(formElements).forEach(element => {
+    if (!paramField.includes(element.name)) {
+      element.type === 'checkbox'
+        ? (metadata[element.name] = element.checked)
+        : (metadata[element.name] = element.value)
+    }
+  })
+
+  const srcHlsValue = formElements['srcHlsValue'].value
+  const srcMp4Value = formElements['srcMp4Value'].value
+  const posterUrl = formElements['posterUrl'].value
+
+  const ansCustomEmbed = {
+    id: Date.now().toString(),
+    url: '/',
+    config: {
+      urlHls: srcHlsValue,
+      urlMp4: srcMp4Value,
+      poster: posterUrl,
+      metadata: JSON.stringify(metadata),
+    },
+  }
+
+  sendMessage('data', ansCustomEmbed)
+}
+
+function parseQueryString() {
+  const params = location.search.split('?')[1] || ''
+  const kv = params.split('&')
+  return kv.reduce((result, item) => {
+    const [key, value] = item.split('=')
+    return Object.assign(result, {
+      [key]: value,
+    })
+  }, {})
+}
+
+function sendMessage(action, data) {
+  window.parent.postMessage(
+    JSON.stringify({
+      source: 'custom_embed',
+      action,
+      data,
+      key: parseQueryString()['k'],
+    }),
+    '*',
+  )
 }

@@ -1,4 +1,6 @@
 export const VIDEO_DATA = {
+  urlHls: 'https://lamberta.github.io/html5-animation/examples/ch04/assets/movieclip.mp4',
+  urlMp4: 'https://lamberta.github.io/html5-animation/examples/ch04/assets/movieclip.mp4',
   poster:
     'https://vtb.r7.com/399579/2020/02/07/5e3e21bcca9084f12b0003b3/ERN_VTOSCAR_0702_thumb.jpg',
   spriteUrl:
