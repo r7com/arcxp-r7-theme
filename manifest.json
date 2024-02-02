@@ -48,6 +48,15 @@
   ],
   "fields": [
     {
+      "fieldId": "privacyLink",
+      "fieldType": "text",
+      "fieldTitle": "link of the External Public Privacy Policy",
+      "fieldDescription": "link of the External Public Privacy Policy",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "privacyLink",
+      "fieldTarget": "site"
+    },
+    {
       "fieldId": "instagramPage",
       "fieldType": "text",
       "fieldTitle": "Instagram page URL",
