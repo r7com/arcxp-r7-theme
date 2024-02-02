@@ -10,9 +10,9 @@ import { QuizSummary } from './components/QuizSummary'
 import { QuizContext } from './context'
 import { QuizCounter } from './components/QuizCounter'
 
-const Quiz = ({ className, item }) => {
-  const { arcSite } = useFusionContext()
-  const { primaryColor } = getProperties(arcSite)
+export const Quiz = ({ className, item }) => {
+  const { arcSite, globalContent } = useFusionContext()
+  const { primaryColor, websiteDomain } = getProperties(arcSite)
   const [quizData, setQuizData] = useState(null)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [disabled, setDisabled] = useState(false)
@@ -70,11 +70,10 @@ const Quiz = ({ className, item }) => {
             primaryColor={primaryColor}
             result={getResult(selectedAnswers, quizData.result_ranges)}
             reset={resetQuiz}
+            urlForShare={encodeURI(`${websiteDomain}${globalContent.website_url}`)}
           />
         )}
       </QuizContext.Provider>
     </div>
   )
 }
-
-export default Quiz
