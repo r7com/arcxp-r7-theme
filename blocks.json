@@ -98,6 +98,12 @@
   ],
   "values": {
     "sites": {
+      "canaa": {
+        "siteProperties": {
+          "websiteName": "Canaa",
+          "privacyLink": "https://www.canaa.org/politica-de-privacidade-do-publico-externo-04052023"
+        }
+      },
       "noticias": {
         "siteProperties": {
           "websiteName": "Noticias R7",
@@ -174,6 +180,7 @@
     "default": {
       "siteProperties": {
         "websiteName": "R7",
+        "privacyLink": "https://www.r7.com/termos-e-condicoes",
         "websiteDomain": "https://www.r7.com",
         "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1698842893138.svg",
         "primaryLogoAlt": "Logo",
