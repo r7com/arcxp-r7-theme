@@ -1,12 +1,12 @@
 export const getStartDate = () => {
-  let date = new Date()
+  const date = new Date()
   date.setDate(date.getDate() - 1)
 
   return date
 }
 
 export const getEndDate = () => {
-  let date = new Date()
+  const date = new Date()
   date.setDate(date.getDate() + 1)
 
   return date
