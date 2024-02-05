@@ -8,7 +8,5 @@ export default function Player() {
 
   if (!globalContent) return null
 
-  console.log('TESTEEEEEEEE: ', globalContent)
-
   return <R7Player item={getPlayerDataProxy(globalContent)}></R7Player>
 }

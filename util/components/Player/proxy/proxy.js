@@ -26,17 +26,31 @@ const getThirdSectionGlobalContent = sections => {
   return sections.length > 2 ? sections[sections.length - 1] : ''
 }
 
+const getSectionPathGlobalContent = sectionUrl => {
+  const defaultPath = 'https://www.r7.com'
+
+  const slashCount = sectionUrl.split('/').length - 1
+
+  if (slashCount >= 3) {
+    const pathRegex = /^\/\/[^/]+\/([^/]+)/g
+
+    return sectionUrl.match(pathRegex)
+  }
+
+  return defaultPath
+}
+
 const getMetadataGlobalContent = data => {
   const metadata = {
-    title: data.headlines.basic,
-    sectionName: data.taxonomy.primary_section.name,
-    subSection: getSubSectionGlobalContent(data.taxonomy.sections),
-    thirdSection: getThirdSectionGlobalContent(data.taxonomy.sections),
+    title: data.headlines?.basic,
+    sectionName: data.taxonomy?.primary_section?.name,
+    subSection: getSubSectionGlobalContent(data.taxonomy?.sections),
+    thirdSection: getThirdSectionGlobalContent(data.taxonomy?.sections),
     views: '',
     disableAdv: 'false',
     createdDate: data.created_date,
     mainSectionUrl: data.canonical_url,
-    sectionPath: '',
+    sectionPath: getSectionPathGlobalContent(data.canonical_url),
     ageRating: '',
     ageRatingDescription: '',
     duration: data.duration,
@@ -61,7 +75,7 @@ const getDataFromCustomEmbed = data => {
   const proxyDataFromCustomEmbed = {
     poster: data.config.poster,
     playerUrl: '',
-    metadata: data.config.metadata,
+    metadata: JSON.stringify(data.config.metadata),
     urlHls: data.config.urlHls,
     urlMp4: data.config.urlMp4,
     playerParams: '{}',

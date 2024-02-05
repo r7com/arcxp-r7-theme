@@ -24,7 +24,7 @@ function render({ urlHls, urlMp4, poster, metadata }) {
 
   const formElements = document.getElementById('form-embed-legacy-video').elements
 
-  const parsedMetadata = JSON.parse(metadata)
+  const parsedMetadata = metadata
 
   Array.from(formElements).forEach(element => {
     if (parsedMetadata[element.name]) {
@@ -43,7 +43,7 @@ function applyChanges() {
   const formElements = document.getElementById('form-embed-legacy-video').elements
   const metadata = {}
 
-  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl']
+  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl', '']
 
   Array.from(formElements).forEach(element => {
     if (!paramField.includes(element.name)) {
@@ -64,7 +64,7 @@ function applyChanges() {
       urlHls: srcHlsValue,
       urlMp4: srcMp4Value,
       poster: posterUrl,
-      metadata: JSON.stringify(metadata),
+      metadata: metadata,
     },
   }
 
