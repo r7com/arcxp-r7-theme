@@ -7,7 +7,7 @@ import { getLabelCustomFields } from './get-label-props'
  * useCard hook
  * @type CardOptions
  * @typedef {Object} CardOptions
- * @property {number=} defaultFrom The default "from" value
+ * @property {number=} defaultFrom The default "from" value starting with 1, default is 1
  * @property {number=} defaultSize The default "size" of the collection
  * @property {number=} length The max number of cards on the `collection` array
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
