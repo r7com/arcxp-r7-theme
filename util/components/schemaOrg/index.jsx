@@ -248,7 +248,7 @@ export default function CustomSchemaOrg({
       return structuredDataArray
     }
     default:
-      break
+      return null
   }
 }
 
