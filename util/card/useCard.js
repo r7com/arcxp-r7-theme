@@ -9,11 +9,11 @@ import { getLabelCustomFields } from './get-label-props'
  * @typedef {Object} CardOptions
  * @property {string} defaultFrom The default "from" value
  * @property {string} defaultSize The default "size" of the collection
- * @property {number} length The max number of cards on the `collection` array
+ * @property {number=} length The max number of cards on the `collection` array
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
  * @param {CardOptions & {customFields:CardPropTypes}} options
  */
-export function useCard({ customFields, defaultFrom, defaultSize, length = 1 }) {
+export function useCard({ customFields, defaultFrom, defaultSize, length }) {
   const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
   const fusionContext = useFusionContext()
   const { arcSite, globalContent } = fusionContext
