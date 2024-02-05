@@ -1,0 +1,14 @@
+.b-header {
+  &-image {
+    height: 150px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  &-link {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1140px;
+  }
+}

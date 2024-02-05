@@ -1,3 +1,4 @@
+import './default.scss'
 import '@r7/ui-footer-delivery/style.css'
 import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
@@ -8,38 +9,49 @@ import { useContent } from 'fusion:content'
 import LinksList from './LinksList'
 
 const Footer = props => {
-  const { config, navigationLabelsList, navigationLinksList } = props.customFields
-  const { arcSite } = useFusionContext()
+  const { navigationLabelsList, navigationLinksList } = props.customFields
+  const { arcSite, globalContent } = useFusionContext()
 
   const { websiteName, primaryColor } = getProperties(arcSite)
-  const content = useContent({
-    source: config?.contentService,
-    query: config?.contentConfigValues,
-  })
+  const BLOCK_CLASS_NAME = 'b-site-footer'
+  const sectionContent =
+    globalContent?.node_type === 'section'
+      ? globalContent
+      : useContent({
+          source: 'site-service-hierarchy',
+          query: {
+            hierarchy: '',
+            sectionId: globalContent.websites?.[arcSite].website_section._id,
+          },
+        })
+
   const currentYear = new Date().getFullYear()
 
   return (
-    <Institutional.Root bgColor={primaryColor}>
-      <Institutional.Content>
-        <Institutional.Wrapper>
-          <Institutional.Logo />
-          <Institutional.Editorial editorialName={content?.name ?? websiteName} />
-        </Institutional.Wrapper>
-        <Institutional.Copyright>
-          Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
-        </Institutional.Copyright>
-      </Institutional.Content>
-      <LinksList labels={navigationLabelsList} links={navigationLinksList} />
-    </Institutional.Root>
+    <div
+      className={BLOCK_CLASS_NAME}
+      style={{
+        backgroundColor: primaryColor,
+      }}
+    >
+      <div className={`${BLOCK_CLASS_NAME}__wrapper`}>
+        <Institutional.Content>
+          <Institutional.Wrapper>
+            <Institutional.Logo />
+            <Institutional.Editorial editorialName={sectionContent?.name ?? websiteName} />
+          </Institutional.Wrapper>
+          <Institutional.Copyright>
+            Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
+          </Institutional.Copyright>
+        </Institutional.Content>
+        <LinksList labels={navigationLabelsList} links={navigationLinksList} />
+      </div>
+    </div>
   )
 }
 
 Footer.propTypes = {
   customFields: PropTypes.shape({
-    config: PropTypes.contentConfig().tag({
-      group: 'Configure Content',
-      label: 'Content Source',
-    }),
     navigationLabelsList: PropTypes.list.tag({
       group: 'Navigation Links',
       label: 'Navigation Labels',

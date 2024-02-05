@@ -7,7 +7,8 @@ module.exports = {
   },
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "browser": true,
   },
   overrides: [
     {
@@ -23,6 +24,7 @@ module.exports = {
         "plugin:prettier/recommended"
       ],
       rules: {
+        "no-undef": "off",
         semi: 0,
         "prettier/prettier": ["error", { "semi": false }]
       }
@@ -31,4 +33,7 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
   },
+  "globals": {
+    "pbjs": "readonly"
+  }
 }

@@ -1,10 +1,12 @@
+import '@r7/ui-base-components/style.css'
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
-import { MetaData, Stack, usePhrases } from '@wpmedia/arc-themes-components'
-
+import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
-
+import MetaData from '../../util/components/metaData/CustomMetaData'
+import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
+import CustomSchemaOrg from '../../util/components/schemaOrg'
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
     return null
@@ -67,9 +69,7 @@ const optimalFontLoading = (fontUrl, index = '') => (
 const fontUrlLink = fontUrl => {
   // If fontURL is an array, then iterate over the array and build out the links
   if (fontUrl && Array.isArray(fontUrl) && fontUrl.length > 0) {
-    const fontLinks = [...new Set(fontUrl)].map((url, index) => optimalFontLoading(url, index))
-
-    return fontLinks
+    return [...new Set(fontUrl)].map((url, index) => optimalFontLoading(url, index))
   }
   // Legacy support where fontUrl is a string
   return fontUrl ? optimalFontLoading(fontUrl) : ''
@@ -86,7 +86,7 @@ const SampleOutputType = ({
   MetaTags,
   metaValue,
 }) => {
-  const { globalContent, arcSite, requestUri } = useFusionContext()
+  const { globalContent, arcSite, requestUri, globalContentConfig } = useFusionContext()
   const {
     api,
     websiteName,
@@ -108,6 +108,9 @@ const SampleOutputType = ({
     locale,
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
+    primaryColor,
+    facebookPage,
+    instagramPage,
   } = getProperties(arcSite)
 
   const chartbeatInline = `
@@ -155,21 +158,21 @@ const SampleOutputType = ({
     ]),
   ].join(';')
 
-  const phrases = usePhrases()
-
   return (
     <html lang={locale} dir={textDirection}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {globalContent?.label?.noindex?.text === 'Yes' && <meta name="robots" content="noindex" />}
-        {globalContent?.additional_properties?.canonical_url && (
-          <link rel="canonical" href={globalContent.additional_properties.canonical_url} />
+        {globalContent?.additional_properties?.url && (
+          <link rel="canonical" href={globalContent.additional_properties.url} />
         )}
         <link
           rel="icon"
           type="image/x-icon"
-          href={deployment(`${contextPath}/resources/favicon.ico`)}
+          href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
+        <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
+        <link rel="preconnect" crossOrigin href="//tt-9964-3.seg.t.tailtarget.com" />
         <MetaData
           arcSite={arcSite}
           canonicalDomain={
@@ -194,14 +197,37 @@ const SampleOutputType = ({
           websiteName={websiteName}
           websiteDomain={websiteDomain}
         />
+        <CustomSchemaOrg
+          metaValue={metaValue}
+          globalContentConfig={globalContentConfig}
+          globalContent={globalContent}
+          twitterUsername={twitterUsername}
+          facebookPage={facebookPage}
+          instagramPage={instagramPage}
+          websiteDomain={websiteDomain}
+          websiteName={websiteName}
+        />
         {fontUrlLink(fontUrl)}
         <CssLinks />
         <Libs />
-        <style>{`body { writing-mode: ${textFlow}; }`}</style>
+        <style>
+          {`
+            :root {
+              --editorial-color: ${primaryColor};
+            }
+            body {
+              writing-mode: ${textFlow};
+              font-family: var(--font-family-primary, sans-serif), sans-serif;
+            }
+          `}
+        </style>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
         />
+        <script
+          src={`https://www.google.com/recaptcha/api.js?render=${GOOGLE_RECAPTCHA_APIKEY}`}
+        ></script>
         <script
           data-integration="inlineScripts"
           dangerouslySetInnerHTML={{ __html: inlineScripts }}
@@ -242,13 +268,26 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
+        <script src={`${contextPath}/resources/plugins/prebid.js`}></script>
+        {
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `(function(i) {
+                var ts = document.createElement('script');
+                ts.type = 'text/javascript';
+                ts.async = true;
+                ts.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'tags.t.tailtarget.com/t3m.js?i=' + i;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ts, s);
+                })('TT-9964-3/CT-23');`,
+            }}
+          />
+        }
       </head>
       <body>
         {comscoreNoScript(comscoreID)}
         {googleTagManagerNoScript(gtmID)}
-        <a className="skip-main" href="#main">
-          {phrases.t('default-output-block.skip-main')}
-        </a>
         <Stack id="fusion-app" className="b-application">
           {children}
         </Stack>

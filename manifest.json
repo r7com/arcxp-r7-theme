@@ -3,6 +3,27 @@
   "description": "Adding primary color to each website",
   "categories": [
     {
+      "id": "extsocials",
+      "title": "Extended Social Settings",
+      "subcategories": [
+        {
+          "id": "instagramPage",
+          "title": "Instagram Page",
+          "description": "Enter in URL for instagram page of the website"
+        },
+        {
+          "id": "youtubePage",
+          "title": "Youtube Page",
+          "description": "Enter in URL for youtube page of the website"
+        },
+        {
+          "id": "linkedInPage",
+          "title": "LinkedIn page",
+          "description": "Enter in URL for linkedIn page of the website"
+        }
+      ]
+    },
+    {
       "id": "extbrand",
       "title": "Extended Brand Settings",
       "subcategories": [
@@ -10,11 +31,78 @@
           "id": "primaryColor",
           "title": "Primary Color",
           "description": "Enter in primary color for website"
+        },
+        {
+          "id": "headerImage",
+          "title": "Header Image",
+          "description": "Upload header image for website"
+        },
+        {
+          "id": "privacyLink",
+          "title": "Privacy Link",
+          "description": "Enter in privacy link for website"
+        },
+        {
+          "id": "secondaryLogo",
+          "title": "Secondary Logo",
+          "description": "Upload secondary logo for website"
+        },
+        {
+          "id": "playPlusLogo",
+          "title": "PlayPlus Logo",
+          "description": "Upload playplus logo for website"
+        }
+      ]
+    },
+    {
+      "id": "extads",
+      "title": "Extended Advertising Settings",
+      "subcategories": [
+        {
+          "id": "hash",
+          "title": "Advertising Hash",
+          "description": "Enter in advertising hash for website (e.g., r7home/home)"
         }
       ]
     }
   ],
   "fields": [
+    {
+      "fieldId": "privacyLink",
+      "fieldType": "text",
+      "fieldTitle": "link of the External Public Privacy Policy",
+      "fieldDescription": "link of the External Public Privacy Policy",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "privacyLink",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "instagramPage",
+      "fieldType": "text",
+      "fieldTitle": "Instagram page URL",
+      "fieldDescription": "URL of instagram page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "instagramPage",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "youtubePage",
+      "fieldType": "text",
+      "fieldTitle": "Youtube page URL",
+      "fieldDescription": "URL of youtube page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "youtubePage",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "linkedInPage",
+      "fieldType": "text",
+      "fieldTitle": "LinkedIn page URL",
+      "fieldDescription": "URL of linkedIn page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "linkedInPage",
+      "fieldTarget": "site"
+    },
     {
       "fieldId": "primaryColor",
       "fieldType": "color",
@@ -23,6 +111,87 @@
       "fieldCategory": "extbrand",
       "fieldSubcategory": "primaryColor",
       "fieldTarget": "site"
+    },
+    {
+      "fieldId": "headerImage",
+      "fieldType": "image",
+      "fieldTitle": "Header image of the website",
+      "fieldDescription": "Header image of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "headerImage",
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "headerImage",
+          "fieldType": "file",
+          "fieldTitle": "Header Image",
+          "fieldTarget": "site",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "headerImageAlt",
+          "fieldType": "text",
+          "fieldTitle": "Header image alt text",
+          "fieldDescription": "Enter header image alt text",
+          "fieldTarget": "site"
+        }
+      ]
+    },
+    {
+      "fieldId": "hash",
+      "fieldType": "text",
+      "fieldTitle": "Ad hash of the website",
+      "fieldDescription": "Ad hash of the website",
+      "fieldCategory": "extads",
+      "fieldSubcategory": "hash",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "secondaryLogo",
+      "fieldType": "image",
+      "fieldTitle": "Secondary logo image of the website",
+      "fieldDescription": "Secondary logo image of the website",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "secondaryLogo",
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "secondaryLogo",
+          "fieldType": "file",
+          "fieldTitle": "Secondary Logo Image",
+          "fieldTarget": "site",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "secondaryLogoAlt",
+          "fieldType": "text",
+          "fieldTitle": "Secondary Logo alt text",
+          "fieldDescription": "Enter Secondary Logo alt text",
+          "fieldTarget": "site"
+        }
+      ]
+    },
+    {
+      "fieldId": "playPlusLogo",
+      "fieldType": "image",
+      "fieldTitle": "PlayPlus logo image",
+      "fieldDescription": "PlayPlus logo image",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "playPlusLogo",
+      "descendants": [
+        {
+          "fieldId": "playPlusLogo",
+          "fieldType": "file",
+          "fieldTitle": "PlayPlus Logo Image",
+          "previewBackground": "light"
+        },
+        {
+          "fieldId": "playPlusLogoAlt",
+          "fieldType": "text",
+          "fieldTitle": "PlayPlus Logo alt text",
+          "fieldDescription": "Enter PlayPlus Logo alt text"
+        }
+      ]
     }
   ]
 }

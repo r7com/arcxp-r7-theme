@@ -1,9 +1,34 @@
 {
   "org": "@wpmedia/",
+  "buildSiteStyles": true,
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
-  "localeList": ["en", "sv", "no", "fr", "de", "es", "ja", "ko", "pt"],
-  "themesReleaseVersion": "arc-themes-release-version-2.0.3",
+  "localeList": [
+    "ar",
+    "bn",
+    "bo",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "id",
+    "ja",
+    "km-KH",
+    "ko",
+    "lo",
+    "ms",
+    "my",
+    "no",
+    "pt-BR",
+    "pt",
+    "sv",
+    "th",
+    "ug",
+    "vi",
+    "zh-CN",
+    "zh-TW"
+  ],
+  "themesReleaseVersion": "arc-themes-release-version-2.1.3",
   "blocks": [
     "@wpmedia/ad-taboola-block",
     "@wpmedia/ads-block",
@@ -73,12 +98,56 @@
   ],
   "values": {
     "sites": {
+      "canaa": {
+        "siteProperties": {
+          "websiteName": "Canaa",
+          "privacyLink": "https://www.canaa.org/politica-de-privacidade-do-publico-externo-04052023"
+        }
+      },
+      "noticias": {
+        "siteProperties": {
+          "websiteName": "Noticias R7",
+          "websiteDomain": "https://noticias.r7.com",
+          "primaryColor": "#556373",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
+          "headerImageAlt": "Header image",
+          "hash": "r7noticias/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038915673.svg"
+        }
+      },
       "recordtv": {
         "siteProperties": {
           "websiteName": "Record TV",
           "websiteDomain": "https://recordtv.r7.com",
           "primaryLogoAlt": "Website logo",
-          "primaryColor": "#4766ac"
+          "primaryColor": "#5D6F9D",
+          "headerImage": "https://img.r7.com/images/record-tv-06112023200313177",
+          "headerImageAlt": "Header image",
+          "hash": "recordtv/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038947330.svg"
+        }
+      },
+      "esportes": {
+        "siteProperties": {
+          "websiteName": "R7 Esporte",
+          "websiteDomain": "https://esportes.r7.com",
+          "primaryColor": "#0E8148",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808247535.jpg",
+          "headerImageAlt": "Header image",
+          "hash": "r7esportes/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038887445.svg"
+        }
+      },
+      "entretenimento": {
+        "siteProperties": {
+          "websiteName": "R7 Entretenimento",
+          "websiteDomain": "https://entretenimento.r7.com",
+          "taboolaPublisherId": "r7-r7com",
+          "primaryColor": "#F78714",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697806773401.jpg",
+          "headerImageAlt": "Header image",
+          "hash": "r7entretenimento/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038871041.svg"
         }
       },
       "new-r7": {
@@ -89,41 +158,38 @@
       },
       "r7": {
         "siteProperties": {
-          "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695642365281.png",
-          "primaryColor": "#218EE1"
-        }
-      },
-      "entretenimento": {
-        "siteProperties": {
-          "websiteName": "R7 Entretenimento",
-          "websiteDomain": "https://entretenimento.r7.com",
-          "primaryColor": "#F78714"
-        }
-      },
-      "esportes": {
-        "siteProperties": {
-          "websiteName": "R7 Esporte",
-          "websiteDomain": "https://esportes.r7.com",
-          "primaryColor": "#0E8148"
-        }
-      },
-      "noticias": {
-        "siteProperties": {
-          "websiteName": "Noticias R7",
-          "websiteDomain": "https://noticias.r7.com",
-          "primaryColor": "#556373"
+          "api": {
+            "identity": {
+              "origin": ""
+            },
+            "retail": {
+              "endpoint": "",
+              "origin": "",
+              "script": ""
+            },
+            "sales": {
+              "origin": ""
+            }
+          },
+          "primaryColor": "#218EE1",
+          "hash": "r7home/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038934034.svg"
         }
       }
     },
     "default": {
       "siteProperties": {
         "websiteName": "R7",
+        "privacyLink": "https://www.r7.com/termos-e-condicoes",
         "websiteDomain": "https://www.r7.com",
-        "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1695891496962.png",
+        "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1698842893138.svg",
         "primaryLogoAlt": "Logo",
         "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
-        "copyrightText": "All rights reserved - 2009-2023 - R\u00E1dio e Televis\u00E3o Record SA",
-        "resizerURL": "/resizer",
+        "copyrightText": "All rights reserved - 2009-2023 - Rádio e Televisão Record SA",
+        "facebookPage": "https://www.facebook.com/portalr7",
+        "twitterUsername": "https://twitter.com/portalr7",
+        "resizerURL": "https://newr7-r7-sandbox.web.arc-cdn.net/resizer/v2/",
+        "taboolaPublisherId": "r7-r7com",
         "locale": "en",
         "dateLocalization": {
           "language": "en_US",
@@ -133,7 +199,25 @@
         },
         "nativoIntegration": "false",
         "textDirection": "ltr",
-        "textFlow": "horizontal-tb"
+        "textFlow": "horizontal-tb",
+        "api": {
+          "identity": {
+            "origin": ""
+          },
+          "retail": {
+            "endpoint": "",
+            "origin": "",
+            "script": ""
+          },
+          "sales": {
+            "origin": ""
+          }
+        },
+        "instagramPage": "https://instagram.com/portalr7",
+        "primaryColor": "#fff",
+        "dfpId": 7542,
+        "gtmID": "GTM-PQFPRPC",
+        "hash": "r7home/home"
       }
     }
   }

@@ -1,14 +1,13 @@
 registry=https://registry.npmjs.org/
 
 @r7:registry=https://registry.npmjs.org/
-//registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugFFSqOlNANx3ubhLFHzaFbtAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDOTfuCQZ6RPXlbAukgIBEIBDFGr7yRusQ/jiaNwJwIUNQhNtz7FLnvk1ocEcyar4JHam9i7E5VjWKBwRiHBP0jEMRve7G07p+brLcakxc1nMYDqjfw==}
-
-registry=https://npm.pkg.github.com/
-
-@code-store-platform:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugEBIuVr7GrVL9e/r0lDZ/PvAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMz+EoGFTNX8FVWjaQIBEIBDA5fGHhDdxw6Edgyf1qJYwrne7FFBmnGMq6q2lNX98G/lQaoaNwku2s0T5qTcC9tFiqHkqShQ/0BzHxwYXiKaJu6I5g==}
-
-registry=https://npm.pkg.github.com/
+//registry.npmjs.org/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugHNW5sa1bV+VZ2VDRx6pldiAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDLZ34YAjxPFcxBV9fwIBEIBDGm+sW+AJ8A1cqOg5Ig6Jeo9Z8x9X+hnDWwGh4X+j9NS69NZglD6VLsYPY+UOpMN5sfTnkSJ+KNseW7rPv5ZQYjmb4w==}
 
 @wpmedia:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugEBIuVr7GrVL9e/r0lDZ/PvAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDMz+EoGFTNX8FVWjaQIBEIBDA5fGHhDdxw6Edgyf1qJYwrne7FFBmnGMq6q2lNX98G/lQaoaNwku2s0T5qTcC9tFiqHkqShQ/0BzHxwYXiKaJu6I5g==}
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}
+
+@arcxp:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}
+
+@code-store-platform:registry=https://npm.pkg.github.com/
+//npm.pkg.github.com/:_authToken=%{AQICAHgyX5gdmS934IGmVttJ5A82hizaJJNzpcYDeuM95pK7ugGipzkV+kRMT95o7E9FX6oOAAAAhzCBhAYJKoZIhvcNAQcGoHcwdQIBADBwBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHWjF0beFNS3nSqofAIBEIBD5lQ9H2Em/RXkcl/HWd++DHFjSdUi2m7r4q/RZ/GcWis0sPTHxuAFXddrRQaxNl7bXku3THcMMLh3NTZVURNmpYsLSA==}

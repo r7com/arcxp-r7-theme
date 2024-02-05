@@ -1,17 +1,27 @@
 [
   {
-    "_id": "recordtv",
-    "display_name": "Record TV",
-    "is_default_website": false
-  },
-  {
     "_id": "r7",
     "display_name": "R7",
     "is_default_website": true
   },
   {
+    "_id": "recordtv",
+    "display_name": "Record TV",
+    "is_default_website": false
+  },
+  {
+    "_id": "entretenimento",
+    "display_name": "R7 Entretenimento",
+    "is_default_website": false
+  },
+  {
+    "_id": "esportes",
+    "display_name": "R7 Esporte",
+    "is_default_website": false
+  },
+  {
     "_id": "noticias",
-    "display_name": "Noticias",
+    "display_name": "Noticias R7",
     "is_default_website": false
   }
 ]
