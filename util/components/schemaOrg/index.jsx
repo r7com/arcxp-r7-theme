@@ -110,7 +110,6 @@ export default function CustomSchemaOrg({
       const structuredDataArray = []
       const findVideoElement = globalContent.content_elements.find(el => el.type === 'video')
       const sections = globalContent?.taxonomy?.sections || []
-      console.log('sections', sections)
 
       const findAllImages = globalContent.content_elements.filter(el => el.type === 'image')
 
