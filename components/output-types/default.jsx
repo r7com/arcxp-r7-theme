@@ -1,5 +1,4 @@
 import '@r7/ui-base-components/style.css'
-import '@r7/ui-layout/style.css'
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
@@ -7,7 +6,7 @@ import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
 import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
-
+import CustomSchemaOrg from '../../util/components/schemaOrg'
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
     return null
@@ -87,7 +86,7 @@ const SampleOutputType = ({
   MetaTags,
   metaValue,
 }) => {
-  const { globalContent, arcSite, requestUri } = useFusionContext()
+  const { globalContent, arcSite, requestUri, globalContentConfig } = useFusionContext()
   const {
     api,
     websiteName,
@@ -110,6 +109,8 @@ const SampleOutputType = ({
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
     primaryColor,
+    facebookPage,
+    instagramPage,
   } = getProperties(arcSite)
 
   const chartbeatInline = `
@@ -196,6 +197,16 @@ const SampleOutputType = ({
           websiteName={websiteName}
           websiteDomain={websiteDomain}
         />
+        <CustomSchemaOrg
+          metaValue={metaValue}
+          globalContentConfig={globalContentConfig}
+          globalContent={globalContent}
+          twitterUsername={twitterUsername}
+          facebookPage={facebookPage}
+          instagramPage={instagramPage}
+          websiteDomain={websiteDomain}
+          websiteName={websiteName}
+        />
         {fontUrlLink(fontUrl)}
         <CssLinks />
         <Libs />
@@ -204,7 +215,7 @@ const SampleOutputType = ({
             :root {
               --editorial-color: ${primaryColor};
             }
-            body { 
+            body {
               writing-mode: ${textFlow};
               font-family: var(--font-family-primary, sans-serif), sans-serif;
             }

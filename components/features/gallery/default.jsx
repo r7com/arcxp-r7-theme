@@ -7,7 +7,6 @@ const Gallery = () => {
   const {
     globalContent: { content_elements = {} },
   } = useFusionContext()
-  console.log(content_elements)
   const images = content_elements.filter(element => element.type === 'image')
   return <GalleryWidget elements={images} className={BLOCK_CLASS_NAME} />
 }
