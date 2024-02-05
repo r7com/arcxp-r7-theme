@@ -7,17 +7,22 @@ import { getLabelCustomFields } from './get-label-props'
  * useCard hook
  * @type CardOptions
  * @typedef {Object} CardOptions
- * @property {string} defaultFrom The default "from" value
- * @property {string} defaultSize The default "size" of the collection
+ * @property {number=} defaultFrom The default "from" value
+ * @property {number=} defaultSize The default "size" of the collection
  * @property {number=} length The max number of cards on the `collection` array
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
  * @param {CardOptions & {customFields:CardPropTypes}} options
  */
-export function useCard({ customFields, defaultFrom, defaultSize, length }) {
+export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) {
   const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
   const fusionContext = useFusionContext()
   const { arcSite, globalContent } = fusionContext
   const siteProperties = getProperties(arcSite)
+
+  /** Allows the user to index the array starting with 1 instead of 0 */
+  const startWithOne = (value = 0) => {
+    return value <= 0 ? 0 : value - 1
+  }
 
   /**
    * @type Collection
@@ -38,7 +43,7 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
         source: config?.contentService,
         query: {
           ...config?.contentConfigValues,
-          from: config?.contentConfigValues.from ?? defaultFrom,
+          from: startWithOne(config?.contentConfigValues.from ?? defaultFrom),
           size: config?.contentConfigValues.size ?? defaultSize,
         },
       })
@@ -66,7 +71,9 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
 
     if (isGlobalContent) {
       /** Manual "from" and "size" when using globalContent */
-      items = items?.slice(globalContentFrom)?.slice(0, globalContentSize)
+      items = items
+        ?.slice(startWithOne(globalContentFrom ?? defaultFrom))
+        ?.slice(0, globalContentSize ?? defaultSize)
     }
 
     if (length) {
