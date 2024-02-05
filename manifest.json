@@ -178,18 +178,21 @@
       "fieldDescription": "PlayPlus logo image",
       "fieldCategory": "extbrand",
       "fieldSubcategory": "playPlusLogo",
+      "fieldTarget": "site",
       "descendants": [
         {
           "fieldId": "playPlusLogo",
           "fieldType": "file",
           "fieldTitle": "PlayPlus Logo Image",
-          "previewBackground": "light"
+          "previewBackground": "light",
+          "fieldTarget": "site"
         },
         {
           "fieldId": "playPlusLogoAlt",
           "fieldType": "text",
           "fieldTitle": "PlayPlus Logo alt text",
-          "fieldDescription": "Enter PlayPlus Logo alt text"
+          "fieldDescription": "Enter PlayPlus Logo alt text",
+          "fieldTarget": "site"
         }
       ]
     }
