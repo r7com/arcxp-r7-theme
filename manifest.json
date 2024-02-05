@@ -10,6 +10,16 @@
           "id": "instagramPage",
           "title": "Instagram Page",
           "description": "Enter in URL for instagram page of the website"
+        },
+        {
+          "id": "youtubePage",
+          "title": "Youtube Page",
+          "description": "Enter in URL for youtube page of the website"
+        },
+        {
+          "id": "linkedInPage",
+          "title": "LinkedIn page",
+          "description": "Enter in URL for linkedIn page of the website"
         }
       ]
     },
@@ -73,6 +83,24 @@
       "fieldDescription": "URL of instagram page of the website",
       "fieldCategory": "extsocials",
       "fieldSubcategory": "instagramPage",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "youtubePage",
+      "fieldType": "text",
+      "fieldTitle": "Youtube page URL",
+      "fieldDescription": "URL of youtube page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "youtubePage",
+      "fieldTarget": "site"
+    },
+    {
+      "fieldId": "linkedInPage",
+      "fieldType": "text",
+      "fieldTitle": "LinkedIn page URL",
+      "fieldDescription": "URL of linkedIn page of the website",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "linkedInPage",
       "fieldTarget": "site"
     },
     {
