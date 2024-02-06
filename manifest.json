@@ -184,15 +184,15 @@
           "fieldId": "playPlusLogo",
           "fieldType": "file",
           "fieldTitle": "PlayPlus Logo Image",
-          "fieldTarget": "site",
-          "previewBackground": "light"
+          "previewBackground": "light",
+          "fieldTarget": "site"
         },
         {
           "fieldId": "playPlusLogoAlt",
           "fieldType": "text",
-          "fieldTarget": "site",
           "fieldTitle": "PlayPlus Logo alt text",
-          "fieldDescription": "Enter PlayPlus Logo alt text"
+          "fieldDescription": "Enter PlayPlus Logo alt text",
+          "fieldTarget": "site"
         }
       ]
     }
