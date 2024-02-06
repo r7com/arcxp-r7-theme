@@ -27,7 +27,7 @@ const MostReadBlock = withCard(
               const order = i + 1
               return (
                 <MostRead.Item key={_id}>
-                  <MostRead.Link href={canonical_url} title={headlines.basic}>
+                  <MostRead.Link url={canonical_url} title={headlines.basic}>
                     <MostRead.Figure>
                       {promo_items?.basic ? (
                         <Image
@@ -58,8 +58,8 @@ const MostReadBlock = withCard(
                       )}
                     </MostRead.Figure>
                     <MostRead.Order order={order}>
-                      <MostRead.Hat>{headlines.basic}</MostRead.Hat>
-                      <MostRead.Title>{name}</MostRead.Title>
+                      <MostRead.Hat>{name}</MostRead.Hat>
+                      <MostRead.Title>{headlines.basic}</MostRead.Title>
                     </MostRead.Order>
                   </MostRead.Link>
                 </MostRead.Item>
