@@ -1,5 +1,5 @@
 import React from 'react'
-import { ConditionalLink, Typography } from '@r7/ui-base-components'
+import { Typography } from '@r7/ui-base-components'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import PropTypes from '@arc-fusion/prop-types'
 import { MostRead } from '@r7/ui-card'
@@ -13,7 +13,6 @@ const MostReadBlock = withCard(
     const { arcSite } = fusionContext
     const { fallbackImage, fallbackImageAlt } = siteProperties
 
-    console.log(collection, 'collection')
     return (
       <MostRead>
         <Typography primaryTitle as="header">
@@ -28,7 +27,7 @@ const MostReadBlock = withCard(
               const order = i + 1
               return (
                 <MostRead.Item key={_id}>
-                  <ConditionalLink href={canonical_url} title={headlines.basic}>
+                  <MostRead.Link href={canonical_url} title={headlines.basic}>
                     <MostRead.Figure>
                       {promo_items?.basic ? (
                         <Image
@@ -57,13 +56,12 @@ const MostReadBlock = withCard(
                           style={{ width: 141, height: 141, objectFit: 'contain' }}
                         />
                       )}
-
-                      <MostRead.Order order={order}>
-                        <MostRead.Title>{name}</MostRead.Title>
-                        <MostRead.Description>{headlines.basic}</MostRead.Description>
-                      </MostRead.Order>
                     </MostRead.Figure>
-                  </ConditionalLink>
+                    <MostRead.Order order={order}>
+                      <MostRead.Hat>{headlines.basic}</MostRead.Hat>
+                      <MostRead.Title>{name}</MostRead.Title>
+                    </MostRead.Order>
+                  </MostRead.Link>
                 </MostRead.Item>
               )
             })}
