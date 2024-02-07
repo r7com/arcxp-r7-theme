@@ -51,6 +51,11 @@
           "id": "playPlusLogo",
           "title": "PlayPlus Logo",
           "description": "Upload playplus logo for website"
+        },
+        {
+          "id": "playPlusLogoWhite",
+          "title": "PlayPlus Logo White",
+          "description": "Upload playplus logo white for website"
         }
       ]
     },
