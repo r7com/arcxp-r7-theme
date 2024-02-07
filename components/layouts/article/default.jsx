@@ -2,6 +2,9 @@ import './default.scss'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Header } from '@r7/ui-header-delivery'
+import { PrivacyBox } from '@r7/ui-base-components'
+import { useFusionContext } from 'fusion:context'
+import getProperties from 'fusion:properties'
 
 const LAYOUT_CLASS_NAME = 'b-article-layout'
 const ArticleLayout = ({ children }) => {
@@ -19,6 +22,8 @@ const ArticleLayout = ({ children }) => {
     footer,
   ] = React.Children.toArray(children)
 
+  const { arcSite, isAdmin } = useFusionContext()
+  const { privacyLink } = getProperties(arcSite)
   return (
     <div className={LAYOUT_CLASS_NAME}>
       <Header>
@@ -50,6 +55,7 @@ const ArticleLayout = ({ children }) => {
         ) : null}
       </section>
       {footer ? <footer className={`${LAYOUT_CLASS_NAME}__footer`}>{footer}</footer> : null}
+      {!isAdmin && <PrivacyBox link={privacyLink} />}
     </div>
   )
 }

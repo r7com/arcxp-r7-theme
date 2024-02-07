@@ -5,7 +5,6 @@ import { LazyLoad } from '@wpmedia/arc-themes-components'
 import AdUnit from './children/AdUnit'
 import { generateInstanceId, getAdObject, getMinHeight } from './utils/ad-helper'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
-import '@r7/ui-base-components/style.css'
 import './default.scss'
 
 export const R7ArcAdDisplay = props => {
