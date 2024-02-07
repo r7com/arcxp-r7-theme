@@ -68,7 +68,7 @@ const MostReadBlock = withCard(
       </MostRead>
     )
   },
-  { defaultFrom: '0', defaultSize: '7', length: 7 },
+  { defaultFrom: 1, defaultSize: 7, length: 7 },
 )
 
 MostReadBlock.propTypes = {
