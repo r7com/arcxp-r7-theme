@@ -5,6 +5,7 @@ Adapters 	: Rubicon Project, Smart AdServer, Teads
 Analytics : ATS Analytics
 User ID Modules: Google PAIR ID, LiveRamp RampID
 Modules: userId, rubiconBidAdapter, smartadserverBidAdapter, teadsBidAdapter, atsAnalyticsAdapter, consentManagement, consentManagementGpp, consentManagementUsp, enrichmentFpdModule, gdprEnforcement, gppControl_usnat, gppControl_usstates, gptPreAuction, currency, pairIdSystem, identityLinkIdSystem */
+console.log('prebid.js loaded')
 if (window.pbjs && window.pbjs.libLoaded)
   try {
     window.pbjs.getConfig('debug') &&
