@@ -25,8 +25,3 @@ console.log('amazon.js loaded')
   g = p.getElementsByTagName(s)[0]
   g.parentNode.insertBefore(A, g)
 })('apstag', window, document, 'script', '//c.amazon-adsystem.com/aax2/apstag.js')
-
-apstag.init({
-  pubID: '2d3489e5-6204-413c-9ba8-96ff17e7c327',
-  adServer: 'googletag',
-})

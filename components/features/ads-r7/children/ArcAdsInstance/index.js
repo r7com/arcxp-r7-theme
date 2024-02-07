@@ -38,6 +38,17 @@ class ArcAdsInstance {
         dfp: {
           id,
         },
+        bidding: {
+          prebid: {
+            enabled: true,
+            timeout: 3000,
+            bids: [],
+          },
+          amazon: {
+            enabled: true,
+            id: '2d3489e5-6204-413c-9ba8-96ff17e7c327',
+          },
+        },
       }
       this.arcAds = new ArcAds(arcAdsConfig, evt => {
         logEvent(evt, debug)
