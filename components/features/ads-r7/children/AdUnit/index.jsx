@@ -25,10 +25,10 @@ const AdUnit = props => {
       },
     }
 
-    console.log(adConfig)
     addSmart(adConfig.bidding.prebid.bids, adConfig.dimensions)
     addRubicon(adConfig.bidding.prebid.bids, adConfig.id)
     addTeads(adConfig.bidding.prebid.bids, adConfig.id, adConfig.dimensions)
+
     ArcAdsInstance.getInstance(siteProperties, () => {
       setPageTargeting(featureConfig)
     }).registerAd({

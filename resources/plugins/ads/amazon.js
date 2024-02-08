@@ -1,4 +1,4 @@
-console.log('amazon.js loaded')
+console.log('apstag loaded')
 
 //load the apstag.js library
 !(function (a9, a, p, s, t, A, g) {
