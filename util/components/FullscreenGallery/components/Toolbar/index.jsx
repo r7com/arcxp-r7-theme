@@ -32,12 +32,42 @@ export const FullscreenToolbar = ({ className, elements, currentSlide, urlForSha
           <SocialShareWrapper>
             <SocialShare>
               <SocialShare.List>
-                <SocialShare.Item name="googleNews" link={urlForShare} title="google-news" />
-                <SocialShare.Item name="facebook" link={urlForShare} title="facebook" />
-                <SocialShare.Item name="twitter" link={urlForShare} title="twitter" />
-                <SocialShare.Item name="whatsapp" link={urlForShare} title="whatsapp" />
-                <SocialShare.Item name="linkedin" link={urlForShare} title="linkedin" />
-                <SocialShare.Item name="share" link={urlForShare} title="share" />
+                <SocialShare.Item
+                  name="googleNews"
+                  link={urlForShare}
+                  title="google-news"
+                  position="galeria"
+                />
+                <SocialShare.Item
+                  name="facebook"
+                  link={urlForShare}
+                  title="facebook"
+                  position="galeria"
+                />
+                <SocialShare.Item
+                  name="twitter"
+                  link={urlForShare}
+                  title="twitter"
+                  position="galeria"
+                />
+                <SocialShare.Item
+                  name="whatsapp"
+                  link={urlForShare}
+                  title="whatsapp"
+                  position="galeria"
+                />
+                <SocialShare.Item
+                  name="linkedin"
+                  link={urlForShare}
+                  title="linkedin"
+                  position="galeria"
+                />
+                <SocialShare.Item
+                  name="share"
+                  link={urlForShare}
+                  title="share"
+                  position="galeria"
+                />
               </SocialShare.List>
             </SocialShare>
           </SocialShareWrapper>
