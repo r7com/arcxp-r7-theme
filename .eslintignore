@@ -8,6 +8,6 @@ babel.config.js
 environment/*
 deployer.js
 arc-themes.js
-resources/plugins/prebid.js
+resources/plugins/ads/*
 components/features/automatic-page-refresh/*
 components/features/ads-r7/children/ArcAdsInstance/*
