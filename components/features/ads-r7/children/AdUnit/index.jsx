@@ -18,8 +18,10 @@ const AdUnit = props => {
     adConfig.bidding = {
       prebid: {
         enabled: true,
-        timeout: 3000,
         bids: [],
+      },
+      amazon: {
+        enabled: true,
       },
     }
 
