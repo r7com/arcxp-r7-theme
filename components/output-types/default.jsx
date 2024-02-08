@@ -221,6 +221,8 @@ const SampleOutputType = ({
             }
           `}
         </style>
+        <script src={`${contextPath}/resources/plugins/ads/prebid.js`}></script>
+        <script src={`${contextPath}/resources/plugins/ads/amazon.js`}></script>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
@@ -268,8 +270,6 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
-        <script src={`${contextPath}/resources/plugins/ads/prebid.js`}></script>
-        <script src={`${contextPath}/resources/plugins/ads/amazon.js`}></script>
         {
           <script
             type="text/javascript"
