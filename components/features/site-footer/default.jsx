@@ -2,28 +2,24 @@ import './default.scss'
 import '@r7/ui-footer-delivery/style.css'
 import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
-import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
 import LinksList from './LinksList'
 
-const Footer = props => {
-  const { navigationLabelsList, navigationLinksList } = props.customFields
-  const { arcSite, globalContent } = useFusionContext()
+const Footer = () => {
+  const { arcSite } = useFusionContext()
 
   const { websiteName, primaryColor } = getProperties(arcSite)
   const BLOCK_CLASS_NAME = 'b-site-footer'
-  const sectionContent =
-    globalContent?.node_type === 'section'
-      ? globalContent
-      : useContent({
-          source: 'site-service-hierarchy',
-          query: {
-            hierarchy: '',
-            sectionId: globalContent.websites?.[arcSite].website_section._id,
-          },
-        })
+  const sectionContent = useContent({
+    source: 'custom-site-service-hierarchy',
+    query: {
+      hierarchy: 'footer-institutional',
+      sectionId: '/',
+      siteId: 'r7',
+    },
+  })
 
   const currentYear = new Date().getFullYear()
 
@@ -44,23 +40,10 @@ const Footer = props => {
             Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
           </Institutional.Copyright>
         </Institutional.Content>
-        <LinksList labels={navigationLabelsList} links={navigationLinksList} />
+        <LinksList links={sectionContent.children[0].children} />
       </div>
     </div>
   )
-}
-
-Footer.propTypes = {
-  customFields: PropTypes.shape({
-    navigationLabelsList: PropTypes.list.tag({
-      group: 'Navigation Links',
-      label: 'Navigation Labels',
-    }),
-    navigationLinksList: PropTypes.list.tag({
-      group: 'Navigation Links',
-      label: 'Navigation Links',
-    }),
-  }),
 }
 
 Footer.label = 'Footer - R7 Block'
