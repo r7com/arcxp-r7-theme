@@ -7,8 +7,6 @@ import { R7_PLAYER_ASSET } from 'fusion:environment'
 export const R7Player = ({ item }) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
-  window.console.log('DATAAAAAAAAAAAAAAAAAA: ', item)
-
   useEffect(() => {
     const script = document.createElement('script')
     script.type = 'text/javascript'
@@ -38,6 +36,7 @@ export const R7Player = ({ item }) => {
         data-player-url={item.playerUrl}
         data-metadata={item.metadata}
         data-player-params={item.playerParams}
+        data-arc-video
       >
         <source src={item.urlHls} type="application/vnd.apple.mpegurl"></source>
         <source src={item.urlHls} type="application/x-mpegURL"></source>

@@ -28,19 +28,36 @@ const getThirdSectionGlobalContent = sections => {
 
 const getSectionPathGlobalContent = sectionUrl => {
   const defaultPath = 'https://www.r7.com'
-
   const slashCount = sectionUrl.split('/').length - 1
 
   if (slashCount >= 3) {
     const pathRegex = /^\/\/[^/]+\/([^/]+)/g
-
     return sectionUrl.match(pathRegex)
   }
 
   return defaultPath
 }
 
+const getCanonicalUrlGlobalContent = data => {
+  const website = data.canonical_website
+  const host = website === 'r7' ? `${website}.com` : `${website}.r7.com`
+
+  return `//${host}${data.canonical_url}`
+}
+
+const getSectionInfoGlobalContent = data => {
+  const sectionUrl = getCanonicalUrlGlobalContent(data)
+  const sectionPath = getSectionPathGlobalContent(sectionUrl)
+
+  return {
+    url: sectionUrl,
+    path: sectionPath,
+  }
+}
+
 const getMetadataGlobalContent = data => {
+  const sectionInfo = getSectionInfoGlobalContent(data)
+
   const metadata = {
     title: data.headlines?.basic,
     sectionName: data.taxonomy?.primary_section?.name,
@@ -49,8 +66,8 @@ const getMetadataGlobalContent = data => {
     views: '',
     disableAdv: 'false',
     createdDate: data.created_date,
-    mainSectionUrl: data.canonical_url,
-    sectionPath: getSectionPathGlobalContent(data.canonical_url),
+    mainSectionUrl: sectionInfo.url,
+    sectionPath: sectionInfo.path,
     ageRating: '',
     ageRatingDescription: '',
     duration: data.duration,
@@ -64,11 +81,13 @@ const getDataFromGlobalContent = data => {
 
   proxyDataFromGlobalContent.urlHls = getBestQualityStreamHlsGlobalContent(data.streams)
   proxyDataFromGlobalContent.urlMp4 = getStreamMp4GlobalContent(data.streams)
-  proxyDataFromGlobalContent.poster = data.promo_image?.basic?.url
+  proxyDataFromGlobalContent.poster = data.promo_image?.url
   proxyDataFromGlobalContent.metadata = getMetadataGlobalContent(data)
   proxyDataFromGlobalContent.playerUrl = ''
   proxyDataFromGlobalContent.spriteUrl = ''
   proxyDataFromGlobalContent.playerParams = '{}'
+
+  return proxyDataFromGlobalContent
 }
 
 const getDataFromCustomEmbed = data => {

@@ -7,7 +7,7 @@ window.onload = function () {
   )
   setTimeout(function () {
     sendMessage('ready', {
-      height: 440,
+      height: '425px',
     })
   }, Number.parseInt(parameters.wait))
 

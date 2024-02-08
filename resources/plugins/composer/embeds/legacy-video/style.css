@@ -7,8 +7,8 @@
   outline: none;
 }
 
-.main {
-  margin: 20px 0;
+.iframe__view {
+  overflow: hidden;
 }
 
 .title {
@@ -17,10 +17,20 @@
   margin-bottom: 15px;
 }
 
+.main {
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   margin: 0 auto;
   max-width: 800px;
-  padding: 16px;
+  padding: 0%;
+}
+
+.container__video {
+  width: 100%;
+  height: 100%;
 }
 
 .container__video-input {
@@ -32,7 +42,7 @@
   width: 100%;
   border: solid 1px;
   padding: 5px;
-  margin: 5px 0px;
+  margin: 5px 0px 15px 0px
 }
 
 .container__video-check {
@@ -41,18 +51,6 @@
   padding: 5px;
   margin: 5px 0px;
   margin-right: 100%;
-}
-
-.container__video-input {
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.6;
-  letter-spacing: -0.2px;
-  color: #556373;
-  width: 100%;
-  border: solid 1px;
-  padding: 5px;
-  margin: 5px 0px;
 }
 
 .container__btn {
