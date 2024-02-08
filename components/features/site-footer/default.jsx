@@ -40,7 +40,7 @@ const Footer = () => {
             Todos os direitos reservados - 2009-{currentYear} - Rádio e Televisão Record S.A
           </Institutional.Copyright>
         </Institutional.Content>
-        <LinksList links={sectionContent.children[0].children} />
+        <LinksList links={sectionContent?.children?.[0]?.children} />
       </div>
     </div>
   )
