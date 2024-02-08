@@ -1,6 +1,6 @@
-export const getDateFromUrl = urlString => {
+export const getDateFromUrl = url => {
   const dateFromUrlRx = /(\d{8})$/
-  const match = urlString.match(dateFromUrlRx)
+  const match = url.match(dateFromUrlRx)
 
   if (match) {
     return match[1]

@@ -10,7 +10,7 @@ import {
   API_REDIRECT_KEY,
   HOST_LEGACY_REDIRECT,
 } from 'fusion:environment'
-import { formatDate, getDateFromUrl } from './utils/date'
+import { formatDate, getDateFromUrl } from '../../util/date'
 
 const params = [
   {
@@ -69,39 +69,38 @@ const fetch = ({ _id, 'arc-site': website, website_url: websiteUrl }, { cachedCa
     .then(signImagesInANSObject(cachedCall, signingService.fetch, RESIZER_TOKEN_VERSION))
     .then(({ data }) => data)
     .catch(err => {
-      if (err.statusCode === 404 || err.response?.status === 404) {
-        const host = website === 'r7' ? `${website}.com` : `${website}.r7.com`
-        const cleanedWebsiteUrl = websiteUrl.endsWith('/') ? websiteUrl.slice(0, -1) : websiteUrl
-        const articleStringDate = getDateFromUrl(cleanedWebsiteUrl)
-
-        if (articleStringDate) {
-          const articleDate = formatDate(articleStringDate)
-          const migrationDate = formatDate(MIGRATION_DATE)
-          const isBeforeMigration = articleDate < migrationDate
-
-          if (isBeforeMigration) {
-            console.log('URL ENDPOINT', `https://${HOST_LEGACY_REDIRECT}${cleanedWebsiteUrl}`)
-            return axios
-              .get({
-                url: `https://${HOST_LEGACY_REDIRECT}${cleanedWebsiteUrl}`,
-                headers: {
-                  'Content-Type': 'application/json',
-                  Authorization: `Bearer ${API_REDIRECT_KEY}`,
-                  Host: host,
-                },
-              })
-              .then(({ data }) => {
-                console.log('nested', data)
-                return data
-              })
-              .catch(err => {
-                console.log('Nested Error', err)
-                handleFetchError(err)
-                return err
-              })
-          }
-        }
+      if (err.statusCode !== 404 && err.response?.status !== 404) {
+        handleFetchError(err)
+        return err
       }
+
+      const host = website === 'r7' ? `${website}.com` : `${website}.r7.com`
+      // the prost/schumi not include slash at the end url but the arc yes
+      const urlWithoutSlashAtTheEnd = websiteUrl.endsWith('/')
+        ? websiteUrl.slice(0, -1)
+        : websiteUrl
+      const articleStringDate = getDateFromUrl(urlWithoutSlashAtTheEnd)
+      const articleDate = articleStringDate && formatDate(articleStringDate)
+      const migrationDate = formatDate(MIGRATION_DATE)
+      const isBeforeMigration = articleDate && articleDate < migrationDate
+
+      if (isBeforeMigration) {
+        return axios
+          .get(`http://${HOST_LEGACY_REDIRECT}${urlWithoutSlashAtTheEnd}`, {
+            headers: {
+              Authorization: `Bearer ${API_REDIRECT_KEY}`,
+              Host: host,
+            },
+          })
+          .then(({ data }) => ({ html: data, legacyRedirect: true }))
+          .catch(err => {
+            console.log('Nested Error', err)
+            handleFetchError(err)
+            return err
+          })
+      }
+      handleFetchError(err)
+      return err
     })
 }
 

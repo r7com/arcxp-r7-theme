@@ -113,6 +113,10 @@ const SampleOutputType = ({
     instagramPage,
   } = getProperties(arcSite)
 
+  if (globalContent?.legacyRedirect) {
+    return <div dangerouslySetInnerHTML={{ __html: globalContent.html }}></div>
+  }
+
   const chartbeatInline = `
     (function() {
       var _sf_async_config = window._sf_async_config = (window._sf_async_config || {});
