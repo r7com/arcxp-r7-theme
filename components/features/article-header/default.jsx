@@ -45,12 +45,42 @@ function ArticleHeaderBlock() {
         </Signature>
         <SocialShare>
           <SocialShare.List>
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="twitter" />
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="facebook" />
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="linkedin" />
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="whatsapp" />
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="googleNews" />
-            <SocialShare.Item link={encodedUrl} title={headlines.basic} name="share" />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="twitter"
+              position="topo"
+            />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="facebook"
+              position="topo"
+            />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="linkedin"
+              position="topo"
+            />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="whatsapp"
+              position="topo"
+            />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="googleNews"
+              position="topo"
+            />
+            <SocialShare.Item
+              link={encodedUrl}
+              title={headlines.basic}
+              name="share"
+              position="topo"
+            />
           </SocialShare.List>
         </SocialShare>
       </ArticleHeader.Topbar>

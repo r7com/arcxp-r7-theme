@@ -7,8 +7,8 @@ import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
 import { Poll } from './components/Poll'
 import { R7Player } from '../../../../../util/components/Player'
-import Quiz from './components/Quiz'
 import { getPlayerDataProxy } from '../../../../../util/components/Player/proxy/proxy'
+import { Quiz } from './components/Quiz'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { arcSite } = useFusionContext()

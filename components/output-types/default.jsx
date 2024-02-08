@@ -1,5 +1,4 @@
 import '@r7/ui-base-components/style.css'
-import '@r7/ui-layout/style.css'
 import React, { Fragment } from 'react'
 import getProperties from 'fusion:properties'
 import { useFusionContext } from 'fusion:context'
@@ -7,7 +6,7 @@ import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
 import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
-
+import CustomSchemaOrg from '../../util/components/schemaOrg'
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
     return null
@@ -87,7 +86,7 @@ const SampleOutputType = ({
   MetaTags,
   metaValue,
 }) => {
-  const { globalContent, arcSite, requestUri } = useFusionContext()
+  const { globalContent, arcSite, requestUri, globalContentConfig } = useFusionContext()
   const {
     api,
     websiteName,
@@ -110,6 +109,8 @@ const SampleOutputType = ({
     textDirection = 'ltr',
     textFlow = 'horizontal-tb',
     primaryColor,
+    facebookPage,
+    instagramPage,
   } = getProperties(arcSite)
 
   const chartbeatInline = `
@@ -171,6 +172,7 @@ const SampleOutputType = ({
           href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
         <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
+        <link rel="preconnect" crossOrigin href="//tt-9964-3.seg.t.tailtarget.com" />
         <MetaData
           arcSite={arcSite}
           canonicalDomain={
@@ -195,6 +197,16 @@ const SampleOutputType = ({
           websiteName={websiteName}
           websiteDomain={websiteDomain}
         />
+        <CustomSchemaOrg
+          metaValue={metaValue}
+          globalContentConfig={globalContentConfig}
+          globalContent={globalContent}
+          twitterUsername={twitterUsername}
+          facebookPage={facebookPage}
+          instagramPage={instagramPage}
+          websiteDomain={websiteDomain}
+          websiteName={websiteName}
+        />
         {fontUrlLink(fontUrl)}
         <CssLinks />
         <Libs />
@@ -203,12 +215,14 @@ const SampleOutputType = ({
             :root {
               --editorial-color: ${primaryColor};
             }
-            body { 
+            body {
               writing-mode: ${textFlow};
               font-family: var(--font-family-primary, sans-serif), sans-serif;
             }
           `}
         </style>
+        <script src={`${contextPath}/resources/plugins/ads/prebid.js`}></script>
+        <script src={`${contextPath}/resources/plugins/ads/amazon.js`}></script>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
@@ -257,7 +271,21 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
-        <script src={`${contextPath}/resources/plugins/prebid.js`}></script>
+        {
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `(function(i) {
+                var ts = document.createElement('script');
+                ts.type = 'text/javascript';
+                ts.async = true;
+                ts.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'tags.t.tailtarget.com/t3m.js?i=' + i;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ts, s);
+                })('TT-9964-3/CT-23');`,
+            }}
+          />
+        }
       </head>
       <body>
         {comscoreNoScript(comscoreID)}
