@@ -20,10 +20,15 @@ const HeaderNavigationMenu = ({ customFields }) => {
   const {
     primaryColor,
     websiteDomain,
+    playPlusDomain,
     primaryLogo,
     primaryLogoAlt,
     secondaryLogo,
     secondaryLogoAlt,
+    playPlusLogo,
+    playPlusLogoAlt,
+    playPlusLogoWhite,
+    playPlusLogoWhiteAlt,
   } = getProperties(arcSite)
 
   const isInternal = Boolean(
@@ -52,7 +57,17 @@ const HeaderNavigationMenu = ({ customFields }) => {
   return (
     <Header.MainSection bgColor={primaryColor}>
       <Header.Logo link={websiteDomain} logoUrl={primaryLogo} alt={primaryLogoAlt} />
-      <SidebarMenu menuList={sidebarContent} />
+      <SidebarMenu
+        menuList={sidebarContent}
+        alt={playPlusLogoAlt}
+        logoUrl={playPlusLogo}
+        link={playPlusDomain}
+      />
+      <Header.PlayPlusLogo
+        link={playPlusDomain}
+        logoUrl={playPlusLogoWhite}
+        alt={playPlusLogoWhiteAlt}
+      />
       <HeaderMenu menuList={headerContent} />
       <HeaderSocials />
       {isInternal && (
