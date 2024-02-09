@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable jsx-a11y/media-has-caption */
 import './index.scss'
 
@@ -34,8 +35,8 @@ export const R7Player = ({ item }) => {
         poster={item.poster}
         data-sprite-url={item.spriteUrl}
         data-player-url={item.playerUrl}
-        data-metadata={item.metadata}
-        data-player-params={item.playerParams}
+        metadata={item.metadata}
+        player-params={item.playerParams}
         data-arc-video
       >
         <source src={item.urlHls} type="application/vnd.apple.mpegurl"></source>

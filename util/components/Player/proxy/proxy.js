@@ -15,7 +15,9 @@ const getBestQualityStreamHlsGlobalContent = streams => {
 }
 
 const getStreamMp4GlobalContent = streams => {
-  return streams.filter(stream => stream.stream_type === 'mp4')
+  const mp4Stream = streams.filter(stream => stream.stream_type === 'mp4')[0]
+
+  return mp4Stream?.url
 }
 
 const getSubSectionGlobalContent = sections => {
@@ -32,7 +34,7 @@ const getSectionPathGlobalContent = sectionUrl => {
 
   if (slashCount >= 3) {
     const pathRegex = /^\/\/[^/]+\/([^/]+)/g
-    return sectionUrl.match(pathRegex)
+    return sectionUrl.match(pathRegex)[0]
   }
 
   return defaultPath
