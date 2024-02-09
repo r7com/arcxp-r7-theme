@@ -1,6 +1,9 @@
+import { DEFAULT_PARAMS } from '../consts/default-player-params'
 import { VIDEO_DATA } from '../mocks/VIDEO_DATA'
 
 const isEmbedData = data => Object.prototype.hasOwnProperty.call(data, 'config')
+
+const getDefaultPlayerParams = () => JSON.stringify(DEFAULT_PARAMS)
 
 const getPlayerDataFromMock = () => VIDEO_DATA
 
@@ -87,7 +90,7 @@ const getDataFromGlobalContent = data => {
   proxyDataFromGlobalContent.metadata = getMetadataGlobalContent(data)
   proxyDataFromGlobalContent.playerUrl = ''
   proxyDataFromGlobalContent.spriteUrl = ''
-  proxyDataFromGlobalContent.playerParams = '{}'
+  proxyDataFromGlobalContent.playerParams = getDefaultPlayerParams()
 
   return proxyDataFromGlobalContent
 }
@@ -99,7 +102,7 @@ const getDataFromCustomEmbed = data => {
     metadata: JSON.stringify(data.config.metadata),
     urlHls: data.config.urlHls,
     urlMp4: data.config.urlMp4,
-    playerParams: '{}',
+    playerParams: getDefaultPlayerParams(),
     spriteUrl: '',
   }
 
