@@ -96,7 +96,7 @@ const fetch = (params, { cachedCall }) => {
           })
           .then(({ data }) => ({ html: data, legacyRedirect: true }))
           .catch(err => {
-            console.log('Nested Error', err)
+            console.error('Nested Error', err)
             handleFetchError(err)
           })
       }
