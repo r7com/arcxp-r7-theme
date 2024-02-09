@@ -42,7 +42,7 @@ export const Gallery = ({ elements, className }) => {
         className={`gallery__caption`}
         title={elements[activeSlideIndex]?.headlines?.basic}
         credits={
-          elements[activeSlideIndex]?.credits?.by.length
+          elements[activeSlideIndex]?.credits?.by?.length
             ? elements[activeSlideIndex]?.credits?.by[0]?.name
             : ''
         }
