@@ -16,11 +16,16 @@ export const PollResults = ({ className, voted, options, setShowResults }) => {
       <div className={`${className}-content-results-share`}>
         <SocialShare>
           <SocialShare.List>
-            <SocialShare.Item name="googleNews" link={urlForShare} title="google-news" />
-            <SocialShare.Item name="facebook" link={urlForShare} title="facebook" />
-            <SocialShare.Item name="twitter" link={urlForShare} title="twitter" />
-            <SocialShare.Item name="whatsapp" link={urlForShare} title="whatsapp" />
-            <SocialShare.Item name="share" link={urlForShare} title="share" />
+            <SocialShare.Item
+              name="googleNews"
+              link={urlForShare}
+              title="google-news"
+              position="poll"
+            />
+            <SocialShare.Item name="facebook" link={urlForShare} title="facebook" position="poll" />
+            <SocialShare.Item name="twitter" link={urlForShare} title="twitter" position="poll" />
+            <SocialShare.Item name="whatsapp" link={urlForShare} title="whatsapp" position="poll" />
+            <SocialShare.Item name="share" link={urlForShare} title="share" position="poll" />
           </SocialShare.List>
         </SocialShare>
       </div>
