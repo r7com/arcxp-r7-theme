@@ -16,7 +16,6 @@ const SectionLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
-        <div></div>
       </Header>
       {main && (
         <main>

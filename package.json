@@ -51,8 +51,6 @@
     "@arcxp/shared-powerup-composer-utils": "^1.0.0",
     "@code-store-platform/story-feed-sections-subtypes": "^1.0.2",
     "@code-store-platform/story-feed-subtypes": "^1.2.0",
-    "@code-store-platform/sign-image-in-ans-object": "^1.0.0",
-    "@code-store-platform/signing-service": "^1.0.0",
     "@r7/ui-article-delivery": "^0.4.6",
     "@r7/ui-base-components": "^0.6.8",
     "@r7/ui-card": "^0.15.0",
