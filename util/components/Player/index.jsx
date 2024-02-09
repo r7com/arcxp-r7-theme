@@ -36,7 +36,7 @@ export const R7Player = ({ item }) => {
         data-sprite-url={item.spriteUrl}
         data-player-url={item.playerUrl}
         metadata={item.metadata}
-        player-params={item.playerParams}
+        player_params={item.playerParams}
         data-arc-video
       >
         <source src={item.urlHls} type="application/vnd.apple.mpegurl"></source>
