@@ -38,7 +38,6 @@ export const breadcrumbProxy = () => {
         }
       })
       .sort((a, b) => countSlashes(a) - countSlashes(b))
-    console.log('sectionNames', sectionNames)
 
     sectionNames.forEach(el => {
       defaultSection.push({
