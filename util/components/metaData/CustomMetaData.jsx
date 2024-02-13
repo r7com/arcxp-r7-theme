@@ -277,12 +277,15 @@ const CustomMetaData = props => {
   } else if (pageType === 'section') {
     const payload = gc && gc.name ? gc : {}
     const gcMetadata = gc && gc.metadata ? gc.metadata : {}
+    const gcOGTags = gc && gc.og_tags ? gc.og_tags : {}
     const fallbackTitle = (payload.name && `${payload.name} - ${websiteName}`) || websiteName
-    metaData.description = metaValue('description') || gcMetadata.metadata_description || null
-    metaData.title = metaValue('title') || gcMetadata.metadata_title || fallbackTitle
+    metaData.description =
+      metaValue('description') || gcOGTags.og_description || gcMetadata.metadata_description || null
+    metaData.title =
+      metaValue('title') || gcOGTags.og_title || gcMetadata.metadata_title || fallbackTitle
     metaData['og:title'] = metaValue('og:title') || fallbackTitle
     metaData['twitter:title'] = metaValue('twitter:title') || fallbackTitle
-    const sectionOgImage = sectionHeaderImage || resizedFallbackImage
+    const sectionOgImage = gcOGTags.og_image || sectionHeaderImage || resizedFallbackImage
 
     pageMetaDataTags = (
       <>
