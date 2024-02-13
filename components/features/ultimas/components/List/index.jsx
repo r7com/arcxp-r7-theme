@@ -11,7 +11,7 @@ export const UltimasList = props => {
     primaryColor,
     websiteDomain,
     websiteName,
-    storyId,
+    sectionId,
     isAdmin,
   } = props
   const [size, setSize] = useState(customFields.listContentConfig.contentConfigValues.feedSize)
@@ -32,7 +32,7 @@ export const UltimasList = props => {
           websiteName={websiteName}
           setIsLoading={setIsLoading}
           size={size}
-          storyId={storyId}
+          sectionId={sectionId}
           isLoading={isLoading}
           setSize={setSize}
           setIsDisabled={setIsDisabled}
