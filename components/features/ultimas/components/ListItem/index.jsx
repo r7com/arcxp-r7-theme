@@ -10,7 +10,7 @@ export const UltimasListItem = ({
   arcSite,
   customFields,
   size,
-  storyId,
+  sectionId,
   setIsDisabled,
   setIsLoading,
   isAdmin,
@@ -20,10 +20,9 @@ export const UltimasListItem = ({
     useContent({
       source: customFields.listContentConfig.contentService,
       query: {
-        ...{
-          ...customFields.listContentConfig.contentConfigValues,
-          feedSize: size,
-        },
+        includeSections: sectionId,
+        feedOffset: customFields.listContentConfig.contentConfigValues.feedOffset,
+        feedSize: size,
       },
     }) || {}
 
@@ -34,19 +33,19 @@ export const UltimasListItem = ({
     }
   }, [content_elements])
 
-  const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
+  // const contentElementsStory = content_elements?.filter(item => item._id !== storyId)
   const shouldRenderTaboola = idx => {
     if (!customFields.enableTaboola || idx === 0) return false
 
     return idx % (customFields.positionTaboolaCard - 1) === 0
   }
 
-  if (!contentElementsStory) {
+  if (!content_elements) {
     return null
   }
   return (
     <section className={`${className}__items`}>
-      {contentElementsStory.map((element, idx) => {
+      {content_elements.map((element, idx) => {
         const {
           headlines: { basic: headlineText = '' } = {},
           websites,
