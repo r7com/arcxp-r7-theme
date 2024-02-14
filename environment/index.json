@@ -12,6 +12,11 @@
   "GET_POLL_DATA_API": "https://poll-api-qa.r7.com/polls/",
   "POST_POLL_ANSWER_API": "https://poll-api-qa.r7.com/polls/increment",
   "GET_QUIZ_DATA_API": "https://quiz-api-qa.r7.com/api/v1/quiz/",
+  "COUPON_API": "https://coupons-api-qa.r7.com/v1/shops?categories=",
+  "COUPON_TOKEN": "011eb122e54197ba004cc5447d9eda28f6f6264da66d371855b2179ac94096a7",
+  "MIGRATION_DATE": "01032024",
+  "API_REDIRECT_KEY": "1",
+  "HOST_LEGACY_REDIRECT": "entretenimento.r7.com",
   "siteStyles": {
     "r7": "r7",
     "recordtv": "recordtv",

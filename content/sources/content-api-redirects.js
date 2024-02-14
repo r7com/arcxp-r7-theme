@@ -1,9 +1,17 @@
 import axios from 'axios'
-import { ARC_ACCESS_TOKEN, CONTENT_BASE, RESIZER_TOKEN_VERSION } from 'fusion:environment'
+import {
+  ARC_ACCESS_TOKEN,
+  CONTENT_BASE,
+  RESIZER_TOKEN_VERSION,
+  MIGRATION_DATE,
+  API_REDIRECT_KEY,
+  HOST_LEGACY_REDIRECT,
+} from 'fusion:environment'
 import signImagesInANSObject from '@wpmedia/arc-themes-components/src/utils/sign-images-in-ans-object'
 import handleFetchError from '@wpmedia/arc-themes-components/src/utils/handle-fetch-error'
 import { fetch as resizerFetch } from '@wpmedia/signing-service-content-source-block'
 import { get } from 'lodash'
+import { formatDate, getDateFromUrl } from '../../util/date'
 
 const RedirectError = (location, message = 'Redirect', code = 302) => {
   const err = new Error(message)
@@ -62,7 +70,38 @@ const fetch = (params, { cachedCall }) => {
     .then(handleRedirect)
     .then(signImagesInANSObject(cachedCall, resizerFetch, RESIZER_TOKEN_VERSION))
     .then(({ data }) => data)
-    .catch(handleFetchError)
+    .catch(err => {
+      if (err.statusCode !== 404 && err.response?.status !== 404) {
+        handleFetchError(err)
+        return err
+      }
+
+      const host = website === 'r7' ? `${website}.com` : `${website}.r7.com`
+      // the prost/schumi not include slash at the end url but the arc yes
+      const urlWithoutSlashAtTheEnd = websiteUrl.endsWith('/')
+        ? websiteUrl.slice(0, -1)
+        : websiteUrl
+      const articleStringDate = getDateFromUrl(urlWithoutSlashAtTheEnd)
+      const articleDate = articleStringDate && formatDate(articleStringDate)
+      const migrationDate = formatDate(MIGRATION_DATE)
+      const isBeforeMigration = articleDate && articleDate < migrationDate
+
+      if (isBeforeMigration) {
+        return axios
+          .get(`http://${HOST_LEGACY_REDIRECT}${urlWithoutSlashAtTheEnd}`, {
+            headers: {
+              Authorization: `Bearer ${API_REDIRECT_KEY}`,
+              Host: host,
+            },
+          })
+          .then(({ data }) => ({ html: data, legacyRedirect: true }))
+          .catch(err => {
+            console.error('Nested Error', err)
+            handleFetchError(err)
+          })
+      }
+      handleFetchError(err)
+    })
 }
 
 export default {
