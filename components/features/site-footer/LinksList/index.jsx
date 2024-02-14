@@ -1,22 +1,18 @@
 import { Institutional } from '@r7/ui-footer-delivery'
 import React from 'react'
 
-const LinksList = ({ labels, links }) => {
+const LinksList = ({ links }) => {
   return (
     <Institutional.List>
-      {labels?.length &&
-        links?.length &&
-        labels.map((label, index) => {
-          if (links[index]) {
-            return (
-              <Institutional.Item key={`${label}${index}`}>
-                <Institutional.Link href={links[index]} title={label}>
-                  {label}
-                </Institutional.Link>
-              </Institutional.Item>
-            )
-          }
-        })}
+      {links?.map(link => {
+        return (
+          <Institutional.Item key={link._id}>
+            <Institutional.Link href={link.url} title={link.display_name}>
+              {link.display_name}
+            </Institutional.Link>
+          </Institutional.Item>
+        )
+      })}
     </Institutional.List>
   )
 }
