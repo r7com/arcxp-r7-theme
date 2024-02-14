@@ -51,6 +51,11 @@
           "id": "playPlusLogo",
           "title": "PlayPlus Logo",
           "description": "Upload playplus logo for website"
+        },
+        {
+          "id": "playPlusLogoWhite",
+          "title": "PlayPlus Logo White",
+          "description": "Upload playplus logo white for website"
         }
       ]
     },
@@ -178,18 +183,46 @@
       "fieldDescription": "PlayPlus logo image",
       "fieldCategory": "extbrand",
       "fieldSubcategory": "playPlusLogo",
+      "fieldTarget": "site",
       "descendants": [
         {
           "fieldId": "playPlusLogo",
           "fieldType": "file",
           "fieldTitle": "PlayPlus Logo Image",
-          "previewBackground": "light"
+          "previewBackground": "light",
+          "fieldTarget": "site"
         },
         {
           "fieldId": "playPlusLogoAlt",
           "fieldType": "text",
           "fieldTitle": "PlayPlus Logo alt text",
-          "fieldDescription": "Enter PlayPlus Logo alt text"
+          "fieldDescription": "Enter PlayPlus Logo alt text",
+          "fieldTarget": "site"
+        }
+      ]
+    },
+    {
+      "fieldId": "playPlusLogoWhite",
+      "fieldType": "image",
+      "fieldTitle": "PlayPlusWhite logo image",
+      "fieldDescription": "PlayPlus logo white image",
+      "fieldCategory": "extbrand",
+      "fieldSubcategory": "playPlusLogoWhite",
+      "fieldTarget": "site",
+      "descendants": [
+        {
+          "fieldId": "playPlusLogoWhite",
+          "fieldType": "file",
+          "fieldTitle": "PlayPlus Logo White Image",
+          "previewBackground": "light",
+          "fieldTarget": "site"
+        },
+        {
+          "fieldId": "playPlusLogoWhiteAlt",
+          "fieldType": "text",
+          "fieldTitle": "PlayPlus Logo White alt text",
+          "fieldDescription": "Enter PlayPlus Logo White alt text",
+          "fieldTarget": "site"
         }
       ]
     }
