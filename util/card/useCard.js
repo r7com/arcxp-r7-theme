@@ -37,16 +37,15 @@ export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) 
    * Uses globalContent for automatic homes when "Usar conteúdo global" is checked,
    * and the collection when it's not checked
    */
-  const content = isGlobalContent
-    ? globalContent
-    : useContent({
-        source: config?.contentService,
-        query: {
-          ...config?.contentConfigValues,
-          from: startWithOne(config?.contentConfigValues.from ?? defaultFrom),
-          size: config?.contentConfigValues.size ?? defaultSize,
-        },
-      })
+  const content = useContent({
+    source: config?.contentService,
+    query: {
+      // ...config?.contentConfigValues,
+      includeSections: globalContent?._id,
+      feedOffset: startWithOne(config?.contentConfigValues.feedOffset ?? defaultFrom),
+      feedSize: config?.contentConfigValues.feedSize ?? defaultSize,
+    },
+  })
 
   /**
    * Gets the label custom fields for each card
