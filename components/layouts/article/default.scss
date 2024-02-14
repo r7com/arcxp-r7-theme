@@ -51,6 +51,9 @@
       gap: 20px;
     }
   }
+
+  &__margin-space{
+  margin: 20px auto;
 }
 
 html.dark {
@@ -61,4 +64,5 @@ html.dark {
   & article img {
     filter: grayscale(1);
   }
+}
 }
