@@ -29,7 +29,7 @@ function Ultimas({ customFields }) {
   return (
     <LazyLoad enabled={customFields.lazyLoad && !isAdmin}>
       <UltimasList
-        storyId={globalContent._id}
+        sectionId={globalContent._id}
         className={BLOCK_CLASS_NAME}
         customFields={customFields}
         websiteDomain={websiteDomain}
