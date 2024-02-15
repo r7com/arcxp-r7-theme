@@ -6,7 +6,6 @@ const SECTION_NAME = 'navigation.nav_title'
 
 export default function CustomSchemaOrg({
   globalContent,
-  globalContentConfig,
   websiteDomain,
   metaValue,
   websiteName,
@@ -50,8 +49,9 @@ export default function CustomSchemaOrg({
         />
       )
     }
+    case 'grouping':
     case 'section': {
-      const sections = globalContentConfig?.query?.includeSections || ''
+      const sections = globalContent?._id
       const splitSctions = sections.split('/').filter(el => !!el)
       const sectionIds = splitSctions.map(
         (element, index) => '/' + splitSctions.slice(0, index + 1).join('/'),
