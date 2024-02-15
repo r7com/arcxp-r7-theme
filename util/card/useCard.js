@@ -14,10 +14,23 @@ import { getLabelCustomFields } from './get-label-props'
  * @param {CardOptions & {customFields:CardPropTypes}} options
  */
 export function useCard({ customFields, defaultFrom, defaultSize, length }) {
-  const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
+  const { config } = customFields
   const fusionContext = useFusionContext()
   const { arcSite, globalContent } = fusionContext
   const siteProperties = getProperties(arcSite)
+
+  const CONTENT_SERVICE_QUERY = {
+    collections: {
+      ...config?.contentConfigValues,
+      from: config?.contentConfigValues?.from ?? defaultFrom,
+      size: config?.contentConfigValues?.size ?? defaultSize,
+    },
+    'story-feed-sections': {
+      includeSections: globalContent?._id,
+      feedOffset: config?.contentConfigValues?.feedOffset ?? defaultFrom,
+      feedSize: config?.contentConfigValues?.feedSize ?? defaultSize,
+    },
+  }
 
   /**
    * @type Collection
@@ -34,12 +47,7 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
    */
   const content = useContent({
     source: config?.contentService,
-    query: {
-      // ...config?.contentConfigValues,
-      includeSections: globalContent?._id,
-      feedOffset: config?.contentConfigValues.feedOffset ?? defaultFrom,
-      feedSize: config?.contentConfigValues.feedSize ?? defaultSize,
-    },
+    query: CONTENT_SERVICE_QUERY[config?.contentService] ?? {},
   })
 
   /**
@@ -62,11 +70,6 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
 
   const getSlicedItems = () => {
     let items = content?.content_elements
-
-    if (isGlobalContent) {
-      /** Manual "from" and "size" when using globalContent */
-      items = items?.slice(globalContentFrom)?.slice(0, globalContentSize)
-    }
 
     if (length) {
       /** Set a max length for the array size,
