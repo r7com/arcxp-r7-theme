@@ -11,17 +11,32 @@
   },
   {
     "_id": "entretenimento",
-    "display_name": "R7 Entretenimento",
+    "display_name": "Entretenimento",
     "is_default_website": false
   },
   {
     "_id": "esportes",
-    "display_name": "R7 Esporte",
+    "display_name": "Esportes",
     "is_default_website": false
   },
   {
     "_id": "noticias",
-    "display_name": "Noticias R7",
+    "display_name": "Noticias",
+    "is_default_website": false
+  },
+  {
+    "_id": "canaa",
+    "display_name": "Canaa",
+    "is_default_website": false
+  },
+  {
+    "_id": "erecord",
+    "display_name": "ERecord",
+    "is_default_website": false
+  },
+  {
+    "_id": "recordrs",
+    "display_name": "RecordRS",
     "is_default_website": false
   }
 ]

@@ -1,6 +1,5 @@
 {
   "org": "@wpmedia/",
-  "buildSiteStyles": true,
   "theme": "news",
   "themeComponents": "@wpmedia/arc-themes-components",
   "localeList": [
@@ -98,33 +97,16 @@
   ],
   "values": {
     "sites": {
-      "canaa": {
+      "entretenimento": {
         "siteProperties": {
-          "websiteName": "Canaa",
-          "privacyLink": "https://www.canaa.org/politica-de-privacidade-do-publico-externo-04052023"
-        }
-      },
-      "noticias": {
-        "siteProperties": {
-          "websiteName": "Noticias R7",
-          "websiteDomain": "https://noticias.r7.com",
-          "primaryColor": "#556373",
-          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
+          "websiteName": "R7 Entretenimento",
+          "websiteDomain": "https://entretenimento.r7.com",
+          "taboolaPublisherId": "r7-r7com",
+          "primaryColor": "#F78714",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697806773401.jpg",
           "headerImageAlt": "Header image",
-          "hash": "r7noticias/home",
-          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038915673.svg"
-        }
-      },
-      "recordtv": {
-        "siteProperties": {
-          "websiteName": "Record TV",
-          "websiteDomain": "https://recordtv.r7.com",
-          "primaryLogoAlt": "Website logo",
-          "primaryColor": "#5D6F9D",
-          "headerImage": "https://img.r7.com/images/record-tv-06112023200313177",
-          "headerImageAlt": "Header image",
-          "hash": "recordtv/home",
-          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038947330.svg"
+          "hash": "r7entretenimento/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038871041.svg"
         }
       },
       "esportes": {
@@ -138,16 +120,36 @@
           "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038887445.svg"
         }
       },
-      "entretenimento": {
+      "noticias": {
         "siteProperties": {
-          "websiteName": "R7 Entretenimento",
-          "websiteDomain": "https://entretenimento.r7.com",
-          "taboolaPublisherId": "r7-r7com",
-          "primaryColor": "#F78714",
-          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697806773401.jpg",
+          "websiteName": "Noticias R7",
+          "websiteDomain": "https://noticias.r7.com",
+          "primaryColor": "#556373",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1697808274214.jpg",
           "headerImageAlt": "Header image",
-          "hash": "r7entretenimento/home",
-          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038871041.svg"
+          "hash": "r7noticias/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038915673.svg"
+        }
+      },
+      "r7": {
+        "siteProperties": {
+          "primaryColor": "#218EE1",
+          "hash": "r7home/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038934034.svg",
+          "playPlusLogoWhite": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1707334973374.svg",
+          "playPlusLogoWhiteAlt": "Playplus logo"
+        }
+      },
+      "recordtv": {
+        "siteProperties": {
+          "websiteName": "Record TV",
+          "websiteDomain": "https://recordtv.r7.com",
+          "primaryLogoAlt": "Website logo",
+          "primaryColor": "#5D6F9D",
+          "headerImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1704460003562.jpg",
+          "headerImageAlt": "Header image",
+          "hash": "recordtv/home",
+          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038947330.svg"
         }
       },
       "new-r7": {
@@ -156,45 +158,24 @@
           "textFlow": "horizontal-tb"
         }
       },
-      "r7": {
+      "canaa": {
         "siteProperties": {
-          "api": {
-            "identity": {
-              "origin": ""
-            },
-            "retail": {
-              "endpoint": "",
-              "origin": "",
-              "script": ""
-            },
-            "sales": {
-              "origin": ""
-            }
-          },
-          "primaryColor": "#218EE1",
-          "hash": "r7home/home",
-          "secondaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1706038934034.svg"
+          "privacyLink": "https://www.canaa.org/politica-de-privacidade-do-publico-externo-04052023"
         }
       }
     },
     "default": {
       "siteProperties": {
         "websiteName": "R7",
-        "privacyLink": "https://www.r7.com/termos-e-condicoes",
         "websiteDomain": "https://www.r7.com",
-        "playPlusDomain": "https://www.playplus.com/home",
         "primaryLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1698842893138.svg",
-        "primaryLogoAlt": "Logo",
-        "playPlusLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1707322344315.svg",
-        "playPlusLogoAlt": "PlayPlus Logo",
-        "playPlusLogoWhite": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1707335463663.svg",
-        "playPlusLogoWhiteAlt": "PlayPlus Logo White",
-        "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1690497538936.png",
+        "fallbackImage": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1704838953902.jpg",
         "copyrightText": "All rights reserved - 2009-2023 - Rádio e Televisão Record SA",
+        "dfpId": 7542,
+        "gtmID": "GTM-PQFPRPC",
         "facebookPage": "https://www.facebook.com/portalr7",
         "twitterUsername": "https://twitter.com/portalr7",
         "resizerURL": "https://newr7-r7-sandbox.web.arc-cdn.net/resizer/v2/",
-        "taboolaPublisherId": "r7-r7com",
         "locale": "en",
         "dateLocalization": {
           "language": "en_US",
@@ -218,11 +199,15 @@
             "origin": ""
           }
         },
+        "privacyLink": "https://www.r7.com/termos-e-condicoes",
         "instagramPage": "https://instagram.com/portalr7",
+        "youtubePage": "https://youtube.com/r7",
+        "linkedInPage": "https://www.linkedin.com/company/r7-com/mycompany/",
         "primaryColor": "#fff",
-        "dfpId": 7542,
-        "gtmID": "GTM-PQFPRPC",
-        "hash": "r7home/home"
+        "playPlusLogo": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1707322344315.svg",
+        "playPlusLogoAlt": "PlayPlus logo",
+        "playPlusLogoWhite": "https://static.themebuilder.aws.arc.pub/newr7-sandbox/1707335463663.svg",
+        "playPlusLogoWhiteAlt": "PlayPlus logo white"
       }
     }
   }
