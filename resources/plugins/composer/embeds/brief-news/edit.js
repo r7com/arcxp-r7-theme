@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 window.onload = function () {
   const parameters = Object.assign(
     {
@@ -80,6 +78,7 @@ function render({ textList, textTitle }) {
   })
 }
 function applyChanges() {
+  const title = document.getElementById('title')
   const list = document.getElementById('list')
   const textList = []
 

@@ -6,6 +6,8 @@ import getProperties from 'fusion:properties'
 import { BriefNews } from './components/BriefNews'
 import { FormattedImage } from './components/FormattedImage'
 import { Poll } from './components/Poll'
+import { R7Player } from '../../../../../util/components/Player'
+import { getPlayerDataProxy } from '../../../../../util/components/Player/proxy/proxy'
 import { Quiz } from './components/Quiz'
 
 const CustomEmbed = ({ element, classPrefix, customFields }) => {
@@ -13,6 +15,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
   const { primaryColor } = getProperties(arcSite)
   const { embed, subtype } = element
   const COMPONENT_CLASS_NAME = `${classPrefix}-custom-embed`
+
   switch (subtype) {
     case 'brief_news':
       return embed.config ? (
@@ -22,6 +25,8 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
       return embed.config ? (
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
+    case 'legacy_video':
+      return embed.config ? <R7Player item={getPlayerDataProxy(embed)} /> : null
     case 'poll':
       return embed.config ? <Poll className={COMPONENT_CLASS_NAME} item={embed} /> : null
     case 'quiz':

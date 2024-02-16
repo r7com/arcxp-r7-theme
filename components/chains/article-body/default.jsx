@@ -7,16 +7,12 @@ import { Paragraph, Typography } from '@r7/ui-base-components'
 
 import {
   Divider,
-  formatCredits,
-  getAspectRatio,
   Heading,
   HeadingSection,
   isServerSide,
   LazyLoad,
   Link,
   usePhrases,
-  MediaItem,
-  Video,
 } from '@wpmedia/arc-themes-components'
 
 import Gallery from './_children/gallery'
@@ -32,23 +28,13 @@ import Header from './_children/heading'
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
 import { Accessibility } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'
+import { R7Player } from '../../../util/components/Player'
+import { getPlayerDataProxy } from '../../../util/components/Player/proxy/proxy'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
 function parseArticleItem(item, index, phrases, customFields) {
   const { _id: key = index, type, content } = item
-
-  const {
-    // hideGalleryTitle = false,
-    // hideGalleryCaption = false,
-    // hideGalleryCredits = false,
-    hideVideoTitle = false,
-    hideVideoCaption = false,
-    hideVideoCredits = false,
-  } = customFields
-
-  // This is up here to prevent a lexical declaration in a case block (which throws an error). It goes with the "video" case
-  let videoAspectRatio = '16:9' // Default to 16:9
 
   switch (type) {
     case 'text': {
@@ -186,30 +172,8 @@ function parseArticleItem(item, index, phrases, customFields) {
       return <Quote key={`${type}_${index}_${key}`} element={item} classPrefix={BLOCK_CLASS_NAME} />
 
     case 'video':
-      // Calculate the aspect ratio for the item. If the item doesn't have any promo items, then 16:9 is used as a fallback
-      if (item && item.promo_items && item.promo_items.basic) {
-        // Get the width and height of the promo item and calculate the aspect ratio
-        const width = item?.promo_items.basic.width
-        const height = item?.promo_items.basic.height
+      return <R7Player item={getPlayerDataProxy(item)} />
 
-        // Assign the calculated value to aspectRatio if it is non-null, otherwise assign default 16:9
-        videoAspectRatio = getAspectRatio(width, height) || '16:9'
-      }
-
-      return (
-        <MediaItem
-          key={`${type}_${index}_${key}`}
-          caption={!hideVideoCaption ? item?.description?.basic : null}
-          credit={!hideVideoCredits ? formatCredits(item.credits) : null}
-          title={!hideVideoTitle ? item?.headlines?.basic : null}
-        >
-          <Video
-            aspectRatio={videoAspectRatio}
-            className="video-container"
-            embedMarkup={item.embed_html}
-          />
-        </MediaItem>
-      )
     case 'gallery': {
       return item.content_elements.length ? (
         <Gallery
