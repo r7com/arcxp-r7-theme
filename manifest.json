@@ -225,6 +225,15 @@
           "fieldTarget": "site"
         }
       ]
+    },
+    {
+      "fieldId": "tiktokPixelId",
+      "fieldType": "text",
+      "fieldTitle": "TikTok Pixel ID",
+      "fieldDescription": "Can be found on the TikTol Pixel dashboard",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "tiktokPixelId",
+      "fieldTarget": "site"
     }
   ]
 }
