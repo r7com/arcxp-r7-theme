@@ -63,12 +63,13 @@ const HeaderNavigationMenu = ({ customFields }) => {
         logoUrl={playPlusLogo}
         link={playPlusDomain}
       />
+      <HeaderMenu menuList={headerContent} />
       <Header.PlayPlusLogo
         link={playPlusDomain}
         logoUrl={playPlusLogoWhite}
         alt={playPlusLogoWhiteAlt}
+        color="white"
       />
-      <HeaderMenu menuList={headerContent} />
       <HeaderSocials />
       {isInternal && (
         <InternalsHeader triggerElementSelector={internalHeaderTrigger || defaultSelector}>
