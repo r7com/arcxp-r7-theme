@@ -54,7 +54,7 @@ const ProportionalPhotoBlock = withCard(
       </ProportionalPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '1', length: 1 },
+  { defaultSize: 1, length: 1 },
 )
 
 ProportionalPhotoBlock.label = 'Chamada foto proporcional - R7 Block'
