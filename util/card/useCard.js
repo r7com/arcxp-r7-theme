@@ -42,8 +42,8 @@ export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) 
     query: {
       // ...config?.contentConfigValues,
       includeSections: globalContent?._id,
-      feedOffset: startWithOne(config?.contentConfigValues.feedOffset ?? defaultFrom),
-      feedSize: config?.contentConfigValues.feedSize ?? defaultSize,
+      feedOffset: startWithOne(config?.contentConfigValues?.feedOffset ?? defaultFrom),
+      feedSize: config?.contentConfigValues?.feedSize ?? defaultSize,
     },
   })
 
