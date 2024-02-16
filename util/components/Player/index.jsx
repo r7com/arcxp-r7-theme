@@ -9,15 +9,17 @@ export const R7Player = ({ item }) => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'text/javascript'
-    // script.src = 'https://player.r7.com/index.js'
-    // script.src = 'http://localhost:8181/index.js'
-    script.src = R7_PLAYER_ASSET
-    script.onload = () => {
-      setIsLoaded(true)
+    const hasScript = document.getElementById('r7-player-asset') !== null
+    if (!hasScript) {
+      const script = document.createElement('script')
+      script.id = 'r7-player-asset'
+      script.type = 'text/javascript'
+      script.src = R7_PLAYER_ASSET
+      script.onload = () => {
+        setIsLoaded(true)
+      }
+      document.body.appendChild(script)
     }
-    document.body.appendChild(script)
   }, [])
 
   return (

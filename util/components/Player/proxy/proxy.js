@@ -23,56 +23,39 @@ const getStreamMp4GlobalContent = streams => {
   return mp4Stream?.url
 }
 
-const getSubSectionGlobalContent = sections => {
-  return sections.length > 1 ? sections[1] : ''
-}
-
 const getThirdSectionGlobalContent = sections => {
-  return sections.length > 2 ? sections[sections.length - 1] : ''
+  return sections.length > 2 ? sections[sections.length - 1].name : ''
 }
 
-const getSectionPathGlobalContent = sectionUrl => {
-  const defaultPath = 'https://www.r7.com'
-  const slashCount = sectionUrl.split('/').length - 1
+const getHostGlobalContent = data => {
+  const website = data.canonical_website
+  return website === 'r7' ? `${website}.com` : `${website}.r7.com`
+}
 
-  if (slashCount >= 3) {
-    const pathRegex = /^\/\/[^/]+\/([^/]+)/g
-    return sectionUrl.match(pathRegex)[0]
-  }
+const getSectionPathGlobalContent = data => {
+  const host = getHostGlobalContent(data)
 
-  return defaultPath
+  return `//${host}${data.taxonomy?.primary_section?.path}`
 }
 
 const getCanonicalUrlGlobalContent = data => {
-  const website = data.canonical_website
-  const host = website === 'r7' ? `${website}.com` : `${website}.r7.com`
+  const host = getHostGlobalContent(data)
 
   return `//${host}${data.canonical_url}`
 }
 
-const getSectionInfoGlobalContent = data => {
-  const sectionUrl = getCanonicalUrlGlobalContent(data)
-  const sectionPath = getSectionPathGlobalContent(sectionUrl)
-
-  return {
-    url: sectionUrl,
-    path: sectionPath,
-  }
-}
-
 const getMetadataGlobalContent = data => {
-  const sectionInfo = getSectionInfoGlobalContent(data)
-
   const metadata = {
     title: data.headlines?.basic,
-    sectionName: data.taxonomy?.primary_section?.name,
-    subSection: getSubSectionGlobalContent(data.taxonomy?.sections),
+    sectionName: data.taxonomy?.primary_section?.name ?? 'R7',
+    mainSection: data.taxonomy?.primary_section?.name,
+    subSection: data.taxonomy?.sections[1]?.name ?? '',
     thirdSection: getThirdSectionGlobalContent(data.taxonomy?.sections),
     views: '',
     disableAdv: 'false',
     createdDate: data.created_date,
-    mainSectionUrl: sectionInfo.url,
-    sectionPath: sectionInfo.path,
+    mainSectionUrl: getCanonicalUrlGlobalContent(data),
+    sectionPath: getSectionPathGlobalContent(data),
     ageRating: '',
     ageRatingDescription: '',
     duration: data.duration,
@@ -81,35 +64,28 @@ const getMetadataGlobalContent = data => {
   return JSON.stringify(metadata)
 }
 
-const getDataFromGlobalContent = data => {
-  const proxyDataFromGlobalContent = {}
+const getDataFromGlobalContent = data => ({
+  urlHls: getBestQualityStreamHlsGlobalContent(data.streams),
+  urlMp4: getStreamMp4GlobalContent(data.streams),
+  poster: data.promo_image?.url,
+  metadata: getMetadataGlobalContent(data),
+  playerUrl: '',
+  spriteUrl: '',
+  playerParams: getDefaultPlayerParams(),
+})
 
-  proxyDataFromGlobalContent.urlHls = getBestQualityStreamHlsGlobalContent(data.streams)
-  proxyDataFromGlobalContent.urlMp4 = getStreamMp4GlobalContent(data.streams)
-  proxyDataFromGlobalContent.poster = data.promo_image?.url
-  proxyDataFromGlobalContent.metadata = getMetadataGlobalContent(data)
-  proxyDataFromGlobalContent.playerUrl = ''
-  proxyDataFromGlobalContent.spriteUrl = ''
-  proxyDataFromGlobalContent.playerParams = getDefaultPlayerParams()
+const getDataFromCustomEmbed = data => ({
+  poster: data.config.poster,
+  playerUrl: '',
+  metadata: JSON.stringify(data.config.metadata),
+  urlHls: data.config.urlHls,
+  urlMp4: data.config.urlMp4,
+  playerParams: getDefaultPlayerParams(),
+  spriteUrl: '',
+})
 
-  return proxyDataFromGlobalContent
+const getPlayerDataProxy = data => {
+  return isEmbedData(data) ? getDataFromCustomEmbed(data) : getDataFromGlobalContent(data)
 }
-
-const getDataFromCustomEmbed = data => {
-  const proxyDataFromCustomEmbed = {
-    poster: data.config.poster,
-    playerUrl: '',
-    metadata: JSON.stringify(data.config.metadata),
-    urlHls: data.config.urlHls,
-    urlMp4: data.config.urlMp4,
-    playerParams: getDefaultPlayerParams(),
-    spriteUrl: '',
-  }
-
-  return proxyDataFromCustomEmbed
-}
-
-const getPlayerDataProxy = data =>
-  isEmbedData(data) ? getDataFromCustomEmbed(data) : getDataFromGlobalContent(data)
 
 export { getPlayerDataProxy, getPlayerDataFromMock }

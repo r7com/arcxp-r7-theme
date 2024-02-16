@@ -19,5 +19,6 @@
     "entretenimento": "entretenimento",
     "esportes": "esportes",
     "noticias": "noticias"
-  }
+  },
+  "R7_PLAYER_ASSET": "https://player-qa.r7.com/index.js"
 }

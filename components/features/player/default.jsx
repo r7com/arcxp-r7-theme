@@ -8,6 +8,8 @@ function Player() {
 
   if (!globalContent) return null
 
+  window.console.log('ASDSDASDASDSADASDDSAD: ', globalContent._id)
+
   return <R7Player item={getPlayerDataProxy(globalContent)}></R7Player>
 }
 
