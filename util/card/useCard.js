@@ -13,8 +13,8 @@ import { getLabelCustomFields } from './get-label-props'
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
  * @param {CardOptions & {customFields:CardPropTypes}} options
  */
-export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) {
-  const { config, isGlobalContent, globalContentFrom, globalContentSize } = customFields
+export function useCard({ customFields, defaultFrom, defaultSize, length }) {
+  const { config } = customFields
   const fusionContext = useFusionContext()
   const { arcSite, globalContent } = fusionContext
   const siteProperties = getProperties(arcSite)
@@ -22,6 +22,19 @@ export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) 
   /** Allows the user to index the array starting with 1 instead of 0 */
   const startWithOne = (value = 0) => {
     return value <= 0 ? 0 : value - 1
+  }
+
+  const CONTENT_SERVICE_QUERY = {
+    collections: {
+      ...config?.contentConfigValues,
+      from: startWithOne(config?.contentConfigValues?.from ?? defaultFrom),
+      size: config?.contentConfigValues?.size ?? defaultSize,
+    },
+    'story-feed-sections': {
+      includeSections: globalContent?._id,
+      feedOffset: startWithOne(config?.contentConfigValues?.feedOffset ?? defaultFrom),
+      feedSize: config?.contentConfigValues?.feedSize ?? defaultSize,
+    },
   }
 
   /**
@@ -39,12 +52,7 @@ export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) 
    */
   const content = useContent({
     source: config?.contentService,
-    query: {
-      // ...config?.contentConfigValues,
-      includeSections: globalContent?._id,
-      feedOffset: startWithOne(config?.contentConfigValues?.feedOffset ?? defaultFrom),
-      feedSize: config?.contentConfigValues?.feedSize ?? defaultSize,
-    },
+    query: CONTENT_SERVICE_QUERY[config?.contentService] ?? {},
   })
 
   /**
@@ -67,13 +75,6 @@ export function useCard({ customFields, defaultFrom = 1, defaultSize, length }) 
 
   const getSlicedItems = () => {
     let items = content?.content_elements
-
-    if (isGlobalContent) {
-      /** Manual "from" and "size" when using globalContent */
-      items = items
-        ?.slice(startWithOne(globalContentFrom ?? defaultFrom))
-        ?.slice(0, globalContentSize ?? defaultSize)
-    }
 
     if (length) {
       /** Set a max length for the array size,
