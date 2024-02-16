@@ -61,8 +61,7 @@ const TwoCardsSquarePhotoBlock = withCard(
       </LeftPhoto>
     )
   },
-  // This might be unnecessary, but without the `length` a `slice` would be necessary
-  { defaultFrom: '0', defaultSize: '2', length: 2 },
+  { defaultSize: 2, length: 2 },
 )
 
 TwoCardsSquarePhotoBlock.label = 'Duas chamadas quadradas - R7 Block'
