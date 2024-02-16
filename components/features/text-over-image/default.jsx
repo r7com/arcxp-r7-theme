@@ -96,7 +96,7 @@ const TextOverImageBlock = withCard(
       </TextOverPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '1', length: 1 },
+  { defaultSize: 1, length: 1 },
 )
 
 TextOverImageBlock.label = 'Texto sobre imagem - R7 Block'
