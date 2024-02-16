@@ -20,6 +20,11 @@
           "id": "linkedInPage",
           "title": "LinkedIn page",
           "description": "Enter in URL for linkedIn page of the website"
+        },
+        {
+          "id": "tiktokPixelId",
+          "title": "TikTok Pixel ID",
+          "description": "Enter in ID for TikTol Pixel"
         }
       ]
     },
