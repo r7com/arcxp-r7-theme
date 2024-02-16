@@ -28,7 +28,7 @@ const TitleWithBulletsBlock = withCard(
       </Guerra>
     )
   },
-  { defaultFrom: '0', defaultSize: '5', length: 5 },
+  { defaultSize: 5, length: 5 },
 )
 
 TitleWithBulletsBlock.label = 'Título com bullets - R7 Block'

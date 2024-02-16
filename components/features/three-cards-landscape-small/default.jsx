@@ -61,7 +61,7 @@ const ThreeCardsLandscapeSmall = withCard(
       </LeftPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '3', length: 3 },
+  { defaultSize: 3, length: 3 },
 )
 
 ThreeCardsLandscapeSmall.label = 'Três chamadas retangular - R7 Block'

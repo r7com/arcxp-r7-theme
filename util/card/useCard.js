@@ -7,8 +7,8 @@ import { getLabelCustomFields } from './get-label-props'
  * useCard hook
  * @type CardOptions
  * @typedef {Object} CardOptions
- * @property {string} defaultFrom The default "from" value
- * @property {string} defaultSize The default "size" of the collection
+ * @property {number=} defaultFrom The default "from" value starting with 1, default is 1
+ * @property {number=} defaultSize The default "size" of the collection
  * @property {number=} length The max number of cards on the `collection` array
  * @typedef {ReturnType<typeof import("./card-prop-types").getCardPropTypes>} CardPropTypes
  * @param {CardOptions & {customFields:CardPropTypes}} options
@@ -19,15 +19,20 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
   const { arcSite, globalContent } = fusionContext
   const siteProperties = getProperties(arcSite)
 
+  /** Allows the user to index the array starting with 1 instead of 0 */
+  const startWithOne = (value = 0) => {
+    return value <= 0 ? 0 : value - 1
+  }
+
   const CONTENT_SERVICE_QUERY = {
     collections: {
       ...config?.contentConfigValues,
-      from: config?.contentConfigValues?.from ?? defaultFrom,
+      from: startWithOne(config?.contentConfigValues?.from ?? defaultFrom),
       size: config?.contentConfigValues?.size ?? defaultSize,
     },
     'story-feed-sections': {
       includeSections: globalContent?._id,
-      feedOffset: config?.contentConfigValues?.feedOffset ?? defaultFrom,
+      feedOffset: startWithOne(config?.contentConfigValues?.feedOffset ?? defaultFrom),
       feedSize: config?.contentConfigValues?.feedSize ?? defaultSize,
     },
   }
