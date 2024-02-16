@@ -108,10 +108,10 @@ export default function CustomSchemaOrg({
         canonical_website,
       } = globalContent
       const structuredDataArray = []
-      const findVideoElement = globalContent.content_elements.find(el => el.type === 'video')
+      const findVideoElement = globalContent?.content_elements?.find(el => el.type === 'video')
       const sections = globalContent?.taxonomy?.sections || []
 
-      const findAllImages = globalContent.content_elements.filter(el => el.type === 'image')
+      const findAllImages = globalContent?.content_elements?.filter(el => el.type === 'image')
 
       const articleStructuredData = {
         '@context': 'http://schema.org',
@@ -120,8 +120,8 @@ export default function CustomSchemaOrg({
           '@type': 'WebPage',
           '@id': websiteDomain + canonical_url,
         },
-        headline: headlines.basic,
-        description: description?.basic || subheadlines.basic,
+        headline: headlines?.basic,
+        description: description?.basic || subheadlines?.basic,
         url: websiteDomain + canonical_url,
         image:
           pageType === 'gallery' && findAllImages
@@ -133,9 +133,9 @@ export default function CustomSchemaOrg({
               }))
             : {
                 '@type': 'ImageObject',
-                width: promo_items.basic.width,
-                height: promo_items.basic.height,
-                url: promo_items.basic.url,
+                width: promo_items?.basic?.width,
+                height: promo_items?.basic?.height,
+                url: promo_items?.basic?.url,
               },
         datePublished: publish_date,
         dateModified: last_updated_date,
@@ -215,12 +215,12 @@ export default function CustomSchemaOrg({
         const videoStructuredData = {
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
-          name: headlines.basic,
-          description: description?.basic || subheadlines.basic,
+          name: headlines?.basic,
+          description: description?.basic || subheadlines?.basic,
           duration,
-          width: promo_image.width,
-          height: promo_image.height,
-          thumbnailUrl: promo_image.url,
+          width: promo_image?.width,
+          height: promo_image?.height,
+          thumbnailUrl: promo_image?.url,
           uploadDate: publish_date,
           contentUrl: '',
           embedUrl: '',

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import './index.scss'
 import React, { useState, useEffect, useRef } from 'react'
 import * as ComposerHandler from '@arcxp/shared-powerup-composer-utils'
