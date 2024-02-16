@@ -1,0 +1,10 @@
+
+.wrapper-video {
+  height: 434px;
+  width: 100%;
+  visibility: hidden;
+}
+
+.wrapper-video.show {
+  visibility: visible !important;
+}

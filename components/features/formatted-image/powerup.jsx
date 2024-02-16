@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react'
 import get from 'lodash.get'
 import Search from './children/search.jsx'

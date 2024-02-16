@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import './index.scss'
 import React, { useEffect, useState } from 'react'
 import { useContent } from 'fusion:content'
