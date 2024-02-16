@@ -20,6 +20,11 @@
           "id": "linkedInPage",
           "title": "LinkedIn page",
           "description": "Enter in URL for linkedIn page of the website"
+        },
+        {
+          "id": "tiktokPixelId",
+          "title": "TikTok Pixel ID",
+          "description": "Enter in ID for TikTol Pixel"
         }
       ]
     },
@@ -225,6 +230,15 @@
           "fieldTarget": "site"
         }
       ]
+    },
+    {
+      "fieldId": "tiktokPixelId",
+      "fieldType": "text",
+      "fieldTitle": "TikTok Pixel ID",
+      "fieldDescription": "Can be found on the TikTol Pixel dashboard",
+      "fieldCategory": "extsocials",
+      "fieldSubcategory": "tiktokPixelId",
+      "fieldTarget": "site"
     }
   ]
 }
