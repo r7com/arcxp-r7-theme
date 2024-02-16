@@ -30,8 +30,8 @@ function ArticleHeaderBlock() {
   return (
     <ArticleHeader>
       <ArticleHeader.Heading>
-        <Heading dangerHTML={headlines.basic} />
-        <Subheading dangerHTML={subheadlines.basic} />
+        <Heading dangerHTML={headlines?.basic} />
+        <Subheading dangerHTML={subheadlines?.basic} />
       </ArticleHeader.Heading>
       <ArticleHeader.Topbar>
         <Signature>
@@ -47,37 +47,37 @@ function ArticleHeaderBlock() {
           <SocialShare.List>
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="twitter"
               position="topo"
             />
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="facebook"
               position="topo"
             />
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="linkedin"
               position="topo"
             />
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="whatsapp"
               position="topo"
             />
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="googleNews"
               position="topo"
             />
             <SocialShare.Item
               link={encodedUrl}
-              title={headlines.basic}
+              title={headlines?.basic}
               name="share"
               position="topo"
             />

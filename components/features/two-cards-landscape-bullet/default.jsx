@@ -66,7 +66,7 @@ const TwoCardsLandscapeBullet = withCard(
       </LeftPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '3', length: 3 },
+  { defaultSize: 3, length: 3 },
 )
 
 TwoCardsLandscapeBullet.label = 'Duas chamadas retangular com bullet - R7 Block'
