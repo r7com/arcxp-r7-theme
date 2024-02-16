@@ -120,7 +120,7 @@ export default function CustomSchemaOrg({
           '@type': 'WebPage',
           '@id': websiteDomain + canonical_url,
         },
-        headline: headlines.basic,
+        headline: headlines?.basic,
         description: description?.basic || subheadlines?.basic,
         url: websiteDomain + canonical_url,
         image:
@@ -215,7 +215,7 @@ export default function CustomSchemaOrg({
         const videoStructuredData = {
           '@context': 'https://schema.org',
           '@type': 'VideoObject',
-          name: headlines.basic,
+          name: headlines?.basic,
           description: description?.basic || subheadlines?.basic,
           duration,
           width: promo_image?.width,
