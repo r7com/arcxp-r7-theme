@@ -8,7 +8,7 @@ function Player() {
 
   if (!globalContent) return null
 
-  return <R7Player item={getPlayerDataProxy(globalContent)}></R7Player>
+  return <R7Player item={getPlayerDataProxy(globalContent)} />
 }
 
 Player.label = 'Player - R7'

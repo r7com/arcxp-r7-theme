@@ -172,7 +172,7 @@ function parseArticleItem(item, index, phrases, customFields) {
       return <Quote key={`${type}_${index}_${key}`} element={item} classPrefix={BLOCK_CLASS_NAME} />
 
     case 'video':
-      return <R7Player item={getPlayerDataProxy(item)}></R7Player>
+      return <R7Player item={getPlayerDataProxy(item)} />
 
     case 'gallery': {
       return item.content_elements.length ? (

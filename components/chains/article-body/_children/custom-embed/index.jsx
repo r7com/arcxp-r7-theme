@@ -26,7 +26,7 @@ const CustomEmbed = ({ element, classPrefix, customFields }) => {
         <FormattedImage className={classPrefix} customFields={customFields} item={embed} />
       ) : null
     case 'legacy_video':
-      return embed.config ? <R7Player item={getPlayerDataProxy(embed)}></R7Player> : null
+      return embed.config ? <R7Player item={getPlayerDataProxy(embed)} /> : null
     case 'poll':
       return embed.config ? <Poll className={COMPONENT_CLASS_NAME} item={embed} /> : null
     case 'quiz':
