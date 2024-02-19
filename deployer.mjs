@@ -3,16 +3,9 @@ import { exec } from 'child_process'
 import 'dotenv/config'
 import FormData from 'form-data'
 import fs from 'fs'
-// import { uid } from 'uid/secure'
 import util from 'util'
-import path from 'path';
 const execPromisified = util.promisify(exec)
-const readDirPromisified = util.promisify(fs.readdir)
-const { ARC_ACCESS_TOKEN, CONTENT_BASE } = process.env
-if (!fs.existsSync('./dist')) {
-        fs.mkdirSync('./dist')
-        console.log(`Folder './dist' created successfully.`)
-      }
+
 deploy()
 async function getUploadMetadata(fileName) {
   return axios.get(
@@ -45,23 +38,11 @@ async function uploadFile(url, form) {
   })
 }
 async function deploy() {
-  const rootDir = process.cwd();
-  console.log('rootDir', rootDir);
+  if (!fs.existsSync('./dist')) {
+    fs.mkdirSync('./dist')
+    console.log(`Folder './dist' created successfully.`)
+  }
 
-// Read the contents of the root directory
-const filesAndFolders = fs.readdirSync(rootDir);
-
-// Print each file and folder
-filesAndFolders.forEach(item => {
-  // Construct the full path
-  const fullPath = path.join(rootDir, item);
-
-  // Check if it's a file or a directory
-  const type = fs.statSync(fullPath).isDirectory() ? 'Directory' : 'File';
-
-  // Print the result
-  console.log(`${item} (${type})`);
-});
   try {
     try {
       console.log('Create bundle: start')
@@ -73,20 +54,18 @@ filesAndFolders.forEach(item => {
     }
     // get created file name
     const getFileName = fs.readdirSync('./dist')[0]
-    console.log('getFileName', fs.readdirSync(path.join(rootDir, 'dist')));
 
     // Parse command line arguments
     const argv = process.argv.slice(2)
     const getNameParam = argv.find(el => el.includes('-name='))
-    console.log('getNameParam',getNameParam);
+    console.log('getNameParam', getNameParam)
     const customName = getNameParam ? getNameParam.split('=')[1] : ''
-    console.log('customName',customName);
+    console.log('customName', customName)
 
     // rename file
-    // const [fileName, extension] = getFileName.split('.')
-    // const newName = customName ? `${fileName}-${customName}.${extension}` : getFileName
-    const newName =  getFileName
-    // fs.renameSync(`./dist/${getFileName}`, `./dist/${newName}`)
+    const [fileName, extension] = getFileName.split('.')
+    const newName = customName ? `${fileName}-${customName}.${extension}` : getFileName
+    fs.renameSync(`./dist/${getFileName}`, `./dist/${newName}`)
 
     // get renamed fileName
     const getRenamedFileName = fs.readdirSync('./dist')[0]
@@ -97,7 +76,7 @@ filesAndFolders.forEach(item => {
     const form = await buildFormData(apiData.fields, getRenamedFileName)
     const { status: s3Status } = await uploadFile(apiData.url, form)
 
-    fs.unlinkSync(`./dist/${getRenamedFileName}`);
+    fs.unlinkSync(`./dist/${getRenamedFileName}`)
     console.log(`S3 upload complete: status code ${s3Status}`)
   } catch (err) {
     if (err.isAxiosError && err.response.status) {
