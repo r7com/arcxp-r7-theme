@@ -81,7 +81,7 @@ export const FullscreenToolbar = ({ className, elements, currentSlide, urlForSha
           {elements[currentSlide]?.headlines?.basic}
         </Paragraph>
         <Paragraph as="p" fontSize="little">
-          {elements[currentSlide]?.credits?.by.length
+          {elements[currentSlide]?.credits?.by?.length
             ? elements[currentSlide]?.credits?.by[0].name
             : ''}
         </Paragraph>

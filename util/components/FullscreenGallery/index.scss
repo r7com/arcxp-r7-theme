@@ -143,7 +143,7 @@
     }
   }
 
-  &-slider {
+  &-slider.swiper {
     margin: 0 14%;
     opacity: 0;
     z-index: 0;
@@ -180,7 +180,7 @@
     }
   }
 
-  &-slide {
+  &-slide.swiper-slide {
     height: 620px;
     display: flex;
     justify-content: center;
