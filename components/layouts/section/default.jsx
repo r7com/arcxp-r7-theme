@@ -9,8 +9,7 @@ import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 
 const SectionLayout = ({ children }) => {
-  const [headerFixed, header, space, main, footer] = React.Children.toArray(children)
-  const LAYOUT_CLASS_NAME = 'b-article-layout'
+  const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
   return (
@@ -18,8 +17,8 @@ const SectionLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
+        <Container>{headerAd && headerAd}</Container>
       </Header>
-      <div className={`${LAYOUT_CLASS_NAME}__margin-space`}>{space}</div>
       {main && (
         <main>
           <Container>
@@ -37,7 +36,7 @@ SectionLayout.propTypes = {
   children: PropTypes.array,
 }
 
-SectionLayout.sections = ['header-fixed', 'header', 'space', 'main', 'footer']
+SectionLayout.sections = ['header-fixed', 'header', 'header-ad', 'main', 'footer']
 
 SectionLayout.label = 'Section Layout – R7 Layout'
 
