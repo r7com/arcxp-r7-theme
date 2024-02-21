@@ -10,7 +10,7 @@ import { Container, Article } from '@r7/ui-layout'
 const ArticleLayout = ({ children }) => {
   if (children && children.length === 0) return null
 
-  const [headerFixed, header, main, aside, footer] = React.Children.toArray(children)
+  const [headerFixed, header, headerAd, main, aside, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
 
@@ -19,6 +19,7 @@ const ArticleLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
+        <Container>{headerAd && headerAd}</Container>
       </Header>
       <Container>
         <Article.Grid>
@@ -36,7 +37,7 @@ ArticleLayout.propTypes = {
   children: PropTypes.array,
 }
 
-ArticleLayout.sections = ['header-fixed', 'header', 'main', 'aside', 'footer']
+ArticleLayout.sections = ['header-fixed', 'header', 'header-ad', 'main', 'aside', 'footer']
 
 ArticleLayout.label = 'Article Layout – R7 Layout'
 
