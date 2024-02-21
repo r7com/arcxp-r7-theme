@@ -12,6 +12,7 @@ const SectionLayout = ({ children }) => {
   const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
+
   return (
     <>
       <Header>
