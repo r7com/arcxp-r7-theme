@@ -12,7 +12,7 @@ export const SidebarMenu = ({ menuList, alt, logoUrl, link }) => {
         <Sidebar.Category title={'Conheça também'}>
           <Sidebar.List label={'list'}>
             <Sidebar.Item>
-              <Header.PlayPlusLogo alt={alt} logoUrl={logoUrl} link={link} />
+              <Header.PlayPlusLogo alt={alt} logoUrl={logoUrl} link={link} color="colorful" />
             </Sidebar.Item>
           </Sidebar.List>
         </Sidebar.Category>

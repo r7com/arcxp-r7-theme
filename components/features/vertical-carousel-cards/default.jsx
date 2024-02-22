@@ -96,7 +96,7 @@ const VerticalCarouselCards = withCard(
       </VerticalCarousel>
     )
   },
-  { defaultFrom: '0', defaultSize: '10' },
+  { defaultSize: 10 },
 )
 
 VerticalCarouselCards.label = 'Chamadas carousel vertical - R7 Block'

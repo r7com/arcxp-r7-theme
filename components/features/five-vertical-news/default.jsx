@@ -62,7 +62,7 @@ const FiveVerticalNewsBlock = withCard(
       </FiveVerticalNews>
     )
   },
-  { defaultFrom: '0', defaultSize: '5', length: 5 },
+  { defaultSize: 5, length: 5 },
 )
 
 FiveVerticalNewsBlock.label = 'Cinco Chamadas Vertical - R7 Block'

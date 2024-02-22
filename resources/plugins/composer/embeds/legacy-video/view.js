@@ -7,24 +7,28 @@ window.onload = function () {
   )
   setTimeout(function () {
     sendMessage('ready', {
-      height: document.documentElement.scrollHeight,
+      height: '425px',
     })
   }, Number.parseInt(parameters.wait))
+
   const data = JSON.parse(decodeURIComponent(parameters.p))
   render(data.config)
 }
 
-function render({ textList, textTitle }) {
-  const list = document.getElementById('list')
-  const title = document.getElementById('title')
-
-  title.textContent = textTitle
-  textList.forEach(text => {
-    const entry = document.createElement('li')
-    entry.textContent = text
-    entry.classList.add('list__item')
-    list.appendChild(entry)
+function render({ urlHls, urlMp4, poster, metadata }) {
+  const videosSrcHls = document.querySelectorAll('[data-legacy-video-src-hls]')
+  videosSrcHls.forEach(videoSource => {
+    videoSource.src = urlHls
   })
+
+  const videosSrcMp4 = document.querySelector('[data-legacy-video-src-mp4]')
+  videosSrcMp4.src = urlMp4
+
+  const videoElement = document.getElementById('r7-video')
+  videoElement.poster = poster
+  videoElement.dataset.metadata = JSON.stringify(metadata)
+
+  videoElement.load()
 }
 
 function parseQueryString() {
