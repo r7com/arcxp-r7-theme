@@ -8,11 +8,12 @@ import { ProportionalPhoto } from '@r7/ui-card'
 import { withCard, getCardPropTypes, CardHat, CardLabel } from '../../../util/card'
 import { Bullet } from '@r7/ui-base-components'
 
-const PrimaryCallPhotoTextSecondBullet = withCard(
+const PrimaryCallPhotoTextSecondText = withCard(
   props => {
     const { collection, siteProperties, fusionContext } = props.cardProps
     const { arcSite } = fusionContext
     const { fallbackImage, fallbackImageAlt } = siteProperties
+    const { layout } = props.customFields
 
     return (
       <ProportionalPhoto>
@@ -42,7 +43,6 @@ const PrimaryCallPhotoTextSecondBullet = withCard(
             <CardLabel {...collection[0]} />
           </a>
         </ProportionalPhoto.Figure>
-
         <ProportionalPhoto.TextWrapper marginBottom>
           <CardHat {...collection[0]} />
 
@@ -53,9 +53,15 @@ const PrimaryCallPhotoTextSecondBullet = withCard(
 
         <ProportionalPhoto.TextWrapper>
           <CardHat {...collection[1]} />
-          <ProportionalPhoto.Title>
-            <Bullet url={collection[1].canonical_url}>{collection[1].headlines.basic}</Bullet>
-          </ProportionalPhoto.Title>
+          {layout === 'bullet' ? (
+            <ProportionalPhoto.Title>
+              <Bullet url={collection[1].canonical_url}>{collection[1].headlines.basic}</Bullet>
+            </ProportionalPhoto.Title>
+          ) : (
+            <a href={collection[1].canonical_url} title={collection[1].headlines?.basic}>
+              <ProportionalPhoto.Title>{collection[1].headlines?.basic}</ProportionalPhoto.Title>
+            </a>
+          )}
         </ProportionalPhoto.TextWrapper>
       </ProportionalPhoto>
     )
@@ -63,13 +69,21 @@ const PrimaryCallPhotoTextSecondBullet = withCard(
   { defaultFrom: '0', defaultSize: '2', length: 2 },
 )
 
-PrimaryCallPhotoTextSecondBullet.label =
-  'Chamada com foto e texto segunda chamada com bullet - R7 Block'
+PrimaryCallPhotoTextSecondText.label =
+  'Chamada com foto e texto segunda chamada com texto ou bullet - R7 Block'
 
-PrimaryCallPhotoTextSecondBullet.propTypes = {
+PrimaryCallPhotoTextSecondText.propTypes = {
   customFields: PropTypes.shape({
     ...getCardPropTypes(1),
+    layout: PropTypes.oneOf(['bullet', 'texto']).tag({
+      label: 'Layout',
+      labels: {
+        bullet: 'Bullet',
+        texto: 'Texto',
+      },
+      defaultValue: 'texto',
+    }),
   }),
 }
 
-export default PrimaryCallPhotoTextSecondBullet
+export default PrimaryCallPhotoTextSecondText
