@@ -4,6 +4,7 @@ import { useFusionContext } from 'fusion:context'
 import { Stack } from '@wpmedia/arc-themes-components'
 import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
+import { SvgSprites } from '@r7/ui-base-components'
 
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
@@ -246,6 +247,7 @@ const SampleOutputType = ({
           {children}
         </Stack>
         <Fusion />
+        <SvgSprites />
       </body>
     </html>
   )
