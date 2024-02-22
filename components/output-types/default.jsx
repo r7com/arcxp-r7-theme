@@ -7,6 +7,8 @@ import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
 import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
 import CustomSchemaOrg from '../../util/components/schemaOrg'
+import { SvgSprites } from '@r7/ui-base-components'
+
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
     return null
@@ -370,6 +372,7 @@ const SampleOutputType = ({
           {children}
         </Stack>
         <Fusion />
+        <SvgSprites />
       </body>
     </html>
   )
