@@ -113,6 +113,10 @@ const SampleOutputType = ({
     instagramPage,
     tiktokPixelId,
   } = getProperties(arcSite)
+  const path = globalContent?.taxonomy?.primary_section?.path
+  const urlFull = `${websiteDomain?.replace(/^https:\/\//i, '')}${path}`
+  const isHomepage = metaValue('page-type') === 'homepage'
+  const pageDashboard = isHomepage ? 'home' : urlFull
 
   if (globalContent?.legacyRedirect) {
     return <div dangerouslySetInnerHTML={{ __html: globalContent.html }}></div>
@@ -324,11 +328,11 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
-        {
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: `(function(i) {
+
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `(function(i) {
                 var ts = document.createElement('script');
                 ts.type = 'text/javascript';
                 ts.async = true;
@@ -336,9 +340,28 @@ const SampleOutputType = ({
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(ts, s);
                 })('TT-9964-3/CT-23');`,
+          }}
+        />
+
+        {['homepage', 'section'].includes(metaValue('page-type')) && (
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+                  window._newsroom = window._newsroom || [];
+                  window._newsroom.push({pageTemplate: 'home'});
+                  window._newsroom.push({pageDashboard: '${pageDashboard}'});
+                  window._newsroom.push('auditClicks');
+                  window._newsroom.push('trackPage');
+                  !function (e, f, u) {
+                      e.async = 1;
+                      e.src = u;
+                      f.parentNode.insertBefore(e, f);
+                  }(document.createElement('script'),
+                  document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/r7-r7com/newsroom.js');`,
             }}
           />
-        }
+        )}
       </head>
       <body>
         {comscoreNoScript(comscoreID)}

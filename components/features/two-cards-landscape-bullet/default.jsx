@@ -32,9 +32,11 @@ const TwoCardsLandscapeBullet = withCard(
                         smart: true,
                       }}
                       style={{ width: 160, height: 90, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={160}
