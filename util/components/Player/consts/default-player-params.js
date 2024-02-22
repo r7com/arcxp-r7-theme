@@ -1,5 +1,5 @@
 export const DEFAULT_PARAMS = {
-  p: 'true',
+  p: 'false',
   autoPlay: 'false',
   logo: 'true',
   playlistId: 'false',
