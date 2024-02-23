@@ -22,6 +22,7 @@ const ProportionalPhotoBlock = withCard(
                 {...getResizeParamsFromANSImage(collection[0].promo_items?.basic, arcSite, 348, [
                   348,
                 ])}
+                data-tb-thumbnail
                 alt={collection[0].promo_items?.basic.alt_text}
                 sizes={[{ isDefault: true, sourceSizeValue: '348px' }]}
                 height={199}
@@ -33,6 +34,7 @@ const ProportionalPhotoBlock = withCard(
               />
             ) : (
               <img
+                data-tb-thumbnail
                 src={fallbackImage}
                 alt={fallbackImageAlt}
                 style={{ objectFit: 'contain', width: '100%', height: '100%' }}
