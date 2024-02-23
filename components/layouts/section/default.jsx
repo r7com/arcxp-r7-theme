@@ -1,3 +1,4 @@
+import '../article/default.scss'
 import '@r7/ui-header-delivery/style.css'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -8,14 +9,16 @@ import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 
 const SectionLayout = ({ children }) => {
-  const [headerFixed, header, main, footer] = React.Children.toArray(children)
+  const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
+
   return (
     <>
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
+        <Container>{headerAd && headerAd}</Container>
       </Header>
       {main && (
         <main>
@@ -34,7 +37,7 @@ SectionLayout.propTypes = {
   children: PropTypes.array,
 }
 
-SectionLayout.sections = ['header-fixed', 'header', 'main', 'footer']
+SectionLayout.sections = ['header-fixed', 'header', 'header-ad', 'main', 'footer']
 
 SectionLayout.label = 'Section Layout – R7 Layout'
 

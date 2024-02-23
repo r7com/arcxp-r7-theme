@@ -11,11 +11,11 @@ export function getSectionInfo(globalContent, arcSite) {
     display: labelDisplay,
     url: labelUrl,
     text: labelText,
-  } = (globalContent.label && globalContent.label.basic) || {}
+  } = (globalContent?.label && globalContent?.label.basic) || {}
   const shouldUseLabel = !!labelDisplay
 
   const { _id: sectionUrl, name: sectionText } =
-    (globalContent.websites &&
+    (globalContent?.websites &&
       globalContent.websites[arcSite] &&
       globalContent.websites[arcSite].website_section) ||
     {}

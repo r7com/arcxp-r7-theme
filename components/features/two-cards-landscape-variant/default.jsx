@@ -30,9 +30,11 @@ const TwoCardsLandscapeVariant = withCard(
                         smart: true,
                       }}
                       style={{ objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       style={{ objectFit: 'cover' }}

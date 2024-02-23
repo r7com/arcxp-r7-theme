@@ -31,11 +31,13 @@ const GuerraBlock = withCard(
                   smart: true,
                 }}
                 style={{ width: '100%', height: 'auto' }}
+                data-tb-thumbnail
               />
             ) : (
               <img
                 src={fallbackImage}
                 alt={fallbackImageAlt}
+                data-tb-thumbnail
                 style={{ objectFit: 'contain', width: '100%', height: 628 }}
               />
             )}
