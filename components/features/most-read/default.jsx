@@ -72,7 +72,7 @@ const MostReadBlock = withCard(
 )
 
 MostReadBlock.propTypes = {
-  customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
+  customFields: PropTypes.shape({ ...getCardPropTypes(1) }),
 }
 
 MostReadBlock.label = 'Mais Lidas - R7 Block'

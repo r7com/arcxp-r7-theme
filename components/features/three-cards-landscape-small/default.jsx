@@ -31,9 +31,11 @@ const ThreeCardsLandscapeSmall = withCard(
                         smart: true,
                       }}
                       style={{ width: 113, height: 65, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={113}

@@ -31,9 +31,11 @@ const TwoCardsSquarePhotoBlock = withCard(
                         smart: true,
                       }}
                       style={{ width: 113, height: 113, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={113}
