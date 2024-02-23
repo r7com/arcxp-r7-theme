@@ -61,6 +61,9 @@
     "@r7/ui-section-heading": "^0.3.6",
     "@r7/ui-section-menu": "^0.2.3",
     "arcads": "^6.2.0",
+    "axios": "^1.6.5",
+    "dotenv": "^16.4.0",
+    "form-data": "^4.0.0",
     "swiper": "^9.4.1"
   }
 }
