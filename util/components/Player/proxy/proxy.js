@@ -1,5 +1,7 @@
+import { AGE_RATING, AGE_RATING_DESCRIPTIONS } from '../consts/age-rating'
 import { DEFAULT_PARAMS } from '../consts/default-player-params'
 import { VIDEO_DATA } from '../mocks/VIDEO_DATA'
+import { useContent } from 'fusion:content'
 
 const isEmbedData = data => Object.prototype.hasOwnProperty.call(data, 'config')
 
@@ -14,7 +16,7 @@ const getBestQualityStreamHlsGlobalContent = streams => {
     return currentStream.bitrate > maxBitrateStream.bitrate ? currentStream : maxBitrateStream
   }, filteredHlsStreams[0])
 
-  return bestQualityStream.url
+  return bestQualityStream?.url
 }
 
 const getStreamMp4GlobalContent = streams => {
@@ -44,7 +46,43 @@ const getCanonicalUrlGlobalContent = data => {
   return `//${host}${data.canonical_url}`
 }
 
+const getAgeRatingFlag = text => {
+  if (!text) {
+    return ''
+  }
+
+  const ageRating = AGE_RATING.find(item => item.text === text)
+
+  return ageRating ? ageRating.flag : ''
+}
+
+const getAgeRatingDescription = data => {
+  return data
+    ? Object.keys(data)
+        .filter(
+          key =>
+            data[key] === 'true' &&
+            Object.prototype.hasOwnProperty.call(AGE_RATING_DESCRIPTIONS, key),
+        )
+        .map(key => AGE_RATING_DESCRIPTIONS[key])
+        .join(', ')
+    : ''
+}
+
+const getSectionContent = (sectionId, siteId) => {
+  const sectionContent = useContent({
+    source: 'custom-site-service-hierarchy',
+    query: { sectionId, siteId },
+  })
+
+  return sectionContent
+}
+
 const getMetadataGlobalContent = data => {
+  const sectionId = data.taxonomy?.primary_section?._id
+  const siteId = data.canonical_website
+  const sectionContent = getSectionContent(sectionId, siteId)
+
   const metadata = {
     title: data.headlines?.basic,
     sectionName: data.taxonomy?.primary_section?.name ?? 'R7',
@@ -56,8 +94,8 @@ const getMetadataGlobalContent = data => {
     createdDate: data.created_date,
     mainSectionUrl: getCanonicalUrlGlobalContent(data),
     sectionPath: getSectionPathGlobalContent(data),
-    ageRating: '',
-    ageRatingDescription: '',
+    ageRating: getAgeRatingFlag(sectionContent?.age_rating?.classificacao_etaria),
+    ageRatingDescription: getAgeRatingDescription(sectionContent?.age_rating_description),
     duration: data.duration,
   }
 
