@@ -12,13 +12,15 @@ const SectionLayout = ({ children }) => {
   const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
-
+  const LAYOUT_CLASS_NAME = 'b-article-layout'
   return (
     <>
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
-        <Container>{headerAd && headerAd}</Container>
+        <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
+          <Container>{headerAd && headerAd}</Container>
+        </div>
       </Header>
       {main && (
         <main>

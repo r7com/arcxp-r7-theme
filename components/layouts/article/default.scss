@@ -24,6 +24,10 @@
       max-width: 299px;
     }
 
+  &__header-ad {
+    margin: 24px 0;
+  }
+
     @media screen and (max-width: calc(48rem + 46px)) {
       &-interior-item {
         width: 100%;
