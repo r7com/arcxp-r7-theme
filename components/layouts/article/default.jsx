@@ -20,10 +20,10 @@ const ArticleLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
-        <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
-          <Container>{headerAd && headerAd}</Container>
-        </div>
       </Header>
+      <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
+        <Container>{headerAd && headerAd}</Container>
+      </div>
       <Container>
         <Article.Grid>
           {main && <Article.Main>{main}</Article.Main>}

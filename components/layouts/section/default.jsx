@@ -18,10 +18,10 @@ const SectionLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
-        <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
-          <Container>{headerAd && headerAd}</Container>
-        </div>
       </Header>
+      <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
+        <Container>{headerAd && headerAd}</Container>
+      </div>
       {main && (
         <main>
           <Container>
