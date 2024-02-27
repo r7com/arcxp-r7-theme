@@ -11,6 +11,10 @@
     width: 100%;
     box-shadow: 0px 0px 0 1px #cecece;
     border-radius: 4px;
+
+    @media screen and (max-width: 640px) {
+      width: calc(100vw - 2rem);
+    }
   }
 
   &__slider {
@@ -105,7 +109,7 @@
       }
 
       @media screen and (max-width: 32rem) {
-        top: calc(100% + 65px);
+        top: calc(100% + 100px);
         margin-top: 10px;
 
         p {
@@ -147,6 +151,9 @@
     background-color: #000;
     display: flex;
     justify-content: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     @media screen and (max-width: 32rem) {
       height: 200px;

@@ -23,6 +23,18 @@
     align-items: center;
   }
 
+  .c-media-item__title {
+    font-size: calc(var(--c-media-item-title-font-size) * var(--font-size));
+  }
+
+  .c-media-item__caption {
+    font-size: calc(var(--c-media-item-caption-font-size) * var(--font-size));
+  }
+
+  .c-media-item__credit {
+    font-size: calc(var(--c-media-item-credit-font-size) * var(--font-size));
+  }
+
   .dark & {
     .c-media-item__fig-caption {
       background-color: var(--contrast-primary-color);
