@@ -60,6 +60,7 @@
     "@r7/ui-section-foot": "^0.2.4",
     "@r7/ui-section-heading": "^0.3.6",
     "@r7/ui-section-menu": "^0.2.3",
+    "@r7/ui-tv-guide": "^0.1.1",
     "arcads": "^6.2.0",
     "swiper": "^9.4.1"
   }
