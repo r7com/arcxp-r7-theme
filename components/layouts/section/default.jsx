@@ -1,4 +1,4 @@
-import '../article/default.scss'
+import './default.scss'
 import '@r7/ui-header-delivery/style.css'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -12,16 +12,18 @@ const SectionLayout = ({ children }) => {
   const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
-  const LAYOUT_CLASS_NAME = 'b-article-layout'
+  const LAYOUT_CLASS_NAME = 'b-section-layout'
   return (
     <>
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
       </Header>
-      <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>
-        <Container>{headerAd && headerAd}</Container>
-      </div>
+      {headerAd && (
+        <Container>
+          <div className={`${LAYOUT_CLASS_NAME}__header-ad`}>{headerAd && headerAd}</div>
+        </Container>
+      )}
       {main && (
         <main>
           <Container>
