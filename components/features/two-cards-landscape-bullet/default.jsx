@@ -71,7 +71,7 @@ const TwoCardsLandscapeBullet = withCard(
   { defaultSize: 3, length: 3 },
 )
 
-TwoCardsLandscapeBullet.label = 'Duas chamadas retangular com bullet - R7 Block'
+TwoCardsLandscapeBullet.label = 'Duas Fotos Pequenas com Bullet - R7 Block'
 
 TwoCardsLandscapeBullet.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),

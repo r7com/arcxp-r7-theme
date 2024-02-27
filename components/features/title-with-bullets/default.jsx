@@ -31,7 +31,7 @@ const TitleWithBulletsBlock = withCard(
   { defaultSize: 5, length: 5 },
 )
 
-TitleWithBulletsBlock.label = 'Título com bullets - R7 Block'
+TitleWithBulletsBlock.label = 'Manchete - R7 Block'
 
 TitleWithBulletsBlock.propTypes = {
   customFields: PropTypes.shape({

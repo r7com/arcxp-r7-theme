@@ -59,7 +59,7 @@ const ProportionalPhotoBlock = withCard(
   { defaultSize: 1, length: 1 },
 )
 
-ProportionalPhotoBlock.label = 'Chamada foto proporcional - R7 Block'
+ProportionalPhotoBlock.label = 'Foto Média - R7 Block'
 
 ProportionalPhotoBlock.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(1) }),
