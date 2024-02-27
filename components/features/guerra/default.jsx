@@ -31,11 +31,13 @@ const GuerraBlock = withCard(
                   smart: true,
                 }}
                 style={{ width: '100%', height: 'auto' }}
+                data-tb-thumbnail
               />
             ) : (
               <img
                 src={fallbackImage}
                 alt={fallbackImageAlt}
+                data-tb-thumbnail
                 style={{ objectFit: 'contain', width: '100%', height: 628 }}
               />
             )}
@@ -63,7 +65,7 @@ const GuerraBlock = withCard(
       </Guerra>
     )
   },
-  { defaultFrom: '0', defaultSize: '9', length: 9 },
+  { defaultSize: 9, length: 9 },
 )
 
 GuerraBlock.label = 'Guerra - R7 Block'

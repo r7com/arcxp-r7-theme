@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 import Consumer from 'fusion:consumer'
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'

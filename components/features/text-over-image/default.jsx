@@ -64,6 +64,7 @@ const TextOverImageBlock = withCard(
                   LAYOUT_IMAGE_SIZES[layout].width,
                   [LAYOUT_IMAGE_SIZES[layout].responsiveImages],
                 )}
+                data-tb-thumbnail
                 alt={collection[0].promo_items?.basic.alt_text}
                 sizes={LAYOUT_IMAGE_SIZES[layout].sizes}
                 height={LAYOUT_IMAGE_SIZES[layout].height}
@@ -75,6 +76,7 @@ const TextOverImageBlock = withCard(
               />
             ) : (
               <img
+                data-tb-thumbnail
                 src={fallbackImage}
                 alt={fallbackImageAlt}
                 style={{ objectFit: 'contain', height: 330 }}
@@ -96,7 +98,7 @@ const TextOverImageBlock = withCard(
       </TextOverPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '1', length: 1 },
+  { defaultSize: 1, length: 1 },
 )
 
 TextOverImageBlock.label = 'Texto sobre imagem - R7 Block'

@@ -142,7 +142,7 @@
     transition: all 0.2s ease-in-out;
   }
 
-  &__slide {
+  &__slide.swiper-slide {
     height: 420px;
     background-color: #000;
     display: flex;
@@ -168,7 +168,7 @@
   }
   &__thumbs {
     &-slide {
-      height: 93px;
+      height: 93px !important;
       cursor: pointer;
 
       @media screen and (max-width: 32rem) {

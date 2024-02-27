@@ -32,9 +32,11 @@ const TwoCardsLandscapeBullet = withCard(
                         smart: true,
                       }}
                       style={{ width: 160, height: 90, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={160}
@@ -66,7 +68,7 @@ const TwoCardsLandscapeBullet = withCard(
       </LeftPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '3', length: 3 },
+  { defaultSize: 3, length: 3 },
 )
 
 TwoCardsLandscapeBullet.label = 'Duas chamadas retangular com bullet - R7 Block'

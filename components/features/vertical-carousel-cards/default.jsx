@@ -56,6 +56,7 @@ const VerticalCarouselCards = withCard(
                         {...getResizeParamsFromANSImage(item.promo_items?.basic, arcSite, 183, [
                           183,
                         ])}
+                        data-tb-thumbnail
                         alt={item.promo_items?.basic.alt_text}
                         sizes={[{ isDefault: true, sourceSizeValue: '183px' }]}
                         height={326}
@@ -65,7 +66,13 @@ const VerticalCarouselCards = withCard(
                         }}
                       />
                     ) : (
-                      <img src={fallbackImage} alt={fallbackImageAlt} width={183} height={326} />
+                      <img
+                        data-tb-thumbnail
+                        src={fallbackImage}
+                        alt={fallbackImageAlt}
+                        width={183}
+                        height={326}
+                      />
                     )}
                   </VerticalCarousel.Figure>
 
@@ -96,7 +103,7 @@ const VerticalCarouselCards = withCard(
       </VerticalCarousel>
     )
   },
-  { defaultFrom: '0', defaultSize: '10' },
+  { defaultSize: 10 },
 )
 
 VerticalCarouselCards.label = 'Chamadas carousel vertical - R7 Block'

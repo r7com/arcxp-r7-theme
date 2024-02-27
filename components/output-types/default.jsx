@@ -7,6 +7,8 @@ import blocks from '~/blocks.json'
 import MetaData from '../../util/components/metaData/CustomMetaData'
 import { GOOGLE_RECAPTCHA_APIKEY } from 'fusion:environment'
 import CustomSchemaOrg from '../../util/components/schemaOrg'
+import { SvgSprites } from '@r7/ui-base-components'
+
 const querylyCode = (querylyId, querylyOrg, pageType) => {
   if (!querylyId) {
     return null
@@ -111,7 +113,16 @@ const SampleOutputType = ({
     primaryColor,
     facebookPage,
     instagramPage,
+    tiktokPixelId,
   } = getProperties(arcSite)
+  const path = globalContent?.taxonomy?.primary_section?.path
+  const urlFull = `${websiteDomain?.replace(/^https:\/\//i, '')}${path}`
+  const isHomepage = metaValue('page-type') === 'homepage'
+  const pageDashboard = isHomepage ? 'home' : urlFull
+
+  if (globalContent?.legacyRedirect) {
+    return <div dangerouslySetInnerHTML={{ __html: globalContent.html }}></div>
+  }
 
   const chartbeatInline = `
     (function() {
@@ -145,7 +156,55 @@ const SampleOutputType = ({
       queryly.init("${querylyId}", document.querySelectorAll("#fusion-app"));
     });
   `
-
+  const tiktokPixelInline = `
+    !(function (w, d, t) {
+      w.TiktokAnalyticsObject = t
+      var ttq = (w[t] = w[t] || [])
+      ;(ttq.methods = [
+        'page',
+        'track',
+        'identify',
+        'instances',
+        'debug',
+        'on',
+        'off',
+        'once',
+        'ready',
+        'alias',
+        'group',
+        'enableCookie',
+        'disableCookie',
+      ]),
+        (ttq.setAndDefer = function (t, e) {
+          t[e] = function () {
+            t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+          }
+        })
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i])
+      ;(ttq.instance = function (t) {
+        for (var e = ttq._i[t] || [], n = 0; n < ttq.methods.length; n++)
+          ttq.setAndDefer(e, ttq.methods[n])
+        return e
+      }),
+        (ttq.load = function (e, n) {
+          var i = 'https://analytics.tiktok.com/i18n/pixel/events.js'
+          ;(ttq._i = ttq._i || {}),
+            (ttq._i[e] = []),
+            (ttq._i[e]._u = i),
+            (ttq._t = ttq._t || {}),
+            (ttq._t[e] = +new Date()),
+            (ttq._o = ttq._o || {}),
+            (ttq._o[e] = n || {})
+          var o = document.createElement('script')
+          ;(o.type = 'text/javascript'), (o.async = !0), (o.src = i + '?sdkid=' + e + '&lib=' + t)
+          var a = document.getElementsByTagName('script')[0]
+          a.parentNode.insertBefore(o, a)
+        })
+      ttq.load('${tiktokPixelId}')
+    
+      ttq.page()
+    })(window, document, 'ttq')
+  `
   const inlineScripts = [
     ...new Set([
       ...dangerouslyInjectJS,
@@ -154,6 +213,7 @@ const SampleOutputType = ({
       ...(gaID ? [gaScriptInline] : []),
       ...(gtmID ? [gtmScriptInline] : []),
       ...(querylyId ? [querylyInline] : []),
+      ...(tiktokPixelId ? [tiktokPixelInline] : []),
       'window.isIE = !!window.MSInputMethodContext && !!document.documentMode;', // Not sure window.isIE is even used.
     ]),
   ].join(';')
@@ -270,11 +330,11 @@ const SampleOutputType = ({
           <script key="retailScript" defer data-integration="arcp" src={api?.retail?.script} />
         ) : null}
         {querylyCode(querylyId, querylyOrg, metaValue('page-type'))}
-        {
-          <script
-            type="text/javascript"
-            dangerouslySetInnerHTML={{
-              __html: `(function(i) {
+
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `(function(i) {
                 var ts = document.createElement('script');
                 ts.type = 'text/javascript';
                 ts.async = true;
@@ -282,9 +342,28 @@ const SampleOutputType = ({
                 var s = document.getElementsByTagName('script')[0];
                 s.parentNode.insertBefore(ts, s);
                 })('TT-9964-3/CT-23');`,
+          }}
+        />
+
+        {['homepage', 'section'].includes(metaValue('page-type')) && (
+          <script
+            type="text/javascript"
+            dangerouslySetInnerHTML={{
+              __html: `
+                  window._newsroom = window._newsroom || [];
+                  window._newsroom.push({pageTemplate: 'home'});
+                  window._newsroom.push({pageDashboard: '${pageDashboard}'});
+                  window._newsroom.push('auditClicks');
+                  window._newsroom.push('trackPage');
+                  !function (e, f, u) {
+                      e.async = 1;
+                      e.src = u;
+                      f.parentNode.insertBefore(e, f);
+                  }(document.createElement('script'),
+                  document.getElementsByTagName('script')[0], '//c2.taboola.com/nr/r7-r7com/newsroom.js');`,
             }}
           />
-        }
+        )}
       </head>
       <body>
         {comscoreNoScript(comscoreID)}
@@ -293,6 +372,7 @@ const SampleOutputType = ({
           {children}
         </Stack>
         <Fusion />
+        <SvgSprites />
       </body>
     </html>
   )

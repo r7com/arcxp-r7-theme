@@ -31,9 +31,11 @@ const ThreeCardsLandscapeSmall = withCard(
                         smart: true,
                       }}
                       style={{ width: 113, height: 65, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={113}
@@ -61,7 +63,7 @@ const ThreeCardsLandscapeSmall = withCard(
       </LeftPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '3', length: 3 },
+  { defaultSize: 3, length: 3 },
 )
 
 ThreeCardsLandscapeSmall.label = 'Três chamadas retangular - R7 Block'

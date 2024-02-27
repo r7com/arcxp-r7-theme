@@ -15,11 +15,15 @@
   "COUPON_API": "https://coupons-api-qa.r7.com/v1/shops?categories=",
   "TV_GUIDE_API": "https://cms-media-api.r7.com/tv_guide/v1",
   "COUPON_TOKEN": "011eb122e54197ba004cc5447d9eda28f6f6264da66d371855b2179ac94096a7",
+  "MIGRATION_DATE": "01032024",
+  "API_REDIRECT_KEY": "1",
+  "HOST_LEGACY_REDIRECT": "entretenimento.r7.com",
   "siteStyles": {
     "r7": "r7",
     "recordtv": "recordtv",
     "entretenimento": "entretenimento",
     "esportes": "esportes",
     "noticias": "noticias"
-  }
+  },
+  "R7_PLAYER_ASSET": "https://player-qa.r7.com/index.js"
 }

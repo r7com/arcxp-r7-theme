@@ -31,9 +31,11 @@ const TwoCardsSquarePhotoBlock = withCard(
                         smart: true,
                       }}
                       style={{ width: 113, height: 113, objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       width={113}
@@ -61,8 +63,7 @@ const TwoCardsSquarePhotoBlock = withCard(
       </LeftPhoto>
     )
   },
-  // This might be unnecessary, but without the `length` a `slice` would be necessary
-  { defaultFrom: '0', defaultSize: '2', length: 2 },
+  { defaultSize: 2, length: 2 },
 )
 
 TwoCardsSquarePhotoBlock.label = 'Duas chamadas quadradas - R7 Block'

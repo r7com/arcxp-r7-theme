@@ -30,9 +30,11 @@ const TwoCardsLandscapeVariant = withCard(
                         smart: true,
                       }}
                       style={{ objectFit: 'cover' }}
+                      data-tb-thumbnail
                     />
                   ) : (
                     <img
+                      data-tb-thumbnail
                       src={fallbackImage}
                       alt={fallbackImageAlt}
                       style={{ objectFit: 'cover' }}
@@ -58,7 +60,7 @@ const TwoCardsLandscapeVariant = withCard(
       </LeftPhoto>
     )
   },
-  { defaultFrom: '0', defaultSize: '2', length: 2 },
+  { defaultSize: 2, length: 2 },
 )
 
 TwoCardsLandscapeVariant.label = 'Duas chamadas retangulares grande - R7 Block'
