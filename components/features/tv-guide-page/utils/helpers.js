@@ -38,8 +38,11 @@ export function getFormatedDate(day) {
 
   const formatedEndMonth = end.getMonth() + 1 < 10 ? `0${end.getMonth() + 1}` : end.getMonth() + 1
 
-  const startDate = `${start.getFullYear()}-${formatedStartMonth}-${start.getDate()}T05:00:00-03:00`
-  const endDate = `${end.getFullYear()}-${formatedEndMonth}-${end.getDate()}T04:00:00-03:00`
+  const formattedStartDay = `${start.getDate() < 10 ? '0' : ''}${start.getDate()}`
+  const formattedEndDay = `${end.getDate() < 10 ? '0' : ''}${end.getDate()}`
+
+  const startDate = `${start.getFullYear()}-${formatedStartMonth}-${formattedStartDay}T05:00:00-03:00`
+  const endDate = `${end.getFullYear()}-${formatedEndMonth}-${formattedEndDay}T04:00:00-03:00`
 
   return {
     startDate,
@@ -62,5 +65,5 @@ export function addLiveKey(events) {
 export function getHighlightedPrograms(events) {
   const liveEventIndex = events.findIndex(event => event.live)
 
-  return events.slice(liveEventIndex - 1, liveEventIndex + 2)
+  return events.slice(liveEventIndex, liveEventIndex + 3)
 }
