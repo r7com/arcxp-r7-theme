@@ -6,6 +6,9 @@
   right: 0;
   background: #111;
   z-index: 1000;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   &-wrapper {
     position: relative;
