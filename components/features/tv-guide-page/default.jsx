@@ -31,7 +31,12 @@ function TvGuidePage({ customFields }) {
     new Date().toLocaleString('default', { weekday: 'long' }),
   )
 
-  const [highlightedPrograms, setHighlightedPrograms] = useState([])
+  const [highlightedPrograms, setHighlightedPrograms] = useState(
+    guides.reduce((result, item) => {
+      result[item.id] = []
+      return result
+    }, {}),
+  )
 
   const dates = getFormatedDate(selectedDay)
 
@@ -51,8 +56,11 @@ function TvGuidePage({ customFields }) {
           const filterLive = addLiveKey(data)
           events[selectedDay] = filterLive
 
-          if (highlightedPrograms.length === 0)
-            setHighlightedPrograms(getHighlightedPrograms(filterLive))
+          if (highlightedPrograms[selectedGuide].length === 0)
+            setHighlightedPrograms(prev => ({
+              ...prev,
+              [selectedGuide]: getHighlightedPrograms(filterLive),
+            }))
 
           return events
         }
@@ -61,7 +69,7 @@ function TvGuidePage({ customFields }) {
 
   if (!filteredEvents) return null
 
-  const [liveEvent, ...nextEvents] = highlightedPrograms
+  const [liveEvent, ...nextEvents] = highlightedPrograms[selectedGuide]
 
   return (
     <Container>
