@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useContent } from 'fusion:content'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
-import { Paragraph } from '@r7/ui-base-components'
+import { ConditionalLink, Paragraph } from '@r7/ui-base-components'
 import { Distributor } from '../../../../../util/components/Distributor'
 
 export const SimpleListContent = ({
@@ -66,9 +66,11 @@ export const SimpleListContent = ({
             ) : null}
             <div className={`${className}__item-content`}>
               <Distributor publishDate={publish_date} storyDistributor={distributor} />
-              <Paragraph as="h3" fontSize="md" fontWeight="semibold">
-                <Link href={url}>{headlineText}</Link>
-              </Paragraph>
+              <ConditionalLink href={url} title={headlineText}>
+                <Paragraph as="h3" fontSize="md" fontWeight="semibold">
+                  {headlineText}
+                </Paragraph>
+              </ConditionalLink>
               {!customFields.hideCaption ? (
                 <Paragraph as="p" fontSize="xxxs">
                   {subheadlineText}
