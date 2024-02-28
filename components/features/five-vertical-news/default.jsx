@@ -65,7 +65,7 @@ const FiveVerticalNewsBlock = withCard(
   { defaultSize: 5, length: 5 },
 )
 
-FiveVerticalNewsBlock.label = 'Cinco Chamadas Vertical - R7 Block'
+FiveVerticalNewsBlock.label = 'Tripa Vertical com 5 Destaques - R7 Block'
 
 FiveVerticalNewsBlock.propTypes = {
   customFields: PropTypes.shape({
