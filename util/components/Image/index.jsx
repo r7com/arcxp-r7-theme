@@ -29,6 +29,7 @@ export const Image = ({
     url,
     vanity_credits: vanityCredits,
   } = item
+
   const formattedCredits = formatCredits(vanityCredits || credits)
 
   if (!url) {
