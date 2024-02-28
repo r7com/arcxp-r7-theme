@@ -1,14 +1,11 @@
 import '@r7/ui-card/style.css'
-import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
+import React from 'react'
 import { LeftPhoto } from '@r7/ui-card'
-import { withCard, CardLabel, CardHat } from '../../../util/card'
+import { CardHat } from '../../../util/card'
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
-const ThreeSmallPhotosManual = withCard(props => {
-  const { siteProperties } = props.cardProps
-  const { fallbackImage, fallbackImageAlt } = siteProperties
-
+const ThreeSmallPhotosManual = props => {
   const calls = [1, 2, 3].map(call => {
     return {
       title: props.customFields[`callTitle${call}`],
@@ -25,45 +22,30 @@ const ThreeSmallPhotosManual = withCard(props => {
           <LeftPhoto.Flex>
             <LeftPhoto.Figure format="landscape">
               <a href={item.url} title={item.imageAlt}>
-                {item.imageURL ? (
-                  <img
-                    src={item.imageURL}
-                    alt={item.imageAlt}
-                    width={113}
-                    height={65}
-                    style={{ width: 113, height: 65, objectFit: 'cover' }}
-                    data-tb-thumbnail
-                  />
-                ) : (
-                  <img
-                    data-tb-thumbnail
-                    src={fallbackImage}
-                    alt={fallbackImageAlt}
-                    width={113}
-                    height={65}
-                    style={{ width: 113, height: 65, objectFit: 'contain' }}
-                  />
-                )}
-
-                <CardLabel {...item} />
+                <img
+                  src={item.imageURL}
+                  alt={item.imageAlt}
+                  width={113}
+                  height={65}
+                  style={{ width: 113, height: 65, objectFit: 'cover' }}
+                  data-tb-thumbnail
+                />
               </a>
             </LeftPhoto.Figure>
 
             <LeftPhoto.TextWrapper>
               <CardHat {...item} />
 
-              <LeftPhoto.Title fontSize="small">
-                <a href={item.url} title={item.title}>
-                  {item.title}
-                </a>
-              </LeftPhoto.Title>
+              <a href={item.url} title={item.title}>
+                <LeftPhoto.Title fontSize="small">{item.title}</LeftPhoto.Title>
+              </a>
             </LeftPhoto.TextWrapper>
           </LeftPhoto.Flex>
         </LeftPhoto.Item>
       ))}
     </LeftPhoto>
   )
-})
+}
 
 ThreeSmallPhotosManual.label = 'Três Fotos Pequenas Manual - R7 Block'
 
@@ -73,22 +55,51 @@ ThreeSmallPhotosManual.propTypes = {
       count: 3,
       shapeTemplate(counter) {
         return {
-          [`callTitle${counter}`]: PropTypes.string.call({
+          [`callTitle${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
             label: 'Título',
           }),
-          [`callImageURL${counter}`]: PropTypes.string.call({
+          [`callImageURL${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
             label: 'URL da imagem (https)',
           }),
-          [`callImageAlt${counter}`]: PropTypes.string.call({
+          [`callImageAlt${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
             label: 'Descrição da imagem',
           }),
-          [`callURL${counter}`]: PropTypes.string.call({
+          [`callURL${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
             label: 'Link de destino',
           }),
+          // [`hatType${call}`]: PropTypes.string.tag({
+          //   group: `Chapéu ${counter}`,
+          //   label: `Tipo de chapéu`,
+          // }),
+          // [`hatUrl${call}`]: PropTypes.string.tag({
+          //   group: `Chapéu ${counter}`,
+          //   label: `Link de destino do chapéu`,
+          // }),
+          // [`hatTitle${call}`]: PropTypes.string.tag({
+          //   group: `Chapéu ${counter}`,
+          //   label: `Titulo do chapéu`,
+          // }),
+          // [`hatImage${call}`]: PropTypes.string.tag({
+          //   group: `Chapéu ${counter}`,
+          //   label: `URL da imagem do chapéu (caso exista)`,
+          // }),
+          // [`hatColor${call}`]: PropTypes.string.tag({
+          //   group: `Chapéu ${counter}`,
+          //   label: `Cor do chapéu`,
+          // }),
+          // [`hatColor${call}`]: PropTypes.oneOf(['high', 'low', 'high-bold']).tag({
+          //   label: 'Cor do chapéu',
+          //   labels: {
+          //     high: 'high',
+          //     low: 'low',
+          //     [`high-bold`]: 'high-bold',
+          //   },
+          //   defaultValue: 'high',
+          // }),
         }
       },
     }),
