@@ -5,14 +5,7 @@ import { FullscreenSlider } from './components/Slider'
 import { FullscreenGrid } from './components/Grid'
 import { FullscreenToolbar } from './components/Toolbar'
 
-export const GalleryFullscreen = ({
-  elements,
-  className,
-  isOpen,
-  setFullscreen,
-  initialSlide,
-  urlForShare,
-}) => {
+export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen, initialSlide }) => {
   const views = {
     gallery: 'gallery',
     grid: 'grid',
@@ -60,7 +53,6 @@ export const GalleryFullscreen = ({
             className={className}
             currentSlide={activeSlideIndex}
             elements={elements}
-            urlForShare={urlForShare}
           />
         )}
       </div>

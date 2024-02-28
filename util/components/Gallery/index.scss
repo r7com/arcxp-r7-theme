@@ -21,6 +21,10 @@
     margin-bottom: 5px;
     border-radius: 4px;
 
+    .dark & {
+      filter: grayscale(1);
+    }
+
     .swiper-button-prev,
     .swiper-button-next {
       color: #fff;
@@ -132,6 +136,10 @@
     &-wrapper:hover &-toolbar {
       transition: all 0.2s ease-in-out;
       opacity: 1;
+
+      .dark & {
+        filter: grayscale(1);
+      }
     }
 
     &-wrapper:hover .swiper-button-prev,
@@ -144,6 +152,10 @@
   &__slider-wrapper:hover &__slide img {
     filter: brightness(0.7);
     transition: all 0.2s ease-in-out;
+
+    .dark & {
+      filter: grayscale(1);
+    }
   }
 
   &__slide.swiper-slide {
@@ -190,12 +202,20 @@
         object-position: center;
         transition: all 0.2s ease-in-out;
         filter: brightness(0.45);
+
+        .dark & {
+          filter: grayscale(1);
+        }
       }
 
       &:hover img,
       &.swiper-slide-thumb-active img {
         filter: brightness(1);
         transition: all 0.2s ease-in-out;
+
+        .dark & {
+          filter: grayscale(1);
+        }
       }
     }
   }

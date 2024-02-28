@@ -194,6 +194,10 @@
       height: auto;
       width: 80%;
       max-width: 963px;
+
+      .dark & {
+        filter: grayscale(1);
+      }
     }
 
     @media screen and (max-width: 72rem) {
@@ -234,6 +238,10 @@
 
       img {
         border-radius: 0px;
+
+        .dark & {
+          filter: grayscale(1);
+        }
       }
     }
 
