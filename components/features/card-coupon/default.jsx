@@ -58,6 +58,6 @@ CardCouponBlock.propTypes = {
   }),
 }
 
-CardCouponBlock.label = 'Card Coupon - R7 Block'
+CardCouponBlock.label = 'Cupons - R7 Block'
 
 export default CardCouponBlock

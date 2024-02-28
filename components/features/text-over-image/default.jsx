@@ -101,7 +101,7 @@ const TextOverImageBlock = withCard(
   { defaultSize: 1, length: 1 },
 )
 
-TextOverImageBlock.label = 'Texto sobre imagem - R7 Block'
+TextOverImageBlock.label = 'Foto Grande - R7 Block'
 
 TextOverImageBlock.propTypes = {
   customFields: PropTypes.shape({

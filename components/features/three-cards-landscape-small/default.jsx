@@ -66,7 +66,7 @@ const ThreeCardsLandscapeSmall = withCard(
   { defaultSize: 3, length: 3 },
 )
 
-ThreeCardsLandscapeSmall.label = 'Três chamadas retangular - R7 Block'
+ThreeCardsLandscapeSmall.label = 'Três Fotos Pequenas - R7 Block'
 
 ThreeCardsLandscapeSmall.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
