@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
+import { useFusionContext } from 'fusion:context'
+import getProperties from 'fusion:properties'
 import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
 import { SocialShareWrapper } from '../../../SocialShareWrapper'
 
-export const FullscreenToolbar = ({ className, elements, currentSlide, urlForShare }) => {
+export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
+  const { globalContent, arcSite } = useFusionContext()
+  const { website_url } = globalContent
+  const { websiteDomain } = getProperties(arcSite)
+  const urlForShare = encodeURI(`${websiteDomain}${website_url}`)
   const [showCaption, setShowCaption] = useState(false)
   return (
     <div className={`${className}-caption ${showCaption ? 'active' : ''}`}>
