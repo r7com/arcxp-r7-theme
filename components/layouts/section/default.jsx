@@ -13,6 +13,7 @@ const SectionLayout = ({ children }) => {
   const { arcSite, isAdmin } = useFusionContext()
   const { privacyLink } = getProperties(arcSite)
   const LAYOUT_CLASS_NAME = 'b-section-layout'
+
   return (
     <>
       <Header>
