@@ -102,7 +102,7 @@ HeaderNavigationMenu.propTypes = {
   }),
 }
 
-HeaderNavigationMenu.label = 'Header Main Navigation - R7 Block'
+HeaderNavigationMenu.label = 'Menu Principal - R7 Block'
 
 HeaderNavigationMenu.icon = 'arc-headline'
 

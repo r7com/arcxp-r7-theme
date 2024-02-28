@@ -69,8 +69,7 @@ const PrimaryCallPhotoTextSecondText = withCard(
   { defaultFrom: '0', defaultSize: '2', length: 2 },
 )
 
-PrimaryCallPhotoTextSecondText.label =
-  'Chamada com foto e texto segunda chamada com texto ou bullet - R7 Block'
+PrimaryCallPhotoTextSecondText.label = 'Topinho Flex - R7 Block'
 
 PrimaryCallPhotoTextSecondText.propTypes = {
   customFields: PropTypes.shape({

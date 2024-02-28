@@ -106,7 +106,7 @@ const VerticalCarouselCards = withCard(
   { defaultSize: 10 },
 )
 
-VerticalCarouselCards.label = 'Chamadas carousel vertical - R7 Block'
+VerticalCarouselCards.label = 'Carrossel de Destaques - R7 Block'
 
 VerticalCarouselCards.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(0) }),
