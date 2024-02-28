@@ -1,8 +1,8 @@
 import React, { useEffect, Fragment } from 'react'
 import { useContent } from 'fusion:content'
-import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
+import { getImageFromANS, Image } from '@wpmedia/arc-themes-components'
 import { formatDate } from '../../util/formatDate'
-import { Paragraph } from '@r7/ui-base-components'
+import { ConditionalLink, Paragraph } from '@r7/ui-base-components'
 import { TaboolaCard } from '../Taboola'
 
 export const UltimasListItem = ({
@@ -84,26 +84,26 @@ export const UltimasListItem = ({
             )}
             <article data-observerid={idx} className={`${className}__item`}>
               <div className={`${className}__item-author`}>
-                <Link href={url}>
+                <ConditionalLink href={url}>
                   <span>
                     {credits?.by && credits?.by[0] ? `${credits?.by[0]?.name} / ` : ''}{' '}
                     {formatDate(publish_date)}
                   </span>
-                </Link>
+                </ConditionalLink>
               </div>
               <div className={`${className}__item-content`}>
                 <div className={`${className}__item-content-img`}>
                   {imageParams ? (
                     <figure>
-                      <Link href={url} className={`${className}__item-anchor`} assistiveHidden>
+                      <ConditionalLink href={url} assistiveHidden>
                         <Image {...imageParams} />
-                      </Link>
+                      </ConditionalLink>
                     </figure>
                   ) : null}
                 </div>
-                <Paragraph as="h3">
-                  <Link href={url}>{headlineText}</Link>
-                </Paragraph>
+                <ConditionalLink href={url} title={headlineText}>
+                  <Paragraph as="h3">{headlineText}</Paragraph>
+                </ConditionalLink>
               </div>
             </article>
           </Fragment>
