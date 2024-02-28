@@ -189,6 +189,8 @@ function parseArticleItem(item, index, phrases, customFields) {
 }
 
 function parsePromoItem(item, itemKey, customFields) {
+  const { metaValue } = useFusionContext()
+
   switch (item.type) {
     case 'custom_embed':
       return (
@@ -200,21 +202,25 @@ function parsePromoItem(item, itemKey, customFields) {
         />
       )
     case 'image': {
+      const isGallery = metaValue('page-type') === 'gallery'
       const [width, height] = itemKey.split('x').map(str => Number(str))
       let allowedFloatValue = ''
+
       if (width < IMAGE_FULLWIDTH_FORMAT) {
         allowedFloatValue = 'left'
       }
 
       return (
-        <Image
-          key={`${item.type}_${item._id}`}
-          item={item}
-          width={width}
-          height={height}
-          customFields={customFields}
-          className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
-        />
+        !isGallery && (
+          <Image
+            key={`${item.type}_${item._id}`}
+            item={item}
+            width={width}
+            height={height}
+            customFields={customFields}
+            className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
+          />
+        )
       )
     }
     default:
@@ -242,6 +248,7 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
   const paragraphTotal = contentElements.filter(element => element.type === 'text').length
 
   let paragraphCounter = 0
+
   const articleBody = [
     ...Object.keys(promoItems).map(promoItemKey =>
       parsePromoItem(promoItems[promoItemKey], promoItemKey, arcSite, customFields),
@@ -273,7 +280,6 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
           ]
         }
       }
-
       return parseArticleItem(contentElement, index, arcSite, phrases, id, customFields)
     }),
     ...(copyright
