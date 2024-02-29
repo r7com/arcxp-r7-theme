@@ -1,8 +1,7 @@
 import '@r7/ui-card/style.css'
 import PropTypes from '@arc-fusion/prop-types'
 import React from 'react'
-import { LeftPhoto } from '@r7/ui-card'
-import { CardHat } from '../../../util/card'
+import { Card, LeftPhoto } from '@r7/ui-card'
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
 const ThreeSmallPhotosManual = props => {
@@ -12,6 +11,8 @@ const ThreeSmallPhotosManual = props => {
       imageURL: props.customFields[`callImageURL${call}`],
       imageAlt: props.customFields[`callImageAlt${call}`],
       url: props.customFields[`callURL${call}`],
+      hatURL: props.customFields[`hatURL${call}`],
+      hatTitle: props.customFields[`hatTitle${call}`],
     }
   })
 
@@ -34,8 +35,11 @@ const ThreeSmallPhotosManual = props => {
             </LeftPhoto.Figure>
 
             <LeftPhoto.TextWrapper>
-              <CardHat {...item} />
-
+              <Card.HatWrapper>
+                <a href={item.hatURL} title={item.hatTitle}>
+                  <Card.HatTitle>{item.hatTitle}</Card.HatTitle>
+                </a>
+              </Card.HatWrapper>
               <a href={item.url} title={item.title}>
                 <LeftPhoto.Title fontSize="small">{item.title}</LeftPhoto.Title>
               </a>
@@ -57,49 +61,28 @@ ThreeSmallPhotosManual.propTypes = {
         return {
           [`callTitle${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
-            label: 'Título',
+            label: 'Título da chamada',
           }),
           [`callImageURL${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
-            label: 'URL da imagem (https)',
+            label: 'URL da imagem da chamada (https)',
           }),
           [`callImageAlt${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
-            label: 'Descrição da imagem',
+            label: 'Descrição da imagem da chamada',
           }),
           [`callURL${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
-            label: 'Link de destino',
+            label: 'Link de destino da chamada',
           }),
-          // [`hatType${call}`]: PropTypes.string.tag({
-          //   group: `Chapéu ${counter}`,
-          //   label: `Tipo de chapéu`,
-          // }),
-          // [`hatUrl${call}`]: PropTypes.string.tag({
-          //   group: `Chapéu ${counter}`,
-          //   label: `Link de destino do chapéu`,
-          // }),
-          // [`hatTitle${call}`]: PropTypes.string.tag({
-          //   group: `Chapéu ${counter}`,
-          //   label: `Titulo do chapéu`,
-          // }),
-          // [`hatImage${call}`]: PropTypes.string.tag({
-          //   group: `Chapéu ${counter}`,
-          //   label: `URL da imagem do chapéu (caso exista)`,
-          // }),
-          // [`hatColor${call}`]: PropTypes.string.tag({
-          //   group: `Chapéu ${counter}`,
-          //   label: `Cor do chapéu`,
-          // }),
-          // [`hatColor${call}`]: PropTypes.oneOf(['high', 'low', 'high-bold']).tag({
-          //   label: 'Cor do chapéu',
-          //   labels: {
-          //     high: 'high',
-          //     low: 'low',
-          //     [`high-bold`]: 'high-bold',
-          //   },
-          //   defaultValue: 'high',
-          // }),
+          [`hatTitle${counter}`]: PropTypes.string.tag({
+            group: `Chamada ${counter}`,
+            label: 'Título do chapéu',
+          }),
+          [`hatURL${counter}`]: PropTypes.string.tag({
+            group: `Chamada ${counter}`,
+            label: 'Link de destino do chapéu',
+          }),
         }
       },
     }),
