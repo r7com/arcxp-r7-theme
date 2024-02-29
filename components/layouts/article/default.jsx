@@ -19,8 +19,8 @@ const ArticleLayout = ({ children }) => {
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
-        <Container>{headerAd && headerAd}</Container>
       </Header>
+      <Container>{headerAd && headerAd}</Container>
       <Container>
         <Article.Grid>
           {main && <Article.Main>{main}</Article.Main>}
