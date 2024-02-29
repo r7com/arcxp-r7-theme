@@ -6,10 +6,12 @@ import { isServerSide, LazyLoad } from '@wpmedia/arc-themes-components'
 import { GalleryItem } from './_children/galleryItem'
 import { GalleryFullscreen } from '../../../util/components/FullscreenGallery'
 import getProperties from 'fusion:properties'
+import { useArticleAction } from '@r7/ui-article-delivery'
 
 const BLOCK_CLASS_NAME = 'b-vertical-gallery'
 
 const VerticalGalleryChain = ({ children, customFields = {} }) => {
+  const { fontSize } = useArticleAction()
   const [fullscreen, setFullscreen] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const context = useFusionContext()
@@ -90,7 +92,9 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
   ]
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <section className={BLOCK_CLASS_NAME}>{elements}</section>
+      <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
+        {elements}
+      </article>
     </LazyLoad>
   )
 }
