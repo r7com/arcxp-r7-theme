@@ -25,6 +25,10 @@ function TvGuidePage({ customFields }) {
     Object.values(customFields).some(field => field === guide.name),
   )
 
+  if (allGuidesSelected.length === 0) {
+    return <div>Selecione ao menos uma grade</div>
+  }
+
   const [selectedGuide, setSelectedGuide] = useState(allGuidesSelected[0].id)
 
   const [selectedDay, setSelectedDay] = useState(
