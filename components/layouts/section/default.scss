@@ -1,0 +1,8 @@
+.b-section-layout {
+    &__header-ad {
+        margin: 50px 0px 45px 0px;
+            &:empty{
+                 margin: 25px 0px 20px 0px;
+      }
+    }
+}
