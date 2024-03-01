@@ -1,6 +1,6 @@
 import React from 'react'
 import { Sidebar } from '@r7/ui-header-delivery'
-import { SidebarMenuItem } from '../sidebar-menu-item'
+import { SidebarItem } from '../../sidebar-item'
 
 export const SidebarMenuSection = ({ menuItem }) => {
   const { name, children } = menuItem
@@ -10,7 +10,7 @@ export const SidebarMenuSection = ({ menuItem }) => {
       <Sidebar.Category title={name}>
         <Sidebar.List label={name}>
           {children.map(menuLink => (
-            <SidebarMenuItem key={menuLink._id} menuLink={menuLink} />
+            <SidebarItem key={menuLink._id} menuItem={menuLink} />
           ))}
         </Sidebar.List>
       </Sidebar.Category>
