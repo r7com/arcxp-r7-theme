@@ -20,6 +20,7 @@ export const UltimasListItem = ({
     useContent({
       source: customFields.listContentConfig.contentService,
       query: {
+        ...customFields.listContentConfig.contentConfigValues,
         includeSections: sectionId,
         feedOffset: customFields.listContentConfig.contentConfigValues.feedOffset,
         feedSize: size,
