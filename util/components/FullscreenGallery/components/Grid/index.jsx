@@ -16,6 +16,7 @@ export const FullscreenGrid = ({
 }) => {
   const { arcSite } = useFusionContext()
   const gallery = swiperRef.current?.swiper
+
   return (
     <ul className={`${className}-grid ${view === views.grid ? 'active' : ''}`}>
       {elements.map((item, index) => {
@@ -24,7 +25,7 @@ export const FullscreenGrid = ({
             key={item._id}
             className={`${className}-grid-item`}
             onClick={() => {
-              gallery?.slideTo(index)
+              gallery?.slideToLoop(index)
               setActiveSlideIndex(index)
               setView(views.gallery)
             }}

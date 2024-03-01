@@ -46,6 +46,7 @@
       font-size: 32px;
       font-weight: 300;
       justify-self: center;
+      text-transform: capitalize;
 
       @media screen and (max-width: 48rem) {
         display: none;

@@ -16,7 +16,7 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
   const [activeSlide, setActiveSlide] = useState(0)
   const context = useFusionContext()
   const { isAdmin, globalContent: items = {} } = context
-  const { content_elements: contentElements = [], _id, website_url } = items
+  const { content_elements: contentElements = [], _id, website_url, website } = items
   const { websiteDomain } = getProperties(context.arcSite)
 
   if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
@@ -88,13 +88,14 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
       elements={contentElementsImages}
       initialSlide={activeSlide}
       urlForShare={urlForShare}
+      website={website}
     />,
   ]
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
+      <section className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
         {elements}
-      </article>
+      </section>
     </LazyLoad>
   )
 }

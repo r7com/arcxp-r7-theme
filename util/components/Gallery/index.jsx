@@ -5,8 +5,11 @@ import { GalleryCaption } from './components/Caption'
 import { GalleryToolbar } from './components/Toolbar'
 import { GallerySlider } from './components/Slider'
 import { GalleryFullscreen } from '../FullscreenGallery'
+import { useFusionContext } from 'fusion:context'
 
 export const Gallery = ({ elements, className }) => {
+  const { globalContent } = useFusionContext()
+  const { website } = globalContent
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [fullscreen, setFullscreen] = useState(false)
@@ -53,6 +56,7 @@ export const Gallery = ({ elements, className }) => {
         className={`gallery__overlay`}
         isOpen={fullscreen}
         elements={elements}
+        website={website}
       />
     </div>
   )
