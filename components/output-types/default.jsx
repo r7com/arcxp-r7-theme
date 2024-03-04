@@ -231,7 +231,7 @@ const SampleOutputType = ({
           type="image/x-icon"
           href={deployment(`${contextPath}/resources/images/${arcSite}.ico`)}
         />
-        <link rel="stylesheet" href={`${contextPath}/resources/css/font.css`} />
+        <link rel="stylesheet" href={deployment(`${contextPath}/resources/css/font.css`)} />
         <link rel="preconnect" crossOrigin href="//tt-9964-3.seg.t.tailtarget.com" />
         <MetaData
           arcSite={arcSite}
@@ -281,8 +281,8 @@ const SampleOutputType = ({
             }
           `}
         </style>
-        <script src={`${contextPath}/resources/plugins/ads/prebid.js`}></script>
-        <script src={`${contextPath}/resources/plugins/ads/amazon.js`}></script>
+        <script src={deployment(`${contextPath}/resources/plugins/ads/prebid.js`)}></script>
+        <script src={deployment(`${contextPath}/resources/plugins/ads/amazon.js`)}></script>
         <script
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
