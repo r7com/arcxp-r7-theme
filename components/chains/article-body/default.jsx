@@ -2,7 +2,7 @@ import './default.scss'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
-import { ArticleProvider, useArticleAction } from '@r7/ui-article-delivery'
+import { useArticleAction } from '@r7/ui-article-delivery'
 import { Paragraph, Typography } from '@r7/ui-base-components'
 
 import {
@@ -26,7 +26,7 @@ import HTML from './_children/html'
 import Header from './_children/heading'
 
 import { IMAGE_FULLWIDTH_FORMAT } from './constants'
-import { Accessibility } from './_children/accessibility-bar'
+import { AccessibilityBar } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'
 import { R7Player } from '../../../util/components/Player'
 import { getPlayerDataProxy } from '../../../util/components/Player/proxy/proxy'
@@ -189,6 +189,8 @@ function parseArticleItem(item, index, phrases, customFields) {
 }
 
 function parsePromoItem(item, itemKey, customFields) {
+  const { metaValue } = useFusionContext()
+
   switch (item.type) {
     case 'custom_embed':
       return (
@@ -200,21 +202,25 @@ function parsePromoItem(item, itemKey, customFields) {
         />
       )
     case 'image': {
+      const isGallery = metaValue('page-type') === 'gallery'
       const [width, height] = itemKey.split('x').map(str => Number(str))
       let allowedFloatValue = ''
+
       if (width < IMAGE_FULLWIDTH_FORMAT) {
         allowedFloatValue = 'left'
       }
 
       return (
-        <Image
-          key={`${item.type}_${item._id}`}
-          item={item}
-          width={width}
-          height={height}
-          customFields={customFields}
-          className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
-        />
+        !isGallery && (
+          <Image
+            key={`${item.type}_${item._id}`}
+            item={item}
+            width={width}
+            height={height}
+            customFields={customFields}
+            className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
+          />
+        )
       )
     }
     default:
@@ -242,6 +248,7 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
   const paragraphTotal = contentElements.filter(element => element.type === 'text').length
 
   let paragraphCounter = 0
+
   const articleBody = [
     ...Object.keys(promoItems).map(promoItemKey =>
       parsePromoItem(promoItems[promoItemKey], promoItemKey, arcSite, customFields),
@@ -273,7 +280,6 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
           ]
         }
       }
-
       return parseArticleItem(contentElement, index, arcSite, phrases, id, customFields)
     }),
     ...(copyright
@@ -295,7 +301,7 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
 
   return (
     <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
-      <Accessibility />
+      <AccessibilityBar />
       {articleBody}
     </article>
   )
@@ -310,11 +316,9 @@ const ArticleBodyChain = ({ children, customFields = {} }) => {
   }
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <ArticleProvider>
-        <ArticleBodyChainPresentation context={context} customFields={customFields}>
-          {children}
-        </ArticleBodyChainPresentation>
-      </ArticleProvider>
+      <ArticleBodyChainPresentation context={context} customFields={customFields}>
+        {children}
+      </ArticleBodyChainPresentation>
     </LazyLoad>
   )
 }
