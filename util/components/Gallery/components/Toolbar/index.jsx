@@ -1,9 +1,15 @@
 import React from 'react'
+import { useFusionContext } from 'fusion:context'
+import getProperties from 'fusion:properties'
 import { Paragraph } from '@r7/ui-base-components'
 import { SocialShare } from '@r7/ui-article-delivery'
 import { SocialShareWrapper } from '../../../SocialShareWrapper'
 
 export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFullscreen }) => {
+  const { globalContent, arcSite } = useFusionContext()
+  const { website_url } = globalContent
+  const { websiteDomain } = getProperties(arcSite)
+  const urlForShare = encodeURI(`${websiteDomain}${website_url}`)
   return (
     <div className={className}>
       <Paragraph as="p" fontSize="xs" fontWeight="semibold">
@@ -15,30 +21,30 @@ export const GalleryToolbar = ({ className, currentSlide, slidesAmount, setFulls
             <SocialShare.List>
               <SocialShare.Item
                 name="googleNews"
-                link="#googlenews"
+                link={urlForShare}
                 title="google-news"
                 position="galeria"
               />
               <SocialShare.Item
                 name="facebook"
-                link="#facebook"
+                link={urlForShare}
                 title="facebook"
                 position="galeria"
               />
               <SocialShare.Item name="twitter" link="#twitter" title="twitter" position="galeria" />
               <SocialShare.Item
                 name="whatsapp"
-                link="#whatsapp"
+                link={urlForShare}
                 title="whatsapp"
                 position="galeria"
               />
               <SocialShare.Item
                 name="linkedin"
-                link="#linkedin"
+                link={urlForShare}
                 title="linkedin"
                 position="galeria"
               />
-              <SocialShare.Item name="share" link="#share" title="share" position="galeria" />
+              <SocialShare.Item name="share" link={urlForShare} title="share" position="galeria" />
             </SocialShare.List>
           </SocialShare>
         </SocialShareWrapper>
