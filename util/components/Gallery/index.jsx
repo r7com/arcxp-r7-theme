@@ -7,10 +7,14 @@ import { GallerySlider } from './components/Slider'
 import { GalleryFullscreen } from '../FullscreenGallery'
 import { useFusionContext } from 'fusion:context'
 import { Button, SvgIcon } from '@r7/ui-base-components'
+import { isServerSide } from '@wpmedia/arc-themes-components'
+import getProperties from 'fusion:properties'
+import { GalleryAdv } from '../GalleryAdv'
 
 export const Gallery = ({ elements, className }) => {
-  const { globalContent } = useFusionContext()
+  const { globalContent, arcSite } = useFusionContext()
   const { website, taxonomy } = globalContent
+  const siteProperties = getProperties(arcSite)
   const sectionName = taxonomy?.primary_section?.name
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
@@ -18,6 +22,7 @@ export const Gallery = ({ elements, className }) => {
   const [interationCounter, setInterationCounter] = useState(0)
   const [show, setShowAdv] = useState(false)
   const swiperRef = useRef(null)
+  console.log(siteProperties, arcSite)
 
   useEffect(() => {
     fullscreen
@@ -38,8 +43,10 @@ export const Gallery = ({ elements, className }) => {
             show ? 'gallery__container--show-adv' : ''
           }`}
         >
-          <div className="gallery__adv">
-            <div>PUBLICIDADE</div>
+          <div className="gallery__adv" id={`galleryAdv-container-${globalContent?._id}`}>
+            {!isServerSide() && (
+              <GalleryAdv hash={`/${siteProperties.dfpId}/${siteProperties.hash}`} />
+            )}
             <div className="">
               <Button
                 type="button"
