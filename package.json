@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/arc-partners/NewR7-Themes-PageBuilder-Fusion-Features-Mirror#readme",
   "devDependencies": {
-    "@arc-fusion/cli": "^2.2.3",
+    "@arc-fusion/cli": "^2.2.4",
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "commitizen": "^4.3.0",
