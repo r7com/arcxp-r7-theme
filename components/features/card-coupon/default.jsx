@@ -5,7 +5,7 @@ import { Typography, ConditionalLink } from '@r7/ui-base-components'
 import { useFusionContext } from 'fusion:context'
 
 const CardCouponBlock = () => {
-  const { globalContent } = useFusionContext()
+  const { globalContent, isAdmin } = useFusionContext()
   const siteId = globalContent?.canonical_website
   const sectionId = globalContent?.taxonomy?.primary_section?._id
 
@@ -18,7 +18,7 @@ const CardCouponBlock = () => {
 
   const category = sectionContent?.site?.coupon_categories
 
-  if (!category) return <div>Nenhuma categoria selecionada para cupons</div>
+  if (!category && isAdmin) return <div>Nenhuma categoria selecionada para cupons</div>
 
   const data = useContent({
     source: 'coupon-api',
