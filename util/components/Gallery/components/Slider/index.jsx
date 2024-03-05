@@ -5,19 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../../get-resize-params-from-ans-image'
 
-export const GallerySlider = ({
-  elements,
-  thumbsSwiper,
-  slideChangeHandler,
-  handleAdv,
-  className,
-  swiperRef,
-}) => {
+export const GallerySlider = ({ elements, thumbsSwiper, slideChangeHandler, className }) => {
   const { arcSite } = useFusionContext()
 
   return (
     <Swiper
-      ref={swiperRef}
       modules={[Thumbs, Navigation, EffectFade]}
       thumbs={{ swiper: thumbsSwiper }}
       className={`${className}__slider`}
@@ -31,7 +23,6 @@ export const GallerySlider = ({
       loop={true}
       onSlideChange={e => {
         slideChangeHandler(e.realIndex)
-        handleAdv()
       }}
     >
       {elements.map(item => {
