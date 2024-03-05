@@ -18,6 +18,8 @@ const CardCouponBlock = () => {
 
   const category = sectionContent?.site?.coupon_categories
 
+  if (!category) return <div>Nenhuma categoria selecionada para cupons</div>
+
   const data = useContent({
     source: 'coupon-api',
     query: { category },
