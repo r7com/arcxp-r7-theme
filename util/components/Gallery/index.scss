@@ -7,13 +7,43 @@
 }
 
 .gallery {
+  &__adv {
+    display: none;
+  }
+
   &__container {
     width: 100%;
     box-shadow: 0px 0px 0 1px #cecece;
     border-radius: 4px;
-
+    
     @media screen and (max-width: 640px) {
       width: calc(100vw - 2rem);
+    }
+    
+    
+    &--show-adv {
+      position: relative;
+      
+      .gallery__adv {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        z-index: 99999;
+      }
+
+      
+      .gallery__adv-button {
+        display: flex;
+        background-color: rgba(0,0,0,.85);
+        justify-content: center;
+        align-items: center;
+
+        svg {
+          fill: #fff;
+        }
+      }
     }
   }
 

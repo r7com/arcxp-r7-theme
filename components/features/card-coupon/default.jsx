@@ -2,10 +2,23 @@ import React from 'react'
 import { CardCoupon } from '@r7/ui-card'
 import { useContent } from 'fusion:content'
 import { Typography, ConditionalLink } from '@r7/ui-base-components'
-import PropTypes from '@arc-fusion/prop-types'
+import { useFusionContext } from 'fusion:context'
 
-const CardCouponBlock = ({ customFields }) => {
-  const { category } = customFields
+const CardCouponBlock = () => {
+  const { globalContent } = useFusionContext()
+  const siteId = globalContent?.canonical_website
+  const sectionId = globalContent?.taxonomy?.primary_section?._id
+
+  if (!sectionId && !siteId) return
+
+  const sectionContent = useContent({
+    source: 'custom-site-service-hierarchy',
+    query: { sectionId, siteId },
+  })
+
+  const category = sectionContent?.site?.coupon_categories
+
+  if (!category) return
 
   const data = useContent({
     source: 'coupon-api',
@@ -39,23 +52,6 @@ const CardCouponBlock = ({ customFields }) => {
       </CardCoupon.List>
     </CardCoupon>
   )
-}
-
-CardCouponBlock.propTypes = {
-  customFields: PropTypes.shape({
-    category: PropTypes.oneOf([
-      'tecnologia',
-      'moda',
-      'beleza-e-saude',
-      'departamento',
-      'esportes',
-      'viagens',
-    ]).tag({
-      group: 'Configure Coupon Content',
-      label: 'Categorias',
-      defaultValue: 'departamento',
-    }),
-  }),
 }
 
 CardCouponBlock.label = 'Cupons - R7 Block'
