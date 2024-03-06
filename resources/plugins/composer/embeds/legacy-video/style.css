@@ -49,8 +49,25 @@
   width: 20px;
   color: #556373;
   padding: 5px;
-  margin: 5px 0px;
+  margin: 5px 0px 15px 0px;
   margin-right: 100%;
+}
+
+.container__video-age-rating-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 15px;
+}
+
+.container__video-check--age {
+  margin-right: 0;
+  margin: 15px 0px 15px 0px;
+}
+
+.age-rating__list {
+  list-style: none;
+  column-count: 4;
 }
 
 .container__btn {

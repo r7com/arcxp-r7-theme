@@ -36,9 +36,6 @@
           <label for="legacy-video-third-section">Third Section:
             <input class="container__video-input" type="text" id="legacy-video-third-section" name="thirdSection" value="" />
           </label>
-          <label for="legacy-video-disable-adv">Disable Adv:
-            <input class="container__video-check" type="checkbox" id="legacy-video-disable-adv" name="disableAdv" value="" />
-          </label>
           <label for="legacy-video-created-date">Created Date:
             <input class="container__video-input" type="text" id="legacy-video-created-date" name="createdDate" value="" />
           </label>
@@ -48,15 +45,90 @@
           <label for="legacy-video-section-path">Section Path:
             <input class="container__video-input" type="text" id="legacy-video-section-path" name="sectionPath" value="" />
           </label>
-          <label for="legacy-video-age-rating">Age Rating:
-            <input class="container__video-input" type="text" id="legacy-video-age-rating" name="ageRating" value="" />
-          </label>
-          <label for="legacy-video-age-rating-description">Age Rating Description:
-            <input class="container__video-input" type="text" id="legacy-video-age-rating-description" name="ageRatingDescription" value="" />
-          </label>
           <label for="legacy-video-duration">Duration:
             <input class="container__video-input" type="text" id="legacy-video-duration" name="duration" value="" />
           </label>
+          <label for="legacy-video-disable-adv">Disable Adv:
+            <input class="container__video-check" type="checkbox" id="legacy-video-disable-adv" name="disableAdv" value="" />
+          </label>
+          <label for="legacy-video-age-rating">Age Rating:
+            <select class="container__video-input" type="text" id="legacy-video-age-rating" name="ageRating" value="">
+              <option selected value=''></option>
+              <option value="L">Livre</option>
+              <option value="10">10 anos</option>
+              <option value="12">12 anos</option>
+              <option value="14">14 anos</option>
+              <option value="16">16 anos</option>
+              <option value="18">18 anos</option>
+              <option value="AL">Autoclassificação livre</option>
+              <option value="A10">Autoclassificação 10 anos</option>
+              <option value="A12">Autoclassificação 12 anos</option>
+              <option value="A14">Autoclassificação 14 anos</option>
+              <option value="A16">Autoclassificação 16 anos</option>
+              <option value="A18">Autoclassificação 18 anos</option>
+            </select>
+          </label>
+          <fieldset id="age-rating-desc-fields" class="container__video-age-rating-group">
+            <legend class>Age Rating Description:</legend>
+            <ul class="age-rating__list">
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="atos_criminosos" name="ageRatingDescription" value="Atos Criminosos" />
+                <label for="atos_criminosos">Atos Criminosos</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="conteudo_sexual" name="ageRatingDescription" value="Conteúdo Sexual" />
+                <label for="conteudo_sexual">Conteúdo Sexual</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="drogas" name="ageRatingDescription" value="Drogas" />
+                <label for="drogas">Drogas</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="drogas_ilicitas" name="ageRatingDescription" value="Drogas Ilícitas" />
+                <label for="drogas_ilicitas">Drogas Ilícitas</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="drogas_licitas" name="ageRatingDescription" value="Drogas Lícitas" />
+              <label for="drogas_licitas">Drogas Lícitas</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="linguagem_impropria" name="ageRatingDescription" value="Linguagem Imprópria" />
+                <label for="linguagem_impropria">Linguagem Imprópria</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="medo" name="ageRatingDescription" value="Medo" />
+              <label for="medo">Medo</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="nudez" name="ageRatingDescription" value="Nudez" />
+              <label for="nudez">Nudez</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="procedimentos_medicos" name="ageRatingDescription" value="Procedimentos Médicos" />
+                <label for="procedimentos_medicos">Procedimentos Médicos</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="sexo_explicito" name="ageRatingDescription" value="Sexo Explícito" />
+                <label for="sexo_explicito">Sexo Explícito</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="temas_sensiveis" name="ageRatingDescription" value="Temas Sensíveis" />
+                <label for="temas_sensiveis">Temas Sensíveis</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="violencia" name="ageRatingDescription" value="Violência" />
+                <label for="violencia">Violência</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="violencia_extrema" name="ageRatingDescription" value="Violência Extrema" />
+                <label for="violencia_extrema">Violência Extrema</label>
+              </li>
+              <li>
+                <input class="container__video-check--age" type="checkbox" id="violencia_fantasiosa" name="ageRatingDescription" value="Violência Fantasiosa" />
+                <label for="violencia_fantasiosa">Violência Fantasiosa</label>
+              </li>              
+            </ul>
+          </fieldset>
           <button class="btn" type="submit" id="apply-btn">Salvar</button>
           <button class="btn" type="button" id="cancel-btn">Cancelar</button>
         </form>
