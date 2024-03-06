@@ -41,23 +41,23 @@ ProportionalPhotoBlock.label = 'Foto Média Manual - R7 Block'
 ProportionalPhotoBlock.propTypes = {
   customFields: PropTypes.shape({
     url: PropTypes.string.tag({
-      group: `Chamada ${counter}`,
+      group: `Chamada`,
       label: 'Link de destino da chamada',
     }),
     imageURL: PropTypes.string.tag({
-      group: `Chamada ${counter}`,
+      group: `Chamada`,
       label: 'URL da imagem da chamada (https)',
     }),
     title: PropTypes.string.tag({
-      group: `Chamada ${counter}`,
+      group: `Chamada`,
       label: 'Título da chamada',
     }),
-    hatURL: PropTypes.string.tag({
-      group: `Chamada ${counter}`,
+    hatTitle: PropTypes.string.tag({
+      group: `Chamada`,
       label: 'Título do chapéu',
     }),
-    hatTitle: PropTypes.string.tag({
-      group: `Chamada ${counter}`,
+    hatURL: PropTypes.string.tag({
+      group: `Chamada`,
       label: 'Link de destino do chapéu',
     }),
   }),
