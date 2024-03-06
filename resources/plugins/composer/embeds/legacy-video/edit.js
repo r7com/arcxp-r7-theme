@@ -27,12 +27,20 @@ function render({ urlHls, urlMp4, poster, metadata }) {
   const parsedMetadata = metadata
 
   Array.from(formElements).forEach(element => {
-    if (parsedMetadata[element.name]) {
+    if (parsedMetadata[element.name] && element.name !== 'ageRatingDescription') {
       element.type === 'checkbox'
         ? (element.checked = parsedMetadata[element.name])
         : (element.value = parsedMetadata[element.name])
     }
   })
+
+  for (const key in parsedMetadata['ageRatingDescription']) {
+    const element = document.getElementById(key)
+
+    if (element) {
+      element.checked = parsedMetadata['ageRatingDescription'][key]
+    }
+  }
 }
 
 function cancelChanges() {
@@ -42,16 +50,21 @@ function cancelChanges() {
 function applyChanges() {
   const formElements = document.getElementById('form-embed-legacy-video').elements
   const metadata = {}
+  const ageRatingDesc = {}
 
-  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl', '']
+  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl', 'ageRatingDescription', '']
 
   Array.from(formElements).forEach(element => {
     if (!paramField.includes(element.name)) {
       element.type === 'checkbox'
         ? (metadata[element.name] = element.checked)
         : (metadata[element.name] = element.value)
+    } else if (element.name === 'ageRatingDescription' && element.checked) {
+      ageRatingDesc[element.id] = element.checked
     }
   })
+
+  metadata['ageRatingDescription'] = ageRatingDesc
 
   const srcHlsValue = formElements['srcHlsValue'].value
   const srcMp4Value = formElements['srcMp4Value'].value
