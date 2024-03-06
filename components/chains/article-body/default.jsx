@@ -25,7 +25,6 @@ import List from './_children/list'
 import HTML from './_children/html'
 import Header from './_children/heading'
 
-import { IMAGE_FULLWIDTH_FORMAT } from './constants'
 import { AccessibilityBar } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'
 import { R7Player } from '../../../util/components/Player'
@@ -188,55 +187,10 @@ function parseArticleItem(item, index, phrases, customFields) {
   }
 }
 
-function parsePromoItem(item, itemKey, customFields) {
-  const { metaValue } = useFusionContext()
-
-  switch (item.type) {
-    case 'custom_embed':
-      return (
-        <CustomEmbed
-          element={item}
-          classPrefix={BLOCK_CLASS_NAME}
-          customFields={customFields}
-          key={`${item.type}_${item._id}`}
-        />
-      )
-    case 'image': {
-      const isGallery = metaValue('page-type') === 'gallery'
-      const [width, height] = itemKey.split('x').map(str => Number(str))
-      let allowedFloatValue = ''
-
-      if (width < IMAGE_FULLWIDTH_FORMAT) {
-        allowedFloatValue = 'left'
-      }
-
-      return (
-        !isGallery && (
-          <Image
-            key={`${item.type}_${item._id}`}
-            item={item}
-            width={width}
-            height={height}
-            customFields={customFields}
-            className={`${BLOCK_CLASS_NAME}__image ${allowedFloatValue ? 'float' : ''}`}
-          />
-        )
-      )
-    }
-    default:
-      return null
-  }
-}
-
 export const ArticleBodyChainPresentation = ({ children, customFields = {}, context }) => {
   const { globalContent: items = {}, arcSite, id } = context
   const { fontSize } = useArticleAction()
-  const {
-    content_elements: contentElements = [],
-    copyright,
-    location,
-    promo_items: promoItems = {},
-  } = items
+  const { content_elements: contentElements = [], copyright, location } = items
   const { elementPlacement: adPlacementConfigObj = {} } = customFields
   const phrases = usePhrases()
 
@@ -250,9 +204,6 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
   let paragraphCounter = 0
 
   const articleBody = [
-    ...Object.keys(promoItems).map(promoItemKey =>
-      parsePromoItem(promoItems[promoItemKey], promoItemKey, arcSite, customFields),
-    ),
     ...contentElements.map((contentElement, index) => {
       if (contentElement.type === 'text') {
         // Start at 1 since the ad configs use one-based array indexes

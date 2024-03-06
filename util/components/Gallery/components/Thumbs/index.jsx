@@ -20,12 +20,12 @@ export const GalleryThumbs = ({ elements, setThumbsSwiper, className }) => {
       watchSlidesProgress
       onSwiper={setThumbsSwiper}
     >
-      {elements.map(item => {
+      {elements?.map(item => {
         return (
-          <SwiperSlide key={item._id} className={`${className}-slide`}>
+          <SwiperSlide key={item?._id} className={`${className}-slide`}>
             <Image
               {...getResizeParamsFromANSImage(item, arcSite, item.width, [200])}
-              alt={item.alt_text}
+              alt={item?.alt_text}
             />
           </SwiperSlide>
         )

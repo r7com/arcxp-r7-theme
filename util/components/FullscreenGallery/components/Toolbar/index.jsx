@@ -84,12 +84,10 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
           {currentSlide + 1} / {elements.length}
         </Paragraph>
         <Paragraph as="p" fontSize="xxs">
-          {elements[currentSlide]?.headlines?.basic}
+          {elements[currentSlide]?.caption}
         </Paragraph>
         <Paragraph as="p" fontSize="little">
-          {elements[currentSlide]?.credits?.by?.length
-            ? elements[currentSlide]?.credits?.by[0].name
-            : ''}
+          {elements[currentSlide]?.creditIPTC}
         </Paragraph>
       </div>
     </div>
