@@ -7,6 +7,7 @@ import getResizeParamsFromANSImage from '../../../../get-resize-params-from-ans-
 
 export const GallerySlider = ({ elements, thumbsSwiper, slideChangeHandler, className }) => {
   const { arcSite } = useFusionContext()
+
   return (
     <Swiper
       modules={[Thumbs, Navigation, EffectFade]}

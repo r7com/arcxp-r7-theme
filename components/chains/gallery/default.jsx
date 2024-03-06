@@ -6,15 +6,18 @@ import { isServerSide, LazyLoad } from '@wpmedia/arc-themes-components'
 import { GalleryItem } from './_children/galleryItem'
 import { GalleryFullscreen } from '../../../util/components/FullscreenGallery'
 import getProperties from 'fusion:properties'
+import { SocialShare, useArticleAction } from '@r7/ui-article-delivery'
 
 const BLOCK_CLASS_NAME = 'b-vertical-gallery'
 
 const VerticalGalleryChain = ({ children, customFields = {} }) => {
+  const { fontSize } = useArticleAction()
   const [fullscreen, setFullscreen] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
   const context = useFusionContext()
   const { isAdmin, globalContent: items = {} } = context
-  const { content_elements: contentElements = [], _id, website_url } = items
+  const { content_elements: contentElements = [], _id, website_url, website, taxonomy } = items
+  const sectionName = taxonomy?.primary_section?.name
   const { websiteDomain } = getProperties(context.arcSite)
 
   if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
@@ -86,11 +89,56 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
       elements={contentElementsImages}
       initialSlide={activeSlide}
       urlForShare={urlForShare}
+      website={sectionName || website}
     />,
   ]
   return (
     <LazyLoad enabled={customFields?.lazyLoad && !isAdmin}>
-      <section className={BLOCK_CLASS_NAME}>{elements}</section>
+      <section className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
+        {elements}
+        <div className="gallery__social-share">
+          <SocialShare>
+            <SocialShare.List>
+              <SocialShare.Item
+                name="googleNews"
+                link={urlForShare}
+                title="google-news"
+                position="rodape-gallery"
+              />
+              <SocialShare.Item
+                name="facebook"
+                link={urlForShare}
+                title="facebook"
+                position="rodape-gallery"
+              />
+              <SocialShare.Item
+                name="twitter"
+                link={urlForShare}
+                title="twitter"
+                position="rodape-gallery"
+              />
+              <SocialShare.Item
+                name="whatsapp"
+                link={urlForShare}
+                title="whatsapp"
+                position="rodape-gallery"
+              />
+              <SocialShare.Item
+                name="linkedin"
+                link={urlForShare}
+                title="linkedin"
+                position="rodape-gallery"
+              />
+              <SocialShare.Item
+                name="share"
+                link={urlForShare}
+                title="share"
+                position="rodape-gallery"
+              />
+            </SocialShare.List>
+          </SocialShare>
+        </div>
+      </section>
     </LazyLoad>
   )
 }

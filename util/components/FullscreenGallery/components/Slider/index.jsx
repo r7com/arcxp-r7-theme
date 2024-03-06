@@ -16,6 +16,7 @@ export const FullscreenSlider = ({
   setThumbsSwiper,
 }) => {
   const { arcSite } = useFusionContext()
+
   return (
     <Swiper
       ref={swiperRef}
