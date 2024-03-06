@@ -23,8 +23,7 @@ export const R7ArcAdDisplay = props => {
     query: { sectionId, siteId },
   })
 
-  const disableAdsValue = content?.publicidade?.disable_adv || false
-  const disableAds = JSON.parse(disableAdsValue)
+  const disableAds = JSON.parse(content?.publicidade?.disable_adv || false)
 
   return (
     <>
