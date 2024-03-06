@@ -17,7 +17,8 @@ const VerticalGalleryChain = ({ children, customFields = {} }) => {
   const context = useFusionContext()
   const { isAdmin, globalContent: items = {} } = context
   const { content_elements: contentElements = [], _id, website_url, website, taxonomy } = items
-  const sectionName = taxonomy?.primary_section?.name
+  const sectionName =
+    taxonomy?.primary_section?.name || (taxonomy?.sections.length && taxonomy?.sections[0]?.name)
   const { websiteDomain } = getProperties(context.arcSite)
 
   if (customFields?.lazyLoad && isServerSide() && !isAdmin) {
