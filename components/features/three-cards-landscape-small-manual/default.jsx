@@ -67,7 +67,8 @@ ThreeSmallPhotosManual.propTypes = {
           }),
           [`callImageURL${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
-            label: 'URL da imagem da chamada (https)',
+            label: 'Imagem de 113 x 65',
+            searchable: 'image',
           }),
           [`callImageAlt${counter}`]: PropTypes.string.tag({
             group: `Chamada ${counter}`,
