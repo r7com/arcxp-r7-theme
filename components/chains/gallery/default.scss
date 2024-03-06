@@ -5,6 +5,12 @@
   }
 
   &__item {
+    @media screen and (max-width: 48rem) {
+      &:not(:has(figcaption))  {
+        padding-bottom: 85px;
+      }
+    }
+
     & .image-wrapper {
       position: relative;
       height: 420px !important;

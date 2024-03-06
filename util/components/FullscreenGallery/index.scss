@@ -20,6 +20,14 @@
     left: 0;
   }
 
+  @media screen and (max-width: 48rem) {   
+    &-wrapper-caption {
+      overflow-y: auto;
+      max-height: 150px;
+      margin-bottom: 8px;
+    }
+  }
+
   &-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
