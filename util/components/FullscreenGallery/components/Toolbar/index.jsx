@@ -83,9 +83,11 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
         <Paragraph as="p" fontSize="xxs" fontWeight="semibold">
           {currentSlide + 1} / {elements.length}
         </Paragraph>
-        <Paragraph as="p" fontSize="xxs">
-          {elements[currentSlide]?.caption}
-        </Paragraph>
+        <div className={`${className}-wrapper-caption`}>
+          <Paragraph as="p" fontSize="xxs">
+            {elements[currentSlide]?.caption}
+          </Paragraph>
+        </div>
         <Paragraph as="p" fontSize="little">
           {elements[currentSlide]?.creditIPTC}
         </Paragraph>

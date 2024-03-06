@@ -2,8 +2,9 @@ import './default.scss'
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
-import { useArticleAction } from '@r7/ui-article-delivery'
+import { SocialShare, useArticleAction } from '@r7/ui-article-delivery'
 import { Paragraph, Typography } from '@r7/ui-base-components'
+import getProperties from 'fusion:properties'
 
 import {
   Divider,
@@ -190,9 +191,11 @@ function parseArticleItem(item, index, phrases, customFields) {
 export const ArticleBodyChainPresentation = ({ children, customFields = {}, context }) => {
   const { globalContent: items = {}, arcSite, id } = context
   const { fontSize } = useArticleAction()
-  const { content_elements: contentElements = [], copyright, location } = items
+  const { content_elements: contentElements = [], copyright, location, website_url } = items
   const { elementPlacement: adPlacementConfigObj = {} } = customFields
   const phrases = usePhrases()
+  const { websiteDomain } = getProperties(arcSite)
+  const urlForShare = encodeURI(`${websiteDomain}${website_url}`)
 
   const adPlacements = Object.keys(adPlacementConfigObj).map(key => ({
     feature: +key,
@@ -254,6 +257,48 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
     <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
       <AccessibilityBar />
       {articleBody}
+      <div className="social-share">
+        <SocialShare>
+          <SocialShare.List>
+            <SocialShare.Item
+              name="googleNews"
+              link={urlForShare}
+              title="google-news"
+              position="rodape-article"
+            />
+            <SocialShare.Item
+              name="facebook"
+              link={urlForShare}
+              title="facebook"
+              position="rodape-article"
+            />
+            <SocialShare.Item
+              name="twitter"
+              link={urlForShare}
+              title="twitter"
+              position="rodape-article"
+            />
+            <SocialShare.Item
+              name="whatsapp"
+              link={urlForShare}
+              title="whatsapp"
+              position="rodape-article"
+            />
+            <SocialShare.Item
+              name="linkedin"
+              link={urlForShare}
+              title="linkedin"
+              position="rodape-article"
+            />
+            <SocialShare.Item
+              name="share"
+              link={urlForShare}
+              title="share"
+              position="rodape-article"
+            />
+          </SocialShare.List>
+        </SocialShare>
+      </div>
     </article>
   )
 }

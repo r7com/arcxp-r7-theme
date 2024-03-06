@@ -6,8 +6,10 @@ import { useFusionContext } from 'fusion:context'
 
 const CardCouponBlock = () => {
   const { globalContent, isAdmin } = useFusionContext()
+  const taxonomy = globalContent?.taxonomy
   const siteId = globalContent?.canonical_website
-  const sectionId = globalContent?.taxonomy?.primary_section?._id
+  const sectionId =
+    taxonomy?.primary_section?._id || (taxonomy?.sections?.length && taxonomy?.sections[0]._id)
 
   if (!sectionId && !siteId) return
 
