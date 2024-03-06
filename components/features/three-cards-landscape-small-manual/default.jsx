@@ -46,7 +46,7 @@ const ThreeSmallPhotosManual = props => {
                     alt={fallbackImageAlt}
                     width={113}
                     height={65}
-                    style={{ width: 113, height: 65, objectFit: 'contain' }}
+                    style={{ width: 113, height: 64, objectFit: 'contain' }}
                   />
                 )}
               </a>
