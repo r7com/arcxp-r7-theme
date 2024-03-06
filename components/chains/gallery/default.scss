@@ -5,6 +5,10 @@
   }
 
   &__item {
+    &:not(:has(figcaption))  {
+      padding-bottom: 55px;
+    }
+
     @media screen and (max-width: 48rem) {
       &:not(:has(figcaption))  {
         padding-bottom: 85px;
