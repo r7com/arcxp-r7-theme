@@ -28,7 +28,7 @@
     "zh-CN",
     "zh-TW"
   ],
-  "themesReleaseVersion": "arc-themes-release-version-2.1.3",
+  "themesReleaseVersion": "arc-themes-release-version-2.1.4",
   "blocks": [
     "@wpmedia/ad-taboola-block",
     "@wpmedia/ads-block",
