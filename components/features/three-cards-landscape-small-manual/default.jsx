@@ -13,13 +13,15 @@ const ThreeSmallPhotosManual = props => {
   const { fallbackImage, fallbackImageAlt } = getProperties(arcSite)
 
   const calls = Array.from({ length: CALLS_NUMBER }, (v, i) => {
+    const id = i + 1
+
     return {
-      title: props.customFields[`callTitle${i + 1}`],
-      imageURL: props.customFields[`callImageURL${i + 1}`],
-      imageAlt: props.customFields[`callImageAlt${i + 1}`],
-      url: props.customFields[`callURL${i + 1}`],
-      hatURL: props.customFields[`hatURL${i + 1}`],
-      hatTitle: props.customFields[`hatTitle${i + 1}`],
+      title: props.customFields[`callTitle${id}`],
+      imageURL: props.customFields[`callImageURL${id}`],
+      imageAlt: props.customFields[`callImageAlt${id}`],
+      url: props.customFields[`callURL${id}`],
+      hatURL: props.customFields[`hatURL${id}`],
+      hatTitle: props.customFields[`hatTitle${id}`],
     }
   })
 
