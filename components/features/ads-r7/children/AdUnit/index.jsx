@@ -5,7 +5,7 @@ import { setPageTargeting } from '../../utils/ad-helper'
 import { addRubicon, addSmart, addTeads } from '../../utils/ad-adapters-configs'
 
 const AdUnit = props => {
-  const { adConfig, featureConfig, disableAds } = props
+  const { adConfig, featureConfig } = props
   const { id } = adConfig
   const {
     customFields: { debug },
@@ -33,7 +33,6 @@ const AdUnit = props => {
       setPageTargeting(featureConfig)
     }).registerAd({
       params: adConfig,
-      disableAds,
       publisherIds,
       debug,
     })
