@@ -55,7 +55,7 @@
     "@r7/ui-base-components": "^0.7.1",
     "@r7/ui-card": "^0.18.1",
     "@r7/ui-footer-delivery": "^1.3.3",
-    "@r7/ui-header-delivery": "^2.5.7",
+    "@r7/ui-header-delivery": "^2.6.0",
     "@r7/ui-layout": "^0.6.3",
     "@r7/ui-section-foot": "^0.2.4",
     "@r7/ui-section-heading": "^0.3.6",
