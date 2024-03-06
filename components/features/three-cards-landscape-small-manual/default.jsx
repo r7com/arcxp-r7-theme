@@ -7,14 +7,14 @@ import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structur
 const CALLS_NUMBER = 3
 
 const ThreeSmallPhotosManual = props => {
-  const calls = Array.from({ length: CALLS_NUMBER + 1 }, (v, i) => {
+  const calls = Array.from({ length: CALLS_NUMBER }, (v, i) => {
     return {
-      title: props.customFields[`callTitle${i}`],
-      imageURL: props.customFields[`callImageURL${i}`],
-      imageAlt: props.customFields[`callImageAlt${i}`],
-      url: props.customFields[`callURL${i}`],
-      hatURL: props.customFields[`hatURL${i}`],
-      hatTitle: props.customFields[`hatTitle${i}`],
+      title: props.customFields[`callTitle${i + 1}`],
+      imageURL: props.customFields[`callImageURL${i + 1}`],
+      imageAlt: props.customFields[`callImageAlt${i + 1}`],
+      url: props.customFields[`callURL${i + 1}`],
+      hatURL: props.customFields[`hatURL${i + 1}`],
+      hatTitle: props.customFields[`hatTitle${i + 1}`],
     }
   })
 
