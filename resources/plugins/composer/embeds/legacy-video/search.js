@@ -16,16 +16,21 @@ window.onload = function () {
 function applyChanges() {
   const formElements = document.getElementById('form-embed-legacy-video').elements
   const metadata = {}
+  const ageRatingDesc = {}
 
-  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl', '']
+  const paramField = ['srcHlsValue', 'srcMp4Value', 'posterUrl', 'ageRatingDescription', '']
 
   Array.from(formElements).forEach(element => {
     if (!paramField.includes(element.name)) {
       element.type === 'checkbox'
         ? (metadata[element.name] = element.checked)
         : (metadata[element.name] = element.value)
+    } else if (element.name === 'ageRatingDescription' && element.checked) {
+      ageRatingDesc[element.id] = element.checked
     }
   })
+
+  metadata['ageRatingDescription'] = ageRatingDesc
 
   const srcHlsValue = formElements['srcHlsValue'].value
   const srcMp4Value = formElements['srcMp4Value'].value
