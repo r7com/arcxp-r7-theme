@@ -61,7 +61,7 @@ const getAgeRatingDescription = data => {
     ? Object.keys(data)
         .filter(
           key =>
-            data[key] === 'true' &&
+            (data[key] === 'true' || data[key] === true) &&
             Object.prototype.hasOwnProperty.call(AGE_RATING_DESCRIPTIONS, key),
         )
         .map(key => AGE_RATING_DESCRIPTIONS[key])
@@ -90,7 +90,7 @@ const getMetadataGlobalContent = data => {
     subSection: data.taxonomy?.sections[1]?.name ?? '',
     thirdSection: getThirdSectionGlobalContent(data.taxonomy?.sections),
     views: '',
-    disableAdv: 'false',
+    disableAdv: sectionContent?.publicidade?.disable_adv,
     createdDate: data.created_date,
     mainSectionUrl: getCanonicalUrlGlobalContent(data),
     sectionPath: getSectionPathGlobalContent(data),
@@ -100,6 +100,15 @@ const getMetadataGlobalContent = data => {
   }
 
   return JSON.stringify(metadata)
+}
+
+const getMetadataCustomEmbed = data => {
+  const updatedMetadata = {
+    ...data,
+    ageRatingDescription: getAgeRatingDescription(data.ageRatingDescription),
+  }
+
+  return JSON.stringify(updatedMetadata)
 }
 
 const getDataFromGlobalContent = data => ({
@@ -113,11 +122,11 @@ const getDataFromGlobalContent = data => ({
 })
 
 const getDataFromCustomEmbed = data => ({
-  poster: data.config.poster,
+  poster: data.config?.poster,
   playerUrl: '',
-  metadata: JSON.stringify(data.config.metadata),
-  urlHls: data.config.urlHls,
-  urlMp4: data.config.urlMp4,
+  metadata: getMetadataCustomEmbed(data.config?.metadata),
+  urlHls: data.config?.urlHls,
+  urlMp4: data.config?.urlMp4,
   playerParams: getDefaultPlayerParams(),
   spriteUrl: '',
 })
