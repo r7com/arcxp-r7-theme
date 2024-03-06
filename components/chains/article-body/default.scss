@@ -23,6 +23,11 @@
     align-items: center;
   }
 
+  .social-share {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .c-media-item__title {
     font-size: calc(var(--c-media-item-title-font-size) * var(--font-size));
   }
