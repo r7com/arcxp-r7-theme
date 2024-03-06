@@ -1,12 +1,17 @@
 import '@r7/ui-card/style.css'
-import PropTypes from '@arc-fusion/prop-types'
 import React from 'react'
+import getProperties from 'fusion:properties'
+import { useFusionContext } from 'fusion:context'
+import PropTypes from '@arc-fusion/prop-types'
 import { Card, LeftPhoto } from '@r7/ui-card'
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
 const CALLS_NUMBER = 3
 
 const ThreeSmallPhotosManual = props => {
+  const { arcSite } = useFusionContext()
+  const { fallbackImage, fallbackImageAlt } = getProperties(arcSite)
+
   const calls = Array.from({ length: CALLS_NUMBER }, (v, i) => {
     return {
       title: props.customFields[`callTitle${i + 1}`],
@@ -25,14 +30,25 @@ const ThreeSmallPhotosManual = props => {
           <LeftPhoto.Flex>
             <LeftPhoto.Figure format="landscape">
               <a href={item.url} title={item.imageAlt}>
-                <img
-                  src={item.imageURL}
-                  alt={item.imageAlt}
-                  width={113}
-                  height={65}
-                  style={{ width: 113, height: 65, objectFit: 'cover' }}
-                  data-tb-thumbnail
-                />
+                {item.imageURL ? (
+                  <img
+                    src={item.imageURL}
+                    alt={item.imageAlt}
+                    width={113}
+                    height={65}
+                    style={{ width: 113, height: 65, objectFit: 'cover' }}
+                    data-tb-thumbnail
+                  />
+                ) : (
+                  <img
+                    data-tb-thumbnail
+                    src={fallbackImage}
+                    alt={fallbackImageAlt}
+                    width={113}
+                    height={65}
+                    style={{ width: 113, height: 65, objectFit: 'contain' }}
+                  />
+                )}
               </a>
             </LeftPhoto.Figure>
 
