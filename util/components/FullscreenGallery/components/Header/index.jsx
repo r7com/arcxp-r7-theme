@@ -1,11 +1,11 @@
 import React from 'react'
 import { SvgIcon } from '@r7/ui-base-components'
 
-export const FullscreenHeader = ({ className, setView, setFullscreen, view, views }) => {
+export const FullscreenHeader = ({ className, setView, setFullscreen, view, views, website }) => {
   return (
     <div className={`${className}-header`}>
       <SvgIcon iconName="logo-R7" title="Logo-R7" width={35} height={31} />
-      <h3 className={`${className}-header-title`}>Cidade Alerta</h3>
+      <h3 className={`${className}-header-title`}>{website}</h3>
       <div className={`${className}-header-toolbar`}>
         <span className={`${className}-header-toolbar-title`}>Modo de visualização:</span>
         <button
