@@ -46,7 +46,8 @@ ProportionalPhotoBlock.propTypes = {
     }),
     imageURL: PropTypes.string.tag({
       group: `Chamada`,
-      label: 'URL da imagem da chamada (https)',
+      label: 'Escolha a imagem',
+      searchable: 'image',
     }),
     title: PropTypes.string.tag({
       group: `Chamada`,
