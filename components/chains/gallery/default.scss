@@ -114,5 +114,21 @@
     img {
       filter: grayscale(1);
     }
+
+    .c-media-item__title, .c-media-item__credit {
+      color: var(--contrast-secondary-color);
+    }
+  }
+
+  .c-media-item__title {
+    font-size: calc(var(--c-media-item-title-font-size) * var(--font-size));
+  }
+
+  .c-media-item__caption {
+    font-size: calc(var(--c-media-item-caption-font-size) * var(--font-size));
+  }
+
+  .c-media-item__credit {
+    font-size: calc(var(--c-media-item-credit-font-size) * var(--font-size));
   }
 }

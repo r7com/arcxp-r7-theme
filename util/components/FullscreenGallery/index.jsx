@@ -5,7 +5,14 @@ import { FullscreenSlider } from './components/Slider'
 import { FullscreenGrid } from './components/Grid'
 import { FullscreenToolbar } from './components/Toolbar'
 
-export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen, initialSlide }) => {
+export const GalleryFullscreen = ({
+  elements,
+  className,
+  isOpen,
+  setFullscreen,
+  initialSlide,
+  website,
+}) => {
   const views = {
     gallery: 'gallery',
     grid: 'grid',
@@ -13,6 +20,7 @@ export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen, 
   const [view, setView] = useState(views.gallery)
   const [activeSlideIndex, setActiveSlideIndex] = useState(initialSlide)
   const swiperRef = useRef(null)
+
   if (!isOpen) {
     return null
   }
@@ -25,6 +33,7 @@ export const GalleryFullscreen = ({ elements, className, isOpen, setFullscreen, 
           setView={setView}
           view={view}
           views={views}
+          website={website}
         />
         <div className={`${className}-content`}>
           <div className={`${className}-content-container`}>

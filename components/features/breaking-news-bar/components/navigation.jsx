@@ -10,7 +10,7 @@ export function SliderNavigation({ bars, swiper, currentSlide }) {
           <button
             key={index}
             className={`nav-button ${isNavActive ? 'nav-button--active' : ''}`}
-            onClick={() => swiper.slideTo(index)}
+            onClick={() => swiper.slideToLoop(index)}
             aria-label={`Barra ${index + 1} ${isNavActive ? '(Atual)' : ''}`}
           >
             <span className="visually-hidden">{index}</span>
