@@ -10,7 +10,8 @@ import { useFusionContext } from 'fusion:context'
 export const Gallery = ({ elements, className }) => {
   const { globalContent } = useFusionContext()
   const { website, taxonomy } = globalContent
-  const sectionName = taxonomy?.primary_section?.name
+  const sectionName =
+    taxonomy?.primary_section?.name || (taxonomy?.sections.length && taxonomy?.sections[0]?.name)
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [fullscreen, setFullscreen] = useState(false)
