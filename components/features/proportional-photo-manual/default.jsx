@@ -1,21 +1,35 @@
 import '@r7/ui-card/style.css'
 import React from 'react'
+import getProperties from 'fusion:properties'
+import { useFusionContext } from 'fusion:context'
 import PropTypes from '@arc-fusion/prop-types'
 import { Card, ProportionalPhoto } from '@r7/ui-card'
 
 const ProportionalPhotoBlock = props => {
+  const { arcSite } = useFusionContext()
+  const { fallbackImage, fallbackImageAlt } = getProperties(arcSite)
+
   const { url, imageURL, imageAlt, title, hatURL, hatTitle } = props.customFields
 
   return (
     <ProportionalPhoto>
       <ProportionalPhoto.Figure>
         <a href={url}>
-          <img
-            data-tb-thumbnail
-            src={imageURL}
-            alt={imageAlt}
-            style={{ objectFit: 'contain', width: '100%', height: '100%' }}
-          />
+          {imageURL ? (
+            <img
+              data-tb-thumbnail
+              src={imageURL}
+              alt={imageAlt}
+              style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+            />
+          ) : (
+            <img
+              data-tb-thumbnail
+              src={fallbackImage}
+              alt={fallbackImageAlt}
+              style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+            />
+          )}
         </a>
       </ProportionalPhoto.Figure>
 
