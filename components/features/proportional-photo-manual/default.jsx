@@ -4,7 +4,7 @@ import PropTypes from '@arc-fusion/prop-types'
 import { Card, ProportionalPhoto } from '@r7/ui-card'
 
 const ProportionalPhotoBlock = props => {
-  const { url, imageURL, alt, title, hatURL, hatTitle } = props.customFields
+  const { url, imageURL, imageAlt, title, hatURL, hatTitle } = props.customFields
 
   return (
     <ProportionalPhoto>
@@ -13,7 +13,7 @@ const ProportionalPhotoBlock = props => {
           <img
             data-tb-thumbnail
             src={imageURL}
-            alt={alt}
+            alt={imageAlt}
             style={{ objectFit: 'contain', width: '100%', height: '100%' }}
           />
         </a>
@@ -47,7 +47,7 @@ ProportionalPhotoBlock.propTypes = {
       label: 'Escolha a imagem',
       searchable: 'image',
     }),
-    alt: PropTypes.string.tag({
+    imageAlt: PropTypes.string.tag({
       label: 'Texto alternativo da imagem',
     }),
     title: PropTypes.string.tag({
