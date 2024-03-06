@@ -48,7 +48,7 @@ const SectionHeadingBlock = props => {
 }
 
 SectionHeadingBlock.label = 'Título do Bloco - R7 Block'
-
+SectionHeadingBlock.static = true
 SectionHeadingBlock.icon = 'arc-headline'
 
 SectionHeadingBlock.propTypes = {

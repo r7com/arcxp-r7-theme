@@ -65,5 +65,6 @@ DividerWithTitle.propTypes = {
 }
 
 DividerWithTitle.label = 'Divider With Title - R7 Block'
+DividerWithTitle.static = true
 
 export default DividerWithTitle

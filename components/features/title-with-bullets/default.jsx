@@ -32,7 +32,7 @@ const TitleWithBulletsBlock = withCard(
 )
 
 TitleWithBulletsBlock.label = 'Manchete - R7 Block'
-
+TitleWithBulletsBlock.static = true
 TitleWithBulletsBlock.propTypes = {
   customFields: PropTypes.shape({
     isGlobalContent: PropTypes.boolean.tag({

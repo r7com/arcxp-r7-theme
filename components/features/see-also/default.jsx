@@ -35,5 +35,6 @@ const SeeAlso = () => {
 }
 
 SeeAlso.label = 'See Also - R7 Block'
+SeeAlso.static = true
 
 export default SeeAlso

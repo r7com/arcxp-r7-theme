@@ -102,6 +102,7 @@ const TextOverImageBlock = withCard(
 )
 
 TextOverImageBlock.label = 'Foto Grande - R7 Block'
+TextOverImageBlock.static = true
 
 TextOverImageBlock.propTypes = {
   customFields: PropTypes.shape({

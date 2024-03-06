@@ -107,6 +107,7 @@ const VerticalCarouselCards = withCard(
 )
 
 VerticalCarouselCards.label = 'Carrossel de Destaques - R7 Block'
+VerticalCarouselCards.lazy = true
 
 VerticalCarouselCards.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(0) }),

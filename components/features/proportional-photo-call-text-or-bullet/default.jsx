@@ -70,6 +70,7 @@ const PrimaryCallPhotoTextSecondText = withCard(
 )
 
 PrimaryCallPhotoTextSecondText.label = 'Topinho Flex - R7 Block'
+PrimaryCallPhotoTextSecondText.static = true
 
 PrimaryCallPhotoTextSecondText.propTypes = {
   customFields: PropTypes.shape({

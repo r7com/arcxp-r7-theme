@@ -18,6 +18,7 @@ const SectionFootBlock = props => {
 }
 
 SectionFootBlock.label = 'Footer do Bloco - R7 Block'
+SectionFootBlock.static = true
 
 SectionFootBlock.icon = 'arc-headline'
 

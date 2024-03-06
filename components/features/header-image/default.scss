@@ -1,9 +1,13 @@
 .b-header {
   &-image {
-    height: 150px;
+    height: 70px;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
+
+    @media (min-width: 72rem) {
+      height: 150px;
+    }
   }
   &-link {
     display: block;

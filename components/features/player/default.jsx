@@ -12,5 +12,6 @@ function Player() {
 }
 
 Player.label = 'Player - R7'
+Player.lazy = true
 
 export default Player

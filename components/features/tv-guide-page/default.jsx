@@ -280,5 +280,6 @@ TvGuidePage.propTypes = {
 }
 
 TvGuidePage.label = 'Grade de Programação (Página) - R7'
+TvGuidePage.lazy = true
 
 export default TvGuidePage

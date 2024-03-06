@@ -48,5 +48,6 @@ const GroupingHeader = () => {
 }
 
 GroupingHeader.label = 'Grouping Header - R7 Block'
+GroupingHeader.static = true
 
 export default GroupingHeader

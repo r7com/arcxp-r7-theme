@@ -66,6 +66,7 @@ const FiveVerticalNewsBlock = withCard(
 )
 
 FiveVerticalNewsBlock.label = 'Tripa Vertical com 5 Destaques - R7 Block'
+FiveVerticalNewsBlock.static = true
 
 FiveVerticalNewsBlock.propTypes = {
   customFields: PropTypes.shape({

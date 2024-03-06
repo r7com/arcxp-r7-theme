@@ -55,6 +55,7 @@ function BreakingNewsBar({ customFields }) {
 }
 
 BreakingNewsBar.label = 'Barra Urgente - R7 Block'
+BreakingNewsBar.lazy = true
 
 BreakingNewsBar.propTypes = {
   customFields: PropTypes.shape({

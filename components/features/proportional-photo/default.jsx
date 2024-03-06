@@ -60,6 +60,7 @@ const ProportionalPhotoBlock = withCard(
 )
 
 ProportionalPhotoBlock.label = 'Foto Média - R7 Block'
+ProportionalPhotoBlock.static = true
 
 ProportionalPhotoBlock.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(1) }),

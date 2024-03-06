@@ -62,5 +62,6 @@ SitemapFooterBlock.propTypes = {
 }
 
 SitemapFooterBlock.label = 'Sitemap Footer - R7 Block'
+SitemapFooterBlock.lazy = true
 
 export default SitemapFooterBlock

@@ -76,5 +76,6 @@ MostReadBlock.propTypes = {
 }
 
 MostReadBlock.label = 'Mais Lidas - R7 Block'
+MostReadBlock.static = true
 
 export default MostReadBlock

@@ -57,5 +57,6 @@ const CardCouponBlock = () => {
 }
 
 CardCouponBlock.label = 'Cupons - R7 Block'
+CardCouponBlock.static = true
 
 export default CardCouponBlock

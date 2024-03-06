@@ -119,6 +119,7 @@ const SampleOutputType = ({
   const urlFull = `${websiteDomain?.replace(/^https:\/\//i, '')}${path}`
   const isHomepage = metaValue('page-type') === 'homepage'
   const pageDashboard = isHomepage ? 'home' : urlFull
+  const hasPoll = globalContent?.content_elements?.some(element => element.subtype === 'poll')
 
   if (globalContent?.legacyRedirect) {
     return <div dangerouslySetInnerHTML={{ __html: globalContent.html }}></div>
@@ -287,9 +288,11 @@ const SampleOutputType = ({
           async
           src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CElement.prototype.prepend%2CElement.prototype.remove%2CArray.prototype.find%2CArray.prototype.includes"
         />
-        <script
-          src={`https://www.google.com/recaptcha/api.js?render=${GOOGLE_RECAPTCHA_APIKEY}`}
-        ></script>
+        {hasPoll && (
+          <script
+            src={`https://www.google.com/recaptcha/api.js?render=${GOOGLE_RECAPTCHA_APIKEY}`}
+          ></script>
+        )}
         <script
           data-integration="inlineScripts"
           dangerouslySetInnerHTML={{ __html: inlineScripts }}

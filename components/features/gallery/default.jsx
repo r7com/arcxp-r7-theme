@@ -18,5 +18,6 @@ const Gallery = () => {
 }
 
 Gallery.label = 'Gallery - R7 Block'
+Gallery.lazy = true
 
 export default Gallery

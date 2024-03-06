@@ -67,6 +67,7 @@ const TwoCardsSquarePhotoBlock = withCard(
 )
 
 TwoCardsSquarePhotoBlock.label = 'Duas Fotos Pequenas - R7 Block'
+TwoCardsSquarePhotoBlock.static = true
 
 TwoCardsSquarePhotoBlock.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),

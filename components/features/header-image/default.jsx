@@ -88,5 +88,6 @@ const HeaderImage = () => {
 }
 
 HeaderImage.label = 'Header Image - R7 Block'
+HeaderImage.static = true
 
 export default HeaderImage

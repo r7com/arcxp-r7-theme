@@ -33,7 +33,7 @@ export const ArticleTags = () => {
 }
 
 ArticleTags.label = 'Article Tags - R7 Block'
-
 ArticleTags.icon = 'tags'
+ArticleTags.static = true
 
 export default ArticleTags

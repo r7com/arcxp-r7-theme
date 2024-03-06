@@ -55,6 +55,7 @@ function Taboola({ customFields }) {
 }
 
 Taboola.label = 'Taboola Feeds - R7 Block'
+Taboola.lazy = true
 
 Taboola.propTypes = {
   customFields: PropTypes.shape({

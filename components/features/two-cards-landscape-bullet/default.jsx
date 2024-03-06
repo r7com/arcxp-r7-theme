@@ -72,7 +72,7 @@ const TwoCardsLandscapeBullet = withCard(
 )
 
 TwoCardsLandscapeBullet.label = 'Duas Fotos Pequenas com Bullet - R7 Block'
-
+TwoCardsLandscapeBullet.static = true
 TwoCardsLandscapeBullet.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
 }

@@ -69,6 +69,7 @@ const GuerraBlock = withCard(
 )
 
 GuerraBlock.label = 'Guerra - R7 Block'
+GuerraBlock.static = true
 
 GuerraBlock.propTypes = {
   customFields: PropTypes.shape({ ...getCardPropTypes(1) }),

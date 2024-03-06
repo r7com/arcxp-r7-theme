@@ -35,5 +35,6 @@ const BreadcrumbBlock = () => {
 }
 
 BreadcrumbBlock.label = 'Breadcrumb - R7 Block'
+BreadcrumbBlock.static = true
 
 export default BreadcrumbBlock

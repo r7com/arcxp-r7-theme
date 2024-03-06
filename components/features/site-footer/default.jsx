@@ -47,7 +47,7 @@ const Footer = () => {
 }
 
 Footer.label = 'Footer - R7 Block'
-
 Footer.icon = 'arc-footer'
+Footer.static = true
 
 export default Footer
