@@ -4,15 +4,17 @@ import React from 'react'
 import { Card, LeftPhoto } from '@r7/ui-card'
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 
+const CALLS_NUMBER = 3
+
 const ThreeSmallPhotosManual = props => {
-  const calls = [1, 2, 3].map(call => {
+  const calls = Array.from({ length: CALLS_NUMBER + 1 }, (v, i) => {
     return {
-      title: props.customFields[`callTitle${call}`],
-      imageURL: props.customFields[`callImageURL${call}`],
-      imageAlt: props.customFields[`callImageAlt${call}`],
-      url: props.customFields[`callURL${call}`],
-      hatURL: props.customFields[`hatURL${call}`],
-      hatTitle: props.customFields[`hatTitle${call}`],
+      title: props.customFields[`callTitle${i}`],
+      imageURL: props.customFields[`callImageURL${i}`],
+      imageAlt: props.customFields[`callImageAlt${i}`],
+      url: props.customFields[`callURL${i}`],
+      hatURL: props.customFields[`hatURL${i}`],
+      hatTitle: props.customFields[`hatTitle${i}`],
     }
   })
 
@@ -56,7 +58,7 @@ ThreeSmallPhotosManual.label = 'Três Fotos Pequenas Manual - R7 Block'
 ThreeSmallPhotosManual.propTypes = {
   customFields: PropTypes.shape({
     ...repeatProptypeStructure({
-      count: 3,
+      count: CALLS_NUMBER,
       shapeTemplate(counter) {
         return {
           [`callTitle${counter}`]: PropTypes.string.tag({
