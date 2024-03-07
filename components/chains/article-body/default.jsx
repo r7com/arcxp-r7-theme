@@ -263,8 +263,8 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
       {articleBody}
       {showDisclaimer && (
         <Disclaimer color="high">
-          Os textos aqui publicados <strong>não refletem</strong> necessariamente a opinião do{' '}
-          <strong>Grupo Record</strong>.
+          Os textos aqui publicados <strong>não refletem</strong> necessariamente a opinião do
+          <strong> Grupo Record</strong>.
         </Disclaimer>
       )}
       <div className="social-share">
