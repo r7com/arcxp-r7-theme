@@ -1,5 +1,5 @@
 import './index.scss'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { FullscreenHeader } from './components/Header'
 import { FullscreenSlider } from './components/Slider'
 import { FullscreenGrid } from './components/Grid'
@@ -20,6 +20,12 @@ export const GalleryFullscreen = ({
   const [view, setView] = useState(views.gallery)
   const [activeSlideIndex, setActiveSlideIndex] = useState(initialSlide)
   const swiperRef = useRef(null)
+
+  useEffect(() => {
+    document.body.classList[isOpen ? 'add' : 'remove']('overflow-hidden')
+
+    return () => document.body.classList.remove('overflow-hidden')
+  }, [isOpen])
 
   if (!isOpen) {
     return null
