@@ -1,7 +1,7 @@
 import { useContent } from 'fusion:content'
 import { useFusionContext } from 'fusion:context'
 
-export function getSectionProps() {
+export function getSectionPropsContent() {
   const context = useFusionContext()
   const pageType = getPageType(context)
   const { arcSite, globalContent } = context
