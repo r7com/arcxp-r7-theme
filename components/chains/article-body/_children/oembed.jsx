@@ -11,7 +11,10 @@ const Oembed = ({ element, classPrefix = '' }) => {
   return (
     <div className={className} data-chromatic="ignore">
       <EmbedContainer markup={element.raw_oembed.html}>
-        <div dangerouslySetInnerHTML={{ __html: element.raw_oembed.html }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: element.raw_oembed.html }}
+          className="oembed-container"
+        />
       </EmbedContainer>
     </div>
   )
