@@ -7,17 +7,15 @@ import { generateInstanceId, getAdObject, getMinHeight } from './utils/ad-helper
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import './default.scss'
 import { DisabledAdvWarning } from './children/DisableAdvWarning'
-import { getSectionProps } from '../../../util/get-section-props'
+import { getSectionPropsContent } from '../../../util/get-section-props-content'
 
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
   const { customFields } = propsWithContext
   const { blockLayout = 'background', display = true, fixed, reserveSpace = true } = customFields
   const showAd = !isAdmin && display
-
-  const content = getSectionProps()
-
-  const disableAds = JSON.parse(content?.publicidade?.disable_adv || false)
+  const sectionPropsContent = getSectionPropsContent()
+  const disableAds = JSON.parse(sectionPropsContent?.publicidade?.disable_adv || false)
 
   return (
     <>
