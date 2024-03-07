@@ -8,7 +8,7 @@ const SeeAlso = () => {
   const { arcSite, globalContent } = useFusionContext()
   const { primaryColor } = getProperties(arcSite)
   const BLOCK_CLASS_NAME = 'b-see-also'
-  if (globalContent.related_content.basic.length) {
+  if (globalContent.related_content?.basic.length) {
     return (
       <div
         className={`${BLOCK_CLASS_NAME}__container`}
@@ -19,7 +19,7 @@ const SeeAlso = () => {
         </h3>
 
         <ul className={`${BLOCK_CLASS_NAME}__list`}>
-          {globalContent.related_content.basic.map(relatedItem => (
+          {globalContent.related_content?.basic.map(relatedItem => (
             <RelatedItem
               key={relatedItem._id}
               item={relatedItem}
