@@ -33,51 +33,55 @@ const TwoCardsSquarePhotoManual = ({ customFields }) => {
     return <p>É necessário definir uma fonte de conteúdo para este bloco.</p>
 
   return (
-    customFields.display &&
-    content.map((item, index) => {
-      const id = index + 1
-      const imageUrl = customFields[`image-${id}`] || item?.promo_items?.basic?.url || fallbackImage
-      const imageAlt =
-        customFields[`image-description-${id}`] || item?.promo_items?.basic?.url || fallbackImageAlt
-      const headline = customFields[`headline-${id}`] || item?.headlines?.basic
-      const link = customFields[`link-${id}`] || item?.canonical_url
-      const { name } = getHatBySite({ taxonomy: item?.taxonomy })
-      const hat = customFields[`hat-${id}`] || name
+    customFields.display && (
+      <LeftPhoto>
+        {content.map((item, index) => {
+          const id = index + 1
+          const imageUrl =
+            customFields[`image-${id}`] || item?.promo_items?.basic?.url || fallbackImage
+          const imageAlt =
+            customFields[`image-description-${id}`] ||
+            item?.promo_items?.basic?.url ||
+            fallbackImageAlt
+          const headline = customFields[`headline-${id}`] || item?.headlines?.basic
+          const link = customFields[`link-${id}`] || item?.canonical_url
+          const { name } = getHatBySite({ taxonomy: item?.taxonomy })
+          const hat = customFields[`hat-${id}`] || name
 
-      return (
-        <LeftPhoto key={item?._id}>
-          <LeftPhoto.Item key={item?._id}>
-            <LeftPhoto.Flex>
-              <LeftPhoto.Figure format="square">
-                <a href={link} title={headline}>
-                  <img
-                    data-tb-thumbnail
-                    src={imageUrl}
-                    alt={imageAlt}
-                    width={113}
-                    height={113}
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <CardLabel {...item} />
-                </a>
-              </LeftPhoto.Figure>
-              <LeftPhoto.TextWrapper>
-                <Card.HatWrapper type={item?.type}>
+          return (
+            <LeftPhoto.Item key={item?._id}>
+              <LeftPhoto.Flex>
+                <LeftPhoto.Figure format="square">
                   <a href={link} title={headline}>
-                    <Card.HatTitle color={item?.color}>{hat}</Card.HatTitle>
+                    <img
+                      data-tb-thumbnail
+                      src={imageUrl}
+                      alt={imageAlt}
+                      width={113}
+                      height={113}
+                      style={{ width: 113, height: 113, objectFit: 'cover' }}
+                    />
+                    <CardLabel {...item} />
                   </a>
-                </Card.HatWrapper>
-                <LeftPhoto.Title fontSize="small">
-                  <a href={link} title={headline}>
-                    {headline}
-                  </a>
-                </LeftPhoto.Title>
-              </LeftPhoto.TextWrapper>
-            </LeftPhoto.Flex>
-          </LeftPhoto.Item>
-        </LeftPhoto>
-      )
-    })
+                </LeftPhoto.Figure>
+                <LeftPhoto.TextWrapper>
+                  <Card.HatWrapper type={item?.type}>
+                    <a href={link} title={headline}>
+                      <Card.HatTitle color={item?.color}>{hat}</Card.HatTitle>
+                    </a>
+                  </Card.HatWrapper>
+                  <LeftPhoto.Title fontSize="small">
+                    <a href={link} title={headline}>
+                      {headline}
+                    </a>
+                  </LeftPhoto.Title>
+                </LeftPhoto.TextWrapper>
+              </LeftPhoto.Flex>
+            </LeftPhoto.Item>
+          )
+        })}
+      </LeftPhoto>
+    )
   )
 }
 
