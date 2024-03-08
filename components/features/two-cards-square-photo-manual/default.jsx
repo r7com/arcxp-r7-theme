@@ -4,7 +4,7 @@ import { useContent } from 'fusion:content'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
 import { LeftPhoto, Card } from '@r7/ui-card'
-import { getLabelPropTypes, CardLabel } from '../../../util/card'
+import { getLabelPropTypes, CardLabel, getLabelCustomFields } from '../../../util/card'
 import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
 import { getHatBySite } from '../../../util/card/get-hat-by-site'
 
@@ -13,6 +13,7 @@ const CONTENT_LENGTH = 2
 const TwoCardsSquarePhotoManual = ({ customFields }) => {
   const { arcSite, isAdmin } = useFusionContext()
   const { fallbackImage, fallbackImageAlt } = getProperties(arcSite)
+  const labelCustomFields = getLabelCustomFields({ length: CONTENT_LENGTH, customFields })
   const indexList = [...Array(CONTENT_LENGTH)].map((_, idx) => idx + 1)
   const content = indexList.map(idx => {
     const { contentService, contentConfigValues } = customFields[`_id-${idx}`]
@@ -61,7 +62,11 @@ const TwoCardsSquarePhotoManual = ({ customFields }) => {
                       height={113}
                       style={{ width: 113, height: 113, objectFit: 'cover' }}
                     />
-                    <CardLabel {...item} />
+                    <CardLabel
+                      customFields={{ label: labelCustomFields[index] }}
+                      taxonomy={item?.taxonomy}
+                      fallbackImage={fallbackImage}
+                    />
                   </a>
                 </LeftPhoto.Figure>
                 <LeftPhoto.TextWrapper>
