@@ -45,6 +45,7 @@ const TwoCardsSquarePhotoManual = ({ customFields }) => {
             item?.promo_items?.basic?.url ||
             fallbackImageAlt
           const headline = customFields[`headline-${id}`] || item?.headlines?.basic
+          console.log(headline)
           const link = customFields[`link-${id}`] || item?.canonical_url
           const { name } = getHatBySite({ taxonomy: item?.taxonomy })
           const hat = customFields[`hat-${id}`] || name
@@ -104,7 +105,7 @@ TwoCardsSquarePhotoManual.propTypes = {
             group: `${counter} - Configurar Conteúdo`,
             label: 'Display Content Info',
           }),
-          [`headline-${counter}`]: PropTypes.string.tag({
+          [`headline-${counter}`]: PropTypes.richtext.tag({
             group: `${counter} - Configurar Conteúdo`,
             label: 'Título da Matéria',
           }),
@@ -121,7 +122,7 @@ TwoCardsSquarePhotoManual.propTypes = {
             label: 'Imagem da Matéria',
             searchable: 'image',
           }),
-          [`image-description${counter}`]: PropTypes.string.tag({
+          [`image-description-${counter}`]: PropTypes.string.tag({
             group: `${counter} - Configurar Conteúdo`,
             label: 'Descreva a imagem',
           }),
