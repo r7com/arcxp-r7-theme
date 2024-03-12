@@ -1,13 +1,13 @@
 /* eslint-disable react/display-name */
 import React from 'react'
 import { useFusionContext } from 'fusion:context'
-import { useCard } from './useCard'
-import { RenderCard } from './components/RenderCard'
+import { useCard } from './use-card'
+import { RenderCard } from '../components/RenderCard'
 
 /**
  * Function withCard adds a card wrapper around a provided component.
  * @param {React.ComponentType<{cardProps:ReturnType<useCard>}>} Component The component
- * @param {import("./useCard").CardOptions} options Options for the card
+ * @param {import("./use-card").CardOptions} options Options for the card
  * @returns {(props: {customFields: Object}) => React.Component} The wrapped component with a card
  */
 export function withCard(Component, { defaultFrom, defaultSize, length }) {
