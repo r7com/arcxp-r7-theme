@@ -134,5 +134,6 @@ TwoCardsSquarePhotoManual.propTypes = {
 }
 
 TwoCardsSquarePhotoManual.label = 'Duas Fotos Pequenas Manual - R7 Block'
+TwoCardsSquarePhotoManual.static = true
 
 export default TwoCardsSquarePhotoManual
