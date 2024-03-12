@@ -35,6 +35,7 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
           websites,
           distributor,
           publish_date,
+          credits,
         } = element
         const image = getImageFromANS(element)
 
@@ -61,7 +62,10 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
               </Link>
             ) : null}
             <div className={`${className}__item-content`}>
-              <Distributor publishDate={publish_date} storyDistributor={distributor} />
+              <Distributor
+                publishDate={publish_date}
+                storyDistributor={distributor || credits?.by[0]}
+              />
               <Paragraph as="h3" fontSize="md" fontWeight="semibold">
                 <Link href={url}>{headlineText}</Link>
               </Paragraph>
