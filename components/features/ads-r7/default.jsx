@@ -24,7 +24,6 @@ export const R7ArcAdDisplay = props => {
   })
 
   const disableAds = JSON.parse(content?.publicidade?.disable_adv || false)
-
   return (
     <>
       {showAd && !disableAds ? (
