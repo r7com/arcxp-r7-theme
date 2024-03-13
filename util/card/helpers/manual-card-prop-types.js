@@ -44,10 +44,6 @@ export function getManualCardPropTypes(cards = 1) {
             label: 'Imagem da Matéria',
             searchable: 'image',
           }),
-          [`image-description-${counter}`]: PropTypes.string.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Descreva a imagem',
-          }),
           ...getLabelPropTypes(counter),
         }
       },
