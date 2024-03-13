@@ -21,7 +21,16 @@ export function useManualCard({ contentLength, customFields }) {
       },
     })
 
-    return data
+    return {
+      ...data,
+      manual: {
+        imageUrl: customFields[`image-${index}`],
+        imageAlt: customFields[`image-description-${index}`],
+        headline: customFields[`headline-${index}`],
+        link: customFields[`link-${index}`],
+        hat: customFields[`hat-${index}`],
+      },
+    }
   })
 
   const labels = getLabelCustomFields({ customFields, length: contentLength })
