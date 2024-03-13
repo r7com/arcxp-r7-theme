@@ -7,6 +7,7 @@ import { Container, SectionWrapper } from '@r7/ui-layout'
 import { PrivacyBox } from '@r7/ui-base-components'
 import { useFusionContext } from 'fusion:context'
 import getProperties from 'fusion:properties'
+import { Refresh } from '../../../util/components/Refresh'
 
 const SectionLayout = ({ children }) => {
   const [headerFixed, header, headerAd, main, footer] = React.Children.toArray(children)
@@ -16,6 +17,7 @@ const SectionLayout = ({ children }) => {
 
   return (
     <>
+      <Refresh />
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
