@@ -5,8 +5,14 @@ export function getSectionPropsContent() {
   const context = useFusionContext()
   const pageType = getPageType(context)
   const { arcSite, globalContent } = context
-  const sectionId = pageType === 'home' ? '/' : globalContent?.taxonomy?.primary_section?._id
-  const siteId = pageType === 'home' ? arcSite : globalContent?.canonical_website
+
+  const mapping = {
+    section: [globalContent?._id, globalContent?._website],
+    article: [globalContent?.taxonomy?.primary_section?._id, globalContent?.canonical_website],
+  }[pageType]
+
+  const sectionId = mapping ? mapping[0] : '/'
+  const siteId = mapping ? mapping[1] : arcSite
 
   const content = useContent({
     source: 'custom-site-service-hierarchy',
