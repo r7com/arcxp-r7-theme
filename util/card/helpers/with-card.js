@@ -8,7 +8,7 @@ import { RenderCard } from '../components/RenderCard'
 /**
  * Function withCard adds a card wrapper around a provided component.
  * @typedef {{mode: 'manual' | 'automatic'}} withCardMode Choose 'mode' between 'manual' or 'automatic'
- * @param {React.ComponentType<{cardProps:ReturnType<useCard>}>} Component The component
+ * @param {React.ComponentType<{cardProps:ReturnType<useCard | useManualCard>}>} Component The component
  * @param {import("./use-card").CardOptions & import("./use-manual-card").ManualCardOptions & withCardMode} options Options for the card
  * @returns {(props: {customFields: Object}) => React.Component} The wrapped component with a card
  */
