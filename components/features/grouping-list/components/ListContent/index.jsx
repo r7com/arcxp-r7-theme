@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useContent } from 'fusion:content'
 import { useFusionContext } from 'fusion:context'
 import { getImageFromANS, Image, Link } from '@wpmedia/arc-themes-components'
 import { Paragraph } from '@r7/ui-base-components'
 import { Distributor } from '../../../../../util/components/Distributor'
+
+const convertToUnix = timestamp => {
+  return new Date(timestamp).getTime()
+}
 
 export const SimpleListContent = ({ className, customFields, setLoading, setDisabled, size }) => {
   const { arcSite, globalContent } = useFusionContext()
@@ -18,7 +22,6 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
         },
       },
     }) || {}
-
   useEffect(() => {
     setLoading(false)
     if (content_elements && content_elements.length < size) {
@@ -26,9 +29,19 @@ export const SimpleListContent = ({ className, customFields, setLoading, setDisa
     }
   }, [content_elements])
 
+  const sortedElements = useMemo(
+    () =>
+      content_elements
+        .map(elem => {
+          elem.lastUpdatedUnix = convertToUnix(elem.last_updated_date)
+          return elem
+        })
+        .sort((a, b) => b.lastUpdatedUnix - a.lastUpdatedUnix),
+    [content_elements],
+  )
   return (
     <ul className={`${className}__items`}>
-      {content_elements.map(element => {
+      {sortedElements.map(element => {
         const {
           headlines: { basic: headlineText = '' } = {},
           subheadlines: { basic: subheadlineText = '' } = {},
