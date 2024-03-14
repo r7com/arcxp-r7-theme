@@ -17,7 +17,7 @@ const SectionLayout = ({ children }) => {
 
   return (
     <>
-      <Refresh />
+      {!isAdmin && <Refresh />}
       <Header>
         {headerFixed && <Header.Fixed>{headerFixed}</Header.Fixed>}
         {header && header}
