@@ -25,9 +25,8 @@ const Quote = ({ element, classPrefix }) => {
                   <blockquote
                     className={`${COMPONENT_CLASS_NAME}__title`}
                     style={{ color: primaryColor }}
-                  >
-                    {`"${contentItem.content}"`}
-                  </blockquote>
+                    dangerouslySetInnerHTML={{ __html: contentItem.content }}
+                  ></blockquote>
                 </Paragraph>
                 <Paragraph fontSize="little" as="p">
                   <span className={`${COMPONENT_CLASS_NAME}__author`}>{`${
