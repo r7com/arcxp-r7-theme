@@ -18,7 +18,7 @@ export const Gallery = ({ elements, className }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const [fullscreen, setFullscreen] = useState(false)
   const [interationCounter, setInterationCounter] = useState(0)
-  const [show, setShowAdv] = useState(false)
+  const [showAdv, setShowAdv] = useState(false)
 
   useEffect(() => {
     fullscreen
@@ -33,7 +33,7 @@ export const Gallery = ({ elements, className }) => {
 
   return (
     <div
-      className={`${className} gallery__container ${show ? 'gallery__container--show-adv' : ''}`}
+      className={`${className} gallery__container ${showAdv ? 'gallery__container--show-adv' : ''}`}
     >
       <div className="gallery__adv">
         <div className="gallery__adv-text">Publicidade</div>
