@@ -42,7 +42,16 @@ export const FullscreenGrid = ({
       </ul>
       <div className={`${className}-grid-adv`}>
         <span className={`${className}-grid-text`}>publicidade</span>
-        <Ad id={`gallery-grid-${id}`} pos="Galeria1_Imagem" context="Galeria" />
+        <Ad
+          id={`gallery-grid-${id}`}
+          pos="Galeria1_Imagem"
+          context="Galeria"
+          dimensions={[
+            [320, 50],
+            [320, 50],
+            [320, 50],
+          ]}
+        />
       </div>
     </div>
   )

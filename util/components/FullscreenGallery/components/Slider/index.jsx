@@ -45,7 +45,22 @@ export const FullscreenSlider = ({
       <div className={`${className}-adv ${showAdv ? `${className}-show-adv` : ''}`}>
         <span className={`${className}-text`}>Publicidade</span>
         <div className={`${className}-adv-content`}>
-          <Ad id={`gallery-fullscreen-${id}`} pos="Galeria1_Imagem" context="Galeria" />
+          <Ad
+            id={`gallery-fullscreen-${id}`}
+            pos="Galeria1_Imagem"
+            context="Galeria"
+            dimensions={[
+              [
+                [300, 250],
+                [660, 470],
+              ],
+              [
+                [660, 470],
+                [771, 420],
+              ],
+              [300, 250],
+            ]}
+          />
         </div>
         <Button
           className={`${className}-adv-button`}
