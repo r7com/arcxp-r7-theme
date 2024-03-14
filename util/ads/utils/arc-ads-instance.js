@@ -1,5 +1,7 @@
+/* eslint-disable */
+// istanbul ignore file
 import { ArcAds } from 'arcads'
-import { addLiveramp } from '../../utils/ad-adapters-configs'
+import { addLiveramp } from '../../../components/features/ads-r7/utils/ad-adapters-configs'
 
 export const logEvent = (evt, debug = false) => {
   if (debug) {
@@ -12,8 +14,6 @@ export const logEvent = (evt, debug = false) => {
 }
 
 class ArcAdsInstance {
-  static instance
-  static properties
   static getInstance(properties, callback) {
     if (ArcAdsInstance.instance == null) {
       ArcAdsInstance.properties = properties

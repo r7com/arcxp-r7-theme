@@ -1,5 +1,5 @@
 import PropTypes from '@arc-fusion/prop-types'
-import { repeatProptypeStructure } from '../repeat-proptypes-structure'
+import { repeatProptypeStructure } from '../../repeat-proptypes-structure'
 import { getLabelPropTypes } from './get-label-props'
 
 /**

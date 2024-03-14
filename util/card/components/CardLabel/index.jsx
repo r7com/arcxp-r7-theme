@@ -1,11 +1,11 @@
 import React from 'react'
 import { Card } from '@r7/ui-card'
-import { getLabelTypeBySite } from '../../get-label-type-by-site'
+import { getLabelTypeBySite } from '../../helpers'
 
 /**
  * CardLabel component
  * @typedef {{fallbackImage:string}} CardLabelProps
- * @typedef {ReturnType<typeof import("../../useCard").useCard>} UseCardReturn
+ * @typedef {ReturnType<typeof import("../../use-card").useCard>} UseCardReturn
  * @param {UseCardReturn["collection"][number]} - CardCollection
  */
 export const CardLabel = ({ customFields, taxonomy, fallbackImage }) => {

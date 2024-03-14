@@ -20,6 +20,7 @@
     left: 0;
   }
 
+
   @media screen and (max-width: 48rem) {   
     &-wrapper-caption {
       overflow-y: auto;
@@ -155,6 +156,75 @@
       touch-action: none;
     }
   }
+  
+  &-adv {
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    justify-content: center;
+    inset: 0;
+    flex-direction: column;
+    height: 100%;
+    background-color: #111111;
+
+    &.gallery__overlay-show-adv {
+      display: flex;
+    }
+  }
+
+  &-text {
+    display: block;
+    margin: 8px 0;
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &-adv-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+  }
+
+  &-adv-button {
+    display: flex;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #fff;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: .85;
+    margin-top: 16px;
+
+    &:hover {
+      background-color: #fff;
+      color: #111;
+      border-color: #fff;
+    }
+
+    &:hover svg {
+      fill: #111;
+    }
+
+    svg {
+      fill: #fff;
+    }
+  }
 
   &-slider.swiper {
     margin: 0 14%;
@@ -231,7 +301,6 @@
     column-count: 3;
     transform: translateX(0px);
     max-width: 771px;
-    display: none;
     background: #111;
 
     @media screen and (max-width: 48rem) {
@@ -255,9 +324,29 @@
       }
     }
 
-    &.active {
+    &-text {
+      display: block;
+      margin: 8px 0;
+      text-align: center;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    &-wrapper.active {
       overflow-y: overlay;
       display: block;
+    }
+
+    &-wrapper {
+      display: none;
+    }
+
+    &-adv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
   }
 

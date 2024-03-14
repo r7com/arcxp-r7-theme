@@ -1,5 +1,6 @@
 import './index.scss'
 import React, { useState, useRef, useEffect } from 'react'
+
 import { FullscreenHeader } from './components/Header'
 import { FullscreenSlider } from './components/Slider'
 import { FullscreenGrid } from './components/Grid'
@@ -17,9 +18,18 @@ export const GalleryFullscreen = ({
     gallery: 'gallery',
     grid: 'grid',
   }
+
   const [view, setView] = useState(views.gallery)
   const [activeSlideIndex, setActiveSlideIndex] = useState(initialSlide)
   const swiperRef = useRef(null)
+
+  const [interationCounter, setInterationCounter] = useState(0)
+  const [showAdv, setShowAdv] = useState(false)
+
+  function handleAdv() {
+    setInterationCounter(prev => (prev += 1))
+    setShowAdv(interationCounter && interationCounter % 5 === 0)
+  }
 
   useEffect(() => {
     document.body.classList[isOpen ? 'add' : 'remove']('overflow-hidden')
@@ -42,7 +52,7 @@ export const GalleryFullscreen = ({
           website={website}
         />
         <div className={`${className}-content`}>
-          <div className={`${className}-content-container`}>
+          <div className={`${className}-content-container `}>
             <FullscreenSlider
               elements={elements}
               className={className}
@@ -51,6 +61,9 @@ export const GalleryFullscreen = ({
               swiperRef={swiperRef}
               initialSlide={initialSlide}
               setActiveSlideIndex={setActiveSlideIndex}
+              handleAdv={handleAdv}
+              showAdv={showAdv}
+              setShowAdv={setShowAdv}
             />
             <FullscreenGrid
               elements={elements}
@@ -60,10 +73,11 @@ export const GalleryFullscreen = ({
               views={views}
               swiperRef={swiperRef}
               setActiveSlideIndex={setActiveSlideIndex}
+              showAdv={showAdv}
             />
           </div>
         </div>
-        {view === views.gallery && (
+        {view === views.gallery && !showAdv && (
           <FullscreenToolbar
             className={className}
             currentSlide={activeSlideIndex}
