@@ -11,6 +11,7 @@ export const FullscreenToolbar = ({ className, elements, currentSlide }) => {
   const { websiteDomain } = getProperties(arcSite)
   const urlForShare = encodeURI(`${websiteDomain}${website_url}`)
   const [showCaption, setShowCaption] = useState(false)
+
   return (
     <div className={`${className}-caption ${showCaption ? 'active' : ''}`}>
       <div className={`${className}-caption-toolbar`}>
