@@ -1,9 +1,12 @@
 import React from 'react'
 import { isR7Home } from '../../../../../util/global-helpers'
+import { getSectionPropsContent } from '../../../../../util/get-section-props-content'
 
 let ids = []
 
 export const TaboolaCard = ({ websiteName, isAdmin, className, id }) => {
+  const sectionPropsContent = getSectionPropsContent()
+  const disableTaboola = JSON.parse(sectionPropsContent?.publicidade?.disable_taboola || false)
   const configIds = isR7Home(websiteName)
     ? {
         placement: '',
@@ -31,11 +34,15 @@ export const TaboolaCard = ({ websiteName, isAdmin, className, id }) => {
   }
 
   return (
-    <div
-      className={`${className}__item`}
-      id={`taboola-ultimas-noticias-widget-organico${configIds.container}-${id}`}
-    >
-      {isAdmin ? 'Taboola Card' : ''}
-    </div>
+    <>
+      {!disableTaboola && (
+        <div
+          className={`${className}__item`}
+          id={`taboola-ultimas-noticias-widget-organico${configIds.container}-${id}`}
+        >
+          {isAdmin ? 'Taboola Card' : ''}
+        </div>
+      )}
+    </>
   )
 }

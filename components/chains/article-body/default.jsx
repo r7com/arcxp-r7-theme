@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
 import { SocialShare, useArticleAction } from '@r7/ui-article-delivery'
-import { Paragraph, Typography } from '@r7/ui-base-components'
+import { Disclaimer, Paragraph, Typography } from '@r7/ui-base-components'
 import getProperties from 'fusion:properties'
 
 import {
@@ -30,6 +30,7 @@ import { AccessibilityBar } from './_children/accessibility-bar'
 import { Image } from '../../../util/components/Image'
 import { R7Player } from '../../../util/components/Player'
 import { getPlayerDataProxy } from '../../../util/components/Player/proxy/proxy'
+import { getSectionPropsContent } from '../../../util/get-section-props-content'
 
 const BLOCK_CLASS_NAME = 'b-article-body'
 
@@ -253,10 +254,19 @@ export const ArticleBodyChainPresentation = ({ children, customFields = {}, cont
       : []),
   ]
 
+  const sectionPropsContent = getSectionPropsContent()
+  const showDisclaimer = JSON.parse(sectionPropsContent?.site?.enable_disclaimer || false)
+
   return (
     <article className={BLOCK_CLASS_NAME} style={{ '--font-size': `${fontSize}` }}>
       <AccessibilityBar />
       {articleBody}
+      {showDisclaimer && (
+        <Disclaimer color="high">
+          Os textos aqui publicados <strong>não refletem</strong> necessariamente a opinião do
+          <strong> Grupo Record</strong>.
+        </Disclaimer>
+      )}
       <div className="social-share">
         <SocialShare>
           <SocialShare.List>

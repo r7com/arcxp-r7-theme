@@ -1,29 +1,22 @@
 import React, { useState } from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { useFusionContext } from 'fusion:context'
-import { useContent } from 'fusion:content'
 import { LazyLoad } from '@wpmedia/arc-themes-components'
 import AdUnit from './children/AdUnit'
-import { generateInstanceId, getAdObject, getMinHeight, getPageType } from './utils/ad-helper'
+import { generateInstanceId, getAdObject, getMinHeight } from './utils/ad-helper'
 import { AdPlaceholder, AdShell } from '@r7/ui-base-components'
 import './default.scss'
 import { DisabledAdvWarning } from './children/DisableAdvWarning'
+import { getSectionPropsContent } from '../../../util/get-section-props-content'
 
 export const R7ArcAdDisplay = props => {
   const { config, isAdmin, lazyLoad, propsWithContext } = props
-  const { customFields, globalContent, arcSite } = propsWithContext
+  const { customFields } = propsWithContext
   const { blockLayout = 'background', display = true, fixed, reserveSpace = true } = customFields
   const showAd = !isAdmin && display
-  const pageType = getPageType(propsWithContext)
-  const sectionId = pageType === 'home' ? '/' : globalContent?.taxonomy?.primary_section?._id
-  const siteId = pageType === 'home' ? arcSite : globalContent?.canonical_website
+  const sectionPropsContent = getSectionPropsContent()
+  const disableAds = JSON.parse(sectionPropsContent?.publicidade?.disable_adv || false)
 
-  const content = useContent({
-    source: 'custom-site-service-hierarchy',
-    query: { sectionId, siteId },
-  })
-
-  const disableAds = JSON.parse(content?.publicidade?.disable_adv || false)
   return (
     <>
       {showAd && !disableAds ? (

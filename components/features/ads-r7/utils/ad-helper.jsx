@@ -137,11 +137,6 @@ export const getTags = ({ globalContent } = {}) =>
     .filter(tag => tag)
     .join(',')
 
-export const getPageType = (props = {}) => {
-  const { metaValue } = props
-  return (metaValue && metaValue('page-type')) || ''
-}
-
 export const getAdPath = props => {
   const { metaValue } = props
   let adPath = (metaValue && metaValue('ad-path')) || ''
