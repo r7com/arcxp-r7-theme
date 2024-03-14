@@ -4,7 +4,7 @@ import PropTypes from '@arc-fusion/prop-types'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
-import { withCard, getCardPropTypes } from '../../../util/card'
+import { withCard, getCardPropTypes } from '../../../util/card/helpers'
 import { FiveVerticalNews } from '@r7/ui-card'
 
 const FiveVerticalNewsBlock = withCard(

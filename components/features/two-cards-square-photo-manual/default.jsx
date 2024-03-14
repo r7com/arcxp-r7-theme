@@ -1,54 +1,24 @@
 import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
-import { useContent } from 'fusion:content'
-import { useFusionContext } from 'fusion:context'
-import getProperties from 'fusion:properties'
 import { LeftPhoto, Card } from '@r7/ui-card'
-import { getLabelPropTypes, CardLabel, getLabelCustomFields } from '../../../util/card'
-import { repeatProptypeStructure } from '../../../util/repeat-proptypes-structure'
-import { getHatBySite } from '../../../util/card/get-hat-by-site'
+import { getHatBySite, withCard, getManualCardPropTypes } from '../../../util/card/helpers'
+import { CardLabel } from '../../../util/card/components'
 
 const CONTENT_LENGTH = 2
 
-const TwoCardsSquarePhotoManual = ({ customFields }) => {
-  const { arcSite, isAdmin } = useFusionContext()
-  const { fallbackImage, fallbackImageAlt } = getProperties(arcSite)
-  const labelCustomFields = getLabelCustomFields({ length: CONTENT_LENGTH, customFields })
-  const indexList = [...Array(CONTENT_LENGTH)].map((_, idx) => idx + 1)
-  const content = indexList.map(idx => {
-    const { contentService, contentConfigValues } = customFields[`_id-${idx}`]
-    const articleData = useContent({
-      source: contentService,
-      key: {
-        _id: contentConfigValues._id,
-      },
-    })
+const TwoCardsSquarePhotoManual = withCard(
+  props => {
+    const { content, siteProperties } = props.cardProps
+    const { fallbackImage, fallbackImageAlt } = siteProperties
 
-    return articleData
-  })
-
-  if (isAdmin && !customFields.display)
-    return <p>Este bloco está oculto. Mude suas configurações para exibí-lo.</p>
-
-  if (isAdmin && !content.filter(item => item).length > 0)
-    return <p>É necessário definir uma fonte de conteúdo para este bloco.</p>
-
-  return (
-    customFields.display && (
+    return (
       <LeftPhoto>
-        {content.map((item, index) => {
-          const id = index + 1
-          const imageUrl =
-            customFields[`image-${id}`] || item?.promo_items?.basic?.url || fallbackImage
-          const imageAlt =
-            customFields[`image-description-${id}`] ||
-            item?.promo_items?.basic?.url ||
-            fallbackImageAlt
-          const headline = customFields[`headline-${id}`] || item?.headlines?.basic
-          console.log(headline)
-          const link = customFields[`link-${id}`] || item?.canonical_url
-          const { name } = getHatBySite({ taxonomy: item?.taxonomy })
-          const hat = customFields[`hat-${id}`] || name
+        {content.map(item => {
+          const imageUrl = item?.promo_items?.basic?.url || fallbackImage
+          const imageAlt = item?.promo_items?.basic?.url || fallbackImageAlt
+          const headline = item?.headlines?.basic
+          const link = item?.canonical_url
+          const hat = getHatBySite({ taxonomy: item?.taxonomy }).name
 
           return (
             <LeftPhoto.Item key={item?._id}>
@@ -64,7 +34,7 @@ const TwoCardsSquarePhotoManual = ({ customFields }) => {
                       style={{ width: 113, height: 113, objectFit: 'cover' }}
                     />
                     <CardLabel
-                      customFields={{ label: labelCustomFields[index] }}
+                      customFields={{ label: item.label }}
                       taxonomy={item?.taxonomy}
                       fallbackImage={fallbackImage}
                     />
@@ -88,51 +58,14 @@ const TwoCardsSquarePhotoManual = ({ customFields }) => {
         })}
       </LeftPhoto>
     )
-  )
-}
+  },
+  { length: CONTENT_LENGTH, mode: 'manual' },
+)
 
 TwoCardsSquarePhotoManual.propTypes = {
-  customFields: PropTypes.shape({
-    display: PropTypes.boolean.tag({
-      label: 'Exibir bloco',
-      defaultValue: true,
-    }),
-    ...repeatProptypeStructure({
-      count: CONTENT_LENGTH,
-      shapeTemplate(counter) {
-        return {
-          [`_id-${counter}`]: PropTypes.contentConfig('ans-item').tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Display Content Info',
-          }),
-          [`headline-${counter}`]: PropTypes.richtext.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Título da Matéria',
-          }),
-          [`link-${counter}`]: PropTypes.string.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Link da Matéria',
-          }),
-          [`hat-${counter}`]: PropTypes.string.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Título Chapéu da Matéria',
-          }),
-          [`image-${counter}`]: PropTypes.string.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Imagem da Matéria',
-            searchable: 'image',
-          }),
-          [`image-description-${counter}`]: PropTypes.string.tag({
-            group: `${counter} - Configurar Conteúdo`,
-            label: 'Descreva a imagem',
-          }),
-          ...getLabelPropTypes(counter),
-        }
-      },
-    }),
-  }),
+  customFields: PropTypes.shape({ ...getManualCardPropTypes(CONTENT_LENGTH) }),
 }
 
-TwoCardsSquarePhotoManual.label = 'Duas Fotos Pequenas Manual - R7 Block'
+TwoCardsSquarePhotoManual.label = '(Manual) Duas Fotos Pequenas - R7 Block'
 
 export default TwoCardsSquarePhotoManual

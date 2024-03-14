@@ -3,7 +3,8 @@ import React from 'react'
 import PropTypes from '@arc-fusion/prop-types'
 import { Guerra } from '@r7/ui-card'
 import { Bullet } from '@r7/ui-base-components'
-import { CardHat, withCard } from '../../../util/card'
+import { CardHat } from '../../../util/card/components'
+import { withCard } from '../../../util/card/helpers'
 
 const TitleWithBulletsBlock = withCard(
   props => {

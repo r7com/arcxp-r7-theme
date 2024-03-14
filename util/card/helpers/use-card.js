@@ -2,6 +2,7 @@ import getProperties from 'fusion:properties'
 import { useContent } from 'fusion:content'
 import { useFusionContext } from 'fusion:context'
 import { getLabelCustomFields } from './get-label-props'
+import { getItemsWithCustomFields } from './get-items-with-custom-fields'
 
 /**
  * useCard hook
@@ -62,17 +63,6 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
    */
   const labels = getLabelCustomFields({ length, customFields })
 
-  /**
-   *@param {Collection["content_elements"]} items - Hook options
-   * Join the collection/globalContent props and the custom fields for label/sponsored
-   * This way we can get all information on a unique `blocks.map(card => card)`
-   */
-  const getItemsWithCustomFields = items => {
-    return items?.map((item, i) => {
-      return { ...item, customFields: { label: labels[i] } }
-    })
-  }
-
   const getSlicedItems = () => {
     let items = content?.content_elements
 
@@ -83,7 +73,7 @@ export function useCard({ customFields, defaultFrom, defaultSize, length }) {
       items = items?.slice(0, length)
     }
 
-    return getItemsWithCustomFields(items)
+    return getItemsWithCustomFields(items, labels)
   }
 
   return {
