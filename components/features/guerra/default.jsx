@@ -6,7 +6,8 @@ import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 import { Guerra } from '@r7/ui-card'
 import { Bullet } from '@r7/ui-base-components'
-import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
+import { withCard, getCardPropTypes } from '../../../util/card/helpers'
+import { CardLabel, CardHat } from '../../../util/card/components'
 
 const GuerraBlock = withCard(
   props => {

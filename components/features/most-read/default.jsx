@@ -3,7 +3,7 @@ import { Typography } from '@r7/ui-base-components'
 import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import PropTypes from '@arc-fusion/prop-types'
 import { MostRead } from '@r7/ui-card'
-import { getCardPropTypes, withCard } from '../../../util/card'
+import { getCardPropTypes, withCard } from '../../../util/card/helpers'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 

@@ -5,7 +5,7 @@ import { RESIZER_TOKEN_VERSION } from 'fusion:environment'
 import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 import { VerticalCarousel } from '@r7/ui-card'
-import { withCard, getCardPropTypes } from '../../../util/card'
+import { withCard, getCardPropTypes } from '../../../util/card/helpers'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 const VerticalCarouselCards = withCard(

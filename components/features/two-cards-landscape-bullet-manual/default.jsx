@@ -6,17 +6,20 @@ import { Image } from '@wpmedia/arc-themes-components'
 import getResizeParamsFromANSImage from '../../../util/get-resize-params-from-ans-image'
 import { Bullet } from '@r7/ui-base-components'
 import { LeftPhoto } from '@r7/ui-card'
-import { withCard, getCardPropTypes, CardLabel, CardHat } from '../../../util/card'
+import { CardLabel, CardHat } from '../../../util/card/components'
+import { withCard, getManualCardPropTypes } from '../../../util/card/helpers'
 
-const TwoCardsLandscapeBullet = withCard(
+const CONTENT_LENGTH = 3
+
+const TwoCardsLandscapeBulletManual = withCard(
   props => {
-    const { collection, siteProperties, fusionContext } = props.cardProps
+    const { content, siteProperties, fusionContext } = props.cardProps
     const { arcSite } = fusionContext
     const { fallbackImage, fallbackImageAlt } = siteProperties
 
     return (
       <LeftPhoto>
-        {collection.slice(0, 2).map(item => (
+        {content.slice(0, 2).map(item => (
           <LeftPhoto.Item key={item._id}>
             <LeftPhoto.Flex>
               <LeftPhoto.Figure format="landscape">
@@ -62,19 +65,19 @@ const TwoCardsLandscapeBullet = withCard(
           </LeftPhoto.Item>
         ))}
 
-        {collection[2] && (
-          <Bullet url={collection[2].canonical_url}>{collection[2].headlines?.basic}</Bullet>
+        {content[2] && (
+          <Bullet url={content[2].canonical_url}>{content[2].headlines?.basic}</Bullet>
         )}
       </LeftPhoto>
     )
   },
-  { defaultSize: 3, length: 3 },
+  { length: CONTENT_LENGTH, mode: 'manual' },
 )
 
-TwoCardsLandscapeBullet.label = 'Duas Fotos Pequenas com Bullet - R7 Block'
+TwoCardsLandscapeBulletManual.label = '(Manual) Duas Fotos Pequenas com Bullet - R7 Block'
 
-TwoCardsLandscapeBullet.propTypes = {
-  customFields: PropTypes.shape({ ...getCardPropTypes(2) }),
+TwoCardsLandscapeBulletManual.propTypes = {
+  customFields: PropTypes.shape({ ...getManualCardPropTypes(CONTENT_LENGTH) }),
 }
 
-export default TwoCardsLandscapeBullet
+export default TwoCardsLandscapeBulletManual
